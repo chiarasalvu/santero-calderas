@@ -74,12 +74,12 @@ export default function Faq() {
   const [abierta, setAbierta] = useState<string | null>(null);
 
   return (
-    <section id="faqs" className="scroll-mt-28 px-6 py-16">
-      <div className="mx-auto max-w-6xl rounded-3xl bg-cream p-8 sm:p-16">
-        <h2 className="text-center font-heading text-3xl font-bold text-brand-red">
+    <section id="faqs" className="scroll-mt-28 bg-ink px-6 py-16">
+      <div className="mx-auto max-w-6xl rounded-3xl bg-ink-light p-8 sm:p-16">
+        <h2 className="text-center font-heading text-3xl font-bold text-white">
           Preguntas Frecuentes
         </h2>
-        <p className="mx-auto mt-4 max-w-2xl text-center text-sm text-navy/70">
+        <p className="mx-auto mt-4 max-w-2xl text-center text-sm text-white/70">
           Soluciones inmediatas a las consultas técnicas más habituales sobre
           nuestra ingeniería térmica de alta precisión. Garantizamos
           confiabilidad absoluta en cada respuesta.
@@ -91,7 +91,7 @@ export default function Faq() {
             return (
               <div
                 key={item.id}
-                className="rounded-lg border border-zinc-200 bg-white px-5 py-4"
+                className="rounded-lg border border-white/10 bg-ink px-5 py-4"
               >
                 <button
                   type="button"
@@ -99,7 +99,7 @@ export default function Faq() {
                   aria-expanded={open}
                   className="flex w-full items-center justify-between gap-4 text-left"
                 >
-                  <span className="font-heading text-sm font-semibold text-navy">
+                  <span className="font-heading text-sm font-semibold text-white">
                     {item.pregunta}
                   </span>
                   <span
@@ -112,7 +112,7 @@ export default function Faq() {
                   </span>
                 </button>
                 {open && (
-                  <p className="mt-3 text-sm text-zinc-600">
+                  <p className="mt-3 text-sm text-white/70">
                     {item.respuesta}
                   </p>
                 )}
