@@ -97,7 +97,6 @@ export default function Header() {
           <button
             ref={triggerRef}
             type="button"
-            aria-haspopup="true"
             aria-expanded={queHacemosOpen}
             onClick={() => {
               setQueHacemosOpen((prev) => !prev);
@@ -136,6 +135,7 @@ export default function Header() {
           onClick={() => {
             setOpen((prev) => !prev);
             setQueHacemosOpen(false);
+            setQueHacemosMobileOpen(false);
           }}
         >
           <span className="text-2xl">{open ? "✕" : "☰"}</span>
@@ -234,7 +234,7 @@ function QueHacemosColumn({
 }) {
   return (
     <div>
-      <p className="text-xs font-semibold tracking-wide text-zinc-400 uppercase">
+      <p className="text-xs font-semibold tracking-wide text-zinc-500 uppercase">
         {titulo}
       </p>
       <ul className="mt-3 flex flex-col gap-2">

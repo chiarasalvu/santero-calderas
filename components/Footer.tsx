@@ -8,6 +8,20 @@ export default function Footer() {
   const pathname = usePathname();
   const footerSectionLinks = navLinks.filter((link) => link.href !== "/#faqs");
 
+  const renderFooterLink = (link: { href: string; label: string }) => (
+    <Link
+      key={link.href}
+      href={link.href}
+      className={`text-sm ${
+        pathname === link.href
+          ? "font-medium text-brand-red"
+          : "text-zinc-500 hover:text-brand-red"
+      }`}
+    >
+      {link.label}
+    </Link>
+  );
+
   return (
     <footer className="border-t-4 border-brand-red bg-white">
       <div className="mx-auto grid max-w-6xl gap-10 px-6 py-14 sm:grid-cols-3">
@@ -26,42 +40,11 @@ export default function Footer() {
             Secciones
           </p>
           <nav className="mt-3 flex flex-col gap-2">
-            {footerSectionLinks.slice(0, 2).map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`text-sm ${
-                  pathname === link.href
-                    ? "font-medium text-brand-red"
-                    : "text-zinc-500 hover:text-brand-red"
-                }`}
-              >
-                {link.label}
-              </Link>
-            ))}
-            <Link
-              href="/servicios"
-              className={`text-sm ${
-                pathname === "/servicios"
-                  ? "font-medium text-brand-red"
-                  : "text-zinc-500 hover:text-brand-red"
-              }`}
-            >
+            {footerSectionLinks.slice(0, 2).map(renderFooterLink)}
+            <Link href="/servicios" className="text-sm text-zinc-500 hover:text-brand-red">
               Qué Hacemos
             </Link>
-            {footerSectionLinks.slice(2).map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`text-sm ${
-                  pathname === link.href
-                    ? "font-medium text-brand-red"
-                    : "text-zinc-500 hover:text-brand-red"
-                }`}
-              >
-                {link.label}
-              </Link>
-            ))}
+            {footerSectionLinks.slice(2).map(renderFooterLink)}
           </nav>
         </div>
 

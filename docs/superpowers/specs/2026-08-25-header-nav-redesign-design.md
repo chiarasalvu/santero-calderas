@@ -34,7 +34,7 @@ Estas listas viven en un nuevo archivo `data/que-hacemos.ts`:
 
 Estructura actual (logo izquierda, nav horizontal, CTA rojo, pill flotante clara con blur) se mantiene. Cambios:
 
-- `lib/nav.ts`: `navLinks` pasa a `Nosotros, Sistema Santero, Qué Hacemos, Servicios, Casos de Éxito, FAQ's` (se inserta "Qué Hacemos" entre "Sistema Santero" y "Servicios"). "Qué Hacemos" no es un link normal — se maneja aparte del resto de `navLinks` dentro de `Header.tsx` porque abre un panel en vez de navegar directo.
+- `lib/nav.ts` **no se modifica**. `navLinks` sigue siendo exactamente los 5 links reales que ya tenía (Nosotros, Sistema Santero, Servicios, Casos de Éxito, FAQ's). "Qué Hacemos" no es un link normal — se renderiza en `Header.tsx` (y en `Footer.tsx`) como un elemento aparte, insertado visualmente entre "Sistema Santero" y "Servicios" mediante `navLinks.slice(0, 2)` / `navLinks.slice(2)`, sin tocar el array ni su tipo.
 - El ítem "Qué Hacemos" es un `<button>` con flecha (▾) que al hacer click despliega un panel debajo del header: mismo estilo pill/blur/sombra que el header (`bg-white/90`, `backdrop-blur-md`, `rounded-2xl`, `shadow-sm`), ancho ajustado al contenido (no full-bleed), con 3 columnas (`Por Rubro`, `Por Servicio`, `Por Producto`), cada una con su título en mayúscula pequeña y la lista de links debajo.
 - Se cierra al hacer click en cualquier link del panel, al hacer click afuera, o con la tecla Escape.
 - Solo un menú puede estar abierto a la vez (desktop dropdown y mobile drawer son estados independientes, no se abren juntos).
