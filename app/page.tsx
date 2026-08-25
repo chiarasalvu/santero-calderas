@@ -2,6 +2,7 @@ import Hero from "@/components/home/Hero";
 import RubroFinder from "@/components/home/RubroFinder";
 import HistoryTimeline from "@/components/HistoryTimeline";
 import SistemaSanteroTeaser from "@/components/home/SistemaSanteroTeaser";
+import ProductLines from "@/components/home/ProductLines";
 import ServicesPreview from "@/components/home/ServicesPreview";
 import CasesPreview from "@/components/home/CasesPreview";
 import Faq from "@/components/home/Faq";
@@ -17,6 +18,7 @@ export default function Home() {
       <RubroFinder />
       <HistoryTimeline />
       <SistemaSanteroTeaser />
+      <ProductLines />
       <ServicesPreview />
       <CasesPreview logosPorSegmento={logosPorSegmento} />
       <Faq />
