@@ -45,9 +45,9 @@ const historia: HitoHistoria[] = [
 
 export default function HistoryTimeline() {
   return (
-    <section className="px-6 py-20 sm:py-28">
+    <section className="bg-ink px-6 py-20 sm:py-28">
       <div className="mx-auto max-w-6xl">
-        <h2 className="font-heading text-2xl text-navy sm:text-3xl">
+        <h2 className="font-heading text-2xl text-white sm:text-3xl">
           Somos más que una compañía.
           <br />
           Somos{" "}
@@ -72,7 +72,7 @@ export default function HistoryTimeline() {
                 className="relative flex flex-col items-center gap-2 sm:flex-row sm:gap-12"
               >
                 <span
-                  className={`font-heading text-lg font-bold tracking-wide text-brand-red uppercase sm:flex-1 sm:text-5xl sm:font-normal sm:tracking-normal sm:text-brand-red/50 sm:normal-case lg:text-6xl ${
+                  className={`font-heading text-lg font-bold tracking-wide text-brand-red uppercase sm:flex-1 sm:text-5xl sm:font-normal sm:tracking-normal sm:text-brand-red/60 sm:normal-case lg:text-6xl ${
                     cardOnRight
                       ? "sm:order-1 sm:text-right"
                       : "sm:order-3 sm:text-left"
@@ -103,11 +103,11 @@ export default function HistoryTimeline() {
 
 function TimelineCard({ hito }: { hito: HitoHistoria }) {
   return (
-    <div className="w-full max-w-md rounded-2xl bg-cream-card p-6">
-      <h3 className="font-heading text-lg font-semibold text-navy">
+    <div className="w-full max-w-md rounded-2xl bg-ink-light p-6">
+      <h3 className="font-heading text-lg font-semibold text-white">
         {hito.titulo}
       </h3>
-      <p className="mt-2 text-sm text-zinc-600">{hito.descripcion}</p>
+      <p className="mt-2 text-sm text-white/70">{hito.descripcion}</p>
     </div>
   );
 }
