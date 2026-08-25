@@ -17,6 +17,17 @@ export default function Hero() {
         priority
         className="object-cover"
       />
+      <video
+        src="/video/hero-santero.mp4"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        poster="/img/generales/caldera-5.png"
+        className="absolute inset-0 h-full w-full object-cover motion-reduce:hidden"
+        aria-hidden
+      />
       <div
         className="absolute inset-0 bg-gradient-to-t from-ink via-ink/80 to-ink/50"
         aria-hidden
