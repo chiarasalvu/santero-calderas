@@ -6,6 +6,7 @@ import { navLinks, legalLinks } from "@/lib/nav";
 
 export default function Footer() {
   const pathname = usePathname();
+  const footerSectionLinks = navLinks.filter((link) => link.href !== "/#faqs");
 
   return (
     <footer className="border-t-4 border-brand-red bg-white">
@@ -25,21 +26,42 @@ export default function Footer() {
             Secciones
           </p>
           <nav className="mt-3 flex flex-col gap-2">
-            {navLinks
-              .filter((link) => link.href !== "/#faqs")
-              .map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={`text-sm ${
-                    pathname === link.href
-                      ? "font-medium text-brand-red"
-                      : "text-zinc-500 hover:text-brand-red"
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              ))}
+            {footerSectionLinks.slice(0, 2).map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`text-sm ${
+                  pathname === link.href
+                    ? "font-medium text-brand-red"
+                    : "text-zinc-500 hover:text-brand-red"
+                }`}
+              >
+                {link.label}
+              </Link>
+            ))}
+            <Link
+              href="/servicios"
+              className={`text-sm ${
+                pathname === "/servicios"
+                  ? "font-medium text-brand-red"
+                  : "text-zinc-500 hover:text-brand-red"
+              }`}
+            >
+              Qué Hacemos
+            </Link>
+            {footerSectionLinks.slice(2).map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`text-sm ${
+                  pathname === link.href
+                    ? "font-medium text-brand-red"
+                    : "text-zinc-500 hover:text-brand-red"
+                }`}
+              >
+                {link.label}
+              </Link>
+            ))}
           </nav>
         </div>
 
