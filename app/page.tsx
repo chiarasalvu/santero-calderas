@@ -2,7 +2,6 @@ import Hero from "@/components/home/Hero";
 import RubroFinder from "@/components/home/RubroFinder";
 import SistemaSanteroTeaser from "@/components/home/SistemaSanteroTeaser";
 import ProductLines from "@/components/home/ProductLines";
-import ServicesPreview from "@/components/home/ServicesPreview";
 import CasesPreview from "@/components/home/CasesPreview";
 import HistoryTimeline from "@/components/HistoryTimeline";
 import Faq from "@/components/home/Faq";
@@ -18,16 +17,15 @@ export default function Home() {
       <RubroFinder />
       <SistemaSanteroTeaser />
       <ProductLines />
-      <ServicesPreview />
       <CasesPreview logosPorSegmento={logosPorSegmento} />
       <HistoryTimeline />
       <Faq />
       <CtaBanner
         titulo="¿Listo para modernizar su planta?"
         descripcion="Nuestra ingeniería se adapta a los desafíos de hoy con la solidez de siempre. Conozca todas nuestras soluciones térmicas."
-        primaryLabel="Ver Soluciones Técnicas"
-        primaryHref="/servicios"
-        secondaryLabel="Agendar Consultoría"
+        primaryLabel="Cotizar mi proyecto"
+        primaryHref="/contacto"
+        secondaryLabel="Agendar videollamada"
         secondaryHref="/contacto"
       />
     </>
