@@ -1,4 +1,5 @@
 import Hero from "@/components/home/Hero";
+import RubroFinder from "@/components/home/RubroFinder";
 import HistoryTimeline from "@/components/HistoryTimeline";
 import SistemaSanteroTeaser from "@/components/home/SistemaSanteroTeaser";
 import ServicesPreview from "@/components/home/ServicesPreview";
@@ -13,6 +14,7 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <RubroFinder />
       <HistoryTimeline />
       <SistemaSanteroTeaser />
       <ServicesPreview />
