@@ -19,6 +19,8 @@
   --color-sky: #005faf;
   --color-cream: #f5f5f4;
   --color-cream-card: #f5f5f4;
+  --color-ink: #0f1729;
+  --color-ink-light: #1a2540;
 }
 
 @media (prefers-color-scheme: dark) {
