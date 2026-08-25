@@ -32,7 +32,7 @@ export default function CasesPreview({ logosPorSegmento }: CasesPreviewProps) {
                   className="flex w-full items-center justify-between gap-4 py-8 text-left"
                 >
                   <span className="flex items-baseline gap-3 sm:gap-5">
-                    <span className="text-sm text-brand-red/70">
+                    <span className="text-sm text-brand-red-light">
                       {String(index + 1).padStart(2, "0")}
                     </span>
                     <span className="font-heading text-lg font-bold tracking-wide text-white uppercase sm:text-2xl lg:text-3xl">
@@ -54,7 +54,7 @@ export default function CasesPreview({ logosPorSegmento }: CasesPreviewProps) {
                     {logos.map((logo) => (
                       <div
                         key={logo.src}
-                        className="relative flex h-16 items-center justify-center rounded-lg border border-white/10 bg-white p-2"
+                        className="relative flex h-16 items-center justify-center rounded-lg border border-black/10 bg-white p-2"
                       >
                         <Image
                           src={logo.src}

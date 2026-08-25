@@ -12,7 +12,7 @@ export default function Hero() {
     <section className="relative flex min-h-dvh items-center overflow-hidden bg-ink px-6 py-24 sm:py-32">
       <Image
         src="/img/generales/caldera-5.png"
-        alt="Sala de máquinas Calderas Santero"
+        alt=""
         fill
         priority
         className="object-cover"
@@ -23,7 +23,7 @@ export default function Hero() {
       />
 
       <div className="relative mx-auto w-full max-w-6xl">
-        <p className="font-heading text-sm font-semibold tracking-[0.2em] text-brand-red uppercase">
+        <p className="font-heading text-sm font-semibold tracking-[0.2em] text-brand-red-light uppercase">
           Industria Argentina desde 1935
         </p>
         <h1 className="mt-4 max-w-3xl font-heading text-5xl font-bold text-white sm:text-6xl">

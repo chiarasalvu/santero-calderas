@@ -43,11 +43,19 @@ const historia: HitoHistoria[] = [
   },
 ];
 
-export default function HistoryTimeline() {
+type HistoryTimelineProps = {
+  tone?: "light" | "dark";
+};
+
+export default function HistoryTimeline({ tone = "light" }: HistoryTimelineProps) {
+  const dark = tone === "dark";
+
   return (
-    <section className="bg-ink px-6 py-20 sm:py-28">
+    <section className={`px-6 py-20 sm:py-28 ${dark ? "bg-ink" : ""}`}>
       <div className="mx-auto max-w-6xl">
-        <h2 className="font-heading text-2xl text-white sm:text-3xl">
+        <h2
+          className={`font-heading text-2xl sm:text-3xl ${dark ? "text-white" : "text-navy"}`}
+        >
           Somos más que una compañía.
           <br />
           Somos{" "}
@@ -72,7 +80,11 @@ export default function HistoryTimeline() {
                 className="relative flex flex-col items-center gap-2 sm:flex-row sm:gap-12"
               >
                 <span
-                  className={`font-heading text-lg font-bold tracking-wide text-brand-red uppercase sm:flex-1 sm:text-5xl sm:font-normal sm:tracking-normal sm:text-brand-red/60 sm:normal-case lg:text-6xl ${
+                  className={`font-heading text-lg font-bold tracking-wide uppercase sm:flex-1 sm:text-5xl sm:font-normal sm:tracking-normal sm:normal-case lg:text-6xl ${
+                    dark
+                      ? "text-brand-red-light sm:text-brand-red-light"
+                      : "text-brand-red sm:text-brand-red/50"
+                  } ${
                     cardOnRight
                       ? "sm:order-1 sm:text-right"
                       : "sm:order-3 sm:text-left"
@@ -90,7 +102,7 @@ export default function HistoryTimeline() {
                       : "sm:order-1 sm:justify-end"
                   }`}
                 >
-                  <TimelineCard hito={hito} />
+                  <TimelineCard hito={hito} dark={dark} />
                 </div>
               </li>
             );
@@ -101,13 +113,19 @@ export default function HistoryTimeline() {
   );
 }
 
-function TimelineCard({ hito }: { hito: HitoHistoria }) {
+function TimelineCard({ hito, dark }: { hito: HitoHistoria; dark: boolean }) {
   return (
-    <div className="w-full max-w-md rounded-2xl bg-ink-light p-6">
-      <h3 className="font-heading text-lg font-semibold text-white">
+    <div
+      className={`w-full max-w-md rounded-2xl p-6 ${dark ? "bg-ink-light" : "bg-cream-card"}`}
+    >
+      <h3
+        className={`font-heading text-lg font-semibold ${dark ? "text-white" : "text-navy"}`}
+      >
         {hito.titulo}
       </h3>
-      <p className="mt-2 text-sm text-white/70">{hito.descripcion}</p>
+      <p className={`mt-2 text-sm ${dark ? "text-white/70" : "text-zinc-600"}`}>
+        {hito.descripcion}
+      </p>
     </div>
   );
 }

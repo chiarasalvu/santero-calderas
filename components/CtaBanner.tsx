@@ -7,6 +7,7 @@ type CtaBannerProps = {
   primaryHref: string;
   secondaryLabel: string;
   secondaryHref: string;
+  tone?: "light" | "dark";
 };
 
 export default function CtaBanner({
@@ -16,9 +17,10 @@ export default function CtaBanner({
   primaryHref,
   secondaryLabel,
   secondaryHref,
+  tone = "light",
 }: CtaBannerProps) {
   return (
-    <section className="px-6 py-16">
+    <section className={`px-6 py-16 ${tone === "dark" ? "bg-ink" : ""}`}>
       <div className="mx-auto max-w-6xl rounded-3xl bg-brand-red px-8 py-16 text-center sm:px-16">
         <h2 className="font-heading text-2xl font-bold text-white sm:text-4xl">
           {titulo}

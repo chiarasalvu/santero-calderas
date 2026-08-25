@@ -35,7 +35,7 @@ export default function SistemaSanteroTeaser() {
   return (
     <section className="bg-ink px-6 py-20 sm:py-28">
       <div className="mx-auto max-w-6xl">
-        <p className="font-heading text-sm font-semibold tracking-wide text-brand-red uppercase">
+        <p className="font-heading text-sm font-semibold tracking-wide text-brand-red-light uppercase">
           Ingeniería propia. Tecnología avanzada.
         </p>
         <h2 className="mt-4 max-w-2xl font-heading text-3xl font-bold text-white sm:text-4xl">
@@ -51,7 +51,7 @@ export default function SistemaSanteroTeaser() {
         <ol className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {pasos.map((paso) => (
             <li key={paso.numero} className="rounded-2xl bg-ink-light p-6">
-              <span className="font-heading text-3xl font-bold text-brand-red">
+              <span className="font-heading text-3xl font-bold text-brand-red-light">
                 {paso.numero}
               </span>
               <h3 className="mt-3 font-heading text-lg font-semibold text-white">

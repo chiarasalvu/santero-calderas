@@ -18,7 +18,7 @@ export default function Home() {
       <SistemaSanteroTeaser />
       <ProductLines />
       <CasesPreview logosPorSegmento={logosPorSegmento} />
-      <HistoryTimeline />
+      <HistoryTimeline tone="dark" />
       <Faq />
       <CtaBanner
         titulo="¿Listo para modernizar su planta?"
@@ -27,6 +27,7 @@ export default function Home() {
         primaryHref="/contacto"
         secondaryLabel="Agendar videollamada"
         secondaryHref="/contacto"
+        tone="dark"
       />
     </>
   );
