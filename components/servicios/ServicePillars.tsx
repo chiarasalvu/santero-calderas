@@ -1,11 +1,16 @@
+import Reveal from "@/components/motion/Reveal";
 import { serviciosPilares } from "@/data/servicios-pilares";
 
 export default function ServicePillars() {
   return (
     <section className="bg-ink px-6 py-20 sm:py-28">
       <div className="mx-auto flex max-w-6xl flex-col gap-10">
-        {serviciosPilares.map((pilar) => (
-          <div key={pilar.id} className="rounded-3xl bg-ink-light p-8 sm:p-12">
+        {serviciosPilares.map((pilar, index) => (
+          <Reveal
+            key={pilar.id}
+            delay={Math.min(index * 0.1, 0.3)}
+            className="rounded-3xl bg-ink-light p-8 sm:p-12"
+          >
             <span
               className="font-heading text-sm font-bold text-brand-red-light"
               aria-hidden
@@ -39,7 +44,7 @@ export default function ServicePillars() {
                 {pilar.items[0].descripcion}
               </p>
             )}
-          </div>
+          </Reveal>
         ))}
       </div>
     </section>

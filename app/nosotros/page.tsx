@@ -14,15 +14,16 @@ export default function Nosotros() {
   return (
     <>
       <AboutHero />
-      <HistoryTimeline />
+      <HistoryTimeline tone="dark" />
       <MissionVisionValues />
       <CtaBanner
         titulo="¿Listo para modernizar su planta?"
-        descripcion="Nuestra ingeniería se adapta a los desafíos de hoy con la solidez de siempre. Conozca todas nuestras soluciones térmicas."
+        descripcion="Nuestra ingeniería se adapta a los desafíos de hoy con la solidez de siempre. Conozca todas nuestras soluciones técnicas."
         primaryLabel="Ver Soluciones Técnicas"
         primaryHref="/servicios"
         secondaryLabel="Agendar Consultoría"
         secondaryHref="/contacto"
+        tone="dark"
       />
     </>
   );

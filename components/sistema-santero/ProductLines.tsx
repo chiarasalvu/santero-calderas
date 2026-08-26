@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Reveal from "@/components/motion/Reveal";
 
 type LineaProducto = {
   id: string;
@@ -41,20 +42,23 @@ const lineas: LineaProducto[] = [
 
 export default function ProductLines() {
   return (
-    <section className="px-6 py-20 sm:py-28">
+    <section className="bg-ink px-6 py-20 sm:py-28">
       <div className="mx-auto max-w-6xl">
-        <h2 className="font-heading text-3xl font-bold text-zinc-900 sm:text-4xl">
-          Líneas de Producto
-        </h2>
-        <p className="mt-2 text-zinc-600">
-          Soluciones adaptadas a cada escala industrial y de servicios.
-        </p>
+        <Reveal>
+          <h2 className="font-heading text-3xl font-bold text-white sm:text-4xl">
+            Líneas de Producto
+          </h2>
+          <p className="mt-2 text-white/70">
+            Soluciones adaptadas a cada escala industrial y de servicios.
+          </p>
+        </Reveal>
 
         <div className="mt-12 grid gap-8 sm:grid-cols-2">
-          {lineas.map((linea) => (
-            <div
+          {lineas.map((linea, index) => (
+            <Reveal
               key={linea.id}
-              className="overflow-hidden rounded-2xl border border-zinc-200"
+              delay={index * 0.1}
+              className="overflow-hidden rounded-2xl border border-white/10 bg-ink-light"
             >
               <div className="relative aspect-video">
                 <Image
@@ -71,10 +75,10 @@ export default function ProductLines() {
               </div>
 
               <div className="p-6">
-                <h3 className="font-heading text-xl font-bold text-zinc-900">
+                <h3 className="font-heading text-xl font-bold text-white">
                   {linea.nombre}
                 </h3>
-                <p className="mt-2 text-sm font-medium text-zinc-800">
+                <p className="mt-2 text-sm font-medium text-white/90">
                   {linea.subtitulo}
                 </p>
 
@@ -82,9 +86,9 @@ export default function ProductLines() {
                   {linea.bullets.map((bullet) => (
                     <li
                       key={bullet}
-                      className="flex items-start gap-2 text-sm text-zinc-600"
+                      className="flex items-start gap-2 text-sm text-white/60"
                     >
-                      <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-brand-red/10 text-[10px] text-brand-red">
+                      <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-brand-red/20 text-[10px] text-brand-red-light">
                         ✓
                       </span>
                       {bullet}
@@ -94,13 +98,13 @@ export default function ProductLines() {
 
                 <button
                   type="button"
-                  className="mt-6 flex w-full items-center justify-center gap-2 rounded-lg border border-zinc-300 px-4 py-3 text-sm font-medium text-zinc-700 transition-colors hover:border-brand-red hover:text-brand-red"
+                  className="mt-6 flex w-full items-center justify-center gap-2 rounded-lg border border-white/20 px-4 py-3 text-sm font-medium text-white/70 transition-colors hover:border-brand-red-light hover:text-brand-red-light"
                 >
                   <span aria-hidden>⬇</span>
                   Descargar ficha técnica
                 </button>
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>

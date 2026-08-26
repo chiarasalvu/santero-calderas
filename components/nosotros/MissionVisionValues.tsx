@@ -1,3 +1,5 @@
+import Reveal from "@/components/motion/Reveal";
+
 const valores = [
   "Acompañamiento",
   "Compromiso",
@@ -11,7 +13,7 @@ export default function MissionVisionValues() {
   return (
     <section className="bg-navy px-6 py-20">
       <div className="mx-auto grid max-w-6xl gap-6 sm:grid-cols-3">
-        <div className="rounded-2xl bg-cream p-8">
+        <Reveal className="rounded-2xl bg-cream p-8">
           <h3 className="font-heading text-xl font-bold text-navy">Misión</h3>
           <p className="mt-4 text-sm leading-relaxed text-zinc-600">
             Diseñar, fabricar e implementar soluciones térmicas eficientes que
@@ -20,9 +22,9 @@ export default function MissionVisionValues() {
             ingeniería especializada y soporte en todas las etapas del
             proyecto.
           </p>
-        </div>
+        </Reveal>
 
-        <div className="rounded-2xl bg-cream p-8">
+        <Reveal delay={0.1} className="rounded-2xl bg-cream p-8">
           <h3 className="font-heading text-xl font-bold text-navy">Visión</h3>
           <p className="mt-4 text-sm leading-relaxed text-zinc-600">
             Ser la empresa referente en soluciones de agua caliente sanitaria
@@ -30,9 +32,9 @@ export default function MissionVisionValues() {
             Santero, la calidad de sus equipos y el compromiso técnico con
             cada proyecto en Argentina y la región.
           </p>
-        </div>
+        </Reveal>
 
-        <div className="rounded-2xl bg-cream p-8">
+        <Reveal delay={0.2} className="rounded-2xl bg-cream p-8">
           <h3 className="font-heading text-xl font-bold text-navy">
             Valores
           </h3>
@@ -44,7 +46,7 @@ export default function MissionVisionValues() {
               </li>
             ))}
           </ul>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

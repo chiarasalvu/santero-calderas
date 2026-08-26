@@ -19,6 +19,7 @@ export default function SistemaSantero() {
       <ProductLines />
       <ComparisonTable />
       <CtaBanner
+        tone="dark"
         titulo="Optimice su inversión térmica hoy"
         descripcion="Nuestros especialistas están listos para realizar un diagnóstico técnico de sus necesidades y proponer la solución más eficiente."
         primaryLabel="Solicitar asesoramiento técnico"

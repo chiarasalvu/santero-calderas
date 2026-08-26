@@ -1,10 +1,11 @@
 import Image from "next/image";
+import Reveal from "@/components/motion/Reveal";
 
 export default function Hero() {
   return (
     <section className="bg-navy px-6 py-24 sm:py-28">
       <div className="mx-auto mt-12 grid max-w-6xl items-center gap-16 lg:grid-cols-2">
-        <div>
+        <Reveal>
           <h1 className="font-heading text-3xl font-bold text-white sm:text-5xl">
             Sistema Santero:
             <span className="block">Eficiencia Térmica Reinventada</span>
@@ -22,9 +23,9 @@ export default function Hero() {
             Consultar con un Ingeniero
             <span aria-hidden>→</span>
           </a>
-        </div>
+        </Reveal>
 
-        <div className="relative">
+        <Reveal delay={0.15} className="relative">
           <div className="aspect-square rounded-2xl bg-white p-4 shadow-xl">
             <div className="relative h-full w-full overflow-hidden rounded-xl bg-zinc-100">
               <Image
@@ -44,7 +45,7 @@ export default function Hero() {
               Eficiencia estacionaria
             </p>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

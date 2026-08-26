@@ -1,4 +1,5 @@
 import { Suspense } from "react";
+import Reveal from "@/components/motion/Reveal";
 import ContactForm from "@/components/ContactForm";
 
 const datosContacto = [
@@ -12,7 +13,10 @@ export default function ContactSection() {
   return (
     <section className="bg-ink px-6 pt-8 pb-16 sm:py-20">
       <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-2">
-        <div id="formulario" className="rounded-2xl border border-white/10 bg-ink-light p-8">
+        <Reveal
+          id="formulario"
+          className="rounded-2xl border border-white/10 bg-ink-light p-8 scroll-mt-28"
+        >
           <h2 className="font-heading text-xl font-bold text-white">
             Envianos tu consulta
           </h2>
@@ -21,9 +25,9 @@ export default function ContactSection() {
               <ContactForm />
             </Suspense>
           </div>
-        </div>
+        </Reveal>
 
-        <div className="flex flex-col gap-6">
+        <Reveal delay={0.1} className="flex flex-col gap-6">
           <div className="rounded-2xl bg-ink-light p-8">
             <h3 className="font-heading text-xl font-bold text-white">
               Datos de contacto
@@ -50,7 +54,7 @@ export default function ContactSection() {
               referrerPolicy="strict-origin-when-cross-origin"
             />
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );
