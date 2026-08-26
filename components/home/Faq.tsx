@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import Reveal from "@/components/motion/Reveal";
 
 type PreguntaFrecuente = {
   id: string;
@@ -76,21 +78,24 @@ export default function Faq() {
   return (
     <section id="faqs" className="scroll-mt-28 bg-ink px-6 py-16">
       <div className="mx-auto max-w-6xl rounded-3xl bg-ink-light p-8 sm:p-16">
-        <h2 className="text-center font-heading text-3xl font-bold text-white">
-          Preguntas Frecuentes
-        </h2>
-        <p className="mx-auto mt-4 max-w-2xl text-center text-sm text-white/70">
-          Soluciones inmediatas a las consultas técnicas más habituales sobre
-          nuestra ingeniería térmica de alta precisión. Garantizamos
-          confiabilidad absoluta en cada respuesta.
-        </p>
+        <Reveal>
+          <h2 className="text-center font-heading text-3xl font-bold text-white">
+            Preguntas Frecuentes
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-center text-sm text-white/70">
+            Soluciones inmediatas a las consultas técnicas más habituales sobre
+            nuestra ingeniería térmica de alta precisión. Garantizamos
+            confiabilidad absoluta en cada respuesta.
+          </p>
+        </Reveal>
 
         <div className="mx-auto mt-10 flex max-w-2xl flex-col gap-3">
-          {preguntas.map((item) => {
+          {preguntas.map((item, index) => {
             const open = abierta === item.id;
             return (
-              <div
+              <Reveal
                 key={item.id}
+                delay={Math.min(index * 0.05, 0.3)}
                 className="rounded-lg border border-white/10 bg-ink px-5 py-4"
               >
                 <button
@@ -111,12 +116,23 @@ export default function Faq() {
                     ▾
                   </span>
                 </button>
-                {open && (
-                  <p className="mt-3 text-sm text-white/70">
-                    {item.respuesta}
-                  </p>
-                )}
-              </div>
+                <AnimatePresence initial={false}>
+                  {open && (
+                    <motion.div
+                      key="respuesta"
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.2, ease: "easeInOut" }}
+                      className="overflow-hidden"
+                    >
+                      <p className="mt-3 text-sm text-white/70">
+                        {item.respuesta}
+                      </p>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </Reveal>
             );
           })}
         </div>

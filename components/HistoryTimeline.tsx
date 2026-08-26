@@ -1,3 +1,5 @@
+import Reveal from "@/components/motion/Reveal";
+
 type HitoHistoria = {
   id: string;
   anio: string;
@@ -53,17 +55,19 @@ export default function HistoryTimeline({ tone = "light" }: HistoryTimelineProps
   return (
     <section className={`px-6 py-20 sm:py-28 ${dark ? "bg-ink" : ""}`}>
       <div className="mx-auto max-w-6xl">
-        <h2
-          className={`font-heading text-2xl sm:text-3xl ${dark ? "text-white" : "text-navy"}`}
-        >
-          Somos más que una compañía.
-          <br />
-          Somos{" "}
-          <span className="font-bold">
-            trayectoria, tecnología, compromiso y mejora constante
-          </span>
-          .
-        </h2>
+        <Reveal>
+          <h2
+            className={`font-heading text-2xl sm:text-3xl ${dark ? "text-white" : "text-navy"}`}
+          >
+            Somos más que una compañía.
+            <br />
+            Somos{" "}
+            <span className="font-bold">
+              trayectoria, tecnología, compromiso y mejora constante
+            </span>
+            .
+          </h2>
+        </Reveal>
 
         <ol className="relative mt-16 flex flex-col gap-10 sm:gap-16">
           <div
@@ -102,7 +106,9 @@ export default function HistoryTimeline({ tone = "light" }: HistoryTimelineProps
                       : "sm:order-1 sm:justify-end"
                   }`}
                 >
-                  <TimelineCard hito={hito} dark={dark} />
+                  <Reveal delay={Math.min(index * 0.08, 0.4)}>
+                    <TimelineCard hito={hito} dark={dark} />
+                  </Reveal>
                 </div>
               </li>
             );
