@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import ContactForm from "@/components/ContactForm";
 
 const datosContacto = [
@@ -9,29 +10,31 @@ const datosContacto = [
 
 export default function ContactSection() {
   return (
-    <section className="px-6 pt-8 pb-16 sm:py-20">
+    <section className="bg-ink px-6 pt-8 pb-16 sm:py-20">
       <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-2">
-        <div className="rounded-2xl border border-zinc-200 p-8">
-          <h2 className="font-heading text-xl font-bold text-navy">
+        <div className="rounded-2xl border border-white/10 bg-ink-light p-8">
+          <h2 className="font-heading text-xl font-bold text-white">
             Envianos tu consulta
           </h2>
           <div className="mt-6">
-            <ContactForm />
+            <Suspense fallback={null}>
+              <ContactForm />
+            </Suspense>
           </div>
         </div>
 
         <div className="flex flex-col gap-6">
-          <div className="rounded-2xl bg-cream-card p-8">
-            <h3 className="font-heading text-xl font-bold text-navy">
+          <div className="rounded-2xl bg-ink-light p-8">
+            <h3 className="font-heading text-xl font-bold text-white">
               Datos de contacto
             </h3>
             <dl className="mt-4 flex flex-col gap-3">
               {datosContacto.map((dato) => (
                 <div key={dato.label}>
-                  <dt className="text-xs font-semibold tracking-wide text-brand-red uppercase">
+                  <dt className="text-xs font-semibold tracking-wide text-brand-red-light uppercase">
                     {dato.label}
                   </dt>
-                  <dd className="text-sm text-zinc-600">{dato.valor}</dd>
+                  <dd className="text-sm text-white/70">{dato.valor}</dd>
                 </div>
               ))}
             </dl>

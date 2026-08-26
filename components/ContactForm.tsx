@@ -1,8 +1,12 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import { useSearchParams } from "next/navigation";
+import { motivosContacto } from "@/data/motivos-contacto";
 
 export default function ContactForm() {
+  const searchParams = useSearchParams();
+  const motivoInicial = searchParams.get("motivo") ?? "";
   const [enviado, setEnviado] = useState(false);
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -12,11 +16,11 @@ export default function ContactForm() {
 
   if (enviado) {
     return (
-      <div className="rounded-2xl bg-cream-card p-8 text-center">
-        <p className="font-heading text-lg font-semibold text-navy">
+      <div className="rounded-2xl bg-ink-light p-8 text-center">
+        <p className="font-heading text-lg font-semibold text-white">
           ¡Gracias por tu mensaje!
         </p>
-        <p className="mt-2 text-sm text-zinc-600">
+        <p className="mt-2 text-sm text-white/70">
           Nos pondremos en contacto a la brevedad.
         </p>
       </div>
@@ -24,9 +28,28 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+    <form onSubmit={handleSubmit} id="formulario" className="flex flex-col gap-5">
       <div className="flex flex-col gap-1.5">
-        <label htmlFor="nombre" className="text-sm font-medium text-navy">
+        <label htmlFor="motivo" className="text-sm font-medium text-white">
+          Motivo de consulta
+        </label>
+        <select
+          id="motivo"
+          name="motivo"
+          defaultValue={motivoInicial}
+          className="rounded-lg border border-white/20 bg-ink px-4 py-2.5 text-sm text-white outline-none focus:border-brand-red focus:ring-2 focus:ring-brand-red/20"
+        >
+          <option value="">Seleccioná un motivo</option>
+          {motivosContacto.map((motivo) => (
+            <option key={motivo.slug} value={motivo.slug}>
+              {motivo.label}
+            </option>
+          ))}
+        </select>
+      </div>
+
+      <div className="flex flex-col gap-1.5">
+        <label htmlFor="nombre" className="text-sm font-medium text-white">
           Nombre
         </label>
         <input
@@ -34,12 +57,12 @@ export default function ContactForm() {
           name="nombre"
           type="text"
           required
-          className="rounded-lg border border-zinc-300 px-4 py-2.5 text-sm text-zinc-900 outline-none focus:border-brand-red focus:ring-2 focus:ring-brand-red/20"
+          className="rounded-lg border border-white/20 bg-ink px-4 py-2.5 text-sm text-white outline-none focus:border-brand-red focus:ring-2 focus:ring-brand-red/20"
         />
       </div>
 
       <div className="flex flex-col gap-1.5">
-        <label htmlFor="email" className="text-sm font-medium text-navy">
+        <label htmlFor="email" className="text-sm font-medium text-white">
           Email
         </label>
         <input
@@ -47,24 +70,24 @@ export default function ContactForm() {
           name="email"
           type="email"
           required
-          className="rounded-lg border border-zinc-300 px-4 py-2.5 text-sm text-zinc-900 outline-none focus:border-brand-red focus:ring-2 focus:ring-brand-red/20"
+          className="rounded-lg border border-white/20 bg-ink px-4 py-2.5 text-sm text-white outline-none focus:border-brand-red focus:ring-2 focus:ring-brand-red/20"
         />
       </div>
 
       <div className="flex flex-col gap-1.5">
-        <label htmlFor="telefono" className="text-sm font-medium text-navy">
+        <label htmlFor="telefono" className="text-sm font-medium text-white">
           Teléfono
         </label>
         <input
           id="telefono"
           name="telefono"
           type="tel"
-          className="rounded-lg border border-zinc-300 px-4 py-2.5 text-sm text-zinc-900 outline-none focus:border-brand-red focus:ring-2 focus:ring-brand-red/20"
+          className="rounded-lg border border-white/20 bg-ink px-4 py-2.5 text-sm text-white outline-none focus:border-brand-red focus:ring-2 focus:ring-brand-red/20"
         />
       </div>
 
       <div className="flex flex-col gap-1.5">
-        <label htmlFor="mensaje" className="text-sm font-medium text-navy">
+        <label htmlFor="mensaje" className="text-sm font-medium text-white">
           Mensaje
         </label>
         <textarea
@@ -72,7 +95,7 @@ export default function ContactForm() {
           name="mensaje"
           required
           rows={4}
-          className="rounded-lg border border-zinc-300 px-4 py-2.5 text-sm text-zinc-900 outline-none focus:border-brand-red focus:ring-2 focus:ring-brand-red/20"
+          className="rounded-lg border border-white/20 bg-ink px-4 py-2.5 text-sm text-white outline-none focus:border-brand-red focus:ring-2 focus:ring-brand-red/20"
         />
       </div>
 
