@@ -15,8 +15,8 @@ export default function Footer() {
       href={link.href}
       className={`text-sm ${
         pathname === link.href
-          ? "font-medium text-brand-red"
-          : "text-zinc-500 hover:text-brand-red"
+          ? "font-medium text-brand-red-light"
+          : "text-white/60 hover:text-brand-red-light"
       }`}
     >
       {link.label}
@@ -24,26 +24,29 @@ export default function Footer() {
   );
 
   return (
-    <footer className="border-t-4 border-brand-red bg-white">
+    <footer className="border-t border-steel/20 bg-ink-deep">
       <Reveal>
         <div className="mx-auto grid max-w-6xl gap-10 px-6 py-14 sm:grid-cols-3">
           <div>
-            <p className="font-heading text-lg font-bold text-brand-red">
+            <p className="font-heading text-lg font-bold text-white">
               Calderas Santero
             </p>
-            <p className="mt-3 max-w-xs text-sm text-zinc-500">
+            <p className="mt-3 max-w-xs text-sm text-white/60">
               Líderes en ingeniería térmica desde 1935. Tecnología argentina
               para la industria global.
             </p>
           </div>
 
           <div>
-            <p className="font-heading text-sm font-semibold text-navy">
+            <p className="font-mono text-xs font-semibold tracking-widest text-white/40 uppercase">
               Secciones
             </p>
             <nav className="mt-3 flex flex-col gap-2">
               {footerSectionLinks.slice(0, 2).map(renderFooterLink)}
-              <Link href="/servicios" className="text-sm text-zinc-500 hover:text-brand-red">
+              <Link
+                href="/servicios"
+                className="text-sm text-white/60 hover:text-brand-red-light"
+              >
                 Qué Hacemos
               </Link>
               {footerSectionLinks.slice(2).map(renderFooterLink)}
@@ -51,7 +54,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <p className="font-heading text-sm font-semibold text-navy">
+            <p className="font-mono text-xs font-semibold tracking-widest text-white/40 uppercase">
               Legal &amp; Contacto
             </p>
             <nav className="mt-3 flex flex-col gap-2">
@@ -59,7 +62,7 @@ export default function Footer() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-sm text-zinc-500 hover:text-brand-red"
+                  className="text-sm text-white/60 hover:text-brand-red-light"
                 >
                   {link.label}
                 </Link>
@@ -71,11 +74,25 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram de Calderas Santero"
-                className="flex h-8 w-8 items-center justify-center rounded-full border border-zinc-300 text-zinc-500 transition-colors hover:border-brand-red hover:text-brand-red"
+                className="flex h-8 w-8 items-center justify-center rounded border border-steel/30 text-white/60 transition-colors hover:border-brand-red-light hover:text-brand-red-light"
               >
                 <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4">
-                  <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" strokeWidth="1.5" />
-                  <circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="1.5" />
+                  <rect
+                    x="3"
+                    y="3"
+                    width="18"
+                    height="18"
+                    rx="5"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                  />
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="4"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                  />
                   <circle cx="17" cy="7" r="0.75" fill="currentColor" />
                 </svg>
               </a>
@@ -84,7 +101,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Facebook de Calderas Santero"
-                className="flex h-8 w-8 items-center justify-center rounded-full border border-zinc-300 text-zinc-500 transition-colors hover:border-brand-red hover:text-brand-red"
+                className="flex h-8 w-8 items-center justify-center rounded border border-steel/30 text-white/60 transition-colors hover:border-brand-red-light hover:text-brand-red-light"
               >
                 <svg viewBox="0 0 320 512" fill="currentColor" className="h-4 w-4">
                   <path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z" />
@@ -95,7 +112,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn de Calderas Santero"
-                className="flex h-8 w-8 items-center justify-center rounded-full border border-zinc-300 text-zinc-500 transition-colors hover:border-brand-red hover:text-brand-red"
+                className="flex h-8 w-8 items-center justify-center rounded border border-steel/30 text-white/60 transition-colors hover:border-brand-red-light hover:text-brand-red-light"
               >
                 <svg viewBox="0 0 448 512" fill="currentColor" className="h-4 w-4">
                   <path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z" />
@@ -106,7 +123,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="YouTube de Calderas Santero"
-                className="flex h-8 w-8 items-center justify-center rounded-full border border-zinc-300 text-zinc-500 transition-colors hover:border-brand-red hover:text-brand-red"
+                className="flex h-8 w-8 items-center justify-center rounded border border-steel/30 text-white/60 transition-colors hover:border-brand-red-light hover:text-brand-red-light"
               >
                 <svg viewBox="0 0 576 512" fill="currentColor" className="h-4 w-4">
                   <path d="M549.7 124.1c-6.3-23.7-24.8-42.3-48.3-48.6C458.8 64 288 64 288 64S117.2 64 74.6 75.5c-23.5 6.3-42 24.9-48.3 48.6-11.4 42.9-11.4 132.3-11.4 132.3s0 89.4 11.4 132.3c6.3 23.7 24.8 41.5 48.3 47.8C117.2 448 288 448 288 448s170.8 0 213.4-11.5c23.5-6.3 42-24.2 48.3-47.8 11.4-42.9 11.4-132.3 11.4-132.3s0-89.4-11.4-132.3zM232 335.5V176.5L361 256l-129 79.5z" />
@@ -117,8 +134,8 @@ export default function Footer() {
         </div>
       </Reveal>
 
-      <div className="border-t border-zinc-200 bg-zinc-50">
-        <div className="mx-auto max-w-6xl px-6 py-4 text-center text-xs text-zinc-500">
+      <div className="border-t border-steel/20">
+        <div className="mx-auto max-w-6xl px-6 py-4 text-center text-xs text-white/40">
           <p>
             © {new Date().getFullYear()} Calderas Santero. Industria
             Argentina. Todos los derechos reservados.
