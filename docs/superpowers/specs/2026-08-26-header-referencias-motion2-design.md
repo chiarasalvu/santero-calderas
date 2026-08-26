@@ -24,6 +24,19 @@ de Servicios, Nosotros, Sistema Santero y Contacto — seguía pendiente.
 Casos de Éxito queda fuera (pendiente de contenido real de casos, sin
 cambios en este plan).
 
+**Corrección post-revisión de código:** al armar el plan se detectó que
+Nosotros y Sistema Santero no están en tema oscuro completo como se
+asumió en la primera versión de este documento — solo su Hero usa
+`bg-navy`; el resto de las secciones (`Overview`, `ProductLines`,
+`ComparisonTable` en Sistema Santero; `HistoryTimeline` y `CtaBanner` sin
+`tone="dark"` en Nosotros) caen al fondo blanco por defecto del sitio.
+Con el nuevo Header sólido y oscuro, ese quiebre a mitad de página se
+nota mucho más que hoy. Se decidió sumar el reskin oscuro de ambas
+páginas a este mismo plan (bajo costo: se reutilizan los tokens
+`bg-ink`/`bg-ink-light` ya creados y el prop `tone` ya existente en
+`HistoryTimeline`/`CtaBanner`, y son los mismos archivos que ya había que
+tocar para animarlos).
+
 ## Objetivo
 
 1. Rediseñar el Header al patrón Gucci: barra minimalista de tema oscuro,
@@ -52,10 +65,12 @@ cambios en este plan).
   `components/sistema-santero/ComparisonTable.tsx`,
   `components/servicios/Hero.tsx`, `components/servicios/ServicePillars.tsx`,
   `components/contacto/Hero.tsx`, `components/contacto/ContactSection.tsx`.
-- Fuera de alcance: Casos de Éxito (contenido real pendiente); reskin de
-  color de Nosotros/Sistema Santero (ya están en tema oscuro `navy`, no
-  hace falta tocar su paleta); envío real de formularios; páginas de
-  detalle por rubro/servicio/producto.
+- Reskin oscuro de `components/sistema-santero/Overview.tsx`,
+  `ProductLines.tsx` y `ComparisonTable.tsx` (a `bg-ink`/`bg-ink-light`,
+  texto blanco/`white/70`) y de `app/nosotros/page.tsx` (pasar
+  `tone="dark"` a `HistoryTimeline` y `CtaBanner`).
+- Fuera de alcance: Casos de Éxito (contenido real pendiente); envío
+  real de formularios; páginas de detalle por rubro/servicio/producto.
 
 ## Header — estructura final
 
@@ -145,7 +160,30 @@ contenido de cada sección de:
 - **Nosotros**: `AboutHero` (título/bajada), `MissionVisionValues` (cada
   una de las 3 tarjetas con `delay` escalonado).
 - **Sistema Santero**: `Hero`, `Overview`, `ProductLines` (cada línea de
-  producto), `ComparisonTable` (la tabla completa).
+  producto), `ComparisonTable` (la tabla completa) — las tres últimas se
+  restylan a oscuro (`bg-ink`/`bg-ink-light`) en el mismo paso, ver
+  sección siguiente.
+
+## Reskin oscuro de Nosotros y Sistema Santero
+
+- `components/sistema-santero/Overview.tsx`: sección pasa a `bg-ink`,
+  título de apoyo (`Ingeniería propia...`) mantiene `text-brand-red-light`,
+  `h2` y párrafo a `text-white`/`text-white/70`, tarjeta de imagen a
+  `bg-ink-light`, cada característica (`h3`/`p`) a `text-white`/`text-white/60`.
+- `components/sistema-santero/ProductLines.tsx`: sección a `bg-ink`,
+  título a `text-white`, cada tarjeta de línea de producto a borde
+  `border-white/10` sobre `bg-ink-light`, textos a blanco/`white/70`,
+  bullets y botón "Descargar ficha técnica" con los mismos tonos que ya
+  usa `ServicePillars` en Servicios.
+- `components/sistema-santero/ComparisonTable.tsx`: sección a `bg-ink`,
+  título a `text-white`, tabla con encabezado `bg-ink-light`, filas con
+  `border-white/10`, texto de la columna "Sistema Tradicional" en
+  `text-white/40`, columna "Sistema Santero" en `text-white`/`text-brand-red-light`
+  para la fila destacada.
+- `app/nosotros/page.tsx`: `<HistoryTimeline tone="dark" />` y
+  `<CtaBanner ... tone="dark" />` (mismo patrón que ya usa Home).
+  `AboutHero` y `MissionVisionValues` no cambian de paleta (ya son
+  `bg-navy`), solo suman `Reveal`.
 - **Servicios**: `Hero`, cada pilar de `ServicePillars`.
 - **Contacto**: `Hero` (ya tiene `MotivoSelector` en `Suspense`, no se
   toca esa parte — se envuelve el título/bajada), `ContactSection` (el
