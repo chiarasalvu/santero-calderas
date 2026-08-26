@@ -26,9 +26,9 @@ export default function Home() {
         titulo="¿Listo para modernizar su planta?"
         descripcion="Nuestra ingeniería se adapta a los desafíos de hoy con la solidez de siempre. Conozca todas nuestras soluciones térmicas."
         primaryLabel="Cotizar mi proyecto"
-        primaryHref="/contacto"
+        primaryHref="/contacto?motivo=cotizar-proyecto"
         secondaryLabel="Agendar videollamada"
-        secondaryHref="/contacto"
+        secondaryHref="/contacto?motivo=visita-tecnica"
         tone="dark"
       />
     </>
