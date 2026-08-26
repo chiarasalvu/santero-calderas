@@ -64,56 +64,58 @@ export default function Header() {
   };
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-ink/90 backdrop-blur-md">
-      <div className="relative mx-auto flex h-20 max-w-6xl items-center justify-between px-6">
-        <Link
-          href="/contacto"
-          className="text-sm text-white/70 transition-colors hover:text-white"
-        >
-          Contacto
-        </Link>
+    <>
+      <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-ink/90 backdrop-blur-md">
+        <div className="relative mx-auto flex h-20 max-w-6xl items-center justify-between px-6">
+          <Link
+            href="/contacto"
+            className="text-sm text-white/70 transition-colors hover:text-white"
+          >
+            Contacto
+          </Link>
 
-        <Link
-          href="/"
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-        >
-          <Image
-            src="/img/generales/logo.png"
-            alt="Calderas Santero"
-            width={201}
-            height={72}
-            className="h-9 w-auto"
-            priority
-          />
-        </Link>
+          <Link
+            href="/"
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+          >
+            <Image
+              src="/img/generales/logo.png"
+              alt="Calderas Santero"
+              width={201}
+              height={72}
+              className="h-9 w-auto"
+              priority
+            />
+          </Link>
 
-        <button
-          type="button"
-          aria-expanded={menuOpen}
-          aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
-          onClick={() => setMenuOpen((prev) => !prev)}
-          className="flex items-center gap-2 rounded-full border border-white/30 px-4 py-2 text-xs font-semibold tracking-wide text-white uppercase transition-colors hover:border-white"
-        >
-          {menuOpen ? "Cerrar" : "Menu"}
-          <span aria-hidden className="flex flex-col gap-[3px]">
-            <span
-              className={`h-[1.5px] w-4 bg-white transition-transform ${
-                menuOpen ? "translate-y-[4.5px] rotate-45" : ""
-              }`}
-            />
-            <span
-              className={`h-[1.5px] w-4 bg-white transition-opacity ${
-                menuOpen ? "opacity-0" : ""
-              }`}
-            />
-            <span
-              className={`h-[1.5px] w-4 bg-white transition-transform ${
-                menuOpen ? "-translate-y-[4.5px] -rotate-45" : ""
-              }`}
-            />
-          </span>
-        </button>
-      </div>
+          <button
+            type="button"
+            aria-expanded={menuOpen}
+            aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
+            onClick={() => setMenuOpen((prev) => !prev)}
+            className="flex items-center gap-2 rounded-full border border-white/30 px-4 py-2 text-xs font-semibold tracking-wide text-white uppercase transition-colors hover:border-white"
+          >
+            {menuOpen ? "Cerrar" : "Menu"}
+            <span aria-hidden className="flex flex-col gap-[3px]">
+              <span
+                className={`h-[1.5px] w-4 bg-white transition-transform ${
+                  menuOpen ? "translate-y-[4.5px] rotate-45" : ""
+                }`}
+              />
+              <span
+                className={`h-[1.5px] w-4 bg-white transition-opacity ${
+                  menuOpen ? "opacity-0" : ""
+                }`}
+              />
+              <span
+                className={`h-[1.5px] w-4 bg-white transition-transform ${
+                  menuOpen ? "-translate-y-[4.5px] -rotate-45" : ""
+                }`}
+              />
+            </span>
+          </button>
+        </div>
+      </header>
 
       <AnimatePresence>
         {menuOpen && (
@@ -122,7 +124,7 @@ export default function Header() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25, ease: "easeOut" }}
-            className="fixed inset-0 top-20 overflow-y-auto bg-ink"
+            className="fixed inset-0 top-20 z-40 overflow-y-auto bg-ink"
           >
             <nav className="mx-auto flex min-h-full max-w-3xl flex-col items-center justify-center gap-6 px-6 py-16">
               {navLinks.slice(0, 2).map(renderPanelLink)}
@@ -195,7 +197,7 @@ export default function Header() {
           </motion.div>
         )}
       </AnimatePresence>
-    </header>
+    </>
   );
 }
 
