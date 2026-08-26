@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist_Mono, Montserrat } from "next/font/google";
+import { MotionConfig } from "framer-motion";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -33,10 +34,12 @@ export default function RootLayout({
       className={`${geistMono.variable} ${montserrat.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
-        <WhatsAppButton />
+        <MotionConfig reducedMotion="user">
+          <Header />
+          <main className="flex-1">{children}</main>
+          <Footer />
+          <WhatsAppButton />
+        </MotionConfig>
       </body>
     </html>
   );

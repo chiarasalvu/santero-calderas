@@ -1,3 +1,5 @@
+import Reveal from "@/components/motion/Reveal";
+
 type LineaProducto = {
   id: string;
   nombre: string;
@@ -44,17 +46,23 @@ export default function ProductLines() {
   return (
     <section className="bg-ink px-6 py-20 sm:py-28">
       <div className="mx-auto max-w-6xl">
-        <h2 className="font-heading text-3xl font-bold text-white sm:text-4xl">
-          Productos Principales
-        </h2>
-        <p className="mt-3 max-w-2xl text-white/70">
-          Las dos líneas de generación de agua caliente que respaldan el
-          Sistema Santero.
-        </p>
+        <Reveal>
+          <h2 className="font-heading text-3xl font-bold text-white sm:text-4xl">
+            Productos Principales
+          </h2>
+          <p className="mt-3 max-w-2xl text-white/70">
+            Las dos líneas de generación de agua caliente que respaldan el
+            Sistema Santero.
+          </p>
+        </Reveal>
 
         <div className="mt-10 grid gap-6 sm:grid-cols-2">
-          {lineas.map((linea) => (
-            <div key={linea.id} className="overflow-hidden rounded-2xl bg-white">
+          {lineas.map((linea, index) => (
+            <Reveal
+              key={linea.id}
+              delay={index * 0.1}
+              className="overflow-hidden rounded-2xl bg-white"
+            >
               <div className="bg-gradient-to-br from-navy to-sky px-6 py-6">
                 <span className="inline-block rounded-full bg-white/20 px-2 py-0.5 text-[10px] font-semibold tracking-wide text-white uppercase">
                   {linea.badge}
@@ -81,7 +89,7 @@ export default function ProductLines() {
                   ))}
                 </ul>
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>
