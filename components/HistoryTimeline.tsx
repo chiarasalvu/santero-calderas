@@ -106,7 +106,10 @@ export default function HistoryTimeline({ tone = "light" }: HistoryTimelineProps
                       : "sm:order-1 sm:justify-end"
                   }`}
                 >
-                  <Reveal delay={Math.min(index * 0.08, 0.4)}>
+                  <Reveal
+                    delay={Math.min(index * 0.08, 0.4)}
+                    className="w-full"
+                  >
                     <TimelineCard hito={hito} dark={dark} />
                   </Reveal>
                 </div>

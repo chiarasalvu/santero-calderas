@@ -147,7 +147,7 @@ export default function Header() {
         </button>
       </div>
 
-      <AnimatePresence>
+      <AnimatePresence initial={false}>
         {queHacemosOpen && (
           <motion.div
             ref={panelRef}
@@ -178,7 +178,7 @@ export default function Header() {
         )}
       </AnimatePresence>
 
-      <AnimatePresence>
+      <AnimatePresence initial={false}>
         {open && (
           <motion.nav
             initial={{ opacity: 0, y: -8 }}
@@ -205,25 +205,36 @@ export default function Header() {
                 </span>
               </button>
 
-              {queHacemosMobileOpen && (
-                <div className="flex flex-col gap-4 px-2 py-3">
-                  <QueHacemosColumn
-                    titulo="Por Rubro"
-                    items={porRubro}
-                    onNavigate={() => setOpen(false)}
-                  />
-                  <QueHacemosColumn
-                    titulo="Por Servicio"
-                    items={porServicio}
-                    onNavigate={() => setOpen(false)}
-                  />
-                  <QueHacemosColumn
-                    titulo="Por Producto"
-                    items={porProducto}
-                    onNavigate={() => setOpen(false)}
-                  />
-                </div>
-              )}
+              <AnimatePresence initial={false}>
+                {queHacemosMobileOpen && (
+                  <motion.div
+                    key="que-hacemos-mobile"
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.2, ease: "easeInOut" }}
+                    className="overflow-hidden"
+                  >
+                    <div className="flex flex-col gap-4 px-2 py-3">
+                      <QueHacemosColumn
+                        titulo="Por Rubro"
+                        items={porRubro}
+                        onNavigate={() => setOpen(false)}
+                      />
+                      <QueHacemosColumn
+                        titulo="Por Servicio"
+                        items={porServicio}
+                        onNavigate={() => setOpen(false)}
+                      />
+                      <QueHacemosColumn
+                        titulo="Por Producto"
+                        items={porProducto}
+                        onNavigate={() => setOpen(false)}
+                      />
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
 
             {navLinks.slice(2).map(renderMobileNavLink)}
