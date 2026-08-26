@@ -18,7 +18,7 @@ export default function Nosotros() {
       <MissionVisionValues />
       <CtaBanner
         titulo="¿Listo para modernizar su planta?"
-        descripcion="Nuestra ingeniería se adapta a los desafíos de hoy con la solidez de siempre. Conozca todas nuestras soluciones técnicas."
+        descripcion="Nuestra ingeniería se adapta a los desafíos de hoy con la solidez de siempre. Conozca todas nuestras soluciones térmicas."
         primaryLabel="Ver Soluciones Técnicas"
         primaryHref="/servicios"
         secondaryLabel="Agendar Consultoría"
