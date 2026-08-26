@@ -15,7 +15,7 @@ export default function ContactSection() {
       <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-2">
         <Reveal
           id="formulario"
-          className="rounded-2xl border border-white/10 bg-ink-light p-8"
+          className="rounded-2xl border border-white/10 bg-ink-light p-8 scroll-mt-28"
         >
           <h2 className="font-heading text-xl font-bold text-white">
             Envianos tu consulta

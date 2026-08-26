@@ -65,10 +65,11 @@ export default function Header() {
 
   return (
     <>
-      <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-ink/90 backdrop-blur-md">
+      <header className="fixed inset-x-0 top-0 z-[70] border-b border-white/10 bg-ink/90 backdrop-blur-md">
         <div className="relative mx-auto flex h-20 max-w-6xl items-center justify-between px-6">
           <Link
             href="/contacto"
+            onClick={closeMenu}
             className="text-sm text-white/70 transition-colors hover:text-white"
           >
             Contacto
@@ -76,6 +77,7 @@ export default function Header() {
 
           <Link
             href="/"
+            onClick={closeMenu}
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
           >
             <Image
@@ -92,7 +94,7 @@ export default function Header() {
             type="button"
             aria-expanded={menuOpen}
             aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
-            onClick={() => setMenuOpen((prev) => !prev)}
+            onClick={() => (menuOpen ? closeMenu() : setMenuOpen(true))}
             className="flex items-center gap-2 rounded-full border border-white/30 px-4 py-2 text-xs font-semibold tracking-wide text-white uppercase transition-colors hover:border-white"
           >
             {menuOpen ? "Cerrar" : "Menu"}
@@ -124,7 +126,7 @@ export default function Header() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25, ease: "easeOut" }}
-            className="fixed inset-0 top-20 z-40 overflow-y-auto bg-ink"
+            className="fixed inset-0 top-20 z-[60] overflow-y-auto bg-ink"
           >
             <nav className="mx-auto flex min-h-full max-w-3xl flex-col items-center justify-center gap-6 px-6 py-16">
               {navLinks.slice(0, 2).map(renderPanelLink)}
