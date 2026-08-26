@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
@@ -21,9 +24,12 @@ export default function Hero() {
         className="absolute inset-0 h-full w-full object-cover motion-reduce:hidden"
         aria-hidden
       />
-      <div
+      <motion.div
         className="absolute inset-0 bg-gradient-to-t from-ink via-ink/80 to-ink/50"
         aria-hidden
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.2, ease: "easeOut" }}
       />
 
       <h1 className="sr-only">Calidez que perdura.</h1>

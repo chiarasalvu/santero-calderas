@@ -1,27 +1,39 @@
+"use client";
+
+import { motion } from "framer-motion";
+import AnimatedCounter from "@/components/motion/AnimatedCounter";
+
 const GOOGLE_REVIEWS_URL = "https://www.google.com/maps?cid=2012556644267159200";
 const RATING = 4.8;
 const REVIEW_COUNT = 70;
 
 export default function GoogleReviewsBadge() {
   return (
-    <a
+    <motion.a
       href={GOOGLE_REVIEWS_URL}
       target="_blank"
       rel="noopener noreferrer"
       aria-label={`Ver reseñas de Calderas Santero en Google — ${RATING} de 5 estrellas, ${REVIEW_COUNT} reseñas`}
-      className="fixed bottom-6 left-6 z-40 flex items-center gap-3 rounded-full bg-white/95 px-4 py-2.5 shadow-lg ring-1 ring-black/5 backdrop-blur-md transition-transform hover:scale-105"
+      className="fixed bottom-6 left-6 z-40 flex items-center gap-3 rounded-full bg-white/95 px-4 py-2.5 shadow-lg ring-1 ring-black/5 backdrop-blur-md"
+      initial={{ scale: 0, opacity: 0 }}
+      animate={{ scale: 1, opacity: 1 }}
+      transition={{ type: "spring", stiffness: 260, damping: 20, delay: 0.6 }}
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.97 }}
     >
       <GoogleLogo className="h-6 w-6 shrink-0" />
       <div className="flex flex-col leading-tight">
         <div className="flex items-center gap-1">
-          <span className="text-sm font-bold text-navy">{RATING}</span>
+          <span className="text-sm font-bold text-navy">
+            <AnimatedCounter value={RATING} decimals={1} />
+          </span>
           <Stars />
         </div>
         <span className="text-xs text-zinc-500">
-          {REVIEW_COUNT} reseñas en Google
+          <AnimatedCounter value={REVIEW_COUNT} /> reseñas en Google
         </span>
       </div>
-    </a>
+    </motion.a>
   );
 }
 
