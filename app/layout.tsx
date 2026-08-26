@@ -1,20 +1,27 @@
 import type { Metadata } from "next";
-import { Geist_Mono, Montserrat } from "next/font/google";
+import { Hanken_Grotesk, JetBrains_Mono, Montserrat } from "next/font/google";
 import { MotionConfig } from "framer-motion";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
   subsets: ["latin"],
+  weight: ["500"],
+});
+
+const hankenGrotesk = Hanken_Grotesk({
+  variable: "--font-hanken-grotesk",
+  subsets: ["latin"],
+  weight: ["400"],
 });
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["300", "400", "500", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {
@@ -31,7 +38,7 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${geistMono.variable} ${montserrat.variable} h-full antialiased`}
+      className={`${jetbrainsMono.variable} ${hankenGrotesk.variable} ${montserrat.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
         <MotionConfig reducedMotion="user">
