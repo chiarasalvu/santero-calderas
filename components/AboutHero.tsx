@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Reveal from "@/components/motion/Reveal";
 
 export default function AboutHero() {
   return (
@@ -12,7 +13,7 @@ export default function AboutHero() {
         aria-hidden
       />
 
-      <div className="relative mx-auto w-full max-w-6xl">
+      <Reveal className="relative mx-auto w-full max-w-6xl">
         <h1 className="max-w-2xl font-heading text-4xl font-bold text-white sm:text-5xl lg:max-w-4xl">
           Más de 90 años transformando la industria térmica argentina.
         </h1>
@@ -28,7 +29,7 @@ export default function AboutHero() {
         >
           Quiero Asesoramiento
         </Link>
-      </div>
+      </Reveal>
     </section>
   );
 }
