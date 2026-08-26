@@ -12,7 +12,7 @@ export default function ContactSection() {
   return (
     <section className="bg-ink px-6 pt-8 pb-16 sm:py-20">
       <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-2">
-        <div className="rounded-2xl border border-white/10 bg-ink-light p-8">
+        <div id="formulario" className="rounded-2xl border border-white/10 bg-ink-light p-8">
           <h2 className="font-heading text-xl font-bold text-white">
             Envianos tu consulta
           </h2>

@@ -28,16 +28,17 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} id="formulario" className="flex flex-col gap-5">
+    <form onSubmit={handleSubmit} className="flex flex-col gap-5">
       <div className="flex flex-col gap-1.5">
         <label htmlFor="motivo" className="text-sm font-medium text-white">
           Motivo de consulta
         </label>
         <select
+          key={motivoInicial}
           id="motivo"
           name="motivo"
           defaultValue={motivoInicial}
-          className="rounded-lg border border-white/20 bg-ink px-4 py-2.5 text-sm text-white outline-none focus:border-brand-red focus:ring-2 focus:ring-brand-red/20"
+          className="rounded-lg border border-white/40 bg-ink px-4 py-2.5 text-sm text-white outline-none focus:border-brand-red focus:ring-2 focus:ring-brand-red/20"
         >
           <option value="">Seleccioná un motivo</option>
           {motivosContacto.map((motivo) => (
@@ -57,7 +58,7 @@ export default function ContactForm() {
           name="nombre"
           type="text"
           required
-          className="rounded-lg border border-white/20 bg-ink px-4 py-2.5 text-sm text-white outline-none focus:border-brand-red focus:ring-2 focus:ring-brand-red/20"
+          className="rounded-lg border border-white/40 bg-ink px-4 py-2.5 text-sm text-white outline-none focus:border-brand-red focus:ring-2 focus:ring-brand-red/20"
         />
       </div>
 
@@ -70,7 +71,7 @@ export default function ContactForm() {
           name="email"
           type="email"
           required
-          className="rounded-lg border border-white/20 bg-ink px-4 py-2.5 text-sm text-white outline-none focus:border-brand-red focus:ring-2 focus:ring-brand-red/20"
+          className="rounded-lg border border-white/40 bg-ink px-4 py-2.5 text-sm text-white outline-none focus:border-brand-red focus:ring-2 focus:ring-brand-red/20"
         />
       </div>
 
@@ -82,7 +83,7 @@ export default function ContactForm() {
           id="telefono"
           name="telefono"
           type="tel"
-          className="rounded-lg border border-white/20 bg-ink px-4 py-2.5 text-sm text-white outline-none focus:border-brand-red focus:ring-2 focus:ring-brand-red/20"
+          className="rounded-lg border border-white/40 bg-ink px-4 py-2.5 text-sm text-white outline-none focus:border-brand-red focus:ring-2 focus:ring-brand-red/20"
         />
       </div>
 
@@ -95,7 +96,7 @@ export default function ContactForm() {
           name="mensaje"
           required
           rows={4}
-          className="rounded-lg border border-white/20 bg-ink px-4 py-2.5 text-sm text-white outline-none focus:border-brand-red focus:ring-2 focus:ring-brand-red/20"
+          className="rounded-lg border border-white/40 bg-ink px-4 py-2.5 text-sm text-white outline-none focus:border-brand-red focus:ring-2 focus:ring-brand-red/20"
         />
       </div>
 
