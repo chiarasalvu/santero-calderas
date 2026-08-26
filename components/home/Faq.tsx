@@ -76,7 +76,7 @@ export default function Faq() {
   const [abierta, setAbierta] = useState<string | null>(null);
 
   return (
-    <section id="faqs" className="scroll-mt-28 bg-ink px-6 py-16">
+    <section id="faqs" className="scroll-mt-32 bg-ink px-6 py-16">
       <div className="mx-auto max-w-6xl rounded-3xl bg-ink-light p-8 sm:p-16">
         <Reveal>
           <h2 className="text-center font-heading text-3xl font-bold text-white">

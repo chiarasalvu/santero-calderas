@@ -15,7 +15,7 @@ const jetbrainsMono = JetBrains_Mono({
 const hankenGrotesk = Hanken_Grotesk({
   variable: "--font-hanken-grotesk",
   subsets: ["latin"],
-  weight: ["400"],
+  weight: ["400", "500", "600", "700"],
 });
 
 const montserrat = Montserrat({

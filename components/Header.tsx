@@ -21,6 +21,7 @@ export default function Header() {
   const [queHacemosOpen, setQueHacemosOpen] = useState(false);
   const [queHacemosMobileOpen, setQueHacemosMobileOpen] = useState(false);
   const pathname = usePathname();
+  const [previousPathname, setPreviousPathname] = useState(pathname);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
 
@@ -67,6 +68,25 @@ export default function Header() {
       document.removeEventListener("keydown", handleKeyDown);
     };
   }, [menuOpen]);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(min-width: 1024px)");
+
+    function handleChange(event: MediaQueryListEvent) {
+      if (event.matches) {
+        closeMobileMenu();
+      }
+    }
+
+    mediaQuery.addEventListener("change", handleChange);
+    return () => mediaQuery.removeEventListener("change", handleChange);
+  }, []);
+
+  if (pathname !== previousPathname) {
+    setPreviousPathname(pathname);
+    setQueHacemosOpen(false);
+    closeMobileMenu();
+  }
 
   function closeMobileMenu() {
     setMenuOpen(false);

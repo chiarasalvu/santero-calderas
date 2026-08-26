@@ -38,7 +38,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <p className="font-mono text-xs font-semibold tracking-widest text-white/40 uppercase">
+            <p className="font-mono text-xs font-medium tracking-widest text-white/55 uppercase">
               Secciones
             </p>
             <nav className="mt-3 flex flex-col gap-2">
@@ -54,7 +54,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <p className="font-mono text-xs font-semibold tracking-widest text-white/40 uppercase">
+            <p className="font-mono text-xs font-medium tracking-widest text-white/55 uppercase">
               Legal &amp; Contacto
             </p>
             <nav className="mt-3 flex flex-col gap-2">
@@ -135,7 +135,7 @@ export default function Footer() {
       </Reveal>
 
       <div className="border-t border-steel/20">
-        <div className="mx-auto max-w-6xl px-6 py-4 text-center text-xs text-white/40">
+        <div className="mx-auto max-w-6xl px-6 py-4 text-center text-xs text-white/55">
           <p>
             © {new Date().getFullYear()} Calderas Santero. Industria
             Argentina. Todos los derechos reservados.

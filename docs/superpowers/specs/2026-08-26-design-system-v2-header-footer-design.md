@@ -104,7 +104,7 @@ Reemplaza por completo el patrón "menú a pantalla completa" mergeado hoy
 mismo. Nuevo patrón, en dos variantes según viewport:
 
 **Desktop (`lg:` y superior):**
-- Barra fija (`fixed top-0 w-full z-50`), fondo `bg-ink/80` +
+- Barra fija (`fixed top-0 w-full z-[70]`), fondo `bg-ink/80` +
   `backdrop-blur-xl`, borde inferior `border-b border-steel/20` (la firma
   "ghost border" del DESIGN.md).
 - Fila superior: logo real (`Image`, `/img/generales/logo.png`, el mismo
