@@ -1,3 +1,5 @@
+import Reveal from "@/components/motion/Reveal";
+
 type Paso = {
   numero: string;
   titulo: string;
@@ -35,29 +37,36 @@ export default function SistemaSanteroTeaser() {
   return (
     <section className="bg-ink px-6 py-20 sm:py-28">
       <div className="mx-auto max-w-6xl">
-        <p className="font-heading text-sm font-semibold tracking-wide text-brand-red-light uppercase">
-          Ingeniería propia. Tecnología avanzada.
-        </p>
-        <h2 className="mt-4 max-w-2xl font-heading text-3xl font-bold text-white sm:text-4xl">
-          Sistema Santero
-        </h2>
-        <p className="mt-4 max-w-2xl text-white/80">
-          Un sistema de calentamiento indirecto que genera agua caliente de
-          forma instantánea, sin acumulación y con mínima formación de
-          sarro, prolongando la vida útil de las instalaciones y reduciendo
-          el consumo energético.
-        </p>
+        <Reveal>
+          <p className="font-heading text-sm font-semibold tracking-wide text-brand-red-light uppercase">
+            Ingeniería propia. Tecnología avanzada.
+          </p>
+          <h2 className="mt-4 max-w-2xl font-heading text-3xl font-bold text-white sm:text-4xl">
+            Sistema Santero
+          </h2>
+          <p className="mt-4 max-w-2xl text-white/80">
+            Un sistema de calentamiento indirecto que genera agua caliente de
+            forma instantánea, sin acumulación y con mínima formación de
+            sarro, prolongando la vida útil de las instalaciones y reduciendo
+            el consumo energético.
+          </p>
+        </Reveal>
 
         <ol className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {pasos.map((paso) => (
-            <li key={paso.numero} className="rounded-2xl bg-ink-light p-6">
-              <span className="font-heading text-3xl font-bold text-brand-red-light">
-                {paso.numero}
-              </span>
-              <h3 className="mt-3 font-heading text-lg font-semibold text-white">
-                {paso.titulo}
-              </h3>
-              <p className="mt-2 text-sm text-white/70">{paso.descripcion}</p>
+          {pasos.map((paso, index) => (
+            <li key={paso.numero}>
+              <Reveal
+                delay={Math.min(index * 0.08, 0.4)}
+                className="h-full rounded-2xl bg-ink-light p-6"
+              >
+                <span className="font-heading text-3xl font-bold text-brand-red-light">
+                  {paso.numero}
+                </span>
+                <h3 className="mt-3 font-heading text-lg font-semibold text-white">
+                  {paso.titulo}
+                </h3>
+                <p className="mt-2 text-sm text-white/70">{paso.descripcion}</p>
+              </Reveal>
             </li>
           ))}
         </ol>
