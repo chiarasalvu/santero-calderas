@@ -40,7 +40,7 @@ export default function Hero() {
       />
 
       <motion.div
-        className="relative mx-auto flex max-w-4xl flex-col items-center text-center"
+        className="relative z-10 mx-auto flex max-w-4xl flex-col items-center text-center"
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}

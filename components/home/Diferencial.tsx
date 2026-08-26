@@ -4,7 +4,7 @@ import { serviciosPilares } from "@/data/servicios-pilares";
 
 export default function Diferencial() {
   return (
-    <section id="diferencial" className="bg-ink px-6 py-20 sm:py-28">
+    <section id="diferencial" className="scroll-mt-32 bg-ink px-6 py-20 sm:py-28">
       <div className="mx-auto max-w-6xl">
         <Reveal className="flex flex-wrap items-end justify-between gap-4">
           <h2 className="font-heading text-3xl font-bold text-white sm:text-4xl">

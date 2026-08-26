@@ -53,6 +53,7 @@ export default function FeaturedProduct() {
               src="/img/generales/caldera-9.png"
               alt="Línea ATSOL — caldera de acero inoxidable"
               fill
+              sizes="(min-width: 1024px) 50vw, 100vw"
               className="object-contain p-6"
             />
           </div>
