@@ -132,8 +132,11 @@ export default function Header() {
     <>
       {/* Desktop: logo centrado + nav horizontal + mega-menú "Qué Hacemos" */}
       <header className="fixed inset-x-0 top-0 z-[70] hidden border-b border-steel/20 bg-ink/80 backdrop-blur-xl lg:block">
-        <div className="mx-auto flex h-16 max-w-6xl items-center justify-center border-b border-steel/20 px-6">
-          <Link href="/">
+        <div className="relative mx-auto flex h-16 max-w-6xl items-center justify-end border-b border-steel/20 px-6">
+          <Link
+            href="/"
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+          >
             <Image
               src="/img/generales/logo.png"
               alt="Calderas Santero"
@@ -142,6 +145,13 @@ export default function Header() {
               className="h-9 w-auto"
               priority
             />
+          </Link>
+
+          <Link
+            href="/contacto"
+            className="rounded border border-steel/40 px-4 py-2 text-xs font-medium tracking-widest text-white/80 uppercase transition-colors hover:border-white hover:text-white"
+          >
+            Contacto
           </Link>
         </div>
 
@@ -212,48 +222,56 @@ export default function Header() {
 
       {/* Mobile: barra angosta + botón MENU */}
       <header className="fixed inset-x-0 top-0 z-[70] border-b border-steel/20 bg-ink/90 backdrop-blur-xl lg:hidden">
-        <div className="relative mx-auto flex h-16 max-w-6xl items-center justify-end px-6">
-          <Link
-            href="/"
-            onClick={closeMobileMenu}
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-          >
+        <div className="mx-auto grid h-16 max-w-6xl grid-cols-[1fr_auto_1fr] items-center gap-2 px-6">
+          <div />
+
+          <Link href="/" onClick={closeMobileMenu} className="justify-self-center">
             <Image
               src="/img/generales/logo.png"
               alt="Calderas Santero"
               width={201}
               height={72}
-              className="h-8 w-auto"
+              className="h-7 w-auto"
               priority
             />
           </Link>
 
-          <button
-            type="button"
-            aria-expanded={menuOpen}
-            aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
-            onClick={() => (menuOpen ? closeMobileMenu() : setMenuOpen(true))}
-            className="flex items-center gap-2 rounded border border-steel/40 px-3 py-2 text-[11px] font-medium tracking-widest text-white uppercase transition-colors hover:border-white"
-          >
-            {menuOpen ? "Cerrar" : "Menu"}
-            <span aria-hidden className="flex flex-col gap-[3px]">
-              <span
-                className={`h-[1.5px] w-4 bg-white transition-transform ${
-                  menuOpen ? "translate-y-[4.5px] rotate-45" : ""
-                }`}
-              />
-              <span
-                className={`h-[1.5px] w-4 bg-white transition-opacity ${
-                  menuOpen ? "opacity-0" : ""
-                }`}
-              />
-              <span
-                className={`h-[1.5px] w-4 bg-white transition-transform ${
-                  menuOpen ? "-translate-y-[4.5px] -rotate-45" : ""
-                }`}
-              />
-            </span>
-          </button>
+          <div className="flex items-center justify-self-end gap-2">
+            <Link
+              href="/contacto"
+              onClick={closeMobileMenu}
+              className="rounded border border-steel/40 px-2.5 py-2 text-[10px] font-medium tracking-widest text-white/80 uppercase transition-colors hover:border-white hover:text-white"
+            >
+              Contacto
+            </Link>
+
+            <button
+              type="button"
+              aria-expanded={menuOpen}
+              aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
+              onClick={() => (menuOpen ? closeMobileMenu() : setMenuOpen(true))}
+              className="flex items-center gap-2 rounded border border-steel/40 px-2.5 py-2 text-[10px] font-medium tracking-widest text-white uppercase transition-colors hover:border-white"
+            >
+              {menuOpen ? "Cerrar" : "Menu"}
+              <span aria-hidden className="flex flex-col gap-[3px]">
+                <span
+                  className={`h-[1.5px] w-4 bg-white transition-transform ${
+                    menuOpen ? "translate-y-[4.5px] rotate-45" : ""
+                  }`}
+                />
+                <span
+                  className={`h-[1.5px] w-4 bg-white transition-opacity ${
+                    menuOpen ? "opacity-0" : ""
+                  }`}
+                />
+                <span
+                  className={`h-[1.5px] w-4 bg-white transition-transform ${
+                    menuOpen ? "-translate-y-[4.5px] -rotate-45" : ""
+                  }`}
+                />
+              </span>
+            </button>
+          </div>
         </div>
       </header>
 
