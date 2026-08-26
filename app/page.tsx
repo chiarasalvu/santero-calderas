@@ -4,6 +4,7 @@ import Diferencial from "@/components/home/Diferencial";
 import RubroFinder from "@/components/home/RubroFinder";
 import SistemaSanteroTeaser from "@/components/home/SistemaSanteroTeaser";
 import ProductLines from "@/components/home/ProductLines";
+import FeaturedProduct from "@/components/home/FeaturedProduct";
 import CasesPreview from "@/components/home/CasesPreview";
 import HistoryTimeline from "@/components/HistoryTimeline";
 import Faq from "@/components/home/Faq";
@@ -21,6 +22,7 @@ export default function Home() {
       <RubroFinder />
       <SistemaSanteroTeaser />
       <ProductLines />
+      <FeaturedProduct />
       <CasesPreview logosPorSegmento={logosPorSegmento} />
       <HistoryTimeline tone="dark" />
       <Faq />
