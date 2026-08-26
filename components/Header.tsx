@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { navLinks, type NavLink } from "@/lib/nav";
 import {
@@ -14,11 +14,41 @@ import {
 } from "@/data/que-hacemos";
 
 const MotionLink = motion.create(Link);
+const homeLink: NavLink = { href: "/", label: "Home" };
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [queHacemosOpen, setQueHacemosOpen] = useState(false);
+  const [queHacemosMobileOpen, setQueHacemosMobileOpen] = useState(false);
   const pathname = usePathname();
+  const [previousPathname, setPreviousPathname] = useState(pathname);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!queHacemosOpen) return;
+
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        setQueHacemosOpen(false);
+        triggerRef.current?.focus();
+      }
+    }
+
+    function handleClickOutside(event: MouseEvent) {
+      const target = event.target as Node;
+      if (panelRef.current?.contains(target)) return;
+      if (triggerRef.current?.contains(target)) return;
+      setQueHacemosOpen(false);
+    }
+
+    document.addEventListener("keydown", handleKeyDown);
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [queHacemosOpen]);
 
   useEffect(() => {
     if (!menuOpen) return;
@@ -28,8 +58,7 @@ export default function Header() {
 
     function handleKeyDown(event: KeyboardEvent) {
       if (event.key === "Escape") {
-        setMenuOpen(false);
-        setQueHacemosOpen(false);
+        closeMobileMenu();
       }
     }
 
@@ -40,10 +69,46 @@ export default function Header() {
     };
   }, [menuOpen]);
 
-  function closeMenu() {
-    setMenuOpen(false);
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(min-width: 1024px)");
+
+    function handleChange(event: MediaQueryListEvent) {
+      if (event.matches) {
+        closeMobileMenu();
+      }
+    }
+
+    mediaQuery.addEventListener("change", handleChange);
+    return () => mediaQuery.removeEventListener("change", handleChange);
+  }, []);
+
+  if (pathname !== previousPathname) {
+    setPreviousPathname(pathname);
     setQueHacemosOpen(false);
+    closeMobileMenu();
   }
+
+  function closeMobileMenu() {
+    setMenuOpen(false);
+    setQueHacemosMobileOpen(false);
+  }
+
+  const renderDesktopLink = (link: NavLink) => {
+    const active = pathname === link.href;
+    return (
+      <Link
+        key={link.href}
+        href={link.href}
+        className={`border-b pb-1 text-xs font-medium tracking-widest uppercase transition-colors ${
+          active
+            ? "border-white text-white"
+            : "border-transparent text-white/70 hover:text-white"
+        }`}
+      >
+        {link.label}
+      </Link>
+    );
+  };
 
   const renderPanelLink = (link: NavLink) => {
     const active = pathname === link.href;
@@ -51,7 +116,7 @@ export default function Header() {
       <Link
         key={link.href}
         href={link.href}
-        onClick={closeMenu}
+        onClick={closeMobileMenu}
         className={`font-heading text-2xl font-bold tracking-wide uppercase transition-colors sm:text-3xl ${
           active
             ? "text-brand-red-light"
@@ -65,21 +130,10 @@ export default function Header() {
 
   return (
     <>
-      <header className="fixed inset-x-0 top-0 z-[70] border-b border-white/10 bg-ink/90 backdrop-blur-md">
-        <div className="relative mx-auto flex h-20 max-w-6xl items-center justify-between px-6">
-          <Link
-            href="/contacto"
-            onClick={closeMenu}
-            className="text-sm text-white/70 transition-colors hover:text-white"
-          >
-            Contacto
-          </Link>
-
-          <Link
-            href="/"
-            onClick={closeMenu}
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-          >
+      {/* Desktop: logo centrado + nav horizontal + mega-menú "Qué Hacemos" */}
+      <header className="fixed inset-x-0 top-0 z-[70] hidden border-b border-steel/20 bg-ink/80 backdrop-blur-xl lg:block">
+        <div className="mx-auto flex h-16 max-w-6xl items-center justify-center border-b border-steel/20 px-6">
+          <Link href="/">
             <Image
               src="/img/generales/logo.png"
               alt="Calderas Santero"
@@ -89,13 +143,97 @@ export default function Header() {
               priority
             />
           </Link>
+        </div>
+
+        <nav className="mx-auto flex h-14 max-w-6xl items-center justify-center gap-8 px-6">
+          {renderDesktopLink(homeLink)}
+          {navLinks.slice(0, 2).map(renderDesktopLink)}
+
+          <button
+            ref={triggerRef}
+            type="button"
+            aria-expanded={queHacemosOpen}
+            onClick={() => setQueHacemosOpen((prev) => !prev)}
+            className={`flex items-center gap-1 border-b border-transparent pb-1 text-xs font-medium tracking-widest uppercase transition-colors ${
+              queHacemosOpen
+                ? "text-brand-red-light"
+                : "text-white/70 hover:text-white"
+            }`}
+          >
+            Qué Hacemos
+            <span
+              className={`text-[10px] transition-transform ${queHacemosOpen ? "rotate-180" : ""}`}
+              aria-hidden
+            >
+              ▾
+            </span>
+          </button>
+
+          {navLinks.slice(2).map(renderDesktopLink)}
+        </nav>
+
+        <AnimatePresence>
+          {queHacemosOpen && (
+            <motion.div
+              ref={panelRef}
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.18, ease: "easeOut" }}
+              className="absolute inset-x-0 top-full border-t border-steel/20 bg-ink/95 backdrop-blur-xl"
+            >
+              <div className="mx-auto grid max-w-6xl grid-cols-3 divide-x divide-steel/20 px-6 py-10">
+                <div className="pr-8">
+                  <QueHacemosColumn
+                    titulo="Por Rubro"
+                    items={porRubro}
+                    onNavigate={() => setQueHacemosOpen(false)}
+                  />
+                </div>
+                <div className="px-8">
+                  <QueHacemosColumn
+                    titulo="Por Servicio"
+                    items={porServicio}
+                    onNavigate={() => setQueHacemosOpen(false)}
+                  />
+                </div>
+                <div className="pl-8">
+                  <QueHacemosColumn
+                    titulo="Por Producto"
+                    items={porProducto}
+                    onNavigate={() => setQueHacemosOpen(false)}
+                  />
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </header>
+
+      {/* Mobile: barra angosta + botón MENU */}
+      <header className="fixed inset-x-0 top-0 z-[70] border-b border-steel/20 bg-ink/90 backdrop-blur-xl lg:hidden">
+        <div className="relative mx-auto flex h-16 max-w-6xl items-center justify-end px-6">
+          <Link
+            href="/"
+            onClick={closeMobileMenu}
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+          >
+            <Image
+              src="/img/generales/logo.png"
+              alt="Calderas Santero"
+              width={201}
+              height={72}
+              className="h-8 w-auto"
+              priority
+            />
+          </Link>
 
           <button
             type="button"
             aria-expanded={menuOpen}
             aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
-            onClick={() => (menuOpen ? closeMenu() : setMenuOpen(true))}
-            className="flex items-center gap-2 rounded-full border border-white/30 px-4 py-2 text-xs font-semibold tracking-wide text-white uppercase transition-colors hover:border-white"
+            onClick={() => (menuOpen ? closeMobileMenu() : setMenuOpen(true))}
+            className="flex items-center gap-2 rounded border border-steel/40 px-3 py-2 text-[11px] font-medium tracking-widest text-white uppercase transition-colors hover:border-white"
           >
             {menuOpen ? "Cerrar" : "Menu"}
             <span aria-hidden className="flex flex-col gap-[3px]">
@@ -119,6 +257,7 @@ export default function Header() {
         </div>
       </header>
 
+      {/* Panel mobile a pantalla completa — hermano de ambos <header>, nunca su descendiente */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
@@ -126,18 +265,19 @@ export default function Header() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25, ease: "easeOut" }}
-            className="fixed inset-0 top-20 z-[60] overflow-y-auto bg-ink"
+            className="fixed inset-0 top-16 z-[60] overflow-y-auto bg-ink lg:hidden"
           >
             <nav className="mx-auto flex min-h-full max-w-3xl flex-col items-center justify-center gap-6 px-6 py-16">
+              {renderPanelLink(homeLink)}
               {navLinks.slice(0, 2).map(renderPanelLink)}
 
               <div className="flex w-full flex-col items-center">
                 <button
                   type="button"
-                  aria-expanded={queHacemosOpen}
-                  onClick={() => setQueHacemosOpen((prev) => !prev)}
+                  aria-expanded={queHacemosMobileOpen}
+                  onClick={() => setQueHacemosMobileOpen((prev) => !prev)}
                   className={`flex items-center gap-2 font-heading text-2xl font-bold tracking-wide uppercase transition-colors sm:text-3xl ${
-                    queHacemosOpen
+                    queHacemosMobileOpen
                       ? "text-brand-red-light"
                       : "text-white hover:text-brand-red-light"
                   }`}
@@ -145,7 +285,7 @@ export default function Header() {
                   Qué Hacemos
                   <span
                     className={`text-base transition-transform ${
-                      queHacemosOpen ? "rotate-180" : ""
+                      queHacemosMobileOpen ? "rotate-180" : ""
                     }`}
                     aria-hidden
                   >
@@ -154,7 +294,7 @@ export default function Header() {
                 </button>
 
                 <AnimatePresence initial={false}>
-                  {queHacemosOpen && (
+                  {queHacemosMobileOpen && (
                     <motion.div
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
@@ -162,21 +302,21 @@ export default function Header() {
                       transition={{ duration: 0.2, ease: "easeInOut" }}
                       className="w-full overflow-hidden"
                     >
-                      <div className="mt-6 grid gap-8 sm:grid-cols-3">
+                      <div className="mt-6 flex flex-col gap-6">
                         <QueHacemosColumn
                           titulo="Por Rubro"
                           items={porRubro}
-                          onNavigate={closeMenu}
+                          onNavigate={closeMobileMenu}
                         />
                         <QueHacemosColumn
                           titulo="Por Servicio"
                           items={porServicio}
-                          onNavigate={closeMenu}
+                          onNavigate={closeMobileMenu}
                         />
                         <QueHacemosColumn
                           titulo="Por Producto"
                           items={porProducto}
-                          onNavigate={closeMenu}
+                          onNavigate={closeMobileMenu}
                         />
                       </div>
                     </motion.div>
@@ -188,10 +328,10 @@ export default function Header() {
 
               <MotionLink
                 href="/contacto"
-                onClick={closeMenu}
+                onClick={closeMobileMenu}
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
-                className="mt-6 rounded-full bg-brand-red px-8 py-3 text-sm font-semibold text-white transition-colors hover:bg-white hover:text-brand-red"
+                className="mt-6 rounded bg-brand-red px-8 py-3 text-sm font-semibold text-white transition-colors hover:bg-white hover:text-brand-red"
               >
                 Solicitar asesoramiento
               </MotionLink>
@@ -213,11 +353,11 @@ function QueHacemosColumn({
   onNavigate: () => void;
 }) {
   return (
-    <div className="text-center sm:text-left">
-      <p className="text-xs font-semibold tracking-wide text-white/40 uppercase">
+    <div>
+      <p className="font-mono text-[11px] font-medium tracking-widest text-white/40 uppercase">
         {titulo}
       </p>
-      <ul className="mt-3 flex flex-col gap-2">
+      <ul className="mt-4 flex flex-col gap-2">
         {items.map((item) => (
           <li key={item.label}>
             <Link
