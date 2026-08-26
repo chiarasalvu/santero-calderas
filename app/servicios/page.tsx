@@ -1,19 +1,19 @@
 import type { Metadata } from "next";
 import Hero from "@/components/servicios/Hero";
-import ServicesList from "@/components/servicios/ServicesList";
+import ServicePillars from "@/components/servicios/ServicePillars";
 import CtaBanner from "@/components/CtaBanner";
 
 export const metadata: Metadata = {
   title: "Servicios | Calderas Santero",
   description:
-    "Consultoría, ingeniería, fabricación, instalación y mantenimiento: los 8 servicios de Calderas Santero para cada etapa del proyecto.",
+    "Ingeniería & Proyectos, Instalación & Puesta en Marcha, y Soporte & Postventa: los 3 pilares de servicio de Calderas Santero.",
 };
 
 export default function Servicios() {
   return (
     <>
       <Hero />
-      <ServicesList />
+      <ServicePillars />
       <CtaBanner
         titulo="Optimice su rendimiento térmico"
         descripcion="Nuestros especialistas están listos para realizar un diagnóstico técnico de sus necesidades y proponer la solución más eficiente."
@@ -21,6 +21,7 @@ export default function Servicios() {
         primaryHref="/contacto"
         secondaryLabel="Ver catálogo completo"
         secondaryHref="/sistema-santero"
+        tone="dark"
       />
     </>
   );
