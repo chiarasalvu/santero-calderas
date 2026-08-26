@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Reveal from "@/components/motion/Reveal";
 
 const caracteristicas = [
   {
@@ -29,26 +30,28 @@ const caracteristicas = [
 
 export default function Overview() {
   return (
-    <section className="border-b border-brand-red/15 px-6 py-20 sm:py-28">
+    <section className="border-b border-white/10 bg-ink px-6 py-20 sm:py-28">
       <div className="mx-auto max-w-6xl">
-        <p className="font-heading text-sm leading-tight font-semibold tracking-wide text-brand-red uppercase">
-          Ingeniería propia.
-          <br />
-          Tecnología avanzada.
-        </p>
-        <h2 className="mt-4 font-heading text-3xl font-bold text-zinc-900 sm:text-4xl">
-          Sistema Santero
-        </h2>
-        <p className="mt-6 max-w-3xl text-lg leading-relaxed text-zinc-600">
-          El Sistema Santero utiliza un sistema de calentamiento indirecto
-          que genera agua caliente de forma instantánea, sin acumulación y
-          con mínima formación de sarro, prolongando la vida útil de las
-          instalaciones y reduciendo el consumo energético.
-        </p>
+        <Reveal>
+          <p className="font-heading text-sm leading-tight font-semibold tracking-wide text-brand-red-light uppercase">
+            Ingeniería propia.
+            <br />
+            Tecnología avanzada.
+          </p>
+          <h2 className="mt-4 font-heading text-3xl font-bold text-white sm:text-4xl">
+            Sistema Santero
+          </h2>
+          <p className="mt-6 max-w-3xl text-lg leading-relaxed text-white/70">
+            El Sistema Santero utiliza un sistema de calentamiento indirecto
+            que genera agua caliente de forma instantánea, sin acumulación y
+            con mínima formación de sarro, prolongando la vida útil de las
+            instalaciones y reduciendo el consumo energético.
+          </p>
+        </Reveal>
 
         <div className="mt-14 grid gap-12 lg:grid-cols-2">
-          <div className="aspect-square w-full rounded-2xl bg-white p-3 shadow-sm ring-1 ring-zinc-100">
-            <div className="relative h-full w-full overflow-hidden rounded-xl bg-zinc-100">
+          <Reveal delay={0.1} className="aspect-square w-full rounded-2xl bg-ink-light p-3 ring-1 ring-white/10">
+            <div className="relative h-full w-full overflow-hidden rounded-xl bg-ink">
               <Image
                 src="/img/generales/caldera-8.png"
                 alt="Detalle del equipo del Sistema Santero"
@@ -56,21 +59,25 @@ export default function Overview() {
                 className="object-contain p-6"
               />
             </div>
-          </div>
+          </Reveal>
 
           <div className="flex flex-col gap-10">
-            {caracteristicas.map((item) => (
-              <div key={item.id} className="flex gap-4">
-                <span className="h-10 w-10 shrink-0 rounded-xl bg-cream-card" />
+            {caracteristicas.map((item, index) => (
+              <Reveal
+                key={item.id}
+                delay={Math.min(index * 0.08, 0.3)}
+                className="flex gap-4"
+              >
+                <span className="h-10 w-10 shrink-0 rounded-xl bg-white/10" />
                 <div>
-                  <h3 className="font-heading text-lg font-semibold text-zinc-900">
+                  <h3 className="font-heading text-lg font-semibold text-white">
                     {item.titulo}
                   </h3>
-                  <p className="mt-1 text-sm text-zinc-600">
+                  <p className="mt-1 text-sm text-white/60">
                     {item.descripcion}
                   </p>
                 </div>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
