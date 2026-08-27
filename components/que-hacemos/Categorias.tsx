@@ -21,7 +21,7 @@ export default function Categorias() {
           <Reveal
             key={categoria.titulo}
             delay={Math.min(index * 0.1, 0.3)}
-            className="rounded-2xl border border-steel/20 bg-ink-light p-8"
+            className="rounded-2xl border border-steel/20 bg-ink-light p-8 transition-all duration-300 hover:-translate-y-1 hover:border-brand-red-light/40"
           >
             <h2 className="font-mono text-xs font-medium tracking-widest text-brand-red-light uppercase">
               {categoria.titulo}
@@ -31,10 +31,15 @@ export default function Categorias() {
                 <li key={item.label}>
                   <Link
                     href={item.href}
-                    className="flex items-center justify-between gap-2 text-sm text-white/70 transition-colors hover:text-brand-red-light"
+                    className="group/link flex items-center justify-between gap-2 text-sm text-white/70 transition-colors hover:text-brand-red-light"
                   >
                     {item.label}
-                    <span aria-hidden>→</span>
+                    <span
+                      className="transition-transform duration-200 group-hover/link:translate-x-1"
+                      aria-hidden
+                    >
+                      →
+                    </span>
                   </Link>
                 </li>
               ))}

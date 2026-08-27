@@ -125,7 +125,7 @@ export default function HistoryTimeline({ tone = "light" }: HistoryTimelineProps
 function TimelineCard({ hito, dark }: { hito: HitoHistoria; dark: boolean }) {
   return (
     <div
-      className={`w-full max-w-md rounded-2xl p-6 ${dark ? "bg-ink-light" : "bg-cream-card"}`}
+      className={`w-full max-w-md rounded-2xl border border-transparent p-6 transition-all duration-300 hover:-translate-y-1 ${dark ? "bg-ink-light hover:border-brand-red-light/40" : "bg-cream-card hover:border-brand-red/30"}`}
     >
       <h3
         className={`font-heading text-lg font-semibold ${dark ? "text-white" : "text-navy"}`}

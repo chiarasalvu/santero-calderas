@@ -6,14 +6,14 @@ export default function FeaturedCase() {
     <section className="bg-ink px-6 pb-16">
       <div className="mx-auto max-w-6xl">
         <Reveal className="grid gap-4 lg:grid-cols-3">
-          <div className="relative overflow-hidden rounded-2xl border border-steel/20 lg:col-span-2">
+          <div className="group relative overflow-hidden rounded-2xl border border-steel/20 lg:col-span-2">
             <div className="relative aspect-[4/3] w-full sm:aspect-video">
               <Image
                 src="/img/generales/trabajo-5.png"
                 alt="Instalación real de Calderas Santero"
                 fill
                 sizes="(min-width: 1024px) 66vw, 100vw"
-                className="object-cover"
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
               />
               <div
                 className="absolute inset-0 bg-gradient-to-t from-ink via-ink/60 to-transparent"
@@ -41,7 +41,7 @@ export default function FeaturedCase() {
           </div>
 
           <div className="flex flex-col gap-4">
-            <div className="flex-1 rounded-2xl border border-steel/20 bg-ink-light p-8">
+            <div className="flex-1 rounded-2xl border border-steel/20 bg-ink-light p-8 transition-all duration-300 hover:-translate-y-1 hover:border-brand-red-light/40">
               <p className="font-mono text-xs font-medium tracking-widest text-white/55 uppercase">
                 Ahorro Energético
               </p>
@@ -52,7 +52,7 @@ export default function FeaturedCase() {
                 Dato de ejemplo — a completar con caso real.
               </p>
             </div>
-            <div className="flex-1 rounded-2xl border border-steel/20 bg-ink-light p-8">
+            <div className="flex-1 rounded-2xl border border-steel/20 bg-ink-light p-8 transition-all duration-300 hover:-translate-y-1 hover:border-brand-red-light/40">
               <p className="font-mono text-xs font-medium tracking-widest text-white/55 uppercase">
                 Reducción de Sarro
               </p>

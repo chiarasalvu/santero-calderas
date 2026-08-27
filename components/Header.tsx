@@ -219,9 +219,15 @@ export default function Header() {
                 <Link
                   href="/que-hacemos"
                   onClick={() => setQueHacemosOpen(false)}
-                  className="font-mono text-xs font-medium tracking-widest text-brand-red-light uppercase transition-colors hover:text-white"
+                  className="group/link flex w-fit items-center gap-1 font-mono text-xs font-medium tracking-widest text-brand-red-light uppercase transition-colors hover:text-white"
                 >
-                  Ver todo →
+                  Ver todo
+                  <span
+                    className="transition-transform duration-200 group-hover/link:translate-x-1"
+                    aria-hidden
+                  >
+                    →
+                  </span>
                 </Link>
               </div>
             </motion.div>
@@ -348,9 +354,15 @@ export default function Header() {
                         <Link
                           href="/que-hacemos"
                           onClick={closeMobileMenu}
-                          className="font-mono text-xs font-medium tracking-widest text-brand-red-light uppercase transition-colors hover:text-white"
+                          className="group/link flex w-fit items-center gap-1 font-mono text-xs font-medium tracking-widest text-brand-red-light uppercase transition-colors hover:text-white"
                         >
-                          Ver todo →
+                          Ver todo
+                          <span
+                            className="transition-transform duration-200 group-hover/link:translate-x-1"
+                            aria-hidden
+                          >
+                            →
+                          </span>
                         </Link>
                       </div>
                     </motion.div>

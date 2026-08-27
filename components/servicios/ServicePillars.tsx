@@ -28,9 +28,11 @@ export default function ServicePillars() {
             <Reveal
               key={pilar.id}
               delay={Math.min(index * 0.1, 0.3)}
-              className="flex flex-col rounded-2xl border border-steel/20 bg-ink-light p-8"
+              className="group flex flex-col rounded-2xl border border-steel/20 bg-ink-light p-8 transition-all duration-300 hover:-translate-y-1 hover:border-brand-red-light/40"
             >
-              <PilarIcon id={pilar.id} />
+              <span className="inline-flex w-fit transition-transform duration-300 group-hover:scale-110">
+                <PilarIcon id={pilar.id} />
+              </span>
               <h2 className="mt-4 font-heading text-xl font-bold text-white uppercase">
                 {pilar.titulo}
               </h2>
@@ -40,7 +42,7 @@ export default function ServicePillars() {
                 {pilar.items.map((item) => (
                   <li key={item.titulo} className="flex items-start gap-3">
                     <span
-                      className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-red/20 text-brand-red-light"
+                      className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-red/20 text-brand-red-light transition-transform duration-300 group-hover:scale-110"
                       aria-hidden
                     >
                       <CheckIcon />
@@ -61,7 +63,7 @@ export default function ServicePillars() {
                 <div className="mt-auto pt-8">
                   <Link
                     href={`/contacto?motivo=${contacto.motivo}`}
-                    className="flex items-center justify-center gap-2 rounded-lg bg-brand-red px-4 py-3 text-sm font-semibold text-white transition-colors hover:bg-white hover:text-brand-red"
+                    className="flex items-center justify-center gap-2 rounded-lg bg-brand-red px-4 py-3 text-sm font-semibold text-white transition-all duration-200 hover:scale-[1.02] hover:bg-white hover:text-brand-red active:scale-[0.98]"
                   >
                     {contacto.label}
                     <span aria-hidden>→</span>
