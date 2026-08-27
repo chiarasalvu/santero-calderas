@@ -12,7 +12,7 @@ export default function Compromiso() {
         className="object-cover"
       />
       <div
-        className="absolute inset-0 bg-gradient-to-t from-ink via-ink/85 to-ink/60"
+        className="absolute inset-0 bg-gradient-to-t from-ink via-ink/92 to-ink/80"
         aria-hidden
       />
 
