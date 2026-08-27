@@ -10,7 +10,7 @@ const stats = [
 
 export default function AboutTeaser() {
   return (
-    <section className="bg-ink px-6 py-20 sm:py-28">
+    <section className="bg-ink px-6 pb-20 sm:pb-24">
       <div className="mx-auto max-w-6xl">
         <Reveal className="flex flex-wrap items-end justify-between gap-4">
           <div>

@@ -30,7 +30,7 @@ const caracteristicas = [
 
 export default function Overview() {
   return (
-    <section className="border-b border-steel/20 bg-ink px-6 py-20 sm:py-28">
+    <section className="border-b border-steel/20 bg-ink px-6 pb-20 sm:pb-24">
       <div className="mx-auto max-w-6xl">
         <Reveal>
           <p className="font-mono text-xs font-light text-brand-red-light">
@@ -50,7 +50,7 @@ export default function Overview() {
         <div className="mt-14 grid gap-12 lg:grid-cols-2">
           <Reveal
             delay={0.1}
-            className="aspect-square w-full rounded-2xl border border-steel/20 bg-ink-light p-3"
+            className="mx-auto aspect-square w-full max-w-sm rounded-2xl border border-steel/20 bg-ink-light p-3"
           >
             <div className="relative h-full w-full overflow-hidden rounded-xl bg-ink">
               <Image

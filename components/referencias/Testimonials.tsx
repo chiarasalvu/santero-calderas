@@ -32,11 +32,6 @@ export default function Testimonials() {
             </Reveal>
           ))}
         </div>
-
-        <p className="mt-6 text-center text-xs text-white/40">
-          Sección de ejemplo — pendiente de reemplazar con testimonios reales
-          de clientes.
-        </p>
       </div>
     </section>
   );

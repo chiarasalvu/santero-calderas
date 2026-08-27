@@ -44,7 +44,7 @@ const filas: FilaComparacion[] = [
 
 export default function ComparisonTable() {
   return (
-    <section className="bg-ink px-6 py-20 sm:py-28">
+    <section className="bg-ink px-6 pb-20 sm:pb-24">
       <div className="mx-auto max-w-5xl">
         <Reveal>
           <p className="font-mono text-xs font-light text-brand-red-light">

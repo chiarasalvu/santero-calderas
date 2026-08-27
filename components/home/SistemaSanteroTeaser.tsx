@@ -35,7 +35,7 @@ const pasos: Paso[] = [
 
 export default function SistemaSanteroTeaser() {
   return (
-    <section className="bg-ink px-6 py-20 sm:py-28">
+    <section className="bg-ink px-6 pb-20 sm:pb-24">
       <div className="mx-auto max-w-6xl">
         <Reveal>
           <p className="font-heading text-sm font-semibold text-brand-red-light">

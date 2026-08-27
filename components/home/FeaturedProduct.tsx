@@ -11,7 +11,7 @@ const bullets = [
 
 export default function FeaturedProduct() {
   return (
-    <section className="bg-ink px-6 py-20 sm:py-28">
+    <section className="bg-ink px-6 pb-20 sm:pb-24">
       <div className="mx-auto grid max-w-6xl items-center gap-16 lg:grid-cols-2">
         <Reveal>
           <h2 className="font-heading text-3xl font-semibold text-white sm:text-4xl">

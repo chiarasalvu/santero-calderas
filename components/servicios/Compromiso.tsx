@@ -4,7 +4,7 @@ import Reveal from "@/components/motion/Reveal";
 
 export default function Compromiso() {
   return (
-    <section className="relative overflow-hidden bg-ink px-6 py-24 sm:py-32">
+    <section className="relative overflow-hidden bg-ink px-6 pb-20 sm:pb-24">
       <Image
         src="/img/generales/trabajo-3.png"
         alt=""

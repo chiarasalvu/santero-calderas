@@ -3,7 +3,6 @@ import Hero from "@/components/sistema-santero/Hero";
 import Overview from "@/components/sistema-santero/Overview";
 import ProductLines from "@/components/sistema-santero/ProductLines";
 import ComparisonTable from "@/components/sistema-santero/ComparisonTable";
-import CtaBanner from "@/components/CtaBanner";
 
 export const metadata: Metadata = {
   title: "Sistema Santero | Calderas Santero",
@@ -18,14 +17,7 @@ export default function SistemaSantero() {
       <Overview />
       <ProductLines />
       <ComparisonTable />
-      <CtaBanner
-        titulo="Optimice su inversión térmica hoy"
-        descripcion="Nuestros especialistas están listos para realizar un diagnóstico técnico de sus necesidades y proponer la solución más eficiente."
-        primaryLabel="Solicitar asesoramiento técnico"
-        primaryHref="/contacto"
-        secondaryLabel="Ver catálogo completo"
-        secondaryHref="/servicios"
-      />
+      {/* CTA final oculto a pedido del cliente (27/08) — ver CtaBanner.tsx */}
     </>
   );
 }

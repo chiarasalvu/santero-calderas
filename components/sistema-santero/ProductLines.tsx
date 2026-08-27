@@ -64,7 +64,7 @@ const lineas: LineaProducto[] = [
 
 export default function ProductLines() {
   return (
-    <section className="bg-ink px-6 py-20 sm:py-28">
+    <section className="bg-ink px-6 pb-20 sm:pb-24">
       <div className="mx-auto max-w-6xl">
         <Reveal>
           <h2 className="font-heading text-3xl font-semibold text-white sm:text-4xl">
@@ -139,7 +139,6 @@ export default function ProductLines() {
                   type="button"
                   className="mt-6 flex w-full items-center justify-center gap-2 rounded-lg border border-white/20 px-4 py-3 text-sm font-semibold text-white/80 transition-colors hover:border-brand-red-light hover:text-brand-red-light"
                 >
-                  <span aria-hidden>⬇</span>
                   Descargar ficha técnica
                 </button>
               </div>

@@ -61,7 +61,7 @@ export default function AboutHero() {
           alt=""
           fill
           priority
-          className="object-cover object-[center_25%]"
+          className="object-cover object-top"
         />
       </motion.div>
       <div

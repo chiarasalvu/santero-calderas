@@ -35,8 +35,7 @@ export default function Hero() {
             Tecnología de intercambio
           </p>
           <h1 className="mt-4 font-heading text-3xl font-semibold text-white sm:text-4xl">
-            Sistema
-            <span className="block">Santero</span>
+            Sistema Santero
           </h1>
 
           <p className="mt-6 max-w-md text-white/80">
@@ -68,7 +67,7 @@ export default function Hero() {
         <Reveal delay={0.15} className="relative">
           <motion.div
             style={{ y: imageY }}
-            className="aspect-square rounded-2xl bg-white p-4 shadow-xl"
+            className="mx-auto aspect-square max-w-sm rounded-2xl bg-white p-3 shadow-lg"
           >
             <div className="relative h-full w-full overflow-hidden rounded-xl bg-zinc-100">
               <Image

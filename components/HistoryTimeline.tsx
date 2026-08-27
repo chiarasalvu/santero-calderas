@@ -65,7 +65,7 @@ export default function HistoryTimeline({ tone = "light" }: HistoryTimelineProps
   const lineScale = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   return (
-    <section className={`px-6 py-20 sm:py-28 ${dark ? "bg-ink" : ""}`}>
+    <section className={`px-6 pt-16 pb-20 sm:pt-20 sm:pb-24 ${dark ? "bg-ink" : ""}`}>
       <div className="mx-auto max-w-6xl">
         <Reveal>
           <h2
