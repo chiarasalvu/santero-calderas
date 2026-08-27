@@ -169,42 +169,47 @@ export default function Header() {
                       transition={{ duration: 0.2, ease: "easeInOut" }}
                       className="w-full overflow-hidden"
                     >
-                      <div className="mt-6 flex flex-col gap-6 lg:grid lg:grid-cols-3 lg:gap-x-10 lg:gap-y-0 lg:divide-x lg:divide-steel/20">
-                        <div className="lg:pr-8">
-                          <QueHacemosColumn
-                            titulo="Por rubro"
-                            items={porRubro}
-                            onNavigate={closeMenu}
-                          />
+                      <div className="mt-6 rounded-2xl border border-steel/20 bg-ink-light p-6 lg:p-8">
+                        <div className="flex flex-col gap-6 lg:grid lg:grid-cols-3 lg:gap-x-10 lg:gap-y-0 lg:divide-x lg:divide-steel/20">
+                          <div className="lg:pr-8">
+                            <QueHacemosColumn
+                              titulo="Por rubro"
+                              items={porRubro}
+                              onNavigate={closeMenu}
+                            />
+                          </div>
+                          <div className="lg:px-8">
+                            <QueHacemosColumn
+                              titulo="Por servicio"
+                              items={porServicio}
+                              onNavigate={closeMenu}
+                            />
+                          </div>
+                          <div className="lg:pl-8">
+                            <QueHacemosColumn
+                              titulo="Por producto"
+                              items={porProducto}
+                              onNavigate={closeMenu}
+                            />
+                          </div>
                         </div>
-                        <div className="lg:px-8">
-                          <QueHacemosColumn
-                            titulo="Por servicio"
-                            items={porServicio}
-                            onNavigate={closeMenu}
-                          />
-                        </div>
-                        <div className="lg:pl-8">
-                          <QueHacemosColumn
-                            titulo="Por producto"
-                            items={porProducto}
-                            onNavigate={closeMenu}
-                          />
+
+                        <div className="mt-6 flex justify-end border-t border-steel/20 pt-6">
+                          <Link
+                            href="/que-hacemos"
+                            onClick={closeMenu}
+                            className="group/link flex items-center gap-1 text-xs font-light text-brand-red-light transition-colors hover:text-white"
+                          >
+                            Ver todo
+                            <span
+                              className="transition-transform duration-200 group-hover/link:translate-x-1"
+                              aria-hidden
+                            >
+                              →
+                            </span>
+                          </Link>
                         </div>
                       </div>
-                      <Link
-                        href="/que-hacemos"
-                        onClick={closeMenu}
-                        className="group/link mt-6 flex w-fit items-center gap-1 text-xs font-light text-brand-red-light transition-colors hover:text-white"
-                      >
-                        Ver todo
-                        <span
-                          className="transition-transform duration-200 group-hover/link:translate-x-1"
-                          aria-hidden
-                        >
-                          →
-                        </span>
-                      </Link>
                     </motion.div>
                   )}
                 </AnimatePresence>

@@ -11,7 +11,7 @@ const valores = [
 
 export default function MissionVisionValues() {
   return (
-    <section className="bg-navy px-6 py-20">
+    <section className="bg-navy px-6 pb-20">
       <div className="mx-auto grid max-w-6xl gap-6 sm:grid-cols-3">
         <Reveal className="rounded-2xl bg-cream p-8">
           <h3 className="font-heading text-xl font-semibold text-navy">Misión</h3>

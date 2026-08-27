@@ -16,7 +16,7 @@ export default function CasesPreview({ logosPorSegmento }: CasesPreviewProps) {
   const fila2 = todosLosLogos.slice(mitad);
 
   return (
-    <section className="bg-ink px-6 py-24 sm:py-32">
+    <section className="bg-ink px-6 pb-20 sm:pb-24">
       <div className="mx-auto max-w-6xl">
         <Reveal className="flex flex-wrap items-end justify-between gap-4">
           <h2 className="font-heading text-3xl font-semibold text-white sm:text-4xl">

@@ -28,8 +28,8 @@ const servicios: Servicio[] = [
 
 export default function ServiciosPrincipales() {
   return (
-    <section className="bg-ink px-6 py-20 sm:py-28">
-      <div className="mx-auto max-w-4xl">
+    <section className="bg-ink px-6 pt-16 pb-20 sm:pt-20 sm:pb-24">
+      <div className="mx-auto max-w-6xl">
         <Reveal>
           <h2 className="font-heading text-3xl font-semibold text-white sm:text-4xl">
             Qué hacemos
@@ -41,7 +41,7 @@ export default function ServiciosPrincipales() {
             <Reveal key={servicio.id} delay={Math.min(index * 0.08, 0.3)}>
               <Link
                 href="/servicios"
-                className="group relative block aspect-[4/5] overflow-hidden rounded-2xl"
+                className="group relative block aspect-[4/3] overflow-hidden rounded-2xl"
               >
                 <Image
                   src={servicio.image}

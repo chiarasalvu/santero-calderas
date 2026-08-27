@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Hero from "@/components/que-hacemos/Hero";
 import Categorias from "@/components/que-hacemos/Categorias";
-import CtaBanner from "@/components/CtaBanner";
 
 export const metadata: Metadata = {
   title: "Qué Hacemos | Calderas Santero",
@@ -14,14 +13,7 @@ export default function QueHacemosPage() {
     <>
       <Hero />
       <Categorias />
-      <CtaBanner
-        titulo="¿No encontrás lo que buscás?"
-        descripcion="Contanos tu proyecto y te ayudamos a encontrar la solución térmica adecuada."
-        primaryLabel="Cotizar mi proyecto"
-        primaryHref="/contacto?motivo=cotizar-proyecto"
-        secondaryLabel="Ver Sistema Santero"
-        secondaryHref="/sistema-santero"
-      />
+      {/* CTA final oculto a pedido del cliente (27/08) — ver CtaBanner.tsx */}
     </>
   );
 }

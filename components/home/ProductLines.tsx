@@ -44,7 +44,7 @@ const lineas: LineaProducto[] = [
 
 export default function ProductLines() {
   return (
-    <section className="bg-ink px-6 py-20 sm:py-28">
+    <section className="bg-ink px-6 pb-20 sm:pb-24">
       <div className="mx-auto max-w-6xl">
         <Reveal>
           <h2 className="font-heading text-3xl font-semibold text-white sm:text-4xl">
