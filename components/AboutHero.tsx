@@ -24,7 +24,7 @@ export default function AboutHero() {
   const backgroundY = useTransform(
     scrollYProgress,
     [0, 1],
-    shouldReduceMotion ? ["0%", "0%"] : ["0%", "18%"],
+    shouldReduceMotion ? ["0%", "0%"] : ["0%", "8%"],
   );
 
   useEffect(() => {
@@ -53,7 +53,7 @@ export default function AboutHero() {
       className="relative mt-[65px] flex min-h-[calc(100dvh-65px)] items-center overflow-hidden bg-ink px-6 py-24 sm:py-32 lg:mt-[121px] lg:min-h-[calc(100dvh-121px)]"
     >
       <motion.div
-        className="absolute inset-x-0 -top-[9%] h-[118%]"
+        className="absolute inset-x-0 -top-[4%] h-[108%]"
         style={{ y: backgroundY }}
       >
         <Image
@@ -61,7 +61,7 @@ export default function AboutHero() {
           alt=""
           fill
           priority
-          className="object-cover"
+          className="object-cover object-[center_25%]"
         />
       </motion.div>
       <div
