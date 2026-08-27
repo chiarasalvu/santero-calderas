@@ -11,7 +11,6 @@ type CtaBannerProps = {
   primaryHref: string;
   secondaryLabel: string;
   secondaryHref: string;
-  tone?: "light" | "dark";
 };
 
 const MotionLink = motion.create(Link);
@@ -23,22 +22,24 @@ export default function CtaBanner({
   primaryHref,
   secondaryLabel,
   secondaryHref,
-  tone = "light",
 }: CtaBannerProps) {
   return (
-    <section className={`px-6 py-16 ${tone === "dark" ? "bg-ink" : ""}`}>
-      <Reveal className="mx-auto max-w-6xl rounded-3xl bg-brand-red px-8 py-16 text-center sm:px-16">
-        <h2 className="font-heading text-2xl font-bold text-white sm:text-4xl">
+    <section className="bg-ink px-6 py-20 sm:py-28">
+      <Reveal className="mx-auto max-w-3xl text-center">
+        <p className="font-mono text-xs font-medium tracking-widest text-brand-red-light uppercase">
+          Siguiente Paso
+        </p>
+        <h2 className="mt-4 font-heading text-2xl font-bold text-white sm:text-4xl">
           {titulo}
         </h2>
-        <p className="mx-auto mt-4 max-w-2xl text-white/80">{descripcion}</p>
+        <p className="mx-auto mt-4 max-w-xl text-white/70">{descripcion}</p>
 
         <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <MotionLink
             href={primaryHref}
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.97 }}
-            className="rounded-lg bg-cream px-6 py-3 text-sm font-semibold text-brand-red transition-colors hover:bg-white"
+            className="rounded-lg bg-brand-red px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white hover:text-brand-red"
           >
             {primaryLabel}
           </MotionLink>
@@ -46,7 +47,7 @@ export default function CtaBanner({
             href={secondaryHref}
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.97 }}
-            className="rounded-lg border border-white px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10"
+            className="rounded-lg border border-steel/40 px-6 py-3 text-sm font-semibold text-white/80 transition-colors hover:border-brand-red-light hover:text-brand-red-light"
           >
             {secondaryLabel}
           </MotionLink>

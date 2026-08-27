@@ -21,7 +21,6 @@ export default function QueHacemosPage() {
         primaryHref="/contacto?motivo=cotizar-proyecto"
         secondaryLabel="Ver Sistema Santero"
         secondaryHref="/sistema-santero"
-        tone="dark"
       />
     </>
   );

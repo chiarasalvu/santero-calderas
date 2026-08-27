@@ -2,9 +2,7 @@ import type { Metadata } from "next";
 import Hero from "@/components/casos-de-exito/Hero";
 import FeaturedCase from "@/components/casos-de-exito/FeaturedCase";
 import BeforeAfter from "@/components/casos-de-exito/BeforeAfter";
-import CasesExplorer from "@/components/casos-de-exito/CasesExplorer";
 import CtaBanner from "@/components/CtaBanner";
-import { getLogosPorSegmento } from "@/lib/segment-logos";
 
 export const metadata: Metadata = {
   title: "Casos de Éxito | Calderas Santero",
@@ -13,14 +11,11 @@ export const metadata: Metadata = {
 };
 
 export default function CasosDeExito() {
-  const logosPorSegmento = getLogosPorSegmento();
-
   return (
     <>
       <Hero />
       <FeaturedCase />
       <BeforeAfter />
-      <CasesExplorer logosPorSegmento={logosPorSegmento} />
       <CtaBanner
         titulo="Optimice su rendimiento térmico"
         descripcion="Nuestros especialistas están listos para realizar un diagnóstico técnico de sus necesidades y proponer la solución más eficiente."
@@ -28,7 +23,6 @@ export default function CasosDeExito() {
         primaryHref="/contacto?motivo=visita-tecnica"
         secondaryLabel="Ver catálogo completo"
         secondaryHref="/sistema-santero"
-        tone="dark"
       />
     </>
   );

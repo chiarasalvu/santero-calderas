@@ -23,7 +23,6 @@ export default function Nosotros() {
         primaryHref="/servicios"
         secondaryLabel="Agendar Consultoría"
         secondaryHref="/contacto"
-        tone="dark"
       />
     </>
   );

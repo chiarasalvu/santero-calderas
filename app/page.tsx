@@ -1,7 +1,6 @@
 import Hero from "@/components/home/Hero";
 import GoogleReviewsBadge from "@/components/home/GoogleReviewsBadge";
 import Diferencial from "@/components/home/Diferencial";
-import RubroFinder from "@/components/home/RubroFinder";
 import SistemaSanteroTeaser from "@/components/home/SistemaSanteroTeaser";
 import ProductLines from "@/components/home/ProductLines";
 import FeaturedProduct from "@/components/home/FeaturedProduct";
@@ -18,7 +17,6 @@ export default function Home() {
       <Hero />
       <GoogleReviewsBadge />
       <Diferencial />
-      <RubroFinder />
       <SistemaSanteroTeaser />
       <ProductLines />
       <FeaturedProduct />
@@ -31,7 +29,6 @@ export default function Home() {
         primaryHref="/contacto?motivo=cotizar-proyecto"
         secondaryLabel="Agendar videollamada"
         secondaryHref="/contacto?motivo=visita-tecnica"
-        tone="dark"
       />
     </>
   );
