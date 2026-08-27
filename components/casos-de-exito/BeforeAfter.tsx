@@ -21,7 +21,7 @@ export default function BeforeAfter() {
             Análisis Técnico
           </p>
           <h2 className="mt-3 font-heading text-2xl font-bold text-white sm:text-3xl">
-            Antes y Después del Sistema Santero
+            Antes y después del Sistema Santero
           </h2>
         </Reveal>
 

@@ -29,7 +29,7 @@ export default function FeaturedCase() {
                   </span>
                 </div>
                 <h2 className="mt-4 font-heading text-xl font-bold text-white sm:text-2xl">
-                  Cliente Ejemplo — Renovación de Sistema Térmico
+                  Cliente Ejemplo — Renovación de sistema térmico
                 </h2>
                 <p className="mt-2 max-w-xl text-sm text-white/70">
                   Transición de un sistema tradicional a la Línea ATSOL,

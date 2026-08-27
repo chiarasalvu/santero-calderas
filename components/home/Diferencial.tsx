@@ -8,7 +8,7 @@ export default function Diferencial() {
       <div className="mx-auto max-w-6xl">
         <Reveal className="flex flex-wrap items-end justify-between gap-4">
           <h2 className="font-heading text-3xl font-bold text-white sm:text-4xl">
-            El Diferencial Santero
+            El diferencial Santero
           </h2>
           <Link
             href="/servicios"

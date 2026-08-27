@@ -15,7 +15,7 @@ export default function FeaturedProduct() {
       <div className="mx-auto grid max-w-6xl items-center gap-16 lg:grid-cols-2">
         <Reveal>
           <h2 className="font-heading text-3xl font-bold text-white sm:text-4xl">
-            Tecnología en Acero Inoxidable
+            Tecnología en acero inoxidable
           </h2>
           <p className="mt-4 max-w-md text-white/70">
             Nuestra línea de calderas de alto rendimiento está diseñada para
