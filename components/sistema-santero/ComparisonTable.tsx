@@ -47,10 +47,10 @@ export default function ComparisonTable() {
     <section className="bg-ink px-6 py-20 sm:py-28">
       <div className="mx-auto max-w-5xl">
         <Reveal className="text-center">
-          <p className="font-mono text-xs font-medium tracking-widest text-brand-red-light uppercase">
+          <p className="font-mono text-xs font-light text-brand-red-light uppercase">
             Comparativa Técnica
           </p>
-          <h2 className="mt-3 font-heading text-3xl font-bold text-white sm:text-4xl">
+          <h2 className="mt-3 font-heading text-3xl font-semibold text-white sm:text-4xl">
             Ventaja competitiva Santero
           </h2>
         </Reveal>
@@ -63,13 +63,13 @@ export default function ComparisonTable() {
             <table className="w-full min-w-[560px] border-collapse text-left">
               <thead>
                 <tr className="bg-ink-light">
-                  <th className="px-4 py-4 font-mono text-xs font-medium tracking-widest text-white/50 uppercase sm:px-6">
+                  <th className="px-4 py-4 font-mono text-xs font-light text-white/50 uppercase sm:px-6">
                     Característica
                   </th>
-                  <th className="px-4 py-4 font-mono text-xs font-medium tracking-widest text-white/50 uppercase sm:px-6">
+                  <th className="px-4 py-4 font-mono text-xs font-light text-white/50 uppercase sm:px-6">
                     Sistema Tradicional
                   </th>
-                  <th className="px-4 py-4 font-mono text-xs font-medium tracking-widest text-brand-red-light uppercase sm:px-6">
+                  <th className="px-4 py-4 font-mono text-xs font-light text-brand-red-light uppercase sm:px-6">
                     Sistema Santero
                   </th>
                 </tr>
@@ -89,7 +89,7 @@ export default function ComparisonTable() {
                     <td
                       className={`px-4 py-5 text-sm sm:px-6 ${
                         fila.destacado
-                          ? "font-medium text-brand-red-light"
+                          ? "font-light text-brand-red-light"
                           : "text-white/80"
                       }`}
                     >

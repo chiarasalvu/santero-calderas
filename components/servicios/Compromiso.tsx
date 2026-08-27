@@ -17,7 +17,7 @@ export default function Compromiso() {
       />
 
       <Reveal className="relative mx-auto max-w-3xl">
-        <p className="font-mono text-xs font-medium tracking-widest text-brand-red-light uppercase">
+        <p className="font-mono text-xs font-light text-brand-red-light uppercase">
           Compromiso Santero
         </p>
         <h2 className="mt-4 max-w-xl text-lg text-white/90">

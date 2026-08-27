@@ -1,23 +1,14 @@
 import type { Metadata } from "next";
-import { Hanken_Grotesk, JetBrains_Mono, Montserrat } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import { MotionConfig } from "framer-motion";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 
-const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-jetbrains-mono",
-  subsets: ["latin"],
-  weight: ["500"],
-});
-
-const hankenGrotesk = Hanken_Grotesk({
-  variable: "--font-hanken-grotesk",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-});
-
+// Única tipografía del sitio: Montserrat, diferenciada solo por peso
+// (light / regular / semibold). Reemplaza a Hanken Grotesk (texto) y
+// JetBrains Mono (etiquetas), que ya no se usan.
 const montserrat = Montserrat({
   variable: "--font-montserrat",
   subsets: ["latin"],
@@ -38,7 +29,7 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${jetbrainsMono.variable} ${hankenGrotesk.variable} ${montserrat.variable} h-full antialiased`}
+      className={`${montserrat.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
         <MotionConfig reducedMotion="user">

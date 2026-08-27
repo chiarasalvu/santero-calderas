@@ -15,7 +15,7 @@ export default function Footer() {
       href={link.href}
       className={`text-sm ${
         pathname === link.href
-          ? "font-medium text-brand-red-light"
+          ? "font-light text-brand-red-light"
           : "text-white/60 hover:text-brand-red-light"
       }`}
     >
@@ -28,7 +28,7 @@ export default function Footer() {
       <Reveal>
         <div className="mx-auto grid max-w-6xl gap-10 px-6 py-14 sm:grid-cols-3">
           <div>
-            <p className="font-heading text-lg font-bold text-white">
+            <p className="font-heading text-lg font-semibold text-white">
               Calderas Santero
             </p>
             <p className="mt-3 max-w-xs text-sm text-white/60">
@@ -38,7 +38,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <p className="font-mono text-xs font-medium tracking-widest text-white/55 uppercase">
+            <p className="font-mono text-xs font-light text-white/55 uppercase">
               Secciones
             </p>
             <nav className="mt-3 flex flex-col gap-2">
@@ -54,7 +54,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <p className="font-mono text-xs font-medium tracking-widest text-white/55 uppercase">
+            <p className="font-mono text-xs font-light text-white/55 uppercase">
               Legal &amp; Contacto
             </p>
             <nav className="mt-3 flex flex-col gap-2">

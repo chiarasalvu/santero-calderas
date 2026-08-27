@@ -24,7 +24,7 @@ export default function GoogleReviewsBadge() {
       <GoogleLogo className="h-6 w-6 shrink-0" />
       <div className="flex flex-col leading-tight">
         <div className="flex items-center gap-1">
-          <span className="text-sm font-bold text-navy">
+          <span className="text-sm font-semibold text-navy">
             <AnimatedCounter value={RATING} decimals={1} />
           </span>
           <Stars />

@@ -38,10 +38,10 @@ export default function SistemaSanteroTeaser() {
     <section className="bg-ink px-6 py-20 sm:py-28">
       <div className="mx-auto max-w-6xl">
         <Reveal>
-          <p className="font-heading text-sm font-semibold tracking-wide text-brand-red-light uppercase">
+          <p className="font-heading text-sm font-semibold text-brand-red-light uppercase">
             Ingeniería propia. Tecnología avanzada.
           </p>
-          <h2 className="mt-4 max-w-2xl font-heading text-3xl font-bold text-white sm:text-4xl">
+          <h2 className="mt-4 max-w-2xl font-heading text-3xl font-semibold text-white sm:text-4xl">
             Sistema Santero
           </h2>
           <p className="mt-4 max-w-2xl text-white/80">
@@ -59,7 +59,7 @@ export default function SistemaSanteroTeaser() {
                 delay={Math.min(index * 0.08, 0.4)}
                 className="h-full rounded-2xl border border-transparent bg-ink-light p-6 transition-all duration-300 hover:-translate-y-1 hover:border-brand-red-light/40"
               >
-                <span className="font-heading text-3xl font-bold text-brand-red-light">
+                <span className="font-heading text-3xl font-semibold text-brand-red-light">
                   {paso.numero}
                 </span>
                 <h3 className="mt-3 font-heading text-lg font-semibold text-white">

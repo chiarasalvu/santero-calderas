@@ -70,10 +70,10 @@ export default function AboutHero() {
       />
 
       <Reveal className="relative mx-auto w-full max-w-6xl">
-        <p className="font-mono text-xs font-medium tracking-widest text-brand-red-light uppercase">
+        <p className="font-mono text-xs font-light text-brand-red-light uppercase">
           Evolución Térmica
         </p>
-        <h1 className="mt-4 max-w-3xl font-heading text-4xl font-light tracking-[0.1em] text-white uppercase sm:text-6xl">
+        <h1 className="mt-4 max-w-3xl font-heading text-4xl font-light text-white uppercase sm:text-6xl">
           Forjando el futuro
           <span className="block text-white/50">Desde 1935</span>
         </h1>
@@ -88,7 +88,7 @@ export default function AboutHero() {
           ref={videoTriggerRef}
           type="button"
           onClick={() => setVideoOpen(true)}
-          className="mt-8 flex items-center gap-3 text-xs font-medium tracking-widest text-white/70 uppercase transition-colors hover:text-white"
+          className="mt-8 flex items-center gap-3 text-xs font-light text-white/70 uppercase transition-colors hover:text-white"
         >
           Ver video institucional
           <span

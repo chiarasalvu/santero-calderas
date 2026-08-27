@@ -7,10 +7,10 @@ export default function RubroFinder() {
     <section className="bg-ink px-6 py-20 sm:py-28">
       <div className="mx-auto max-w-6xl">
         <Reveal>
-          <p className="font-mono text-xs font-medium tracking-widest text-brand-red-light uppercase">
+          <p className="font-mono text-xs font-light text-brand-red-light uppercase">
             Buscá tu solución
           </p>
-          <h2 className="mt-3 font-heading text-3xl font-bold text-white sm:text-4xl">
+          <h2 className="mt-3 font-heading text-3xl font-semibold text-white sm:text-4xl">
             Encontrá tu solución por rubro
           </h2>
           <p className="mt-3 max-w-2xl text-white/70">
@@ -32,7 +32,7 @@ export default function RubroFinder() {
                 >
                   <RubroIcon id={rubro.id} />
                 </span>
-                <h3 className="mt-4 font-mono text-xs font-medium tracking-widest text-white uppercase">
+                <h3 className="mt-4 font-mono text-xs font-light text-white uppercase">
                   {rubro.label}
                 </h3>
                 <p className="mt-2 text-sm text-white/60">

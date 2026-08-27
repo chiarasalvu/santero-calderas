@@ -26,7 +26,7 @@ export default function ContactForm() {
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-5">
       <div className="flex flex-col gap-1.5">
-        <label htmlFor="nombre" className="text-sm font-medium text-white">
+        <label htmlFor="nombre" className="text-sm font-light text-white">
           Nombre
         </label>
         <input
@@ -39,7 +39,7 @@ export default function ContactForm() {
       </div>
 
       <div className="flex flex-col gap-1.5">
-        <label htmlFor="email" className="text-sm font-medium text-white">
+        <label htmlFor="email" className="text-sm font-light text-white">
           Email
         </label>
         <input
@@ -52,7 +52,7 @@ export default function ContactForm() {
       </div>
 
       <div className="flex flex-col gap-1.5">
-        <label htmlFor="telefono" className="text-sm font-medium text-white">
+        <label htmlFor="telefono" className="text-sm font-light text-white">
           Teléfono
         </label>
         <input
@@ -64,7 +64,7 @@ export default function ContactForm() {
       </div>
 
       <div className="flex flex-col gap-1.5">
-        <label htmlFor="mensaje" className="text-sm font-medium text-white">
+        <label htmlFor="mensaje" className="text-sm font-light text-white">
           Mensaje
         </label>
         <textarea

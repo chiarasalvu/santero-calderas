@@ -14,7 +14,7 @@ export default function FeaturedProduct() {
     <section className="bg-ink px-6 py-20 sm:py-28">
       <div className="mx-auto grid max-w-6xl items-center gap-16 lg:grid-cols-2">
         <Reveal>
-          <h2 className="font-heading text-3xl font-bold text-white sm:text-4xl">
+          <h2 className="font-heading text-3xl font-semibold text-white sm:text-4xl">
             Tecnología en acero inoxidable
           </h2>
           <p className="mt-4 max-w-md text-white/70">
@@ -42,7 +42,7 @@ export default function FeaturedProduct() {
 
           <Link
             href="/sistema-santero"
-            className="mt-8 inline-flex items-center gap-2 rounded border border-steel/40 px-6 py-3 text-xs font-medium tracking-widest text-white uppercase transition-colors hover:border-white"
+            className="mt-8 inline-flex items-center gap-2 rounded border border-steel/40 px-6 py-3 text-xs font-light text-white uppercase transition-colors hover:border-white"
           >
             Catálogo Técnico
           </Link>
@@ -60,14 +60,14 @@ export default function FeaturedProduct() {
           </div>
 
           <div className="absolute -bottom-4 -left-4 rounded-xl bg-cream px-6 py-4 shadow-lg sm:-bottom-6 sm:-left-6">
-            <p className="font-mono text-[10px] font-medium tracking-widest text-zinc-500 uppercase">
+            <p className="font-mono text-[10px] font-light text-zinc-500 uppercase">
               Modelo Destacado
             </p>
-            <p className="font-heading text-lg font-bold text-navy">
+            <p className="font-heading text-lg font-semibold text-navy">
               Línea ATSOL
             </p>
             <p className="mt-2 flex items-baseline gap-1 border-t border-zinc-200 pt-2 text-xs text-zinc-600">
-              <span className="flex items-baseline font-heading text-xl font-bold text-brand-red">
+              <span className="flex items-baseline font-heading text-xl font-semibold text-brand-red">
                 <AnimatedCounter value={98} />%
               </span>
               eficiencia estacionaria
