@@ -1,8 +1,5 @@
-"use client";
-
 import Image from "next/image";
-import { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import Link from "next/link";
 import { segmentos, type Segmento, type SegmentoLogo } from "@/lib/segments";
 import Reveal from "@/components/motion/Reveal";
 
@@ -11,86 +8,72 @@ type CasesPreviewProps = {
 };
 
 export default function CasesPreview({ logosPorSegmento }: CasesPreviewProps) {
-  const [abierto, setAbierto] = useState<string | null>(null);
+  const todosLosLogos = segmentos.flatMap(
+    (segmento) => logosPorSegmento[segmento.id],
+  );
+  const mitad = Math.ceil(todosLosLogos.length / 2);
+  const fila1 = todosLosLogos.slice(0, mitad);
+  const fila2 = todosLosLogos.slice(mitad);
 
   return (
     <section className="bg-ink px-6 py-24 sm:py-32">
-      <div className="mx-auto max-w-5xl">
-        <Reveal>
+      <div className="mx-auto max-w-6xl">
+        <Reveal className="flex flex-wrap items-end justify-between gap-4">
           <h2 className="font-heading text-3xl font-bold tracking-wide text-white uppercase sm:text-4xl">
             Casos de Éxito
           </h2>
+          <Link
+            href="/referencias"
+            className="group/link flex items-center gap-1 font-mono text-xs font-medium tracking-widest text-brand-red-light uppercase transition-colors hover:text-white"
+          >
+            Ver todas las referencias
+            <span
+              className="transition-transform duration-200 group-hover/link:translate-x-1"
+              aria-hidden
+            >
+              →
+            </span>
+          </Link>
         </Reveal>
 
-        <div className="mt-10">
-          {segmentos.map((segmento, index) => {
-            const open = abierto === segmento.id;
-            const logos = logosPorSegmento[segmento.id];
-
-            return (
-              <Reveal
-                key={segmento.id}
-                delay={Math.min(index * 0.06, 0.3)}
-                className="border-b border-white/10 first:border-t"
-              >
-                <button
-                  type="button"
-                  onClick={() => setAbierto(open ? null : segmento.id)}
-                  aria-expanded={open}
-                  className="flex w-full items-center justify-between gap-4 py-8 text-left"
-                >
-                  <span className="flex items-baseline gap-3 sm:gap-5">
-                    <span className="text-sm text-brand-red-light">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                    <span className="font-heading text-lg font-bold tracking-wide text-white uppercase sm:text-2xl lg:text-3xl">
-                      {segmento.label}
-                    </span>
-                  </span>
-                  <span
-                    className={`shrink-0 text-2xl text-white transition-transform ${
-                      open ? "rotate-180" : ""
-                    }`}
-                    aria-hidden
-                  >
-                    ⌄
-                  </span>
-                </button>
-
-                <AnimatePresence initial={false}>
-                  {open && (
-                    <motion.div
-                      key="logos"
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.25, ease: "easeInOut" }}
-                      className="overflow-hidden"
-                    >
-                      <div className="grid grid-cols-3 gap-3 pb-8 sm:grid-cols-4 lg:grid-cols-6">
-                        {logos.map((logo) => (
-                          <div
-                            key={logo.src}
-                            className="relative flex h-16 items-center justify-center rounded-lg border border-black/10 bg-white p-2"
-                          >
-                            <Image
-                              src={logo.src}
-                              alt={logo.nombre}
-                              fill
-                              sizes="140px"
-                              className="object-contain p-2"
-                            />
-                          </div>
-                        ))}
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </Reveal>
-            );
-          })}
-        </div>
+        <Reveal delay={0.1} className="mt-10 flex flex-col gap-6">
+          {fila1.length > 0 && <LogoRow logos={fila1} direction="left" />}
+          {fila2.length > 0 && <LogoRow logos={fila2} direction="right" />}
+        </Reveal>
       </div>
     </section>
+  );
+}
+
+function LogoRow({
+  logos,
+  direction,
+}: {
+  logos: SegmentoLogo[];
+  direction: "left" | "right";
+}) {
+  return (
+    <div className="overflow-hidden">
+      <div
+        className={`flex w-max gap-4 hover:[animation-play-state:paused] motion-reduce:animate-none ${
+          direction === "left" ? "animate-marquee-left" : "animate-marquee-right"
+        }`}
+      >
+        {[...logos, ...logos].map((logo, index) => (
+          <div
+            key={`${logo.src}-${index}`}
+            className="relative flex h-20 w-40 shrink-0 items-center justify-center rounded-xl border border-steel/20 bg-ink-light p-4"
+          >
+            <Image
+              src={logo.src}
+              alt={logo.nombre}
+              fill
+              sizes="160px"
+              className="object-contain p-4"
+            />
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }
