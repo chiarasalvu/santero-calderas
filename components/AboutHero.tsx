@@ -88,15 +88,15 @@ export default function AboutHero() {
           ref={videoTriggerRef}
           type="button"
           onClick={() => setVideoOpen(true)}
-          className="mt-8 flex items-center gap-3 text-xs font-light text-white/70 transition-colors hover:text-white"
+          className="mt-8 inline-flex items-center gap-3 rounded-lg border border-steel/40 py-2 pr-6 pl-2 text-sm font-semibold text-white transition-colors hover:border-brand-red-light hover:text-brand-red-light"
         >
-          Ver video institucional
           <span
-            className="flex h-8 w-8 items-center justify-center rounded-full border border-steel/40"
+            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand-red text-white"
             aria-hidden
           >
             ▶
           </span>
+          Ver video institucional
         </button>
       </Reveal>
 
@@ -120,17 +120,11 @@ export default function AboutHero() {
             >
               ✕
             </button>
-            {/* TODO: reemplazar por el video institucional real que va a
-                enviar el cliente — hoy apunta al video genérico de planta
-                que ya usa el Hero de Home, como placeholder real (no un
-                archivo roto) hasta que llegue el definitivo. */}
             <video
-              src="/video/hero-santero.mp4"
+              src="/video/institucional-nosotros.mp4"
               controls
               autoPlay
               playsInline
-              muted
-              loop
               className="max-h-[80vh] w-full max-w-4xl rounded-lg"
               onClick={(event) => event.stopPropagation()}
             />
