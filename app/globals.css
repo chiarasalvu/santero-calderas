@@ -53,8 +53,16 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
-  /* Tracking único de la marca: -1.63px @ 16px base, expresado en em para
-     que escale proporcional en cualquier tamaño de texto (títulos, textos
-     y detalles por igual). */
+  /* Tracking base bien sutil: a -0.1019em (el valor de marca, -1.63px a
+     16px) los párrafos largos se ven apretados/ilegibles. Esa tightness
+     queda reservada para títulos y etiquetas cortas (ver regla de abajo). */
+  letter-spacing: -0.01em;
+}
+
+/* Tracking de marca (-1.63px @ 16px, expresado en em para escalar con
+   cualquier tamaño): solo en títulos y etiquetas cortas tipo "eyebrow",
+   nunca en párrafos de texto corrido. */
+.font-heading,
+.font-mono {
   letter-spacing: -0.1019em;
 }
