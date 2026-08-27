@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Hero from "@/components/casos-de-exito/Hero";
+import FeaturedCase from "@/components/casos-de-exito/FeaturedCase";
+import BeforeAfter from "@/components/casos-de-exito/BeforeAfter";
 import CasesExplorer from "@/components/casos-de-exito/CasesExplorer";
 import CtaBanner from "@/components/CtaBanner";
 import { getLogosPorSegmento } from "@/lib/segment-logos";
@@ -16,14 +18,17 @@ export default function CasosDeExito() {
   return (
     <>
       <Hero />
+      <FeaturedCase />
+      <BeforeAfter />
       <CasesExplorer logosPorSegmento={logosPorSegmento} />
       <CtaBanner
         titulo="Optimice su rendimiento térmico"
         descripcion="Nuestros especialistas están listos para realizar un diagnóstico técnico de sus necesidades y proponer la solución más eficiente."
         primaryLabel="Solicitar asesoramiento técnico"
-        primaryHref="/contacto"
+        primaryHref="/contacto?motivo=visita-tecnica"
         secondaryLabel="Ver catálogo completo"
         secondaryHref="/sistema-santero"
+        tone="dark"
       />
     </>
   );
