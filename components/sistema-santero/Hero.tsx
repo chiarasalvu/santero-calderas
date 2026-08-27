@@ -6,18 +6,33 @@ export default function Hero() {
     <section className="bg-navy px-6 py-24 sm:py-28">
       <div className="mx-auto mt-12 grid max-w-6xl items-center gap-16 lg:grid-cols-2">
         <Reveal>
-          <h1 className="font-heading text-3xl font-bold text-white sm:text-5xl">
-            Sistema Santero:
-            <span className="block">Eficiencia Térmica Reinventada</span>
+          <p className="font-mono text-xs font-medium tracking-widest text-brand-red-light uppercase">
+            Tecnología de Intercambio
+          </p>
+          <h1 className="mt-4 font-heading text-4xl font-light tracking-[0.1em] text-white uppercase sm:text-5xl">
+            Sistema
+            <span className="block">Santero</span>
           </h1>
 
           <p className="mt-6 max-w-md text-white/80">
-            No es una caldera. Es un sistema pensado para transformar la
-            manera de generar agua caliente sanitaria.
+            Calentamiento indirecto de alta eficiencia. Diseñado para
+            evitar la acumulación de sarro y maximizar el rendimiento
+            térmico en aplicaciones industriales exigentes.
           </p>
 
+          <div className="mt-6 flex flex-wrap items-center gap-6">
+            <span className="flex items-center gap-2 text-sm text-white/80">
+              <CheckCircleIcon />
+              Acero Inoxidable
+            </span>
+            <span className="flex items-center gap-2 text-sm text-white/80">
+              <CheckCircleIcon />
+              Bajo Mantenimiento
+            </span>
+          </div>
+
           <a
-            href="#consultar"
+            href="/contacto?motivo=visita-tecnica"
             className="mt-8 inline-flex items-center gap-2 rounded-lg bg-brand-red px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white hover:text-brand-red"
           >
             Consultar con un Ingeniero
@@ -48,5 +63,25 @@ export default function Hero() {
         </Reveal>
       </div>
     </section>
+  );
+}
+
+function CheckCircleIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      className="h-4 w-4 shrink-0 text-brand-red-light"
+      aria-hidden
+    >
+      <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.5" />
+      <path
+        d="M8 12.5l2.5 2.5L16 9.5"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
   );
 }
