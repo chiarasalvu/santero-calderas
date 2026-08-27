@@ -5,10 +5,10 @@ export default function Cobertura() {
     <section className="bg-ink px-6 pb-24">
       <div className="mx-auto max-w-6xl">
         <Reveal>
-          <p className="font-mono text-xs font-medium tracking-widest text-brand-red-light uppercase">
+          <p className="font-mono text-xs font-light text-brand-red-light uppercase">
             Cobertura
           </p>
-          <h2 className="mt-3 font-heading text-2xl font-bold text-white sm:text-3xl">
+          <h2 className="mt-3 font-heading text-2xl font-semibold text-white sm:text-3xl">
             Dónde trabajamos
           </h2>
         </Reveal>

@@ -23,7 +23,7 @@ export default function Categorias() {
             delay={Math.min(index * 0.1, 0.3)}
             className="rounded-2xl border border-steel/20 bg-ink-light p-8 transition-all duration-300 hover:-translate-y-1 hover:border-brand-red-light/40"
           >
-            <h2 className="font-mono text-xs font-medium tracking-widest text-brand-red-light uppercase">
+            <h2 className="font-mono text-xs font-light text-brand-red-light uppercase">
               {categoria.titulo}
             </h2>
             <ul className="mt-6 flex flex-col gap-3">

@@ -19,12 +19,12 @@ export default function CasesPreview({ logosPorSegmento }: CasesPreviewProps) {
     <section className="bg-ink px-6 py-24 sm:py-32">
       <div className="mx-auto max-w-6xl">
         <Reveal className="flex flex-wrap items-end justify-between gap-4">
-          <h2 className="font-heading text-3xl font-bold tracking-wide text-white uppercase sm:text-4xl">
+          <h2 className="font-heading text-3xl font-semibold text-white uppercase sm:text-4xl">
             Casos de Éxito
           </h2>
           <Link
             href="/referencias"
-            className="group/link flex items-center gap-1 font-mono text-xs font-medium tracking-widest text-brand-red-light uppercase transition-colors hover:text-white"
+            className="group/link flex items-center gap-1 font-mono text-xs font-light text-brand-red-light uppercase transition-colors hover:text-white"
           >
             Ver todas las referencias
             <span

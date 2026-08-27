@@ -16,10 +16,10 @@ export default function LogosGrid({ logosPorSegmento }: LogosGridProps) {
     <section className="bg-ink px-6 pb-24">
       <div className="mx-auto max-w-6xl">
         <Reveal className="flex flex-wrap items-end justify-between gap-4">
-          <p className="font-mono text-xs font-medium tracking-widest text-brand-red-light uppercase">
+          <p className="font-mono text-xs font-light text-brand-red-light uppercase">
             Partners Estratégicos
           </p>
-          <p className="font-mono text-xs font-medium tracking-widest text-white/50 uppercase">
+          <p className="font-mono text-xs font-light text-white/50 uppercase">
             Clientes Destacados
           </p>
         </Reveal>

@@ -33,7 +33,7 @@ export default function ServicePillars() {
               <span className="inline-flex w-fit transition-transform duration-300 group-hover:scale-110">
                 <PilarIcon id={pilar.id} />
               </span>
-              <h2 className="mt-4 font-heading text-xl font-bold text-white uppercase">
+              <h2 className="mt-4 font-heading text-xl font-semibold text-white uppercase">
                 {pilar.titulo}
               </h2>
               <p className="mt-2 text-sm text-white/60">{pilar.bajada}</p>
@@ -48,7 +48,7 @@ export default function ServicePillars() {
                       <CheckIcon />
                     </span>
                     <div>
-                      <p className="font-mono text-[11px] font-medium tracking-widest text-white uppercase">
+                      <p className="font-mono text-[11px] font-light text-white uppercase">
                         {item.titulo}
                       </p>
                       <p className="mt-1 text-sm text-white/60">

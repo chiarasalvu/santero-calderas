@@ -96,7 +96,7 @@ export default function Hero() {
         animate={showText ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
-        <h1 className="font-heading text-3xl font-light tracking-[0.15em] text-white uppercase sm:text-5xl">
+        <h1 className="font-heading text-3xl font-light text-white uppercase sm:text-5xl">
           Calidez que perdura
         </h1>
         <p className="mt-6 max-w-xl text-sm text-white/70 sm:text-base">
@@ -109,7 +109,7 @@ export default function Hero() {
             <Link
               key={categoria.label}
               href="/servicios"
-              className="flex items-center gap-2 rounded border border-steel/40 bg-ink/60 px-5 py-3 text-sm font-medium text-white backdrop-blur-sm transition-colors hover:border-white"
+              className="flex items-center gap-2 rounded border border-steel/40 bg-ink/60 px-5 py-3 text-sm font-light text-white backdrop-blur-sm transition-colors hover:border-white"
             >
               <CategoriaIcon name={categoria.icon} />
               {categoria.label}
@@ -119,7 +119,7 @@ export default function Hero() {
 
         <a
           href="#diferencial"
-          className="mt-16 flex flex-col items-center gap-2 text-xs font-medium tracking-widest text-white/60 uppercase transition-colors hover:text-white"
+          className="mt-16 flex flex-col items-center gap-2 text-xs font-light text-white/60 uppercase transition-colors hover:text-white"
         >
           Descubrir
           <span aria-hidden>↓</span>

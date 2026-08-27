@@ -31,10 +31,10 @@ export default function Hero() {
     >
       <div className="mx-auto grid max-w-6xl items-center gap-16 lg:grid-cols-2">
         <Reveal>
-          <p className="font-mono text-xs font-medium tracking-widest text-brand-red-light uppercase">
+          <p className="font-mono text-xs font-light text-brand-red-light uppercase">
             Tecnología de Intercambio
           </p>
-          <h1 className="mt-4 font-heading text-4xl font-light tracking-[0.1em] text-white uppercase sm:text-5xl">
+          <h1 className="mt-4 font-heading text-4xl font-light text-white uppercase sm:text-5xl">
             Sistema
             <span className="block">Santero</span>
           </h1>
@@ -81,10 +81,10 @@ export default function Hero() {
           </motion.div>
 
           <div className="absolute -bottom-4 -left-4 rounded-xl bg-cream px-6 py-4 shadow-lg sm:-bottom-6 sm:-left-6">
-            <p className="flex items-baseline font-heading text-3xl font-bold text-brand-red">
+            <p className="flex items-baseline font-heading text-3xl font-semibold text-brand-red">
               <AnimatedCounter value={98} />%
             </p>
-            <p className="text-xs font-medium tracking-wide text-zinc-500 uppercase">
+            <p className="text-xs font-light text-zinc-500 uppercase">
               Eficiencia estacionaria
             </p>
           </div>

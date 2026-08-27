@@ -47,7 +47,7 @@ export default function ProductLines() {
     <section className="bg-ink px-6 py-20 sm:py-28">
       <div className="mx-auto max-w-6xl">
         <Reveal>
-          <h2 className="font-heading text-3xl font-bold text-white sm:text-4xl">
+          <h2 className="font-heading text-3xl font-semibold text-white sm:text-4xl">
             Productos principales
           </h2>
           <p className="mt-3 max-w-2xl text-white/70">
@@ -63,13 +63,13 @@ export default function ProductLines() {
               delay={index * 0.1}
               className="group rounded-2xl border border-steel/20 bg-ink-light p-8 transition-all duration-300 hover:-translate-y-1 hover:border-brand-red-light/40"
             >
-              <span className="inline-block rounded-full bg-brand-red/20 px-3 py-1 font-mono text-[10px] font-medium tracking-widest text-brand-red-light uppercase">
+              <span className="inline-block rounded-full bg-brand-red/20 px-3 py-1 font-mono text-[10px] font-light text-brand-red-light uppercase">
                 {linea.badge}
               </span>
-              <h3 className="mt-4 font-heading text-xl font-bold text-white">
+              <h3 className="mt-4 font-heading text-xl font-semibold text-white">
                 {linea.nombre}
               </h3>
-              <p className="mt-1 text-sm font-medium text-white/80">
+              <p className="mt-1 text-sm font-light text-white/80">
                 {linea.subtitulo}
               </p>
               <p className="mt-4 text-sm leading-relaxed text-white/60">

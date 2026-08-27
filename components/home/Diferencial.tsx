@@ -7,12 +7,12 @@ export default function Diferencial() {
     <section id="diferencial" className="scroll-mt-32 bg-ink px-6 py-20 sm:py-28">
       <div className="mx-auto max-w-6xl">
         <Reveal className="flex flex-wrap items-end justify-between gap-4">
-          <h2 className="font-heading text-3xl font-bold text-white sm:text-4xl">
+          <h2 className="font-heading text-3xl font-semibold text-white sm:text-4xl">
             El diferencial Santero
           </h2>
           <Link
             href="/servicios"
-            className="group/link flex items-center gap-1 font-mono text-xs font-medium tracking-widest text-brand-red-light uppercase transition-colors hover:text-white"
+            className="group/link flex items-center gap-1 font-mono text-xs font-light text-brand-red-light uppercase transition-colors hover:text-white"
           >
             Ver metodología
             <span

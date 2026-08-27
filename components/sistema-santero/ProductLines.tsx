@@ -67,7 +67,7 @@ export default function ProductLines() {
     <section className="bg-ink px-6 py-20 sm:py-28">
       <div className="mx-auto max-w-6xl">
         <Reveal>
-          <h2 className="font-heading text-3xl font-bold text-white sm:text-4xl">
+          <h2 className="font-heading text-3xl font-semibold text-white sm:text-4xl">
             Líneas de producto
           </h2>
           <p className="mt-2 text-white/70">
@@ -91,17 +91,17 @@ export default function ProductLines() {
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 <span
-                  className={`absolute top-4 right-4 rounded-full px-3 py-1 text-xs font-semibold tracking-wide uppercase ${linea.badgeClassName}`}
+                  className={`absolute top-4 right-4 rounded-full px-3 py-1 text-xs font-semibold uppercase ${linea.badgeClassName}`}
                 >
                   {linea.badge}
                 </span>
               </div>
 
               <div className="p-6">
-                <h3 className="font-heading text-xl font-bold text-white">
+                <h3 className="font-heading text-xl font-semibold text-white">
                   {linea.nombre}
                 </h3>
-                <p className="mt-2 text-sm font-medium text-white/90">
+                <p className="mt-2 text-sm font-light text-white/90">
                   {linea.subtitulo}
                 </p>
 
@@ -115,7 +115,7 @@ export default function ProductLines() {
                         <CheckIcon />
                       </span>
                       <div>
-                        <p className="font-mono text-[11px] font-medium tracking-widest text-white uppercase">
+                        <p className="font-mono text-[11px] font-light text-white uppercase">
                           {item.titulo}
                         </p>
                         <p className="mt-1 text-sm text-white/60">
@@ -127,17 +127,17 @@ export default function ProductLines() {
                 </ul>
 
                 <div className="mt-6 flex items-center justify-between border-t border-white/10 pt-4">
-                  <span className="font-mono text-xs font-medium tracking-widest text-white/50 uppercase">
+                  <span className="font-mono text-xs font-light text-white/50 uppercase">
                     Rendimiento
                   </span>
-                  <span className="flex items-baseline font-heading text-2xl font-bold text-brand-red-light">
+                  <span className="flex items-baseline font-heading text-2xl font-semibold text-brand-red-light">
                     <AnimatedCounter value={linea.rendimiento} />%
                   </span>
                 </div>
 
                 <button
                   type="button"
-                  className="mt-6 flex w-full items-center justify-center gap-2 rounded-lg border border-white/20 px-4 py-3 text-sm font-medium text-white/70 transition-colors hover:border-brand-red-light hover:text-brand-red-light"
+                  className="mt-6 flex w-full items-center justify-center gap-2 rounded-lg border border-white/20 px-4 py-3 text-sm font-light text-white/70 transition-colors hover:border-brand-red-light hover:text-brand-red-light"
                 >
                   <span aria-hidden>⬇</span>
                   Descargar ficha técnica
