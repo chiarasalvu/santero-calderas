@@ -138,10 +138,10 @@ export default function Header() {
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
           >
             <Image
-              src="/img/generales/logo.png"
+              src="/img/generales/logo-blanco.png"
               alt="Calderas Santero"
-              width={201}
-              height={72}
+              width={746}
+              height={248}
               className="h-9 w-auto"
               priority
             />
@@ -242,10 +242,10 @@ export default function Header() {
 
           <Link href="/" onClick={closeMobileMenu} className="justify-self-center">
             <Image
-              src="/img/generales/logo.png"
+              src="/img/generales/logo-blanco.png"
               alt="Calderas Santero"
-              width={201}
-              height={72}
+              width={746}
+              height={248}
               className="h-7 w-auto"
               priority
             />
