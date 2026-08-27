@@ -10,7 +10,7 @@ const datosContacto = [
 
 export default function ContactSection() {
   return (
-    <section className="bg-ink px-6 pt-8 pb-16 sm:py-20">
+    <section className="bg-ink px-6 pt-4 pb-16 sm:pt-8 sm:pb-20">
       <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-2">
         <Reveal
           id="formulario"
