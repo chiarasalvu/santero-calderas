@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 
 const categorias = [
@@ -11,6 +12,35 @@ const categorias = [
 ] as const;
 
 export default function Hero() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [showText, setShowText] = useState(false);
+
+  useEffect(() => {
+    const video = videoRef.current;
+
+    // Salvavidas: si el video no carga (autoplay bloqueado, error de red,
+    // etc.) el texto igual aparece a los 9s en vez de quedar oculto para
+    // siempre.
+    const fallback = setTimeout(() => setShowText(true), 9000);
+
+    if (!video) {
+      return () => clearTimeout(fallback);
+    }
+
+    function handleTimeUpdate() {
+      if (video && video.currentTime >= 7) {
+        setShowText(true);
+        video.removeEventListener("timeupdate", handleTimeUpdate);
+      }
+    }
+
+    video.addEventListener("timeupdate", handleTimeUpdate);
+    return () => {
+      clearTimeout(fallback);
+      video.removeEventListener("timeupdate", handleTimeUpdate);
+    };
+  }, []);
+
   return (
     <section className="relative flex min-h-dvh items-center overflow-hidden bg-ink px-6 py-24 sm:py-32">
       <Image
@@ -21,6 +51,7 @@ export default function Hero() {
         className="object-cover"
       />
       <video
+        ref={videoRef}
         src="/video/hero-santero.mp4"
         autoPlay
         muted
@@ -42,8 +73,8 @@ export default function Hero() {
       <motion.div
         className="relative z-10 mx-auto flex max-w-4xl flex-col items-center text-center"
         initial={{ opacity: 0, y: 16 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+        animate={showText ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
       >
         <h1 className="font-heading text-3xl font-light tracking-[0.15em] text-white uppercase sm:text-5xl">
           Calidez que perdura.
