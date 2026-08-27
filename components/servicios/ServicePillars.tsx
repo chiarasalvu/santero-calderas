@@ -20,7 +20,7 @@ const contactoPorPilar: Record<string, { label: string; motivo: string }> = {
 export default function ServicePillars() {
   return (
     <section className="bg-ink px-6 py-20 sm:py-28">
-      <div className="mx-auto grid max-w-6xl gap-8 sm:grid-cols-3">
+      <div className="mx-auto grid max-w-6xl gap-8 md:grid-cols-3">
         {serviciosPilares.map((pilar, index) => {
           const contacto = contactoPorPilar[pilar.id];
 
@@ -60,7 +60,7 @@ export default function ServicePillars() {
               {contacto && (
                 <Link
                   href={`/contacto?motivo=${contacto.motivo}`}
-                  className="mt-8 flex items-center justify-center gap-2 rounded-lg border border-white/20 px-4 py-3 text-sm font-medium text-white/70 transition-colors hover:border-brand-red-light hover:text-brand-red-light"
+                  className="mt-auto pt-8 flex items-center justify-center gap-2 rounded-lg border border-white/20 px-4 py-3 text-sm font-medium text-white/70 transition-colors hover:border-brand-red-light hover:text-brand-red-light"
                 >
                   {contacto.label}
                 </Link>
