@@ -51,7 +51,7 @@ export default function ComparisonTable() {
             Comparativa Técnica
           </p>
           <h2 className="mt-3 font-heading text-3xl font-bold text-white sm:text-4xl">
-            Ventaja Competitiva Santero
+            Ventaja competitiva Santero
           </h2>
         </Reveal>
 

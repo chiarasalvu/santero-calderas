@@ -48,7 +48,7 @@ export default function ProductLines() {
       <div className="mx-auto max-w-6xl">
         <Reveal>
           <h2 className="font-heading text-3xl font-bold text-white sm:text-4xl">
-            Productos Principales
+            Productos principales
           </h2>
           <p className="mt-3 max-w-2xl text-white/70">
             Las dos líneas de generación de agua caliente que respaldan el

@@ -10,19 +10,19 @@ const caracteristicas = [
   },
   {
     id: "eficiencia",
-    titulo: "Alta Eficiencia Energética",
+    titulo: "Alta eficiencia energética",
     descripcion:
       "La transferencia térmica optimizada permite generar agua caliente sanitaria con un menor consumo de energía, reduciendo costos operativos y mejorando el rendimiento general de la instalación.",
   },
   {
     id: "instantanea",
-    titulo: "Agua Caliente Instantánea",
+    titulo: "Agua caliente instantánea",
     descripcion:
       "El sistema genera agua caliente en el momento de la demanda, evitando grandes acumulaciones y garantizando disponibilidad constante para instalaciones de alto consumo.",
   },
   {
     id: "mantenimiento",
-    titulo: "Menor Necesidad de Mantenimiento",
+    titulo: "Menor necesidad de mantenimiento",
     descripcion:
       "La reducción de sarro y el diseño del sistema contribuyen a disminuir intervenciones correctivas y tareas de mantenimiento a lo largo del tiempo.",
   },
