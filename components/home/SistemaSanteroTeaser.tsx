@@ -57,7 +57,7 @@ export default function SistemaSanteroTeaser() {
             <li key={paso.numero}>
               <Reveal
                 delay={Math.min(index * 0.08, 0.4)}
-                className="h-full rounded-2xl bg-ink-light p-6"
+                className="h-full rounded-2xl border border-transparent bg-ink-light p-6 transition-all duration-300 hover:-translate-y-1 hover:border-brand-red-light/40"
               >
                 <span className="font-heading text-3xl font-bold text-brand-red-light">
                   {paso.numero}
