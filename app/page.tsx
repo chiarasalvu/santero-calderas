@@ -6,7 +6,7 @@ import SistemaSanteroTeaser from "@/components/home/SistemaSanteroTeaser";
 import ProductLines from "@/components/home/ProductLines";
 import FeaturedProduct from "@/components/home/FeaturedProduct";
 import CasesPreview from "@/components/home/CasesPreview";
-import HistoryTimeline from "@/components/HistoryTimeline";
+import AboutTeaser from "@/components/home/AboutTeaser";
 import CtaBanner from "@/components/CtaBanner";
 import { getLogosPorSegmento } from "@/lib/segment-logos";
 
@@ -23,7 +23,7 @@ export default function Home() {
       <ProductLines />
       <FeaturedProduct />
       <CasesPreview logosPorSegmento={logosPorSegmento} />
-      <HistoryTimeline tone="dark" />
+      <AboutTeaser />
       <CtaBanner
         titulo="¿Listo para modernizar su planta?"
         descripcion="Nuestra ingeniería se adapta a los desafíos de hoy con la solidez de siempre. Conozca todas nuestras soluciones térmicas."
