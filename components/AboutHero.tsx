@@ -1,12 +1,33 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import Reveal from "@/components/motion/Reveal";
 
 export default function AboutHero() {
   const [videoOpen, setVideoOpen] = useState(false);
+  const videoTriggerRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (!videoOpen) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        setVideoOpen(false);
+        videoTriggerRef.current?.focus();
+      }
+    }
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [videoOpen]);
 
   return (
     <section className="relative flex min-h-dvh items-center overflow-hidden bg-ink px-6 py-24 sm:py-32">
@@ -38,6 +59,7 @@ export default function AboutHero() {
         </p>
 
         <button
+          ref={videoTriggerRef}
           type="button"
           onClick={() => setVideoOpen(true)}
           className="mt-8 flex items-center gap-3 text-xs font-medium tracking-widest text-white/70 uppercase transition-colors hover:text-white"
@@ -61,6 +83,8 @@ export default function AboutHero() {
             transition={{ duration: 0.2 }}
             className="fixed inset-0 z-[80] flex items-center justify-center bg-black/90 px-6"
             onClick={() => setVideoOpen(false)}
+            role="dialog"
+            aria-modal="true"
           >
             <button
               type="button"
@@ -78,6 +102,9 @@ export default function AboutHero() {
               src="/video/hero-santero.mp4"
               controls
               autoPlay
+              playsInline
+              muted
+              loop
               className="max-h-[80vh] w-full max-w-4xl rounded-lg"
               onClick={(event) => event.stopPropagation()}
             />
