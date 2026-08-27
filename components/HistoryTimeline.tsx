@@ -1,3 +1,7 @@
+"use client";
+
+import { useRef } from "react";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import Reveal from "@/components/motion/Reveal";
 
 type HitoHistoria = {
@@ -51,6 +55,14 @@ type HistoryTimelineProps = {
 
 export default function HistoryTimeline({ tone = "light" }: HistoryTimelineProps) {
   const dark = tone === "dark";
+  const listRef = useRef<HTMLOListElement>(null);
+
+  const shouldReduceMotion = useReducedMotion();
+  const { scrollYProgress } = useScroll({
+    target: listRef,
+    offset: ["start 0.85", "end 0.6"],
+  });
+  const lineScale = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   return (
     <section className={`px-6 py-20 sm:py-28 ${dark ? "bg-ink" : ""}`}>
@@ -62,18 +74,26 @@ export default function HistoryTimeline({ tone = "light" }: HistoryTimelineProps
             Somos más que una compañía.
             <br />
             Somos{" "}
-            <span className="font-bold">
+            <span className="font-semibold">
               trayectoria, tecnología, compromiso y mejora constante
             </span>
             .
           </h2>
         </Reveal>
 
-        <ol className="relative mt-16 flex flex-col gap-10 sm:gap-16">
+        <ol ref={listRef} className="relative mt-16 flex flex-col gap-10 sm:gap-16">
+          {/* La línea no está fija de entrada: se dibuja de arriba hacia
+              abajo a medida que se scrollea la lista, en sincro con las
+              cards que van apareciendo (Reveal). */}
           <div
-            className="absolute top-0 bottom-0 left-1/2 hidden w-px -translate-x-1/2 bg-brand-red/30 sm:block"
+            className="absolute top-0 bottom-0 left-1/2 hidden w-px -translate-x-1/2 sm:block"
             aria-hidden
-          />
+          >
+            <motion.div
+              className="h-full w-full origin-top bg-brand-red/30"
+              style={{ scaleY: shouldReduceMotion ? 1 : lineScale }}
+            />
+          </div>
 
           {historia.map((hito, index) => {
             const cardOnRight = index % 2 === 0;
@@ -84,7 +104,7 @@ export default function HistoryTimeline({ tone = "light" }: HistoryTimelineProps
                 className="relative flex flex-col items-center gap-2 sm:flex-row sm:gap-12"
               >
                 <span
-                  className={`font-heading text-lg font-bold tracking-wide uppercase sm:flex-1 sm:text-5xl sm:font-normal sm:tracking-normal sm:normal-case lg:text-6xl ${
+                  className={`font-heading text-lg font-light uppercase sm:flex-1 sm:text-5xl sm:normal-case lg:text-6xl ${
                     dark
                       ? "text-brand-red-light sm:text-brand-red-light"
                       : "text-brand-red sm:text-brand-red/50"
