@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Reveal from "@/components/motion/Reveal";
+import AnimatedCounter from "@/components/motion/AnimatedCounter";
 
 type LineaItem = {
   titulo: string;
@@ -14,7 +15,7 @@ type LineaProducto = {
   badgeClassName: string;
   subtitulo: string;
   items: LineaItem[];
-  rendimiento: string;
+  rendimiento: number;
 };
 
 const lineas: LineaProducto[] = [
@@ -37,7 +38,7 @@ const lineas: LineaProducto[] = [
           "Generación instantánea mediante calentamiento indirecto.",
       },
     ],
-    rendimiento: "98%",
+    rendimiento: 98,
   },
   {
     id: "adn",
@@ -57,7 +58,7 @@ const lineas: LineaProducto[] = [
         descripcion: "Generación instantánea y bajo mantenimiento.",
       },
     ],
-    rendimiento: "92%",
+    rendimiento: 92,
   },
 ];
 
@@ -79,15 +80,15 @@ export default function ProductLines() {
             <Reveal
               key={linea.id}
               delay={index * 0.1}
-              className="overflow-hidden rounded-2xl border border-white/10 bg-ink-light"
+              className="group overflow-hidden rounded-2xl border border-white/10 bg-ink-light transition-all duration-300 hover:-translate-y-1 hover:border-brand-red-light/40"
             >
-              <div className="relative aspect-video">
+              <div className="relative aspect-video overflow-hidden">
                 <Image
                   src={linea.imagen}
                   alt={linea.nombre}
                   fill
                   sizes="(min-width: 640px) 50vw, 100vw"
-                  className="object-cover"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 <span
                   className={`absolute top-4 right-4 rounded-full px-3 py-1 text-xs font-semibold tracking-wide uppercase ${linea.badgeClassName}`}
@@ -108,7 +109,7 @@ export default function ProductLines() {
                   {linea.items.map((item) => (
                     <li key={item.titulo} className="flex items-start gap-3">
                       <span
-                        className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-red/20 text-brand-red-light"
+                        className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-red/20 text-brand-red-light transition-transform duration-300 group-hover:scale-110"
                         aria-hidden
                       >
                         <CheckIcon />
@@ -129,8 +130,8 @@ export default function ProductLines() {
                   <span className="font-mono text-xs font-medium tracking-widest text-white/50 uppercase">
                     Rendimiento
                   </span>
-                  <span className="font-heading text-2xl font-bold text-brand-red-light">
-                    {linea.rendimiento}
+                  <span className="flex items-baseline font-heading text-2xl font-bold text-brand-red-light">
+                    <AnimatedCounter value={linea.rendimiento} />%
                   </span>
                 </div>
 

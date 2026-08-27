@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import Reveal from "@/components/motion/Reveal";
+import AnimatedCounter from "@/components/motion/AnimatedCounter";
 
 const bullets = [
   "Capacidades para proyectos de alta exigencia.",
@@ -65,10 +66,10 @@ export default function FeaturedProduct() {
             <p className="font-heading text-lg font-bold text-navy">
               Línea ATSOL
             </p>
-            <p className="mt-2 border-t border-zinc-200 pt-2 text-xs text-zinc-600">
-              <span className="font-heading text-xl font-bold text-brand-red">
-                98%
-              </span>{" "}
+            <p className="mt-2 flex items-baseline gap-1 border-t border-zinc-200 pt-2 text-xs text-zinc-600">
+              <span className="flex items-baseline font-heading text-xl font-bold text-brand-red">
+                <AnimatedCounter value={98} />%
+              </span>
               eficiencia estacionaria
             </p>
           </div>
