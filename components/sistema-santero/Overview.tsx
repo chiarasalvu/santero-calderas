@@ -30,7 +30,7 @@ const caracteristicas = [
 
 export default function Overview() {
   return (
-    <section className="border-b border-steel/20 bg-ink px-6 pb-20 sm:pb-24">
+    <section className="bg-ink px-6 pb-20 sm:pb-24">
       <div className="mx-auto max-w-6xl">
         <Reveal>
           <p className="font-mono text-xs font-light text-brand-red-light">

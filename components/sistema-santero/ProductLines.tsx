@@ -65,7 +65,7 @@ const lineas: LineaProducto[] = [
 export default function ProductLines() {
   return (
     <section className="bg-ink px-6 pb-20 sm:pb-24">
-      <div className="mx-auto max-w-6xl">
+      <div className="mx-auto max-w-5xl">
         <Reveal>
           <h2 className="font-heading text-3xl font-semibold text-white sm:text-4xl">
             Líneas de producto
@@ -75,7 +75,7 @@ export default function ProductLines() {
           </p>
         </Reveal>
 
-        <div className="mt-12 grid gap-8 sm:grid-cols-2">
+        <div className="mt-12 grid gap-6 sm:grid-cols-2">
           {lineas.map((linea, index) => (
             <Reveal
               key={linea.id}
@@ -97,7 +97,7 @@ export default function ProductLines() {
                 </span>
               </div>
 
-              <div className="p-6">
+              <div className="p-5">
                 <h3 className="font-heading text-xl font-semibold text-white">
                   {linea.nombre}
                 </h3>

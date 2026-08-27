@@ -4,7 +4,7 @@ import Reveal from "@/components/motion/Reveal";
 
 export default function Compromiso() {
   return (
-    <section className="relative overflow-hidden bg-ink px-6 pb-20 sm:pb-24">
+    <section className="relative overflow-hidden bg-ink px-6 py-20 sm:py-28">
       <Image
         src="/img/generales/trabajo-3.png"
         alt=""
@@ -16,11 +16,11 @@ export default function Compromiso() {
         aria-hidden
       />
 
-      <Reveal className="relative mx-auto max-w-3xl">
+      <Reveal className="relative mx-auto max-w-2xl text-center">
         <p className="font-mono text-xs font-light text-brand-red-light">
           Compromiso Santero
         </p>
-        <h2 className="mt-4 max-w-xl font-heading text-3xl font-semibold text-white sm:text-4xl">
+        <h2 className="mt-4 font-heading text-2xl font-semibold text-white sm:text-3xl">
           La excelencia térmica no es un objetivo, es nuestro estándar
           operativo. Conozca nuestra planta de desarrollo.
         </h2>

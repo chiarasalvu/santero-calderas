@@ -77,54 +77,52 @@ export default function FaqAccordion() {
 
   return (
     <section className="bg-ink px-6 pb-24">
-      <div className="mx-auto max-w-6xl">
-        <div className="flex max-w-2xl flex-col gap-3">
-          {preguntas.map((item, index) => {
-            const open = abierta === item.id;
-            return (
-              <Reveal
-                key={item.id}
-                delay={Math.min(index * 0.05, 0.3)}
-                className="rounded-lg border border-steel/20 bg-ink-light px-5 py-4 transition-colors duration-300 hover:border-brand-red-light/40"
+      <div className="mx-auto flex max-w-2xl flex-col gap-3">
+        {preguntas.map((item, index) => {
+          const open = abierta === item.id;
+          return (
+            <Reveal
+              key={item.id}
+              delay={Math.min(index * 0.05, 0.3)}
+              className="rounded-lg border border-steel/20 bg-ink-light px-5 py-4 transition-colors duration-300 hover:border-brand-red-light/40"
+            >
+              <button
+                type="button"
+                onClick={() => setAbierta(open ? null : item.id)}
+                aria-expanded={open}
+                className="flex w-full items-center justify-between gap-4 text-left"
               >
-                <button
-                  type="button"
-                  onClick={() => setAbierta(open ? null : item.id)}
-                  aria-expanded={open}
-                  className="flex w-full items-center justify-between gap-4 text-left"
+                <span className="font-heading text-sm font-semibold text-white">
+                  {item.pregunta}
+                </span>
+                <span
+                  className={`shrink-0 text-brand-red-light transition-transform ${
+                    open ? "rotate-180" : ""
+                  }`}
+                  aria-hidden
                 >
-                  <span className="font-heading text-sm font-semibold text-white">
-                    {item.pregunta}
-                  </span>
-                  <span
-                    className={`shrink-0 text-brand-red-light transition-transform ${
-                      open ? "rotate-180" : ""
-                    }`}
-                    aria-hidden
+                  ▾
+                </span>
+              </button>
+              <AnimatePresence initial={false}>
+                {open && (
+                  <motion.div
+                    key="respuesta"
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.2, ease: "easeInOut" }}
+                    className="overflow-hidden"
                   >
-                    ▾
-                  </span>
-                </button>
-                <AnimatePresence initial={false}>
-                  {open && (
-                    <motion.div
-                      key="respuesta"
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.2, ease: "easeInOut" }}
-                      className="overflow-hidden"
-                    >
-                      <p className="mt-3 text-sm text-white/70">
-                        {item.respuesta}
-                      </p>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </Reveal>
-            );
-          })}
-        </div>
+                    <p className="mt-3 text-sm text-white/70">
+                      {item.respuesta}
+                    </p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </Reveal>
+          );
+        })}
       </div>
     </section>
   );
