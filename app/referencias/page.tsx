@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Hero from "@/components/referencias/Hero";
 import LogosGrid from "@/components/referencias/LogosGrid";
+import Testimonials from "@/components/referencias/Testimonials";
+import Cobertura from "@/components/referencias/Cobertura";
 import { getLogosPorSegmento } from "@/lib/segment-logos";
 
 export const metadata: Metadata = {
@@ -16,6 +18,8 @@ export default function Referencias() {
     <>
       <Hero />
       <LogosGrid logosPorSegmento={logosPorSegmento} />
+      <Testimonials />
+      <Cobertura />
     </>
   );
 }
