@@ -2,12 +2,30 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { AnimatePresence, motion } from "framer-motion";
+import {
+  AnimatePresence,
+  motion,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+} from "framer-motion";
 import Reveal from "@/components/motion/Reveal";
 
 export default function AboutHero() {
   const [videoOpen, setVideoOpen] = useState(false);
   const videoTriggerRef = useRef<HTMLButtonElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  const shouldReduceMotion = useReducedMotion();
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+  const backgroundY = useTransform(
+    scrollYProgress,
+    [0, 1],
+    shouldReduceMotion ? ["0%", "0%"] : ["0%", "18%"],
+  );
 
   useEffect(() => {
     if (!videoOpen) return;
@@ -30,14 +48,22 @@ export default function AboutHero() {
   }, [videoOpen]);
 
   return (
-    <section className="relative flex min-h-dvh items-center overflow-hidden bg-ink px-6 py-24 sm:py-32">
-      <Image
-        src="/img/generales/sobre-nosotros.png"
-        alt=""
-        fill
-        priority
-        className="object-cover"
-      />
+    <section
+      ref={sectionRef}
+      className="relative flex min-h-dvh items-center overflow-hidden bg-ink px-6 py-24 sm:py-32"
+    >
+      <motion.div
+        className="absolute inset-x-0 -top-[9%] h-[118%]"
+        style={{ y: backgroundY }}
+      >
+        <Image
+          src="/img/generales/equipo-1.png"
+          alt=""
+          fill
+          priority
+          className="object-cover"
+        />
+      </motion.div>
       <div
         className="absolute inset-0 bg-gradient-to-t from-ink via-ink/85 to-ink/50"
         aria-hidden

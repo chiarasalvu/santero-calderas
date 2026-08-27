@@ -84,7 +84,7 @@ export default function FaqAccordion() {
             <Reveal
               key={item.id}
               delay={Math.min(index * 0.05, 0.3)}
-              className="rounded-lg border border-steel/20 bg-ink-light px-5 py-4"
+              className="rounded-lg border border-steel/20 bg-ink-light px-5 py-4 transition-colors duration-300 hover:border-brand-red-light/40"
             >
               <button
                 type="button"

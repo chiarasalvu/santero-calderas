@@ -61,7 +61,7 @@ export default function ProductLines() {
             <Reveal
               key={linea.id}
               delay={index * 0.1}
-              className="rounded-2xl border border-steel/20 bg-ink-light p-8"
+              className="group rounded-2xl border border-steel/20 bg-ink-light p-8 transition-all duration-300 hover:-translate-y-1 hover:border-brand-red-light/40"
             >
               <span className="inline-block rounded-full bg-brand-red/20 px-3 py-1 font-mono text-[10px] font-medium tracking-widest text-brand-red-light uppercase">
                 {linea.badge}
@@ -83,7 +83,7 @@ export default function ProductLines() {
                     className="flex items-start gap-3 text-sm text-white/70"
                   >
                     <span
-                      className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-red/20 text-brand-red-light"
+                      className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-red/20 text-brand-red-light transition-transform duration-300 group-hover:scale-110"
                       aria-hidden
                     >
                       <CheckIcon />

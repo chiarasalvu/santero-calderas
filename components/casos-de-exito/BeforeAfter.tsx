@@ -26,7 +26,7 @@ export default function BeforeAfter() {
         </Reveal>
 
         <div className="mt-10 grid gap-6 sm:grid-cols-2">
-          <Reveal className="rounded-2xl border border-steel/20 bg-ink-light p-8">
+          <Reveal className="rounded-2xl border border-steel/20 bg-ink-light p-8 transition-all duration-300 hover:-translate-y-1 hover:border-white/30">
             <p className="font-mono text-xs font-medium tracking-widest text-white/50 uppercase">
               Antes
             </p>
@@ -47,7 +47,7 @@ export default function BeforeAfter() {
 
           <Reveal
             delay={0.1}
-            className="rounded-2xl border border-brand-red-light/20 bg-ink-light p-8"
+            className="rounded-2xl border border-brand-red-light/20 bg-ink-light p-8 transition-all duration-300 hover:-translate-y-1 hover:border-brand-red-light/50"
           >
             <p className="font-mono text-xs font-medium tracking-widest text-brand-red-light uppercase">
               Después: Sistema Santero

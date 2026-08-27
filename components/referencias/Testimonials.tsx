@@ -20,7 +20,7 @@ export default function Testimonials() {
             <Reveal
               key={id}
               delay={Math.min(index * 0.1, 0.3)}
-              className="flex flex-col justify-between rounded-2xl border border-steel/20 bg-ink-light p-8"
+              className="flex flex-col justify-between rounded-2xl border border-steel/20 bg-ink-light p-8 transition-all duration-300 hover:-translate-y-1 hover:border-brand-red-light/40"
             >
               <p className="text-sm text-white/60 italic">
                 &ldquo;Espacio reservado para un testimonio real de un

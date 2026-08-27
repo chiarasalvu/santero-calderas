@@ -12,9 +12,15 @@ export default function Diferencial() {
           </h2>
           <Link
             href="/servicios"
-            className="font-mono text-xs font-medium tracking-widest text-brand-red-light uppercase transition-colors hover:text-white"
+            className="group/link flex items-center gap-1 font-mono text-xs font-medium tracking-widest text-brand-red-light uppercase transition-colors hover:text-white"
           >
-            Ver metodología →
+            Ver metodología
+            <span
+              className="transition-transform duration-200 group-hover/link:translate-x-1"
+              aria-hidden
+            >
+              →
+            </span>
           </Link>
         </Reveal>
 
@@ -23,10 +29,12 @@ export default function Diferencial() {
             <Reveal
               key={pilar.id}
               delay={Math.min(index * 0.1, 0.3)}
-              className="relative overflow-hidden rounded-2xl border border-steel/20 bg-ink-light p-8"
+              className="group relative overflow-hidden rounded-2xl border border-steel/20 bg-ink-light p-8 transition-all duration-300 hover:-translate-y-1 hover:border-brand-red-light/40"
             >
               <div className="relative">
-                <PilarIcon id={pilar.id} />
+                <span className="inline-flex transition-transform duration-300 group-hover:scale-110">
+                  <PilarIcon id={pilar.id} />
+                </span>
                 <h3 className="mt-4 font-heading text-lg font-semibold text-white">
                   {pilar.titulo}
                 </h3>

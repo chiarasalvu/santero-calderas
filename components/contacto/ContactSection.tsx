@@ -1,4 +1,3 @@
-import { Suspense } from "react";
 import Reveal from "@/components/motion/Reveal";
 import ContactForm from "@/components/ContactForm";
 
@@ -21,9 +20,7 @@ export default function ContactSection() {
             Envianos tu consulta
           </h2>
           <div className="mt-6">
-            <Suspense fallback={null}>
-              <ContactForm />
-            </Suspense>
+            <ContactForm />
           </div>
         </Reveal>
 

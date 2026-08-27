@@ -1,9 +1,34 @@
+"use client";
+
+import { useRef } from "react";
 import Image from "next/image";
+import {
+  motion,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+} from "framer-motion";
 import Reveal from "@/components/motion/Reveal";
+import AnimatedCounter from "@/components/motion/AnimatedCounter";
 
 export default function Hero() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const shouldReduceMotion = useReducedMotion();
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+  const imageY = useTransform(
+    scrollYProgress,
+    [0, 1],
+    shouldReduceMotion ? ["0%", "0%"] : ["0%", "-10%"],
+  );
+
   return (
-    <section className="bg-navy px-6 pt-32 pb-16 sm:pt-40 sm:pb-20 lg:pt-44">
+    <section
+      ref={sectionRef}
+      className="bg-navy px-6 pt-32 pb-16 sm:pt-40 sm:pb-20 lg:pt-44"
+    >
       <div className="mx-auto grid max-w-6xl items-center gap-16 lg:grid-cols-2">
         <Reveal>
           <p className="font-mono text-xs font-medium tracking-widest text-brand-red-light uppercase">
@@ -41,7 +66,10 @@ export default function Hero() {
         </Reveal>
 
         <Reveal delay={0.15} className="relative">
-          <div className="aspect-square rounded-2xl bg-white p-4 shadow-xl">
+          <motion.div
+            style={{ y: imageY }}
+            className="aspect-square rounded-2xl bg-white p-4 shadow-xl"
+          >
             <div className="relative h-full w-full overflow-hidden rounded-xl bg-zinc-100">
               <Image
                 src="/img/generales/caldera-4.png"
@@ -50,11 +78,11 @@ export default function Hero() {
                 className="object-contain p-6"
               />
             </div>
-          </div>
+          </motion.div>
 
           <div className="absolute -bottom-4 -left-4 rounded-xl bg-cream px-6 py-4 shadow-lg sm:-bottom-6 sm:-left-6">
-            <p className="font-heading text-3xl font-bold text-brand-red">
-              98%
+            <p className="flex items-baseline font-heading text-3xl font-bold text-brand-red">
+              <AnimatedCounter value={98} />%
             </p>
             <p className="text-xs font-medium tracking-wide text-zinc-500 uppercase">
               Eficiencia estacionaria
