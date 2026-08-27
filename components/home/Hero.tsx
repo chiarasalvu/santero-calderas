@@ -56,7 +56,7 @@ export default function Hero() {
   return (
     <section
       ref={sectionRef}
-      className="relative flex min-h-dvh items-center overflow-hidden bg-ink px-6 py-24 sm:py-32"
+      className="relative mt-[65px] flex min-h-[calc(100dvh-65px)] items-center overflow-hidden bg-ink px-6 py-24 sm:py-32 lg:mt-[121px] lg:min-h-[calc(100dvh-121px)]"
     >
       <motion.div
         className="absolute inset-x-0 -top-[9%] h-[118%]"
@@ -83,7 +83,7 @@ export default function Hero() {
         />
       </motion.div>
       <motion.div
-        className="absolute inset-0 bg-gradient-to-t from-ink via-ink/80 to-ink/50"
+        className="absolute inset-0 bg-gradient-to-t from-ink via-ink/70 to-transparent"
         aria-hidden
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
