@@ -38,7 +38,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <p className="font-mono text-xs font-light text-white/55 uppercase">
+            <p className="font-mono text-xs font-light text-white/55">
               Secciones
             </p>
             <nav className="mt-3 flex flex-col gap-2">
@@ -47,15 +47,15 @@ export default function Footer() {
                 href="/que-hacemos"
                 className="text-sm text-white/60 hover:text-brand-red-light"
               >
-                Qué Hacemos
+                Qué hacemos
               </Link>
               {footerSectionLinks.slice(2).map(renderFooterLink)}
             </nav>
           </div>
 
           <div>
-            <p className="font-mono text-xs font-light text-white/55 uppercase">
-              Legal &amp; Contacto
+            <p className="font-mono text-xs font-light text-white/55">
+              Legal &amp; contacto
             </p>
             <nav className="mt-3 flex flex-col gap-2">
               {legalLinks.map((link) => (

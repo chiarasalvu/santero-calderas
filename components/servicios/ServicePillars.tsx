@@ -4,15 +4,15 @@ import { serviciosPilares } from "@/data/servicios-pilares";
 
 const contactoPorPilar: Record<string, { label: string; motivo: string }> = {
   "ingenieria-proyectos": {
-    label: "Descargar Ficha Técnica",
+    label: "Descargar ficha técnica",
     motivo: "ficha-tecnica",
   },
   "instalacion-puesta-en-marcha": {
-    label: "Consultar Protocolo de Instalación",
+    label: "Consultar protocolo de instalación",
     motivo: "visita-tecnica",
   },
   "soporte-postventa": {
-    label: "Contactar Guardia Técnica",
+    label: "Contactar guardia técnica",
     motivo: "guardia-24hs",
   },
 };
@@ -33,7 +33,7 @@ export default function ServicePillars() {
               <span className="inline-flex w-fit transition-transform duration-300 group-hover:scale-110">
                 <PilarIcon id={pilar.id} />
               </span>
-              <h2 className="mt-4 font-heading text-xl font-semibold text-white uppercase">
+              <h2 className="mt-4 font-heading text-xl font-semibold text-white">
                 {pilar.titulo}
               </h2>
               <p className="mt-2 text-sm text-white/60">{pilar.bajada}</p>
@@ -48,7 +48,7 @@ export default function ServicePillars() {
                       <CheckIcon />
                     </span>
                     <div>
-                      <p className="font-mono text-[11px] font-light text-white uppercase">
+                      <p className="font-mono text-[11px] font-light text-white">
                         {item.titulo}
                       </p>
                       <p className="mt-1 text-sm text-white/60">

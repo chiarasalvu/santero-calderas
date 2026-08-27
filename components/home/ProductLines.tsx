@@ -63,7 +63,7 @@ export default function ProductLines() {
               delay={index * 0.1}
               className="group rounded-2xl border border-steel/20 bg-ink-light p-8 transition-all duration-300 hover:-translate-y-1 hover:border-brand-red-light/40"
             >
-              <span className="inline-block rounded-full bg-brand-red/20 px-3 py-1 font-mono text-[10px] font-light text-brand-red-light uppercase">
+              <span className="inline-block rounded-full bg-brand-red/20 px-3 py-1 font-mono text-[10px] font-light text-brand-red-light">
                 {linea.badge}
               </span>
               <h3 className="mt-4 font-heading text-xl font-semibold text-white">

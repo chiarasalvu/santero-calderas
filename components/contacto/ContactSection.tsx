@@ -32,7 +32,7 @@ export default function ContactSection() {
             <dl className="mt-4 flex flex-col gap-3">
               {datosContacto.map((dato) => (
                 <div key={dato.label}>
-                  <dt className="text-xs font-semibold text-brand-red-light uppercase">
+                  <dt className="text-xs font-semibold text-brand-red-light">
                     {dato.label}
                   </dt>
                   <dd className="text-sm text-white/70">{dato.valor}</dd>

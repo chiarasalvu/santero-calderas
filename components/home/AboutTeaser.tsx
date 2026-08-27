@@ -14,7 +14,7 @@ export default function AboutTeaser() {
       <div className="mx-auto max-w-6xl">
         <Reveal className="flex flex-wrap items-end justify-between gap-4">
           <div>
-            <p className="font-mono text-xs font-light text-brand-red-light uppercase">
+            <p className="font-mono text-xs font-light text-brand-red-light">
               Desde 1935
             </p>
             <h2 className="mt-3 font-heading text-3xl font-semibold text-white sm:text-4xl">
@@ -27,7 +27,7 @@ export default function AboutTeaser() {
           </div>
           <Link
             href="/nosotros"
-            className="group/link flex items-center gap-1 font-mono text-xs font-light text-brand-red-light uppercase transition-colors hover:text-white"
+            className="group/link flex items-center gap-1 font-mono text-xs font-light text-brand-red-light transition-colors hover:text-white"
           >
             Conocer nuestra historia completa
             <span
@@ -46,7 +46,7 @@ export default function AboutTeaser() {
                 {stat.prefix}
                 <AnimatedCounter value={stat.value} />
               </span>
-              <p className="mt-1 font-mono text-xs font-light text-white/50 uppercase">
+              <p className="mt-1 font-mono text-xs font-light text-white/50">
                 {stat.label}
               </p>
             </div>

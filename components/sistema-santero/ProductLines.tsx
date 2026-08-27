@@ -23,17 +23,17 @@ const lineas: LineaProducto[] = [
     id: "atsol",
     nombre: "Línea ATSOL",
     imagen: "/img/generales/caldera-9.png",
-    badge: "Línea Premium",
+    badge: "Línea premium",
     badgeClassName: "bg-brand-red text-white",
     subtitulo: "La solución para grandes demandas de agua caliente sanitaria.",
     items: [
       {
-        titulo: "Alta Exigencia",
+        titulo: "Alta exigencia",
         descripcion:
           "Capacidades para proyectos de alta exigencia, ideal para hoteles, clubes, edificios e industrias.",
       },
       {
-        titulo: "Generación Instantánea",
+        titulo: "Generación instantánea",
         descripcion:
           "Generación instantánea mediante calentamiento indirecto.",
       },
@@ -44,17 +44,17 @@ const lineas: LineaProducto[] = [
     id: "adn",
     nombre: "Línea ADN",
     imagen: "/img/generales/caldera-11.png",
-    badge: "Relación Precio-Calidad",
+    badge: "Relación precio-calidad",
     badgeClassName: "bg-navy text-white",
     subtitulo: "La eficiencia del Sistema Santero en formato compacto.",
     items: [
       {
-        titulo: "Diseño Compacto",
+        titulo: "Diseño compacto",
         descripcion:
           "Diseñada para demandas medianas y espacios reducidos, ideal para consorcios, gimnasios y climatización de piscinas.",
       },
       {
-        titulo: "Bajo Mantenimiento",
+        titulo: "Bajo mantenimiento",
         descripcion: "Generación instantánea y bajo mantenimiento.",
       },
     ],
@@ -91,7 +91,7 @@ export default function ProductLines() {
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 <span
-                  className={`absolute top-4 right-4 rounded-full px-3 py-1 text-xs font-semibold uppercase ${linea.badgeClassName}`}
+                  className={`absolute top-4 right-4 rounded-full px-3 py-1 text-xs font-semibold ${linea.badgeClassName}`}
                 >
                   {linea.badge}
                 </span>
@@ -115,7 +115,7 @@ export default function ProductLines() {
                         <CheckIcon />
                       </span>
                       <div>
-                        <p className="font-mono text-[11px] font-light text-white uppercase">
+                        <p className="font-mono text-[11px] font-light text-white">
                           {item.titulo}
                         </p>
                         <p className="mt-1 text-sm text-white/60">
@@ -127,7 +127,7 @@ export default function ProductLines() {
                 </ul>
 
                 <div className="mt-6 flex items-center justify-between border-t border-white/10 pt-4">
-                  <span className="font-mono text-xs font-light text-white/50 uppercase">
+                  <span className="font-mono text-xs font-light text-white/50">
                     Rendimiento
                   </span>
                   <span className="flex items-baseline font-heading text-2xl font-semibold text-brand-red-light">
@@ -137,7 +137,7 @@ export default function ProductLines() {
 
                 <button
                   type="button"
-                  className="mt-6 flex w-full items-center justify-center gap-2 rounded-lg border border-white/20 px-4 py-3 text-sm font-light text-white/70 transition-colors hover:border-brand-red-light hover:text-brand-red-light"
+                  className="mt-6 flex w-full items-center justify-center gap-2 rounded-lg border border-white/20 px-4 py-3 text-sm font-semibold text-white/80 transition-colors hover:border-brand-red-light hover:text-brand-red-light"
                 >
                   <span aria-hidden>⬇</span>
                   Descargar ficha técnica

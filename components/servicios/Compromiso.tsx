@@ -17,10 +17,10 @@ export default function Compromiso() {
       />
 
       <Reveal className="relative mx-auto max-w-3xl">
-        <p className="font-mono text-xs font-light text-brand-red-light uppercase">
+        <p className="font-mono text-xs font-light text-brand-red-light">
           Compromiso Santero
         </p>
-        <h2 className="mt-4 max-w-xl text-lg text-white/90">
+        <h2 className="mt-4 max-w-xl font-heading text-3xl font-semibold text-white sm:text-4xl">
           La excelencia térmica no es un objetivo, es nuestro estándar
           operativo. Conozca nuestra planta de desarrollo.
         </h2>
@@ -29,7 +29,7 @@ export default function Compromiso() {
           href="/contacto?motivo=visita-tecnica"
           className="mt-8 inline-flex items-center gap-2 rounded-lg bg-brand-red px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white hover:text-brand-red"
         >
-          Solicitar Visita Técnica
+          Solicitar visita técnica
           <span aria-hidden>→</span>
         </Link>
       </Reveal>

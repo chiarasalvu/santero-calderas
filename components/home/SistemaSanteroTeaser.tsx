@@ -38,7 +38,7 @@ export default function SistemaSanteroTeaser() {
     <section className="bg-ink px-6 py-20 sm:py-28">
       <div className="mx-auto max-w-6xl">
         <Reveal>
-          <p className="font-heading text-sm font-semibold text-brand-red-light uppercase">
+          <p className="font-heading text-sm font-semibold text-brand-red-light">
             Ingeniería propia. Tecnología avanzada.
           </p>
           <h2 className="mt-4 max-w-2xl font-heading text-3xl font-semibold text-white sm:text-4xl">

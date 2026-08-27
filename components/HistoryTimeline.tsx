@@ -69,12 +69,12 @@ export default function HistoryTimeline({ tone = "light" }: HistoryTimelineProps
       <div className="mx-auto max-w-6xl">
         <Reveal>
           <h2
-            className={`font-heading text-2xl sm:text-3xl ${dark ? "text-white" : "text-navy"}`}
+            className={`font-heading text-3xl font-semibold sm:text-4xl ${dark ? "text-white" : "text-navy"}`}
           >
             Somos más que una compañía.
             <br />
             Somos{" "}
-            <span className="font-semibold">
+            <span className={dark ? "text-brand-red-light" : "text-brand-red"}>
               trayectoria, tecnología, compromiso y mejora constante
             </span>
             .
@@ -104,7 +104,7 @@ export default function HistoryTimeline({ tone = "light" }: HistoryTimelineProps
                 className="relative flex flex-col items-center gap-2 sm:flex-row sm:gap-12"
               >
                 <span
-                  className={`font-heading text-lg font-light uppercase sm:flex-1 sm:text-5xl sm:normal-case lg:text-6xl ${
+                  className={`font-heading text-lg font-light sm:flex-1 sm:text-5xl lg:text-6xl ${
                     dark
                       ? "text-brand-red-light sm:text-brand-red-light"
                       : "text-brand-red sm:text-brand-red/50"

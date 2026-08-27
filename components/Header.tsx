@@ -58,7 +58,7 @@ export default function Header() {
         key={link.href}
         href={link.href}
         onClick={closeMenu}
-        className={`font-heading text-2xl font-semibold uppercase transition-colors sm:text-3xl lg:text-4xl ${
+        className={`font-heading text-lg font-light transition-colors sm:text-xl ${
           active
             ? "text-brand-red-light"
             : "text-white hover:text-brand-red-light"
@@ -78,7 +78,7 @@ export default function Header() {
           <Link
             href="/contacto"
             onClick={closeMenu}
-            className="justify-self-start rounded border border-steel/40 px-3 py-2 text-[11px] font-light uppercase text-white/80 transition-colors hover:border-white hover:text-white sm:px-4 sm:text-xs"
+            className="justify-self-start rounded border border-steel/40 px-3 py-2 text-xs font-light text-white/80 transition-colors hover:border-white hover:text-white sm:px-4"
           >
             Contacto
           </Link>
@@ -89,7 +89,7 @@ export default function Header() {
               alt="Calderas Santero"
               width={746}
               height={248}
-              className="h-7 w-auto sm:h-8"
+              className="h-9 w-auto sm:h-11"
               priority
             />
           </Link>
@@ -99,7 +99,7 @@ export default function Header() {
             aria-expanded={menuOpen}
             aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
             onClick={() => (menuOpen ? closeMenu() : setMenuOpen(true))}
-            className="flex items-center justify-self-end gap-2 rounded border border-steel/40 px-2.5 py-2 text-[10px] font-light uppercase text-white transition-colors hover:border-white sm:px-3 sm:text-[11px]"
+            className="flex items-center justify-self-end gap-2 rounded border border-steel/40 px-2.5 py-2 text-xs font-light text-white transition-colors hover:border-white sm:px-3"
           >
             {menuOpen ? "Cerrar" : "Menu"}
             <span aria-hidden className="flex flex-col gap-[3px]">
@@ -134,7 +134,7 @@ export default function Header() {
             transition={{ duration: 0.25, ease: "easeOut" }}
             className="fixed inset-0 top-16 z-[60] overflow-y-auto bg-ink"
           >
-            <nav className="mx-auto flex min-h-full max-w-3xl flex-col items-center justify-center gap-6 px-6 py-16 lg:max-w-5xl lg:gap-8">
+            <nav className="mx-auto flex min-h-full max-w-3xl flex-col items-center justify-center gap-4 px-6 py-16 lg:max-w-5xl lg:gap-5">
               {renderPanelLink(homeLink)}
               {navLinks.slice(0, 2).map(renderPanelLink)}
 
@@ -143,15 +143,15 @@ export default function Header() {
                   type="button"
                   aria-expanded={queHacemosOpen}
                   onClick={() => setQueHacemosOpen((prev) => !prev)}
-                  className={`flex items-center gap-2 font-heading text-2xl font-semibold uppercase transition-colors sm:text-3xl lg:text-4xl ${
+                  className={`flex items-center gap-2 font-heading text-lg font-light transition-colors sm:text-xl ${
                     queHacemosOpen
                       ? "text-brand-red-light"
                       : "text-white hover:text-brand-red-light"
                   }`}
                 >
-                  Qué Hacemos
+                  Qué hacemos
                   <span
-                    className={`text-base transition-transform ${
+                    className={`text-sm transition-transform ${
                       queHacemosOpen ? "rotate-180" : ""
                     }`}
                     aria-hidden
@@ -172,21 +172,21 @@ export default function Header() {
                       <div className="mt-6 flex flex-col gap-6 lg:grid lg:grid-cols-3 lg:gap-x-10 lg:gap-y-0 lg:divide-x lg:divide-steel/20">
                         <div className="lg:pr-8">
                           <QueHacemosColumn
-                            titulo="Por Rubro"
+                            titulo="Por rubro"
                             items={porRubro}
                             onNavigate={closeMenu}
                           />
                         </div>
                         <div className="lg:px-8">
                           <QueHacemosColumn
-                            titulo="Por Servicio"
+                            titulo="Por servicio"
                             items={porServicio}
                             onNavigate={closeMenu}
                           />
                         </div>
                         <div className="lg:pl-8">
                           <QueHacemosColumn
-                            titulo="Por Producto"
+                            titulo="Por producto"
                             items={porProducto}
                             onNavigate={closeMenu}
                           />
@@ -195,7 +195,7 @@ export default function Header() {
                       <Link
                         href="/que-hacemos"
                         onClick={closeMenu}
-                        className="group/link mt-6 flex w-fit items-center gap-1 text-xs font-light uppercase text-brand-red-light transition-colors hover:text-white"
+                        className="group/link mt-6 flex w-fit items-center gap-1 text-xs font-light text-brand-red-light transition-colors hover:text-white"
                       >
                         Ver todo
                         <span
@@ -217,7 +217,7 @@ export default function Header() {
                 onClick={closeMenu}
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
-                className="mt-6 rounded bg-brand-red px-8 py-3 text-sm font-semibold text-white transition-colors hover:bg-white hover:text-brand-red"
+                className="mt-6 rounded-lg bg-brand-red px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white hover:text-brand-red"
               >
                 Solicitar asesoramiento
               </MotionLink>
@@ -240,9 +240,7 @@ function QueHacemosColumn({
 }) {
   return (
     <div>
-      <p className="text-[11px] font-light uppercase text-white/40">
-        {titulo}
-      </p>
+      <p className="text-xs font-light text-white/40">{titulo}</p>
       <ul className="mt-4 flex flex-col gap-2">
         {items.map((item) => (
           <li key={item.label}>

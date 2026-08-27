@@ -21,11 +21,11 @@ export default function FeaturedCase() {
               />
               <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8">
                 <div className="flex flex-wrap items-center gap-2">
-                  <span className="rounded border border-brand-red-light/30 bg-ink/80 px-3 py-1 font-mono text-xs font-light text-brand-red-light uppercase">
-                    Caso de Ejemplo
+                  <span className="rounded border border-brand-red-light/30 bg-ink/80 px-3 py-1 font-mono text-xs font-light text-brand-red-light">
+                    Caso de ejemplo
                   </span>
-                  <span className="rounded border border-steel/30 bg-ink/80 px-3 py-1 font-mono text-xs font-light text-white/70 uppercase">
-                    Sector Hotelero
+                  <span className="rounded border border-steel/30 bg-ink/80 px-3 py-1 font-mono text-xs font-light text-white/70">
+                    Sector hotelero
                   </span>
                 </div>
                 <h2 className="mt-4 font-heading text-xl font-semibold text-white sm:text-2xl">
@@ -42,8 +42,8 @@ export default function FeaturedCase() {
 
           <div className="flex flex-col gap-4">
             <div className="flex-1 rounded-2xl border border-steel/20 bg-ink-light p-8 transition-all duration-300 hover:-translate-y-1 hover:border-brand-red-light/40">
-              <p className="font-mono text-xs font-light text-white/55 uppercase">
-                Ahorro Energético
+              <p className="font-mono text-xs font-light text-white/55">
+                Ahorro energético
               </p>
               <p className="mt-3 font-heading text-4xl font-semibold text-brand-red-light">
                 X%
@@ -53,8 +53,8 @@ export default function FeaturedCase() {
               </p>
             </div>
             <div className="flex-1 rounded-2xl border border-steel/20 bg-ink-light p-8 transition-all duration-300 hover:-translate-y-1 hover:border-brand-red-light/40">
-              <p className="font-mono text-xs font-light text-white/55 uppercase">
-                Reducción de Sarro
+              <p className="font-mono text-xs font-light text-white/55">
+                Reducción de sarro
               </p>
               <p className="mt-3 font-heading text-4xl font-semibold text-brand-red-light">
                 X%
