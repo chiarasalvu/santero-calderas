@@ -19,7 +19,7 @@ export default function Cobertura() {
         >
           <div className="relative aspect-[4/3] w-full sm:aspect-video">
             <iframe
-              src="https://www.google.com/maps/d/embed?mid=1wYo9zjKffmKzjFCTp1tx6CwJ5PYs60gA&ehbc=2E312F"
+              src="https://www.google.com/maps/d/embed?mid=1ZlW2Ur0wY8tpWzxwjf532IpQp7jKqB0&ehbc=2E312F"
               className="absolute inset-0 h-full w-full border-0"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
