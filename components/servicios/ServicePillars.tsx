@@ -19,7 +19,7 @@ const contactoPorPilar: Record<string, { label: string; motivo: string }> = {
 
 export default function ServicePillars() {
   return (
-    <section className="bg-ink px-6 pt-10 pb-20 sm:pt-14 sm:pb-28">
+    <section className="bg-ink px-6 pt-6 pb-20 sm:pt-8 sm:pb-28">
       <div className="mx-auto grid max-w-6xl gap-8 md:grid-cols-3">
         {serviciosPilares.map((pilar, index) => {
           const contacto = contactoPorPilar[pilar.id];

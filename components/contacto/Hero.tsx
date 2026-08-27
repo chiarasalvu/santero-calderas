@@ -1,6 +1,4 @@
-import { Suspense } from "react";
 import Reveal from "@/components/motion/Reveal";
-import MotivoSelector from "@/components/contacto/MotivoSelector";
 
 export default function Hero() {
   return (
@@ -15,10 +13,6 @@ export default function Hero() {
             está listo para asesorarte en tu próximo proyecto.
           </p>
         </Reveal>
-
-        <Suspense fallback={null}>
-          <MotivoSelector />
-        </Suspense>
       </div>
     </section>
   );

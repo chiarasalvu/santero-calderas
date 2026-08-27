@@ -1,12 +1,8 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { useSearchParams } from "next/navigation";
-import { motivosContacto } from "@/data/motivos-contacto";
 
 export default function ContactForm() {
-  const searchParams = useSearchParams();
-  const motivoInicial = searchParams.get("motivo") ?? "";
   const [enviado, setEnviado] = useState(false);
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -29,26 +25,6 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-5">
-      <div className="flex flex-col gap-1.5">
-        <label htmlFor="motivo" className="text-sm font-medium text-white">
-          Motivo de consulta
-        </label>
-        <select
-          key={motivoInicial}
-          id="motivo"
-          name="motivo"
-          defaultValue={motivoInicial}
-          className="rounded-lg border border-white/40 bg-ink px-4 py-2.5 text-sm text-white outline-none focus:border-brand-red focus:ring-2 focus:ring-brand-red/20"
-        >
-          <option value="">Seleccioná un motivo</option>
-          {motivosContacto.map((motivo) => (
-            <option key={motivo.slug} value={motivo.slug}>
-              {motivo.label}
-            </option>
-          ))}
-        </select>
-      </div>
-
       <div className="flex flex-col gap-1.5">
         <label htmlFor="nombre" className="text-sm font-medium text-white">
           Nombre
