@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import Reveal from "@/components/motion/Reveal";
 import { segmentos, type Segmento, type SegmentoLogo } from "@/lib/segments";
 
 type Filtro = "todos" | Segmento;
@@ -22,10 +23,10 @@ export default function CasesExplorer({ logosPorSegmento }: CasesExplorerProps) 
     filtro === "todos" ? segmentos.map((s) => s.id) : [filtro];
 
   return (
-    <>
-      <div className="border-y border-zinc-200 bg-white px-6 py-5">
-        <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-3">
-          <span className="text-xs font-semibold tracking-wide text-zinc-500 uppercase">
+    <section className="bg-ink px-6 pb-24">
+      <div className="mx-auto max-w-6xl">
+        <Reveal className="flex flex-wrap items-center gap-3 border-y border-steel/20 py-6">
+          <span className="font-mono text-xs font-medium tracking-widest text-white/50 uppercase">
             Filtrar por sector:
           </span>
           {filtros.map((opcion) => (
@@ -33,20 +34,18 @@ export default function CasesExplorer({ logosPorSegmento }: CasesExplorerProps) 
               key={opcion.id}
               type="button"
               onClick={() => setFiltro(opcion.id)}
-              className={`rounded-md px-4 py-2 text-sm font-semibold tracking-wide uppercase transition-colors ${
+              className={`rounded-lg px-4 py-2 font-mono text-xs font-medium tracking-widest uppercase transition-colors ${
                 filtro === opcion.id
                   ? "bg-brand-red text-white"
-                  : "border border-zinc-300 text-zinc-700 hover:border-brand-red hover:text-brand-red"
+                  : "border border-steel/30 text-white/70 hover:border-brand-red-light hover:text-brand-red-light"
               }`}
             >
               {opcion.label}
             </button>
           ))}
-        </div>
-      </div>
+        </Reveal>
 
-      <div className="px-6 py-16">
-        <div className="mx-auto flex max-w-6xl flex-col gap-16">
+        <div className="mt-12 flex flex-col gap-12">
           {segmentosAMostrar.map((segmentoId) => {
             const segmento = segmentos.find((s) => s.id === segmentoId)!;
             const logos = logosPorSegmento[segmentoId];
@@ -55,7 +54,7 @@ export default function CasesExplorer({ logosPorSegmento }: CasesExplorerProps) 
 
             return (
               <div key={segmentoId}>
-                <h2 className="font-heading text-xl font-bold tracking-wide text-navy uppercase">
+                <h2 className="font-mono text-xs font-medium tracking-widest text-brand-red-light uppercase">
                   {segmento.label}
                 </h2>
 
@@ -63,7 +62,7 @@ export default function CasesExplorer({ logosPorSegmento }: CasesExplorerProps) 
                   {logos.map((logo) => (
                     <div
                       key={logo.src}
-                      className="relative flex h-24 items-center justify-center rounded-xl border border-zinc-200 bg-white p-4"
+                      className="relative flex h-24 items-center justify-center rounded-xl border border-steel/20 bg-ink-light p-4"
                     >
                       <Image
                         src={logo.src}
@@ -80,6 +79,6 @@ export default function CasesExplorer({ logosPorSegmento }: CasesExplorerProps) 
           })}
         </div>
       </div>
-    </>
+    </section>
   );
 }
