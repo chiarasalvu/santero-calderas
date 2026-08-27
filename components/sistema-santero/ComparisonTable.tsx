@@ -11,13 +11,13 @@ type FilaComparacion = {
 const filas: FilaComparacion[] = [
   {
     id: "calentamiento",
-    caracteristica: "Tipo de Calentamiento",
-    tradicional: "Directo (Fuego sobre agua)",
+    caracteristica: "Tipo de calentamiento",
+    tradicional: "Directo (fuego sobre agua)",
     santero: "Indirecto (Baño María técnico)",
   },
   {
     id: "sarro",
-    caracteristica: "Riesgo de Sarro",
+    caracteristica: "Riesgo de sarro",
     tradicional: "Crítico y constante",
     santero: "Reducido",
   },
@@ -46,9 +46,9 @@ export default function ComparisonTable() {
   return (
     <section className="bg-ink px-6 py-20 sm:py-28">
       <div className="mx-auto max-w-5xl">
-        <Reveal className="text-center">
-          <p className="font-mono text-xs font-light text-brand-red-light uppercase">
-            Comparativa Técnica
+        <Reveal>
+          <p className="font-mono text-xs font-light text-brand-red-light">
+            Comparativa técnica
           </p>
           <h2 className="mt-3 font-heading text-3xl font-semibold text-white sm:text-4xl">
             Ventaja competitiva Santero
@@ -63,13 +63,13 @@ export default function ComparisonTable() {
             <table className="w-full min-w-[560px] border-collapse text-left">
               <thead>
                 <tr className="bg-ink-light">
-                  <th className="px-4 py-4 font-mono text-xs font-light text-white/50 uppercase sm:px-6">
+                  <th className="px-4 py-4 font-mono text-xs font-light text-white/50 sm:px-6">
                     Característica
                   </th>
-                  <th className="px-4 py-4 font-mono text-xs font-light text-white/50 uppercase sm:px-6">
-                    Sistema Tradicional
+                  <th className="px-4 py-4 font-mono text-xs font-light text-white/50 sm:px-6">
+                    Sistema tradicional
                   </th>
-                  <th className="px-4 py-4 font-mono text-xs font-light text-brand-red-light uppercase sm:px-6">
+                  <th className="px-4 py-4 font-mono text-xs font-light text-brand-red-light sm:px-6">
                     Sistema Santero
                   </th>
                 </tr>

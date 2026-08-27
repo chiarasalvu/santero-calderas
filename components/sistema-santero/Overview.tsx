@@ -33,8 +33,8 @@ export default function Overview() {
     <section className="border-b border-steel/20 bg-ink px-6 py-20 sm:py-28">
       <div className="mx-auto max-w-6xl">
         <Reveal>
-          <p className="font-mono text-xs font-light text-brand-red-light uppercase">
-            Ingeniería Propia. Tecnología Avanzada.
+          <p className="font-mono text-xs font-light text-brand-red-light">
+            Ingeniería propia. Tecnología avanzada.
           </p>
           <h2 className="mt-4 font-heading text-3xl font-semibold text-white sm:text-4xl">
             Sistema Santero

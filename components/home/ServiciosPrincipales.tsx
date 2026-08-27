@@ -11,7 +11,7 @@ type Servicio = {
 const servicios: Servicio[] = [
   {
     id: "agua-caliente",
-    label: "Agua Caliente",
+    label: "Agua caliente",
     image: "/img/rubros-home/agua-caliente.jpg",
   },
   {
@@ -29,13 +29,19 @@ const servicios: Servicio[] = [
 export default function ServiciosPrincipales() {
   return (
     <section className="bg-ink px-6 py-20 sm:py-28">
-      <div className="mx-auto max-w-6xl">
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
+      <div className="mx-auto max-w-4xl">
+        <Reveal>
+          <h2 className="font-heading text-3xl font-semibold text-white sm:text-4xl">
+            Qué hacemos
+          </h2>
+        </Reveal>
+
+        <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-3">
           {servicios.map((servicio, index) => (
             <Reveal key={servicio.id} delay={Math.min(index * 0.08, 0.3)}>
               <Link
                 href="/servicios"
-                className="group relative block aspect-[3/4] overflow-hidden rounded-[28px]"
+                className="group relative block aspect-[4/5] overflow-hidden rounded-2xl"
               >
                 <Image
                   src={servicio.image}
@@ -48,7 +54,7 @@ export default function ServiciosPrincipales() {
                   className="absolute inset-0 bg-gradient-to-t from-ink via-ink/10 to-transparent"
                   aria-hidden
                 />
-                <span className="absolute bottom-6 left-6 font-heading text-lg font-light text-white uppercase sm:text-xl">
+                <span className="absolute bottom-5 left-5 font-heading text-base font-light text-white sm:text-lg">
                   {servicio.label}
                 </span>
               </Link>

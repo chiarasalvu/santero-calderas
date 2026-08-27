@@ -42,9 +42,9 @@ export default function FeaturedProduct() {
 
           <Link
             href="/sistema-santero"
-            className="mt-8 inline-flex items-center gap-2 rounded border border-steel/40 px-6 py-3 text-xs font-light text-white uppercase transition-colors hover:border-white"
+            className="mt-8 inline-flex items-center gap-2 rounded-lg border border-steel/40 px-6 py-3 text-sm font-semibold text-white/80 transition-colors hover:border-brand-red-light hover:text-brand-red-light"
           >
-            Catálogo Técnico
+            Catálogo técnico
           </Link>
         </Reveal>
 
@@ -60,8 +60,8 @@ export default function FeaturedProduct() {
           </div>
 
           <div className="absolute -bottom-4 -left-4 rounded-xl bg-cream px-6 py-4 shadow-lg sm:-bottom-6 sm:-left-6">
-            <p className="font-mono text-[10px] font-light text-zinc-500 uppercase">
-              Modelo Destacado
+            <p className="font-mono text-[10px] font-light text-zinc-500">
+              Modelo destacado
             </p>
             <p className="font-heading text-lg font-semibold text-navy">
               Línea ATSOL

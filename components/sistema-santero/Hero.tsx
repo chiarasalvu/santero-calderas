@@ -31,10 +31,10 @@ export default function Hero() {
     >
       <div className="mx-auto grid max-w-6xl items-center gap-16 lg:grid-cols-2">
         <Reveal>
-          <p className="font-mono text-xs font-light text-brand-red-light uppercase">
-            Tecnología de Intercambio
+          <p className="font-mono text-xs font-light text-brand-red-light">
+            Tecnología de intercambio
           </p>
-          <h1 className="mt-4 font-heading text-4xl font-light text-white uppercase sm:text-5xl">
+          <h1 className="mt-4 font-heading text-3xl font-semibold text-white sm:text-4xl">
             Sistema
             <span className="block">Santero</span>
           </h1>
@@ -48,11 +48,11 @@ export default function Hero() {
           <div className="mt-6 flex flex-wrap items-center gap-6">
             <span className="flex items-center gap-2 text-sm text-white/80">
               <CheckCircleIcon />
-              Acero Inoxidable
+              Acero inoxidable
             </span>
             <span className="flex items-center gap-2 text-sm text-white/80">
               <CheckCircleIcon />
-              Bajo Mantenimiento
+              Bajo mantenimiento
             </span>
           </div>
 
@@ -60,7 +60,7 @@ export default function Hero() {
             href="/contacto?motivo=visita-tecnica"
             className="mt-8 inline-flex items-center gap-2 rounded-lg bg-brand-red px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white hover:text-brand-red"
           >
-            Consultar con un Ingeniero
+            Consultar con un ingeniero
             <span aria-hidden>→</span>
           </a>
         </Reveal>
@@ -84,7 +84,7 @@ export default function Hero() {
             <p className="flex items-baseline font-heading text-3xl font-semibold text-brand-red">
               <AnimatedCounter value={98} />%
             </p>
-            <p className="text-xs font-light text-zinc-500 uppercase">
+            <p className="text-xs font-light text-zinc-500">
               Eficiencia estacionaria
             </p>
           </div>

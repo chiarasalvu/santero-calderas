@@ -26,10 +26,10 @@ export default function CtaBanner({
   return (
     <section className="bg-ink px-6 py-20 sm:py-28">
       <Reveal className="mx-auto max-w-3xl text-center">
-        <p className="font-mono text-xs font-light text-brand-red-light uppercase">
-          Siguiente Paso
+        <p className="font-mono text-xs font-light text-brand-red-light">
+          Siguiente paso
         </p>
-        <h2 className="mt-4 font-heading text-2xl font-semibold text-white sm:text-4xl">
+        <h2 className="mt-4 font-heading text-3xl font-semibold text-white sm:text-4xl">
           {titulo}
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-white/70">{descripcion}</p>

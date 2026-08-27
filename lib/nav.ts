@@ -8,7 +8,7 @@ export const navLinks: NavLink[] = [
   { href: "/sistema-santero", label: "Sistema Santero" },
   { href: "/servicios", label: "Servicios" },
   { href: "/referencias", label: "Referencias" },
-  { href: "/casos-de-exito", label: "Casos de Éxito" },
+  { href: "/casos-de-exito", label: "Casos de éxito" },
   { href: "/faqs", label: "FAQ's" },
 ];
 

@@ -12,7 +12,7 @@ export default function Diferencial() {
           </h2>
           <Link
             href="/servicios"
-            className="group/link flex items-center gap-1 font-mono text-xs font-light text-brand-red-light uppercase transition-colors hover:text-white"
+            className="group/link flex items-center gap-1 font-mono text-xs font-light text-brand-red-light transition-colors hover:text-white"
           >
             Ver metodología
             <span

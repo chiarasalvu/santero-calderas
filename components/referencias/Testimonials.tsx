@@ -7,10 +7,10 @@ export default function Testimonials() {
     <section className="bg-ink px-6 pb-24">
       <div className="mx-auto max-w-6xl">
         <Reveal>
-          <p className="font-mono text-xs font-light text-brand-red-light uppercase">
+          <p className="font-mono text-xs font-light text-brand-red-light">
             Testimonios
           </p>
-          <h2 className="mt-3 font-heading text-2xl font-semibold text-white sm:text-3xl">
+          <h2 className="mt-3 font-heading text-3xl font-semibold text-white sm:text-4xl">
             Lo que dicen nuestros clientes
           </h2>
         </Reveal>
@@ -26,8 +26,8 @@ export default function Testimonials() {
                 &ldquo;Espacio reservado para un testimonio real de un
                 cliente — a completar.&rdquo;
               </p>
-              <p className="mt-6 font-mono text-xs font-light text-white/40 uppercase">
-                Nombre del cliente — Cargo, Empresa
+              <p className="mt-6 font-mono text-xs font-light text-white/40">
+                Nombre del cliente — cargo, empresa
               </p>
             </Reveal>
           ))}
