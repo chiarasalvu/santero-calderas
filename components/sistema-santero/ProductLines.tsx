@@ -75,7 +75,7 @@ export default function ProductLines() {
           </p>
         </Reveal>
 
-        <div className="mt-12 grid max-w-5xl gap-6 sm:grid-cols-2">
+        <div className="mt-12 grid gap-6 sm:grid-cols-2">
           {lineas.map((linea, index) => (
             <Reveal
               key={linea.id}
