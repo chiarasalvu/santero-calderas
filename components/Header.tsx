@@ -215,6 +215,15 @@ export default function Header() {
                   />
                 </div>
               </div>
+              <div className="mx-auto max-w-6xl border-t border-steel/20 px-6 py-4">
+                <Link
+                  href="/que-hacemos"
+                  onClick={() => setQueHacemosOpen(false)}
+                  className="font-mono text-xs font-medium tracking-widest text-brand-red-light uppercase transition-colors hover:text-white"
+                >
+                  Ver todo →
+                </Link>
+              </div>
             </motion.div>
           )}
         </AnimatePresence>
@@ -336,6 +345,13 @@ export default function Header() {
                           items={porProducto}
                           onNavigate={closeMobileMenu}
                         />
+                        <Link
+                          href="/que-hacemos"
+                          onClick={closeMobileMenu}
+                          className="font-mono text-xs font-medium tracking-widest text-brand-red-light uppercase transition-colors hover:text-white"
+                        >
+                          Ver todo →
+                        </Link>
                       </div>
                     </motion.div>
                   )}
