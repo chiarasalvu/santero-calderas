@@ -3,8 +3,8 @@ import Reveal from "@/components/motion/Reveal";
 
 export default function Hero() {
   return (
-    <section className="bg-navy px-6 py-24 sm:py-28">
-      <div className="mx-auto mt-12 grid max-w-6xl items-center gap-16 lg:grid-cols-2">
+    <section className="bg-navy px-6 pt-32 pb-16 sm:pt-40 sm:pb-20 lg:pt-44">
+      <div className="mx-auto grid max-w-6xl items-center gap-16 lg:grid-cols-2">
         <Reveal>
           <p className="font-mono text-xs font-medium tracking-widest text-brand-red-light uppercase">
             Tecnología de Intercambio
