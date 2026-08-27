@@ -1,6 +1,11 @@
 import Image from "next/image";
 import Reveal from "@/components/motion/Reveal";
 
+type LineaItem = {
+  titulo: string;
+  descripcion: string;
+};
+
 type LineaProducto = {
   id: string;
   nombre: string;
@@ -8,7 +13,8 @@ type LineaProducto = {
   badge: string;
   badgeClassName: string;
   subtitulo: string;
-  bullets: string[];
+  items: LineaItem[];
+  rendimiento: string;
 };
 
 const lineas: LineaProducto[] = [
@@ -16,27 +22,42 @@ const lineas: LineaProducto[] = [
     id: "atsol",
     nombre: "Línea ATSOL",
     imagen: "/img/generales/caldera-9.png",
-    badge: "Alto consumo",
+    badge: "Línea Premium",
     badgeClassName: "bg-brand-red text-white",
     subtitulo: "La solución para grandes demandas de agua caliente sanitaria.",
-    bullets: [
-      "Capacidades para proyectos de alta exigencia.",
-      "Generación instantánea mediante calentamiento indirecto.",
-      "Ideal para hoteles, clubes, edificios e industrias.",
+    items: [
+      {
+        titulo: "Alta Exigencia",
+        descripcion:
+          "Capacidades para proyectos de alta exigencia, ideal para hoteles, clubes, edificios e industrias.",
+      },
+      {
+        titulo: "Generación Instantánea",
+        descripcion:
+          "Generación instantánea mediante calentamiento indirecto.",
+      },
     ],
+    rendimiento: "98%",
   },
   {
     id: "adn",
     nombre: "Línea ADN",
     imagen: "/img/generales/caldera-11.png",
-    badge: "Diseño compacto",
+    badge: "Relación Precio-Calidad",
     badgeClassName: "bg-navy text-white",
     subtitulo: "La eficiencia del Sistema Santero en formato compacto.",
-    bullets: [
-      "Diseñada para demandas medianas y espacios reducidos.",
-      "Generación instantánea y bajo mantenimiento.",
-      "Ideal para consorcios, gimnasios y climatización de piscinas.",
+    items: [
+      {
+        titulo: "Diseño Compacto",
+        descripcion:
+          "Diseñada para demandas medianas y espacios reducidos, ideal para consorcios, gimnasios y climatización de piscinas.",
+      },
+      {
+        titulo: "Bajo Mantenimiento",
+        descripcion: "Generación instantánea y bajo mantenimiento.",
+      },
     ],
+    rendimiento: "92%",
   },
 ];
 
@@ -65,6 +86,7 @@ export default function ProductLines() {
                   src={linea.imagen}
                   alt={linea.nombre}
                   fill
+                  sizes="(min-width: 640px) 50vw, 100vw"
                   className="object-cover"
                 />
                 <span
@@ -82,19 +104,35 @@ export default function ProductLines() {
                   {linea.subtitulo}
                 </p>
 
-                <ul className="mt-4 flex flex-col gap-2">
-                  {linea.bullets.map((bullet) => (
-                    <li
-                      key={bullet}
-                      className="flex items-start gap-2 text-sm text-white/60"
-                    >
-                      <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-brand-red/20 text-[10px] text-brand-red-light">
-                        ✓
+                <ul className="mt-6 flex flex-col gap-4">
+                  {linea.items.map((item) => (
+                    <li key={item.titulo} className="flex items-start gap-3">
+                      <span
+                        className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-red/20 text-brand-red-light"
+                        aria-hidden
+                      >
+                        <CheckIcon />
                       </span>
-                      {bullet}
+                      <div>
+                        <p className="font-mono text-[11px] font-medium tracking-widest text-white uppercase">
+                          {item.titulo}
+                        </p>
+                        <p className="mt-1 text-sm text-white/60">
+                          {item.descripcion}
+                        </p>
+                      </div>
                     </li>
                   ))}
                 </ul>
+
+                <div className="mt-6 flex items-center justify-between border-t border-white/10 pt-4">
+                  <span className="font-mono text-xs font-medium tracking-widest text-white/50 uppercase">
+                    Rendimiento
+                  </span>
+                  <span className="font-heading text-2xl font-bold text-brand-red-light">
+                    {linea.rendimiento}
+                  </span>
+                </div>
 
                 <button
                   type="button"
@@ -109,5 +147,19 @@ export default function ProductLines() {
         </div>
       </div>
     </section>
+  );
+}
+
+function CheckIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className="h-3.5 w-3.5" aria-hidden>
+      <path
+        d="M5 13l3.5 3.5L19 6"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
   );
 }
