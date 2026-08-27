@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Hero from "@/components/servicios/Hero";
 import ServicePillars from "@/components/servicios/ServicePillars";
-import CtaBanner from "@/components/CtaBanner";
+import Compromiso from "@/components/servicios/Compromiso";
 
 export const metadata: Metadata = {
   title: "Servicios | Calderas Santero",
@@ -14,15 +14,7 @@ export default function Servicios() {
     <>
       <Hero />
       <ServicePillars />
-      <CtaBanner
-        titulo="Optimice su rendimiento térmico"
-        descripcion="Nuestros especialistas están listos para realizar un diagnóstico técnico de sus necesidades y proponer la solución más eficiente."
-        primaryLabel="Solicitar asesoramiento técnico"
-        primaryHref="/contacto?motivo=visita-tecnica"
-        secondaryLabel="Ver catálogo completo"
-        secondaryHref="/sistema-santero"
-        tone="dark"
-      />
+      <Compromiso />
     </>
   );
 }
