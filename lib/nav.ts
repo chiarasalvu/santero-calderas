@@ -9,7 +9,7 @@ export const navLinks: NavLink[] = [
   { href: "/servicios", label: "Servicios" },
   { href: "/referencias", label: "Referencias" },
   { href: "/casos-de-exito", label: "Casos de Éxito" },
-  { href: "/#faqs", label: "FAQ's" },
+  { href: "/faqs", label: "FAQ's" },
 ];
 
 export const legalLinks: NavLink[] = [

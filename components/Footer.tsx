@@ -7,7 +7,7 @@ import Reveal from "@/components/motion/Reveal";
 
 export default function Footer() {
   const pathname = usePathname();
-  const footerSectionLinks = navLinks.filter((link) => link.href !== "/#faqs");
+  const footerSectionLinks = navLinks;
 
   const renderFooterLink = (link: { href: string; label: string }) => (
     <Link
