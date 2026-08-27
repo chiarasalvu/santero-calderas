@@ -407,7 +407,7 @@ function QueHacemosColumn({
         {items.map((item) => (
           <li key={item.label}>
             <Link
-              href={item.href}
+              href="/que-hacemos"
               onClick={onNavigate}
               className="text-sm text-white/70 transition-colors hover:text-brand-red-light"
             >
