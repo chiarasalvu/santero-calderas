@@ -21,7 +21,6 @@ export default function Faqs() {
         primaryHref="/contacto"
         secondaryLabel="Ver Sistema Santero"
         secondaryHref="/sistema-santero"
-        tone="dark"
       />
     </>
   );

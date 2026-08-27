@@ -61,38 +61,55 @@ export default function ProductLines() {
             <Reveal
               key={linea.id}
               delay={index * 0.1}
-              className="overflow-hidden rounded-2xl bg-white"
+              className="rounded-2xl border border-steel/20 bg-ink-light p-8"
             >
-              <div className="bg-gradient-to-br from-navy to-sky px-6 py-6">
-                <span className="inline-block rounded-full bg-white/20 px-2 py-0.5 text-[10px] font-semibold tracking-wide text-white uppercase">
-                  {linea.badge}
-                </span>
-                <h3 className="mt-2 font-heading text-xl font-bold text-white">
-                  {linea.nombre}
-                </h3>
-                <p className="mt-1 text-sm text-white/80">{linea.subtitulo}</p>
-              </div>
+              <span className="inline-block rounded-full bg-brand-red/20 px-3 py-1 font-mono text-[10px] font-medium tracking-widest text-brand-red-light uppercase">
+                {linea.badge}
+              </span>
+              <h3 className="mt-4 font-heading text-xl font-bold text-white">
+                {linea.nombre}
+              </h3>
+              <p className="mt-1 text-sm font-medium text-white/80">
+                {linea.subtitulo}
+              </p>
+              <p className="mt-4 text-sm leading-relaxed text-white/60">
+                {linea.descripcion}
+              </p>
 
-              <div className="p-6">
-                <p className="text-sm leading-relaxed text-zinc-600">
-                  {linea.descripcion}
-                </p>
-                <ul className="mt-4 flex flex-col gap-2">
-                  {linea.bullets.map((bullet) => (
-                    <li
-                      key={bullet}
-                      className="flex items-start gap-2 text-sm text-zinc-700"
+              <ul className="mt-6 flex flex-col gap-3">
+                {linea.bullets.map((bullet) => (
+                  <li
+                    key={bullet}
+                    className="flex items-start gap-3 text-sm text-white/70"
+                  >
+                    <span
+                      className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-red/20 text-brand-red-light"
+                      aria-hidden
                     >
-                      <span className="mt-0.5 shrink-0 text-sky">✓</span>
-                      {bullet}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+                      <CheckIcon />
+                    </span>
+                    {bullet}
+                  </li>
+                ))}
+              </ul>
             </Reveal>
           ))}
         </div>
       </div>
     </section>
+  );
+}
+
+function CheckIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className="h-3.5 w-3.5" aria-hidden>
+      <path
+        d="M5 13l3.5 3.5L19 6"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
   );
 }

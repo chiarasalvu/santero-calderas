@@ -25,13 +25,6 @@ export default function Diferencial() {
               delay={Math.min(index * 0.1, 0.3)}
               className="relative overflow-hidden rounded-2xl border border-steel/20 bg-ink-light p-8"
             >
-              <span
-                className="pointer-events-none absolute -top-4 -right-2 font-heading text-8xl font-bold text-white/5"
-                aria-hidden
-              >
-                {pilar.numero}
-              </span>
-
               <div className="relative">
                 <PilarIcon id={pilar.id} />
                 <h3 className="mt-4 font-heading text-lg font-semibold text-white">
