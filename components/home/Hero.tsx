@@ -97,7 +97,7 @@ export default function Hero() {
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
         <h1 className="font-heading text-3xl font-light tracking-[0.15em] text-white uppercase sm:text-5xl">
-          Calidez que perdura.
+          Calidez que perdura
         </h1>
         <p className="mt-6 max-w-xl text-sm text-white/70 sm:text-base">
           Ingeniería térmica de precisión para la industria moderna. Sistemas
