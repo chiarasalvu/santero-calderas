@@ -1,6 +1,6 @@
 import Hero from "@/components/home/Hero";
 import GoogleReviewsBadge from "@/components/home/GoogleReviewsBadge";
-import RubroFinder from "@/components/home/RubroFinder";
+import ServiciosPrincipales from "@/components/home/ServiciosPrincipales";
 import Diferencial from "@/components/home/Diferencial";
 import SistemaSanteroTeaser from "@/components/home/SistemaSanteroTeaser";
 import ProductLines from "@/components/home/ProductLines";
@@ -17,7 +17,7 @@ export default function Home() {
     <>
       <Hero />
       <GoogleReviewsBadge />
-      <RubroFinder />
+      <ServiciosPrincipales />
       <Diferencial />
       <SistemaSanteroTeaser />
       <ProductLines />
