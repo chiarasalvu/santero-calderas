@@ -89,7 +89,7 @@ export default function Header() {
               alt="Calderas Santero"
               width={746}
               height={248}
-              className="h-9 w-auto sm:h-11"
+              className="h-10 w-auto sm:h-12"
               priority
             />
           </Link>

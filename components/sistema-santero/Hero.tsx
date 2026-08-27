@@ -67,7 +67,7 @@ export default function Hero() {
         <Reveal delay={0.15} className="relative">
           <motion.div
             style={{ y: imageY }}
-            className="mx-auto aspect-square max-w-sm rounded-2xl bg-white p-3 shadow-lg"
+            className="mx-auto aspect-square max-w-md rounded-2xl bg-white p-3 shadow-lg"
           >
             <div className="relative h-full w-full overflow-hidden rounded-xl bg-zinc-100">
               <Image

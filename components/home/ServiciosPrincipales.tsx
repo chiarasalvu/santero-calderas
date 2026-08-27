@@ -41,7 +41,7 @@ export default function ServiciosPrincipales() {
             <Reveal key={servicio.id} delay={Math.min(index * 0.08, 0.3)}>
               <Link
                 href="/servicios"
-                className="group relative block aspect-[4/3] overflow-hidden rounded-2xl"
+                className="group relative block aspect-square overflow-hidden rounded-2xl"
               >
                 <Image
                   src={servicio.image}
