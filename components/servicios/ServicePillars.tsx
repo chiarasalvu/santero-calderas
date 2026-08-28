@@ -63,7 +63,7 @@ export default function ServicePillars() {
                 <div className="mt-auto pt-8">
                   <Link
                     href={`/contacto?motivo=${contacto.motivo}`}
-                    className="flex items-center justify-center gap-2 rounded-lg bg-brand-red px-4 py-3 text-sm font-semibold text-white transition-all duration-200 hover:scale-[1.02] hover:bg-white hover:text-brand-red active:scale-[0.98]"
+                    className="flex items-center justify-center gap-2 rounded-lg bg-brand-red px-4 py-3 text-xs font-semibold text-white transition-all duration-200 hover:scale-[1.02] hover:bg-white hover:text-brand-red active:scale-[0.98]"
                   >
                     {contacto.label}
                     <span aria-hidden>→</span>
