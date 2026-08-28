@@ -60,9 +60,14 @@ body {
 }
 
 /* Tracking de marca (-1.63px @ 16px, expresado en em para escalar con
-   cualquier tamaño): solo en títulos y etiquetas cortas tipo "eyebrow",
-   nunca en párrafos de texto corrido. */
-.font-heading,
-.font-mono {
+   cualquier tamaño): solo en títulos, nunca en párrafos de texto corrido. */
+.font-heading {
   letter-spacing: -0.1019em;
+}
+
+/* Las etiquetas chicas tipo "eyebrow" (font-mono) van con tracking
+   levemente positivo en vez de apretado: a 10-12px la letra apretada se
+   vuelve difícil de leer. */
+.font-mono {
+  letter-spacing: 0.11px;
 }
