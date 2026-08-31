@@ -97,7 +97,7 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href="https://www.facebook.com/calderassantero"
+                href="https://www.facebook.com/people/calderassantero/100083220324522/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Facebook de Calderas Santero"
