@@ -15,60 +15,61 @@ const preguntas: PreguntaFrecuente[] = [
     id: "electricidad",
     pregunta: "¿Los equipos requieren alimentación eléctrica?",
     respuesta:
-      "Sí, necesitan una conexión eléctrica estándar para el panel de control y el encendido electrónico.",
+      "Si, requieren alimentación a 220V para su funcionamiento. Es esencial que tenga la polaridad correcta y una buena puesta a tierra. La corriente eléctrica alimenta el tablero y bomba recirculadora propia del equipo.",
   },
   {
     id: "servicio-tecnico",
     pregunta: "¿Cuentan con servicio técnico?",
     respuesta:
-      "Sí, contamos con guardia técnica propia para asistencia telefónica y presencial ante cualquier consulta o urgencia.",
+      "Contamos con servicio técnico especializado propio. Brindamos asesoramiento presencial y/o telefónico.",
   },
   {
     id: "garantia",
     pregunta: "¿Cuentan con garantía?",
     respuesta:
-      "Todos nuestros equipos cuentan con garantía de fábrica, con condiciones específicas según la línea de producto.",
+      "Contamos con garantía en todos nuestros equipos. 1 año para todo el equipamiento eléctrico, controles, quemador y tablero, 3 años para cuerpo, tubos y serpentina para la línea ADN-TS-TSE y 5 años para cuerpo, tubos y serpentina para la línea ATSOL-ATS-VTS.",
   },
   {
     id: "stock",
     pregunta: "¿Cuentan con stock inmediato?",
     respuesta:
-      "Trabajamos con stock disponible para las líneas principales; para proyectos a medida coordinamos los tiempos de fabricación con el cliente.",
+      "Cada proyecto es distinto. Por ende, se fabrican en base a cada necesidad. Solemos entregar en 30 días.",
   },
   {
     id: "instalacion-santero",
-    pregunta: "¿La instalación es con Santero?",
+    pregunta: "¿La instalación y/o puesta en marcha es con Santero?",
     respuesta:
-      "Sí, nuestro equipo supervisa y ejecuta la instalación para garantizar un funcionamiento seguro desde el primer día.",
+      "Desde Santero recomendamos que la instalación sea realizada por personal matriculado. Si el cliente lo desea, puede contratar la instalación con SILA Termomecánica (empresa del grupo), especialista en este tipo de montajes. Se deberá contemplar relevamiento y cotización independiente.",
   },
   {
     id: "exterior",
     pregunta: "¿Se pueden instalar en el exterior?",
     respuesta:
-      "Sí, nuestros equipos están diseñados para operar tanto en salas de máquinas interiores como en instalaciones a la intemperie.",
+      "Nuestros equipos están diseñados para ser instalados dentro de una sala de máquinas, ventilada y con las dimensiones recomendadas por las normativas vigentes.",
   },
   {
     id: "envios",
     pregunta: "¿Realizan envíos?",
-    respuesta: "Sí, coordinamos el envío de equipos y repuestos a todo el país.",
+    respuesta:
+      "Entregamos dentro de AMBA, sobre camión, en domicilio sin cargo. Para otros destinos, entregamos en depósito del transporte elegido por el cliente. Dicho transporte y traslado queda a cargo del cliente.",
   },
   {
     id: "sarro",
     pregunta: "¿Porque genera menos sarro este sistema?",
     respuesta:
-      "Porque el calentamiento indirecto evita el contacto directo del fuego con el agua, reduciendo la formación de incrustaciones calcáreas.",
+      "Se juntan dos factores fundamentales, que son la baja temperatura de trabajo y el calentamiento indirecto, evitando que el fuego pegue sobre las placas del agua de consumo.",
   },
   {
     id: "bacterias",
-    pregunta: "¿Relación a las bacterias del Agua?",
+    pregunta: "¿Como se comporta el sistema en relación a las bacterias del Agua?",
     respuesta:
-      "El diseño del sistema minimiza zonas de estancamiento, reduciendo el riesgo de proliferación bacteriana en el agua.",
+      "Sin dudas, es el mejor sistema del mercado para evitar esas bacterias, la salubridad que logramos con la serpentina de acero inoxidable con soldadura especial y barrido de argón, logra una pureza del material y nulo espacio poroso para que se aloje la bacteria, sumado a que evitamos la acumulación.",
   },
   {
     id: "combustible",
     pregunta: "¿Porqué consume menos combustible?",
     respuesta:
-      "Porque la transferencia térmica optimizada aprovecha mejor la energía, reduciendo el consumo de gas frente a sistemas tradicionales.",
+      "El principal factor es que no entrega calorías cuando no se necesita, el concepto de generación instantánea es como el de un gran calefón, Otro factor es la cantidad de material que ponemos en el interior de los equipos, absorbiendo gran parte de las calorías que uno quema.",
   },
 ];
 
