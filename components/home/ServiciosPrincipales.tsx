@@ -27,7 +27,7 @@ const servicios: Servicio[] = [
   {
     id: "vapor",
     label: "Vapor",
-    image: "/img/rubros-home/vapor-v5.jpg",
+    image: "/img/rubros-home/vapor-cliente.jpg",
   },
 ];
 
