@@ -85,11 +85,11 @@ export default function Header() {
 
           <Link href="/" onClick={closeMenu} className="justify-self-center">
             <Image
-              src="/img/generales/logo-blanco.png"
+              src="/img/generales/logo-blanco-v2.png"
               alt="Calderas Santero"
-              width={746}
-              height={248}
-              className="h-10 w-auto sm:h-12"
+              width={1090}
+              height={234}
+              className="h-8 w-auto sm:h-10"
               priority
             />
           </Link>
