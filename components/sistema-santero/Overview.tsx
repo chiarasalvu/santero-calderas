@@ -37,7 +37,7 @@ export default function Overview() {
             Ingeniería propia. Tecnología avanzada.
           </p>
           <h2 className="mt-4 font-heading text-3xl font-semibold text-white sm:text-4xl">
-            Sistema Santero
+            Beneficios del Sistema
           </h2>
           <p className="mt-6 max-w-3xl text-lg leading-relaxed text-white/70">
             El Sistema Santero utiliza un sistema de calentamiento indirecto

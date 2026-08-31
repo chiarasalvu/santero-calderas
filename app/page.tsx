@@ -20,7 +20,7 @@ export default function Home() {
       <Diferencial />
       <SistemaSanteroTeaser />
       <ProductLines />
-      <FeaturedProduct />
+      {/* <FeaturedProduct /> */}
       <CasesPreview logosPorSegmento={logosPorSegmento} />
       <AboutTeaser />
       {/* CTA final oculto a pedido del cliente (27/08) — ver CtaBanner.tsx,

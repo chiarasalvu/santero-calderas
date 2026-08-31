@@ -63,7 +63,7 @@ export const serviciosPilares: ServicioPilar[] = [
   {
     id: "soporte-postventa",
     numero: "03",
-    titulo: "Soporte & postventa (SILA / guardia 24hs)",
+    titulo: "Soporte & postventa",
     bajada:
       "Mantenimiento preventivo, repuestos originales y guardia técnica telefónica/presencial las 24 horas.",
     items: [
