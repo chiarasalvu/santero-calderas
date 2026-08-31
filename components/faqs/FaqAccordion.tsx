@@ -93,7 +93,7 @@ export default function FaqAccordion() {
                 aria-expanded={open}
                 className="flex w-full items-center justify-between gap-4 text-left"
               >
-                <span className="font-heading text-sm font-semibold text-white">
+                <span className="font-heading text-base font-semibold text-white sm:text-lg">
                   {item.pregunta}
                 </span>
                 <span
