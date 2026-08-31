@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { rubros } from "@/data/rubros";
 import Reveal from "@/components/motion/Reveal";
 
@@ -22,12 +21,9 @@ export default function RubroFinder() {
         <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {rubros.map((rubro, index) => (
             <Reveal key={rubro.id} delay={Math.min(index * 0.05, 0.4)}>
-              <Link
-                href="/que-hacemos"
-                className="group flex h-full flex-col rounded-2xl border border-steel/20 bg-ink-light p-6 transition-all duration-300 hover:-translate-y-1 hover:border-brand-red-light/40"
-              >
+              <div className="flex h-full flex-col rounded-2xl border border-steel/20 bg-ink-light p-6">
                 <span
-                  className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-brand-red/20 text-brand-red-light transition-transform duration-300 group-hover:scale-110"
+                  className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-brand-red/20 text-brand-red-light"
                   aria-hidden
                 >
                   <RubroIcon id={rubro.id} />
@@ -38,7 +34,7 @@ export default function RubroFinder() {
                 <p className="mt-2 text-sm text-white/60">
                   {rubro.descripcion}
                 </p>
-              </Link>
+              </div>
             </Reveal>
           ))}
         </div>

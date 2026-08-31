@@ -42,14 +42,7 @@ export default function Footer() {
               Secciones
             </p>
             <nav className="mt-3 flex flex-col gap-2">
-              {footerSectionLinks.slice(0, 2).map(renderFooterLink)}
-              <Link
-                href="/que-hacemos"
-                className="text-sm text-white/60 hover:text-brand-red-light"
-              >
-                Qué hacemos
-              </Link>
-              {footerSectionLinks.slice(2).map(renderFooterLink)}
+              {footerSectionLinks.map(renderFooterLink)}
             </nav>
           </div>
 
