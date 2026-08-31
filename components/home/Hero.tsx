@@ -37,7 +37,7 @@ export default function Hero() {
         />
         <video
           ref={videoRef}
-          src="/video/hero-santero.mp4"
+          src="/video/hero-santero-v2.mp4"
           autoPlay
           muted
           loop
