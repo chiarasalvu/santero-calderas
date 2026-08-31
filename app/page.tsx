@@ -4,7 +4,7 @@ import ServiciosPrincipales from "@/components/home/ServiciosPrincipales";
 import Diferencial from "@/components/home/Diferencial";
 import SistemaSanteroTeaser from "@/components/home/SistemaSanteroTeaser";
 import ProductLines from "@/components/home/ProductLines";
-import FeaturedProduct from "@/components/home/FeaturedProduct";
+// import FeaturedProduct from "@/components/home/FeaturedProduct";
 import CasesPreview from "@/components/home/CasesPreview";
 import AboutTeaser from "@/components/home/AboutTeaser";
 import { getLogosPorSegmento } from "@/lib/segment-logos";
