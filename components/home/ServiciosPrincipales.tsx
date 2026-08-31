@@ -17,7 +17,7 @@ const servicios: Servicio[] = [
   {
     id: "climatizacion",
     label: "Climatización de piscina",
-    image: "/img/rubros-home/climatizacion-v2.jpg",
+    image: "/img/rubros-home/climatizacion-v3.jpg",
   },
   {
     id: "calefaccion",
