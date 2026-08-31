@@ -16,13 +16,18 @@ const servicios: Servicio[] = [
   },
   {
     id: "climatizacion",
-    label: "Climatización",
+    label: "Climatización de piscina",
     image: "/img/rubros-home/climatizacion.jpg",
   },
   {
     id: "calefaccion",
     label: "Calefacción",
     image: "/img/rubros-home/calefaccion.jpg",
+  },
+  {
+    id: "vapor",
+    label: "Vapor",
+    image: "/img/rubros-home/vapor.jpg",
   },
 ];
 
@@ -36,7 +41,7 @@ export default function ServiciosPrincipales() {
           </h2>
         </Reveal>
 
-        <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-3">
+        <div className="mt-10 grid grid-cols-2 gap-4 lg:grid-cols-4">
           {servicios.map((servicio, index) => (
             <Reveal key={servicio.id} delay={Math.min(index * 0.08, 0.3)}>
               <Link
@@ -47,7 +52,7 @@ export default function ServiciosPrincipales() {
                   src={servicio.image}
                   alt={servicio.label}
                   fill
-                  sizes="(min-width: 640px) 33vw, 100vw"
+                  sizes="(min-width: 1024px) 25vw, 50vw"
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 <div

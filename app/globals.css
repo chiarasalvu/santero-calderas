@@ -71,3 +71,13 @@ body {
 .font-mono {
   letter-spacing: 0.11px;
 }
+
+/* Oculta la scrollbar en carruseles con scroll nativo (ej. testimonios de
+   Google), sin perder el scroll/swipe táctil. */
+.scrollbar-hide {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
