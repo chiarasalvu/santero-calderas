@@ -5,7 +5,6 @@ const datosContacto = [
   { label: "Tel", valor: "(011) 4931-0294 / 0183" },
   { label: "WhatsApp", valor: "+54 9 11 2866-8485" },
   { label: "Fábrica", valor: "Dr. Pedro Baliña 4046, C1437HSD, CABA" },
-  { label: "Administración", valor: "Constitución 3227/29, C1254ABC, CABA" },
 ];
 
 export default function ContactSection() {
