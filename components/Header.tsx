@@ -172,42 +172,20 @@ export default function Header() {
                       <div className="mt-6 rounded-2xl border border-steel/20 bg-ink-light p-6 lg:p-8">
                         <div className="flex flex-col gap-6 lg:grid lg:grid-cols-3 lg:gap-x-10 lg:gap-y-0 lg:divide-x lg:divide-steel/20">
                           <div className="lg:pr-8">
-                            <QueHacemosColumn
-                              titulo="Por rubro"
-                              items={porRubro}
-                              onNavigate={closeMenu}
-                            />
+                            <QueHacemosColumn titulo="Por rubro" items={porRubro} />
                           </div>
                           <div className="lg:px-8">
                             <QueHacemosColumn
                               titulo="Por servicio"
                               items={porServicio}
-                              onNavigate={closeMenu}
                             />
                           </div>
                           <div className="lg:pl-8">
                             <QueHacemosColumn
                               titulo="Por producto"
                               items={porProducto}
-                              onNavigate={closeMenu}
                             />
                           </div>
-                        </div>
-
-                        <div className="mt-6 flex justify-end border-t border-steel/20 pt-6">
-                          <Link
-                            href="/que-hacemos"
-                            onClick={closeMenu}
-                            className="group/link flex items-center gap-1 text-xs font-light text-brand-red-light transition-colors hover:text-white"
-                          >
-                            Ver todo
-                            <span
-                              className="transition-transform duration-200 group-hover/link:translate-x-1"
-                              aria-hidden
-                            >
-                              →
-                            </span>
-                          </Link>
                         </div>
                       </div>
                     </motion.div>
@@ -237,25 +215,17 @@ export default function Header() {
 function QueHacemosColumn({
   titulo,
   items,
-  onNavigate,
 }: {
   titulo: string;
   items: QueHacemosLink[];
-  onNavigate: () => void;
 }) {
   return (
     <div>
       <p className="text-xs font-light text-white/40">{titulo}</p>
       <ul className="mt-4 flex flex-col gap-2">
         {items.map((item) => (
-          <li key={item.label}>
-            <Link
-              href="/que-hacemos"
-              onClick={onNavigate}
-              className="text-sm text-white/70 transition-colors hover:text-brand-red-light"
-            >
-              {item.label}
-            </Link>
+          <li key={item.label} className="text-sm text-white/70">
+            {item.label}
           </li>
         ))}
       </ul>
