@@ -62,7 +62,7 @@ function LogoRow({
         {[...logos, ...logos].map((logo, index) => (
           <div
             key={`${logo.src}-${index}`}
-            className="relative flex h-20 w-40 shrink-0 items-center justify-center rounded-xl border border-steel/20 bg-ink-light p-4"
+            className="relative flex h-20 w-40 shrink-0 items-center justify-center rounded-xl bg-white p-4 shadow-sm"
           >
             <Image
               src={logo.src}
