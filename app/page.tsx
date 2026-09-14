@@ -1,5 +1,4 @@
 import Hero from "@/components/home/Hero";
-import GoogleReviewsBadge from "@/components/home/GoogleReviewsBadge";
 import ServiciosPrincipales from "@/components/home/ServiciosPrincipales";
 import Diferencial from "@/components/home/Diferencial";
 import SistemaSanteroTeaser from "@/components/home/SistemaSanteroTeaser";
@@ -15,7 +14,6 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <GoogleReviewsBadge />
       <ServiciosPrincipales />
       <Diferencial />
       <SistemaSanteroTeaser />

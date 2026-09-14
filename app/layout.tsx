@@ -5,6 +5,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import GoogleReviewsBadge from "@/components/GoogleReviewsBadge";
 
 // Única tipografía del sitio: Montserrat, diferenciada solo por peso
 // (light / regular / semibold). Reemplaza a Hanken Grotesk (texto) y
@@ -37,6 +38,7 @@ export default function RootLayout({
           <main className="flex-1">{children}</main>
           <Footer />
           <WhatsAppButton />
+          <GoogleReviewsBadge />
         </MotionConfig>
       </body>
     </html>

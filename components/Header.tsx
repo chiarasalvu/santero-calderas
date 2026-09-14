@@ -71,35 +71,16 @@ export default function Header() {
 
   return (
     <>
-      {/* Header único: Contacto a la izquierda, logo centrado, hamburguesa
+      {/* Header único: Menu a la izquierda, logo centrado, Contacto
           a la derecha — mismo layout en mobile y desktop. */}
       <header className="fixed inset-x-0 top-0 z-[70] border-b border-steel/20 bg-ink/90 backdrop-blur-xl">
         <div className="mx-auto grid h-16 max-w-6xl grid-cols-[1fr_auto_1fr] items-center gap-2 px-6">
-          <Link
-            href="/contacto"
-            onClick={closeMenu}
-            className="justify-self-start rounded border border-steel/40 px-3 py-2 text-xs font-light text-white/80 transition-colors hover:border-white hover:text-white sm:px-4"
-          >
-            Contacto
-          </Link>
-
-          <Link href="/" onClick={closeMenu} className="justify-self-center">
-            <Image
-              src="/img/generales/logo-blanco-v2.png"
-              alt="Calderas Santero"
-              width={1090}
-              height={234}
-              className="h-8 w-auto sm:h-10"
-              priority
-            />
-          </Link>
-
           <button
             type="button"
             aria-expanded={menuOpen}
             aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
             onClick={() => (menuOpen ? closeMenu() : setMenuOpen(true))}
-            className="flex items-center justify-self-end gap-2 rounded border border-steel/40 px-2.5 py-2 text-xs font-light text-white transition-colors hover:border-white sm:px-3"
+            className="flex items-center justify-self-start gap-2 rounded border border-steel/40 px-2.5 py-2 text-xs font-light text-white transition-colors hover:border-white sm:px-3"
           >
             {menuOpen ? "Cerrar" : "Menu"}
             <span aria-hidden className="flex flex-col gap-[3px]">
@@ -120,6 +101,25 @@ export default function Header() {
               />
             </span>
           </button>
+
+          <Link href="/" onClick={closeMenu} className="justify-self-center">
+            <Image
+              src="/img/generales/logo-blanco-v2.png"
+              alt="Calderas Santero"
+              width={1090}
+              height={234}
+              className="h-8 w-auto sm:h-10"
+              priority
+            />
+          </Link>
+
+          <Link
+            href="/contacto"
+            onClick={closeMenu}
+            className="justify-self-end rounded border border-steel/40 px-3 py-2 text-xs font-light text-white/80 transition-colors hover:border-white hover:text-white sm:px-4"
+          >
+            Contacto
+          </Link>
         </div>
       </header>
 

@@ -1,35 +1,34 @@
-import { rubros } from "@/data/rubros";
-
 export type QueHacemosLink = {
   label: string;
   href: string;
 };
 
-export const porRubro: QueHacemosLink[] = rubros.map((rubro) => ({
-  label: rubro.label,
-  href: "/servicios",
-}));
+// Versión resumida para el mega-menú del header: se agrupan los ~30 ítems
+// individuales (rubros, servicios, productos) en 4-5 por columna para que
+// el desplegable sea liviano y dinámico. El detalle completo (cada rubro,
+// servicio y producto por separado) sigue existiendo en sus propias
+// páginas/datos — ver data/rubros.ts y /servicios — para que Google lo
+// pueda indexar por metadatos aunque el menú visible esté resumido.
+
+export const porRubro: QueHacemosLink[] = [
+  { label: "Hotelería, Balnearios & Gastronomía", href: "/servicios" },
+  { label: "Clubes, Natatorios & SPA / Wellness", href: "/servicios" },
+  { label: "Real Estate & Consorcios", href: "/servicios" },
+  { label: "Industrias, Hospitales & Camping", href: "/servicios" },
+];
 
 export const porServicio: QueHacemosLink[] = [
-  { label: "Agua Caliente Sanitaria", href: "/servicios" },
-  { label: "Calefacción Central", href: "/servicios" },
+  { label: "Agua Caliente Sanitaria & Calefacción", href: "/servicios" },
   { label: "Climatización de Piscinas", href: "/servicios" },
-  { label: "Procesos con Vapor", href: "/servicios" },
-  { label: "Servicio Técnico Oficial", href: "/servicios" },
+  { label: "Procesos Industriales con Vapor", href: "/servicios" },
+  { label: "Servicio Técnico & Instalación Llave en Mano", href: "/servicios" },
   { label: "Solar", href: "/servicios" },
-  { label: "Instalación Llave en Mano", href: "/servicios" },
-  { label: "Desguaces y Traslados", href: "/servicios" },
 ];
 
 export const porProducto: QueHacemosLink[] = [
-  { label: "Caldera de Agua", href: "/sistema-santero" },
-  { label: "Caldera de Vapor", href: "/sistema-santero" },
-  { label: "Generador Agua Caliente", href: "/sistema-santero" },
-  { label: "Climatizador de Piscina", href: "/sistema-santero" },
-  { label: "Termotanque", href: "/sistema-santero" },
-  { label: "Termotanque Eléctrico", href: "/sistema-santero" },
-  { label: "Tanque de Acumulación", href: "/sistema-santero" },
-  { label: "Intercambiador de Calor", href: "/sistema-santero" },
-  { label: "Generador Multiservicio", href: "/sistema-santero" },
+  { label: "Calderas (Agua y Vapor)", href: "/sistema-santero" },
+  { label: "Generadores & Termotanques", href: "/sistema-santero" },
+  { label: "Climatizadores de Piscina", href: "/sistema-santero" },
+  { label: "Intercambiadores & Tanques de Acumulación", href: "/sistema-santero" },
   { label: "Complemento Solar", href: "/sistema-santero" },
 ];
