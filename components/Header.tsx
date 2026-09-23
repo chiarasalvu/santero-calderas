@@ -156,7 +156,7 @@ export default function Header() {
                   recorta cualquier hijo posicionado que se salga de su
                   caja (incluido el eje X), así que si el flyout quedara
                   adentro, quedaría invisible aunque exista en el DOM. */}
-              <div className="flex flex-1 flex-col gap-6 overflow-y-auto px-8 py-10">
+              <div className="flex flex-1 flex-col items-center gap-6 overflow-y-auto px-8 py-10 text-center">
                 {renderPanelLink(homeLink)}
                 {navLinks.slice(0, 2).map(renderPanelLink)}
 
@@ -193,7 +193,7 @@ export default function Header() {
                       transition={{ duration: 0.2, ease: "easeInOut" }}
                       className="overflow-hidden lg:hidden"
                     >
-                      <div className="rounded-2xl border border-steel/20 bg-ink-light p-6">
+                      <div className="rounded-2xl border border-steel/20 bg-ink-light p-6 text-left">
                         <QueHacemosGrid />
                       </div>
                     </motion.div>
