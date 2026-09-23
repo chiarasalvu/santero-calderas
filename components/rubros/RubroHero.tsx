@@ -6,6 +6,9 @@ import { AnimatePresence, motion } from "framer-motion";
 import Reveal from "@/components/motion/Reveal";
 import type { RubroPagina } from "@/data/que-hacemos";
 
+// Portada común a los 4 rubros: solo el logo.
+const PORTADA = "/img/rubros/portada-logo.jpg";
+
 type RubroHeroProps = {
   titulo: string;
   video: RubroPagina["video"];
@@ -40,8 +43,8 @@ export default function RubroHero({ titulo, video }: RubroHeroProps) {
   }, [videoOpen]);
 
   return (
-    <section className="relative mt-[65px] flex min-h-[calc(100dvh-65px)] items-center overflow-hidden bg-ink px-6 py-24 sm:py-32">
-      <Reveal className="relative mx-auto grid w-full max-w-6xl items-center gap-12 lg:grid-cols-2">
+    <section className="relative mt-[65px] overflow-hidden bg-ink px-6 py-16 sm:py-24">
+      <Reveal className="relative mx-auto w-full max-w-6xl">
         <div>
           <p className="font-mono text-xs font-light text-brand-red-light">
             Por rubro
@@ -73,14 +76,14 @@ export default function RubroHero({ titulo, video }: RubroHeroProps) {
             type="button"
             onClick={() => setVideoOpen(true)}
             aria-label={`Ver video: ${titulo}`}
-            className="group relative aspect-video w-full overflow-hidden rounded-2xl border border-steel/20 bg-ink-light"
+            className="group relative mt-12 block aspect-video w-full overflow-hidden rounded-2xl border border-steel/20 bg-ink-light"
           >
             <Image
-              src={video.poster}
+              src={PORTADA}
               alt=""
               fill
               priority
-              sizes="(min-width: 1024px) 50vw, 100vw"
+              sizes="(min-width: 1152px) 1152px, 100vw"
               className="object-cover transition-transform duration-500 group-hover:scale-105"
             />
             <span
@@ -117,11 +120,11 @@ export default function RubroHero({ titulo, video }: RubroHeroProps) {
             </button>
             <video
               src={video.src}
-              poster={video.poster}
+              poster={PORTADA}
               controls
               autoPlay
               playsInline
-              className="max-h-[80vh] w-full max-w-4xl rounded-lg"
+              className="max-h-[88vh] w-full max-w-6xl rounded-lg"
               onClick={(event) => event.stopPropagation()}
             />
           </motion.div>
