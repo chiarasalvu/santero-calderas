@@ -1,36 +1,111 @@
+// Contenido de "Qué hacemos": 4 páginas por rubro (cada una con un video
+// que habla de ese rubro) y 4 páginas por servicio (las mismas 4 cards del
+// Home). Es la única fuente de datos — el menú del header, las cards del
+// Home y las rutas (/rubros/[slug], /soluciones/[slug]) salen de acá.
+//
+// "Por producto" todavía no tiene páginas: se muestra en el menú como
+// texto plano, sin link.
+
 export type QueHacemosLink = {
   label: string;
-  href: string;
+  href?: string;
 };
 
-// Versión resumida para el mega-menú del header: se agrupan los ~30 ítems
-// individuales (rubros, servicios, productos) en 4-5 por columna para que
-// el desplegable sea liviano y dinámico. El detalle completo (cada rubro,
-// servicio y producto por separado) sigue existiendo en sus propias
-// páginas/datos — ver data/rubros.ts y /servicios — para que Google lo
-// pueda indexar por metadatos aunque el menú visible esté resumido.
+export type RubroPagina = {
+  slug: string;
+  /** Texto del menú. */
+  label: string;
+  /** H1 de la página. */
+  titulo: string;
+  /** Video del rubro — null hasta que el cliente mande el que falta. */
+  video: { src: string; poster: string } | null;
+};
 
-export const porRubro: QueHacemosLink[] = [
-  { label: "Hotelería, Balnearios & Campamentos", href: "/servicios" },
-  { label: "Clubes, Natatorios & SPA", href: "/servicios" },
-  { label: "Real Estate & Consorcios", href: "/servicios" },
-  { label: "Industrias y Hospitales", href: "/servicios" },
+export type ServicioPagina = {
+  slug: string;
+  label: string;
+  titulo: string;
+  /** Imagen de portada — la misma de la card del Home. */
+  imagen: string;
+};
+
+export const rubrosPaginas: RubroPagina[] = [
+  {
+    slug: "hoteleria-balnearios-campamentos",
+    label: "Hotelería, Balnearios & Campamentos",
+    titulo: "Hotelería, Balnearios y Campamentos",
+    video: {
+      src: "/video/rubros/hoteleria-balnearios-campamentos.mp4",
+      poster: "/img/rubros/hoteleria-balnearios-campamentos-poster.jpg",
+    },
+  },
+  {
+    slug: "clubes-natatorios-spa",
+    label: "Clubes, Natatorios & SPA",
+    titulo: "Clubes, Natatorios y SPA",
+    video: null,
+  },
+  {
+    slug: "real-estate-consorcios",
+    label: "Real Estate & Consorcios",
+    titulo: "Real Estate y Consorcios",
+    video: {
+      src: "/video/rubros/real-estate-consorcios.mp4",
+      poster: "/img/rubros/real-estate-consorcios-poster.jpg",
+    },
+  },
+  {
+    slug: "industrias-hospitales",
+    label: "Industrias y Hospitales",
+    titulo: "Industrias y Hospitales",
+    video: null,
+  },
 ];
 
-// Por servicio: separado tal cual las 4 cards de "Qué hacemos" en el
-// Home (Agua caliente / Climatización de piscina / Calefacción / Vapor)
-// — a pedido del cliente, no van agrupados.
-export const porServicio: QueHacemosLink[] = [
-  { label: "Agua Caliente Sanitaria", href: "/servicios" },
-  { label: "Calefacción", href: "/servicios" },
-  { label: "Climatización de Piscinas", href: "/servicios" },
-  { label: "Vapor", href: "/servicios" },
+export const serviciosPaginas: ServicioPagina[] = [
+  {
+    slug: "agua-caliente-sanitaria",
+    label: "Agua Caliente Sanitaria",
+    titulo: "Agua caliente sanitaria",
+    imagen: "/img/rubros-home/agua-caliente.jpg",
+  },
+  {
+    slug: "calefaccion",
+    label: "Calefacción",
+    titulo: "Calefacción",
+    imagen: "/img/rubros-home/calefaccion.jpg",
+  },
+  {
+    slug: "climatizacion-de-piscinas",
+    label: "Climatización de Piscinas",
+    titulo: "Climatización de piscinas",
+    imagen: "/img/rubros-home/climatizacion-v4.jpg",
+  },
+  {
+    slug: "vapor",
+    label: "Vapor",
+    titulo: "Vapor",
+    imagen: "/img/rubros-home/vapor-cliente.jpg",
+  },
 ];
+
+export const rubroHref = (slug: string) => `/rubros/${slug}`;
+export const servicioHref = (slug: string) => `/soluciones/${slug}`;
+
+export const porRubro: QueHacemosLink[] = rubrosPaginas.map((r) => ({
+  label: r.label,
+  href: rubroHref(r.slug),
+}));
+
+export const porServicio: QueHacemosLink[] = serviciosPaginas.map((s) => ({
+  label: s.label,
+  href: servicioHref(s.slug),
+}));
 
 export const porProducto: QueHacemosLink[] = [
-  { label: "Calderas (Agua y Vapor)", href: "/sistema-santero" },
-  { label: "Generadores de Agua Caliente", href: "/sistema-santero" },
-  { label: "Climatizadores de Piscina", href: "/sistema-santero" },
-  { label: "Intercambiadores & Tanques de Acumulación", href: "/sistema-santero" },
-  { label: "Sistemas Eléctricos", href: "/sistema-santero" },
+  { label: "Calderas (Agua y Vapor)" },
+  { label: "Generadores de Agua Caliente" },
+  { label: "Climatizadores de Piscina" },
+  { label: "Intercambiadores & Tanques de Acumulación" },
+  { label: "Sistemas Eléctricos" },
 ];

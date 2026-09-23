@@ -244,11 +244,11 @@ export default function Header() {
                                 >
                                   <ul className="mt-2 mb-3 flex flex-col gap-2 pl-3">
                                     {categoria.items.map((item) => (
-                                      <li
-                                        key={item.label}
-                                        className="text-sm text-white/70"
-                                      >
-                                        {item.label}
+                                      <li key={item.label}>
+                                        <QueHacemosItem
+                                          item={item}
+                                          onNavigate={closeMenu}
+                                        />
                                       </li>
                                     ))}
                                   </ul>
@@ -308,6 +308,7 @@ export default function Header() {
                         <QueHacemosColumn
                           titulo={categoria.titulo}
                           items={categoria.items}
+                          onNavigate={closeMenu}
                         />
                       </div>
                     ))}
@@ -325,20 +326,45 @@ export default function Header() {
 function QueHacemosColumn({
   titulo,
   items,
+  onNavigate,
 }: {
   titulo: string;
   items: QueHacemosLink[];
+  onNavigate: () => void;
 }) {
   return (
     <div>
       <p className="text-xs font-light text-white/40">{titulo}</p>
       <ul className="mt-4 flex flex-col gap-2">
         {items.map((item) => (
-          <li key={item.label} className="text-sm text-white/70">
-            {item.label}
+          <li key={item.label}>
+            <QueHacemosItem item={item} onNavigate={onNavigate} />
           </li>
         ))}
       </ul>
     </div>
+  );
+}
+
+// Los ítems con página propia (rubros y servicios) son links; "Por
+// producto" todavía no tiene páginas, así que queda como texto plano.
+function QueHacemosItem({
+  item,
+  onNavigate,
+}: {
+  item: QueHacemosLink;
+  onNavigate: () => void;
+}) {
+  if (!item.href) {
+    return <span className="text-sm text-white/70">{item.label}</span>;
+  }
+  return (
+    <Link
+      href={item.href}
+      onClick={onNavigate}
+      className="text-sm text-white/70 transition-colors hover:text-brand-red-light"
+    >
+      {item.label}
+    </Link>
   );
 }
