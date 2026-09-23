@@ -39,7 +39,6 @@ export default function Header() {
   const [categoriaAbierta, setCategoriaAbierta] = useState<CategoriaId | null>(
     null,
   );
-  const [categoriaActiva, setCategoriaActiva] = useState<CategoriaId>("rubro");
   const pathname = usePathname();
   const [previousPathname, setPreviousPathname] = useState(pathname);
 
@@ -67,7 +66,6 @@ export default function Header() {
     setMenuOpen(false);
     setQueHacemosOpen(false);
     setCategoriaAbierta(null);
-    setCategoriaActiva("rubro");
   }
 
   const renderPanelLink = (link: NavLink) => {
@@ -163,7 +161,7 @@ export default function Header() {
                   recorta cualquier hijo posicionado que se salga de su
                   caja (incluido el eje X), así que si el flyout quedara
                   adentro, quedaría invisible aunque exista en el DOM. */}
-              <div className="flex flex-1 flex-col items-center gap-6 overflow-y-auto px-8 py-10 text-center">
+              <div className="flex flex-1 flex-col items-start gap-6 overflow-y-auto px-8 py-10 text-left">
                 {renderPanelLink(homeLink)}
                 {navLinks.slice(0, 2).map(renderPanelLink)}
 
@@ -188,12 +186,12 @@ export default function Header() {
                   </span>
                 </button>
 
-                {/* "Por rubro / Por servicio / Por producto" como 3
-                    renglones propios debajo de "Qué hacemos" — en
-                    desktop, pasar el mouse por cada uno cambia el
-                    contenido del flyout de al lado (ver más abajo). En
-                    mobile no hay lugar para el flyout, así que cada
-                    renglón despliega su propia lista acá mismo. */}
+                {/* Mobile únicamente: no hay lugar para el flyout al
+                    costado, así que "Por rubro / Por servicio / Por
+                    producto" son 3 acordeones anidados propios. En
+                    desktop (md+) esto se oculta — el flyout de al lado
+                    ya muestra los 3 bloques directamente, sin tocar
+                    nada (ver más abajo). */}
                 <AnimatePresence initial={false}>
                   {queHacemosOpen && (
                     <motion.div
@@ -201,30 +199,27 @@ export default function Header() {
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.2, ease: "easeInOut" }}
-                      className="w-full overflow-hidden"
+                      className="w-full overflow-hidden md:hidden"
                     >
-                      <div className="flex flex-col items-center gap-1 pt-1">
+                      <div className="flex flex-col gap-1 pt-1">
                         {categorias.map((categoria) => (
                           <div key={categoria.id}>
                             <button
                               type="button"
-                              onMouseEnter={() =>
-                                setCategoriaActiva(categoria.id)
-                              }
                               onClick={() =>
                                 setCategoriaAbierta((prev) =>
                                   prev === categoria.id ? null : categoria.id,
                                 )
                               }
                               className={`flex items-center gap-2 py-1.5 text-sm transition-colors ${
-                                categoriaActiva === categoria.id
+                                categoriaAbierta === categoria.id
                                   ? "text-white"
                                   : "text-white/50 hover:text-white"
                               }`}
                             >
                               {categoria.titulo}
                               <span
-                                className={`text-xs transition-transform md:hidden ${
+                                className={`text-xs transition-transform ${
                                   categoriaAbierta === categoria.id
                                     ? "rotate-90"
                                     : ""
@@ -233,13 +228,8 @@ export default function Header() {
                               >
                                 ▸
                               </span>
-                              <span className="hidden md:inline" aria-hidden>
-                                →
-                              </span>
                             </button>
 
-                            {/* Mobile: acordeón anidado, una lista por
-                                categoría. */}
                             <AnimatePresence initial={false}>
                               {categoriaAbierta === categoria.id && (
                                 <motion.div
@@ -250,7 +240,7 @@ export default function Header() {
                                     duration: 0.2,
                                     ease: "easeInOut",
                                   }}
-                                  className="overflow-hidden text-left md:hidden"
+                                  className="overflow-hidden"
                                 >
                                   <ul className="mt-2 mb-3 flex flex-col gap-2 pl-3">
                                     {categoria.items.map((item) => (
@@ -309,26 +299,19 @@ export default function Header() {
                   }}
                   className="fixed z-[65] hidden w-[340px] overflow-y-auto rounded-2xl border border-steel/20 bg-ink-light p-8 shadow-2xl md:block"
                 >
-                  <AnimatePresence mode="wait" initial={false}>
-                    <motion.div
-                      key={categoriaActiva}
-                      initial={{ opacity: 0, y: 4 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0 }}
-                      transition={{ duration: 0.15 }}
-                    >
-                      <QueHacemosColumn
-                        titulo={
-                          categorias.find((c) => c.id === categoriaActiva)!
-                            .titulo
-                        }
-                        items={
-                          categorias.find((c) => c.id === categoriaActiva)!
-                            .items
-                        }
-                      />
-                    </motion.div>
-                  </AnimatePresence>
+                  <div className="flex flex-col divide-y divide-steel/20">
+                    {categorias.map((categoria, index) => (
+                      <div
+                        key={categoria.id}
+                        className={index === 0 ? "pb-6" : "py-6"}
+                      >
+                        <QueHacemosColumn
+                          titulo={categoria.titulo}
+                          items={categoria.items}
+                        />
+                      </div>
+                    ))}
+                  </div>
                 </motion.div>
               )}
             </AnimatePresence>
