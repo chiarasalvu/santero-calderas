@@ -17,8 +17,8 @@ export type RubroPagina = {
   label: string;
   /** H1 de la página. */
   titulo: string;
-  /** Video del rubro. Todos comparten la misma portada (solo el logo). */
-  video: { src: string } | null;
+  /** Video del rubro y su portada (el cuadro de título del propio video). */
+  video: { src: string; poster: string } | null;
 };
 
 export type ServicioPagina = {
@@ -36,6 +36,7 @@ export const rubrosPaginas: RubroPagina[] = [
     titulo: "Hotelería, Balnearios y Campamentos",
     video: {
       src: "/video/rubros/hoteleria-balnearios-campamentos.mp4",
+      poster: "/img/rubros/hoteleria-balnearios-campamentos-poster.jpg",
     },
   },
   {
@@ -44,6 +45,7 @@ export const rubrosPaginas: RubroPagina[] = [
     titulo: "Clubes, Natatorios y SPA",
     video: {
       src: "/video/rubros/clubes-natatorios-spa.mp4",
+      poster: "/img/rubros/clubes-natatorios-spa-poster.jpg",
     },
   },
   {
@@ -52,13 +54,17 @@ export const rubrosPaginas: RubroPagina[] = [
     titulo: "Real Estate y Consorcios",
     video: {
       src: "/video/rubros/real-estate-consorcios.mp4",
+      poster: "/img/rubros/real-estate-consorcios-poster.jpg",
     },
   },
   {
     slug: "industrias-hospitales",
     label: "Industrias y Hospitales",
     titulo: "Industrias y Hospitales",
-    video: { src: "/video/rubros/industrias-hospitales.mp4" },
+    video: {
+      src: "/video/rubros/industrias-hospitales.mp4",
+      poster: "/img/rubros/industrias-hospitales-poster.jpg",
+    },
   },
 ];
 
