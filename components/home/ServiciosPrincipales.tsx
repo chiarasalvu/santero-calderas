@@ -1,11 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import Reveal from "@/components/motion/Reveal";
+import { servicioHref } from "@/data/que-hacemos";
 
 type Servicio = {
   id: string;
   label: string;
   image: string;
+  href: string;
 };
 
 const servicios: Servicio[] = [
@@ -13,21 +15,25 @@ const servicios: Servicio[] = [
     id: "agua-caliente",
     label: "Agua caliente",
     image: "/img/rubros-home/agua-caliente.jpg",
+    href: servicioHref("agua-caliente-sanitaria"),
   },
   {
     id: "climatizacion",
     label: "Climatización de piscina",
     image: "/img/rubros-home/climatizacion-v4.jpg",
+    href: servicioHref("climatizacion-de-piscinas"),
   },
   {
     id: "calefaccion",
     label: "Calefacción",
     image: "/img/rubros-home/calefaccion.jpg",
+    href: servicioHref("calefaccion"),
   },
   {
     id: "vapor",
     label: "Vapor",
     image: "/img/rubros-home/vapor-cliente.jpg",
+    href: servicioHref("vapor"),
   },
 ];
 
@@ -45,7 +51,7 @@ export default function ServiciosPrincipales() {
           {servicios.map((servicio, index) => (
             <Reveal key={servicio.id} delay={Math.min(index * 0.08, 0.3)}>
               <Link
-                href="/servicios"
+                href={servicio.href}
                 className="group relative block aspect-square overflow-hidden rounded-2xl"
               >
                 <Image
