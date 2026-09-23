@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { navLinks, type NavLink } from "@/lib/nav";
 import {
@@ -19,12 +19,27 @@ const homeLink: NavLink = { href: "/", label: "Home" };
 // <motion.nav> más abajo) — es el punto donde arranca el flyout de
 // "Qué hacemos" en sm+.
 const SIDEBAR_WIDTH_PX = 380;
+// Altura fija donde arranca el flyout — a propósito NO se alinea con
+// la posición real del botón "Qué hacemos" en la lista (quedaría muy
+// abajo y obligaría a scrollear para ver "Por producto"). Arranca
+// pegado al header así tiene todo el alto disponible.
+const FLYOUT_TOP_PX = 88;
+
+const categorias = [
+  { id: "rubro", titulo: "Por rubro", items: porRubro },
+  { id: "servicio", titulo: "Por servicio", items: porServicio },
+  { id: "producto", titulo: "Por producto", items: porProducto },
+] as const;
+
+type CategoriaId = (typeof categorias)[number]["id"];
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [queHacemosOpen, setQueHacemosOpen] = useState(false);
-  const [flyoutTop, setFlyoutTop] = useState(0);
-  const queHacemosButtonRef = useRef<HTMLButtonElement>(null);
+  const [categoriaAbierta, setCategoriaAbierta] = useState<CategoriaId | null>(
+    null,
+  );
+  const [categoriaActiva, setCategoriaActiva] = useState<CategoriaId>("rubro");
   const pathname = usePathname();
   const [previousPathname, setPreviousPathname] = useState(pathname);
 
@@ -43,16 +58,6 @@ export default function Header() {
     };
   }, [menuOpen]);
 
-  // El flyout de "Qué hacemos" se saca del contenedor con scroll (ver
-  // nota más abajo) y se posiciona con fixed — hay que medir en qué Y
-  // quedó el botón para alinearlo, cada vez que se abre.
-  useEffect(() => {
-    if (!queHacemosOpen) return;
-    const button = queHacemosButtonRef.current;
-    if (!button) return;
-    setFlyoutTop(button.getBoundingClientRect().top);
-  }, [queHacemosOpen]);
-
   if (pathname !== previousPathname) {
     setPreviousPathname(pathname);
     closeMenu();
@@ -61,6 +66,8 @@ export default function Header() {
   function closeMenu() {
     setMenuOpen(false);
     setQueHacemosOpen(false);
+    setCategoriaAbierta(null);
+    setCategoriaActiva("rubro");
   }
 
   const renderPanelLink = (link: NavLink) => {
@@ -161,7 +168,6 @@ export default function Header() {
                 {navLinks.slice(0, 2).map(renderPanelLink)}
 
                 <button
-                  ref={queHacemosButtonRef}
                   type="button"
                   aria-expanded={queHacemosOpen}
                   onClick={() => setQueHacemosOpen((prev) => !prev)}
@@ -182,8 +188,12 @@ export default function Header() {
                   </span>
                 </button>
 
-                {/* En mobile no hay lugar para el flyout al costado —
-                    se despliega acá mismo, en el flujo normal. */}
+                {/* "Por rubro / Por servicio / Por producto" como 3
+                    renglones propios debajo de "Qué hacemos" — en
+                    desktop, pasar el mouse por cada uno cambia el
+                    contenido del flyout de al lado (ver más abajo). En
+                    mobile no hay lugar para el flyout, así que cada
+                    renglón despliega su propia lista acá mismo. */}
                 <AnimatePresence initial={false}>
                   {queHacemosOpen && (
                     <motion.div
@@ -191,10 +201,72 @@ export default function Header() {
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.2, ease: "easeInOut" }}
-                      className="overflow-hidden md:hidden"
+                      className="w-full overflow-hidden"
                     >
-                      <div className="rounded-2xl border border-steel/20 bg-ink-light p-6 text-left">
-                        <QueHacemosGrid />
+                      <div className="flex flex-col items-center gap-1 pt-1">
+                        {categorias.map((categoria) => (
+                          <div key={categoria.id}>
+                            <button
+                              type="button"
+                              onMouseEnter={() =>
+                                setCategoriaActiva(categoria.id)
+                              }
+                              onClick={() =>
+                                setCategoriaAbierta((prev) =>
+                                  prev === categoria.id ? null : categoria.id,
+                                )
+                              }
+                              className={`flex items-center gap-2 py-1.5 text-sm transition-colors ${
+                                categoriaActiva === categoria.id
+                                  ? "text-white"
+                                  : "text-white/50 hover:text-white"
+                              }`}
+                            >
+                              {categoria.titulo}
+                              <span
+                                className={`text-xs transition-transform md:hidden ${
+                                  categoriaAbierta === categoria.id
+                                    ? "rotate-90"
+                                    : ""
+                                }`}
+                                aria-hidden
+                              >
+                                ▸
+                              </span>
+                              <span className="hidden md:inline" aria-hidden>
+                                →
+                              </span>
+                            </button>
+
+                            {/* Mobile: acordeón anidado, una lista por
+                                categoría. */}
+                            <AnimatePresence initial={false}>
+                              {categoriaAbierta === categoria.id && (
+                                <motion.div
+                                  initial={{ height: 0, opacity: 0 }}
+                                  animate={{ height: "auto", opacity: 1 }}
+                                  exit={{ height: 0, opacity: 0 }}
+                                  transition={{
+                                    duration: 0.2,
+                                    ease: "easeInOut",
+                                  }}
+                                  className="overflow-hidden text-left md:hidden"
+                                >
+                                  <ul className="mt-2 mb-3 flex flex-col gap-2 pl-3">
+                                    {categoria.items.map((item) => (
+                                      <li
+                                        key={item.label}
+                                        className="text-sm text-white/70"
+                                      >
+                                        {item.label}
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </motion.div>
+                              )}
+                            </AnimatePresence>
+                          </div>
+                        ))}
                       </div>
                     </motion.div>
                   )}
@@ -231,13 +303,32 @@ export default function Header() {
                   exit={{ opacity: 0, x: -8 }}
                   transition={{ duration: 0.2, ease: "easeOut" }}
                   style={{
-                    top: flyoutTop,
+                    top: FLYOUT_TOP_PX,
                     left: SIDEBAR_WIDTH_PX + 16,
-                    maxHeight: `calc(100vh - ${flyoutTop + 32}px)`,
+                    maxHeight: `calc(100vh - ${FLYOUT_TOP_PX + 24}px)`,
                   }}
                   className="fixed z-[65] hidden w-[340px] overflow-y-auto rounded-2xl border border-steel/20 bg-ink-light p-8 shadow-2xl md:block"
                 >
-                  <QueHacemosGrid />
+                  <AnimatePresence mode="wait" initial={false}>
+                    <motion.div
+                      key={categoriaActiva}
+                      initial={{ opacity: 0, y: 4 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.15 }}
+                    >
+                      <QueHacemosColumn
+                        titulo={
+                          categorias.find((c) => c.id === categoriaActiva)!
+                            .titulo
+                        }
+                        items={
+                          categorias.find((c) => c.id === categoriaActiva)!
+                            .items
+                        }
+                      />
+                    </motion.div>
+                  </AnimatePresence>
                 </motion.div>
               )}
             </AnimatePresence>
@@ -245,22 +336,6 @@ export default function Header() {
         )}
       </AnimatePresence>
     </>
-  );
-}
-
-function QueHacemosGrid() {
-  return (
-    <div className="flex flex-col divide-y divide-steel/20">
-      <div className="pb-6">
-        <QueHacemosColumn titulo="Por rubro" items={porRubro} />
-      </div>
-      <div className="py-6">
-        <QueHacemosColumn titulo="Por servicio" items={porServicio} />
-      </div>
-      <div className="pt-6">
-        <QueHacemosColumn titulo="Por producto" items={porProducto} />
-      </div>
-    </div>
   );
 }
 
