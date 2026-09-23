@@ -295,15 +295,21 @@ export default function Header() {
                   style={{
                     top: FLYOUT_TOP_PX,
                     left: SIDEBAR_WIDTH_PX + 16,
-                    maxHeight: `calc(100vh - ${FLYOUT_TOP_PX + 24}px)`,
                   }}
-                  className="fixed z-[65] hidden w-[340px] overflow-y-auto rounded-2xl border border-steel/20 bg-ink-light p-8 shadow-2xl md:block"
+                  // Sin scroll, nunca: todo el espaciado y el tamaño de
+                  // letra escalan con el alto de la ventana (vh, con
+                  // tope máximo), así el contenido siempre entra.
+                  className="fixed z-[65] hidden w-[340px] rounded-2xl border border-steel/20 bg-ink-light p-[clamp(12px,2vh,32px)] shadow-2xl md:block [&_a]:text-[length:clamp(10px,1.6vh,14px)] [&_span]:text-[length:clamp(10px,1.6vh,14px)]"
                 >
                   <div className="flex flex-col divide-y divide-steel/20">
                     {categorias.map((categoria, index) => (
                       <div
                         key={categoria.id}
-                        className={index === 0 ? "pb-6" : "py-6"}
+                        className={
+                          index === 0
+                            ? "pb-[clamp(6px,1.5vh,24px)]"
+                            : "py-[clamp(6px,1.5vh,24px)]"
+                        }
                       >
                         <QueHacemosColumn
                           titulo={categoria.titulo}
@@ -334,8 +340,10 @@ function QueHacemosColumn({
 }) {
   return (
     <div>
-      <p className="text-xs font-light text-white/40">{titulo}</p>
-      <ul className="mt-4 flex flex-col gap-2">
+      <p className="text-[length:clamp(10px,1.5vh,12px)] font-light text-white/40">
+        {titulo}
+      </p>
+      <ul className="mt-[clamp(4px,1.2vh,16px)] flex flex-col gap-[clamp(1px,0.6vh,8px)]">
         {items.map((item) => (
           <li key={item.label}>
             <QueHacemosItem item={item} onNavigate={onNavigate} />
