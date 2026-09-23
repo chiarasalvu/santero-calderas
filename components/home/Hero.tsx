@@ -80,17 +80,17 @@ export default function Hero() {
         className="absolute inset-x-0 -top-[4%] h-[108%]"
         style={{ y: backgroundY }}
       >
-        {/* Entrada del logo: recorte propio, sin loop, centrado real
-            (object-position center) para que el cuadrado quede
-            perfectamente centrado en pantalla — no comparte el
-            object-position "70%" del metraje de planta. */}
+        {/* Entrada del logo: recorte propio, sin loop. object-cover a
+            pantalla completa (igual que el metraje, sin franjas negras)
+            pero con object-position centrado real — no comparte el
+            "70%" del metraje de planta, que es lo que lo descentraba. */}
         <video
           ref={logoRef}
           src="/video/hero-logo-intro.mp4"
           muted
           playsInline
           preload="auto"
-          className={`absolute inset-0 h-full w-full object-contain object-center transition-opacity motion-reduce:hidden ${
+          className={`absolute inset-0 h-full w-full object-cover object-center transition-opacity motion-reduce:hidden ${
             showFootage ? "opacity-0" : "opacity-100"
           }`}
           style={{ transitionDuration: `${CROSSFADE_MS}ms` }}
