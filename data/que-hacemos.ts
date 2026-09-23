@@ -43,7 +43,10 @@ export const rubrosPaginas: RubroPagina[] = [
     slug: "clubes-natatorios-spa",
     label: "Clubes, Natatorios & SPA",
     titulo: "Clubes, Natatorios y SPA",
-    video: null,
+    video: {
+      src: "/video/rubros/clubes-natatorios-spa.mp4",
+      poster: "/img/rubros/clubes-natatorios-spa-poster.jpg",
+    },
   },
   {
     slug: "real-estate-consorcios",
