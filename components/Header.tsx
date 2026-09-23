@@ -299,7 +299,7 @@ export default function Header() {
                   // Sin scroll, nunca: todo el espaciado y el tamaño de
                   // letra escalan con el alto de la ventana (vh, con
                   // tope máximo), así el contenido siempre entra.
-                  className="fixed z-[65] hidden w-[340px] rounded-2xl border border-steel/20 bg-ink-light p-[clamp(12px,2vh,32px)] shadow-2xl md:block [&_a]:text-[length:clamp(10px,1.6vh,14px)] [&_span]:text-[length:clamp(10px,1.6vh,14px)]"
+                  className="fixed z-[65] hidden w-[min(400px,calc(100vw-412px))] rounded-2xl border border-steel/20 bg-ink-light p-[clamp(12px,2vh,32px)] shadow-2xl md:block [&_a]:text-[length:clamp(11px,1.9vh,17px)] [&_span]:text-[length:clamp(11px,1.9vh,17px)]"
                 >
                   <div className="flex flex-col divide-y divide-steel/20">
                     {categorias.map((categoria, index) => (
@@ -340,7 +340,7 @@ function QueHacemosColumn({
 }) {
   return (
     <div>
-      <p className="text-[length:clamp(10px,1.5vh,12px)] font-light text-white/40">
+      <p className="text-[length:clamp(10px,1.5vh,13px)] font-light text-white/40">
         {titulo}
       </p>
       <ul className="mt-[clamp(4px,1.2vh,16px)] flex flex-col gap-[clamp(1px,0.6vh,8px)]">
