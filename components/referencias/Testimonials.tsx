@@ -7,7 +7,12 @@ import { googleReviews } from "@/data/google-reviews";
 const GOOGLE_REVIEWS_URL =
   "https://www.google.com/maps/place/Calderas+Santero/@-34.6530001,-58.406007,17z/data=!4m8!3m7!1s0x95bccb023a387d97:0x1bee099adfe56ea0!8m2!3d-34.6530001!4d-58.406007!9m1!1b1!16s%2Fg%2F1vtzjd9x";
 
-export default function Testimonials() {
+type TestimonialsProps = {
+  rating: number;
+  reviewCount: number;
+};
+
+export default function Testimonials({ rating, reviewCount }: TestimonialsProps) {
   const trackRef = useRef<HTMLDivElement>(null);
 
   function scroll(direction: 1 | -1) {
@@ -40,8 +45,8 @@ export default function Testimonials() {
           >
             <GoogleLogo className="h-5 w-5 shrink-0" />
             <span className="text-sm text-white/80">
-              <span className="font-semibold text-white">4.8</span> · 70
-              reseñas en Google
+              <span className="font-semibold text-white">{rating}</span> ·{" "}
+              {reviewCount} reseñas en Google
             </span>
           </a>
         </Reveal>

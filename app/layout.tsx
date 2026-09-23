@@ -6,6 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import GoogleReviewsBadge from "@/components/GoogleReviewsBadge";
+import { getGoogleRating } from "@/lib/google-rating";
 
 // Única tipografía del sitio: Montserrat, diferenciada solo por peso
 // (light / regular / semibold). Reemplaza a Hanken Grotesk (texto) y
@@ -22,11 +23,13 @@ export const metadata: Metadata = {
     "Instalación, mantenimiento y reparación de calderas para hogares y empresas.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const { rating, reviewCount } = await getGoogleRating();
+
   return (
     <html
       lang="es"
@@ -38,7 +41,7 @@ export default function RootLayout({
           <main className="flex-1">{children}</main>
           <Footer />
           <WhatsAppButton />
-          <GoogleReviewsBadge />
+          <GoogleReviewsBadge rating={rating} reviewCount={reviewCount} />
         </MotionConfig>
       </body>
     </html>

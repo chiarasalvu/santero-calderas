@@ -5,8 +5,11 @@ import { motion } from "framer-motion";
 import AnimatedCounter from "@/components/motion/AnimatedCounter";
 
 const GOOGLE_REVIEWS_URL = "https://www.google.com/maps?cid=2012556644267159200";
-const RATING = 4.8;
-const REVIEW_COUNT = 70;
+
+type GoogleReviewsBadgeProps = {
+  rating: number;
+  reviewCount: number;
+};
 
 /**
  * Insignia de reseñas de Google, fija en todas las páginas (montada en el
@@ -14,8 +17,15 @@ const REVIEW_COUNT = 70;
  * versión mini (solo rating + 1 estrella) — igual al patrón que usa
  * dorianargentina.com. En mobile arranca directamente en mini para no
  * ocupar espacio. El hover (desktop) la vuelve a expandir.
+ *
+ * `rating`/`reviewCount` vienen del layout raíz (server component), que
+ * los trae en vivo de Google si está configurado (ver lib/google-rating.ts)
+ * o usa los valores de respaldo si no.
  */
-export default function GoogleReviewsBadge() {
+export default function GoogleReviewsBadge({
+  rating,
+  reviewCount,
+}: GoogleReviewsBadgeProps) {
   const [collapsed, setCollapsed] = useState(false);
   const collapseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -50,7 +60,7 @@ export default function GoogleReviewsBadge() {
       href={GOOGLE_REVIEWS_URL}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label={`Ver reseñas de Calderas Santero en Google — ${RATING} de 5 estrellas, ${REVIEW_COUNT} reseñas`}
+      aria-label={`Ver reseñas de Calderas Santero en Google — ${rating} de 5 estrellas, ${reviewCount} reseñas`}
       onMouseEnter={expand}
       onMouseLeave={scheduleCollapse}
       initial={{ scale: 0, opacity: 0 }}
@@ -70,7 +80,7 @@ export default function GoogleReviewsBadge() {
         }`}
       >
         <span className="font-sans text-base font-bold text-[#202124]">
-          {RATING}
+          {rating}
         </span>
         <span className="text-base leading-none text-[#fbbc04]">★</span>
       </span>
@@ -83,12 +93,12 @@ export default function GoogleReviewsBadge() {
         <span className="text-[10px] text-[#666]">Valoración de clientes</span>
         <span className="flex items-center gap-1.5 leading-none">
           <span className="font-sans text-sm font-bold text-[#202124]">
-            <AnimatedCounter value={RATING} decimals={1} />
+            <AnimatedCounter value={rating} decimals={1} />
           </span>
           <span className="text-xs tracking-[1px] text-[#fbbc04]">★★★★★</span>
         </span>
         <span className="text-[10px] text-[#888]">
-          <AnimatedCounter value={REVIEW_COUNT} /> reseñas en{" "}
+          <AnimatedCounter value={reviewCount} /> reseñas en{" "}
           <strong className="text-[#4285F4]">Google</strong>
         </span>
       </span>

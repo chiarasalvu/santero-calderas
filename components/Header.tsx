@@ -191,7 +191,7 @@ export default function Header() {
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.2, ease: "easeInOut" }}
-                      className="overflow-hidden lg:hidden"
+                      className="overflow-hidden md:hidden"
                     >
                       <div className="rounded-2xl border border-steel/20 bg-ink-light p-6 text-left">
                         <QueHacemosGrid />
@@ -230,8 +230,12 @@ export default function Header() {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -8 }}
                   transition={{ duration: 0.2, ease: "easeOut" }}
-                  style={{ top: flyoutTop, left: SIDEBAR_WIDTH_PX + 16 }}
-                  className="fixed z-[65] hidden w-[520px] rounded-2xl border border-steel/20 bg-ink-light p-8 shadow-2xl lg:block"
+                  style={{
+                    top: flyoutTop,
+                    left: SIDEBAR_WIDTH_PX + 16,
+                    maxHeight: `calc(100vh - ${flyoutTop + 32}px)`,
+                  }}
+                  className="fixed z-[65] hidden w-[340px] overflow-y-auto rounded-2xl border border-steel/20 bg-ink-light p-8 shadow-2xl md:block"
                 >
                   <QueHacemosGrid />
                 </motion.div>
@@ -246,14 +250,14 @@ export default function Header() {
 
 function QueHacemosGrid() {
   return (
-    <div className="flex flex-col gap-6 sm:grid sm:grid-cols-3 sm:gap-x-8 sm:divide-x sm:divide-steel/20">
-      <div className="sm:pr-6">
+    <div className="flex flex-col divide-y divide-steel/20">
+      <div className="pb-6">
         <QueHacemosColumn titulo="Por rubro" items={porRubro} />
       </div>
-      <div className="sm:px-6">
+      <div className="py-6">
         <QueHacemosColumn titulo="Por servicio" items={porServicio} />
       </div>
-      <div className="sm:pl-6">
+      <div className="pt-6">
         <QueHacemosColumn titulo="Por producto" items={porProducto} />
       </div>
     </div>
