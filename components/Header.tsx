@@ -25,9 +25,6 @@ export default function Header() {
   useEffect(() => {
     if (!menuOpen) return;
 
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-
     function handleKeyDown(event: KeyboardEvent) {
       if (event.key === "Escape") {
         closeMenu();
@@ -36,7 +33,6 @@ export default function Header() {
 
     document.addEventListener("keydown", handleKeyDown);
     return () => {
-      document.body.style.overflow = previousOverflow;
       document.removeEventListener("keydown", handleKeyDown);
     };
   }, [menuOpen]);
@@ -58,7 +54,7 @@ export default function Header() {
         key={link.href}
         href={link.href}
         onClick={closeMenu}
-        className={`font-heading text-lg font-light transition-colors sm:text-xl ${
+        className={`font-heading text-lg font-light transition-colors ${
           active
             ? "text-brand-red-light"
             : "text-white hover:text-brand-red-light"
@@ -123,27 +119,33 @@ export default function Header() {
         </div>
       </header>
 
-      {/* Panel a pantalla completa — hermano del <header>, nunca su
-          descendiente. Mismo panel en todos los breakpoints. */}
+      {/* Panel lateral izquierdo — hermano del <header>, nunca su
+          descendiente. El resto de la pantalla queda transparente (se ve
+          lo que haya atrás, p. ej. el video del Hero) y cierra el menú al
+          tocarlo. */}
       <AnimatePresence>
         {menuOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.25, ease: "easeOut" }}
-            className="fixed inset-0 top-16 z-[60] overflow-y-auto bg-ink"
+          <div
+            className="fixed inset-0 top-16 z-[60]"
+            onClick={closeMenu}
           >
-            <nav className="mx-auto flex min-h-full max-w-3xl flex-col items-center justify-center gap-4 px-6 py-16 lg:max-w-5xl lg:gap-5">
+            <motion.nav
+              onClick={(event) => event.stopPropagation()}
+              initial={{ x: "-100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "-100%" }}
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              className="relative flex h-full w-full max-w-[360px] flex-col gap-6 overflow-y-auto border-r border-steel/20 bg-ink/97 px-8 py-10 backdrop-blur-xl sm:max-w-[380px]"
+            >
               {renderPanelLink(homeLink)}
               {navLinks.slice(0, 2).map(renderPanelLink)}
 
-              <div className="flex w-full flex-col items-center">
+              <div className="relative">
                 <button
                   type="button"
                   aria-expanded={queHacemosOpen}
                   onClick={() => setQueHacemosOpen((prev) => !prev)}
-                  className={`flex items-center gap-2 font-heading text-lg font-light transition-colors sm:text-xl ${
+                  className={`flex items-center gap-2 font-heading text-lg font-light transition-colors ${
                     queHacemosOpen
                       ? "text-brand-red-light"
                       : "text-white hover:text-brand-red-light"
@@ -152,11 +154,11 @@ export default function Header() {
                   Qué hacemos
                   <span
                     className={`text-sm transition-transform ${
-                      queHacemosOpen ? "rotate-180" : ""
+                      queHacemosOpen ? "rotate-90" : ""
                     }`}
                     aria-hidden
                   >
-                    ▾
+                    ▸
                   </span>
                 </button>
 
@@ -167,25 +169,23 @@ export default function Header() {
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.2, ease: "easeInOut" }}
-                      className="w-full overflow-hidden"
+                      className="overflow-hidden sm:absolute sm:left-full sm:top-0 sm:ml-4 sm:h-auto sm:w-[520px] sm:overflow-visible sm:opacity-100"
                     >
-                      <div className="mt-6 rounded-2xl border border-steel/20 bg-ink-light p-6 lg:p-8">
-                        <div className="flex flex-col gap-6 lg:grid lg:grid-cols-3 lg:gap-x-10 lg:gap-y-0 lg:divide-x lg:divide-steel/20">
-                          <div className="lg:pr-8">
-                            <QueHacemosColumn titulo="Por rubro" items={porRubro} />
-                          </div>
-                          <div className="lg:px-8">
-                            <QueHacemosColumn
-                              titulo="Por servicio"
-                              items={porServicio}
-                            />
-                          </div>
-                          <div className="lg:pl-8">
-                            <QueHacemosColumn
-                              titulo="Por producto"
-                              items={porProducto}
-                            />
-                          </div>
+                      <div className="mt-6 flex flex-col gap-6 rounded-2xl border border-steel/20 bg-ink-light p-6 sm:mt-0 sm:grid sm:grid-cols-3 sm:gap-x-8 sm:divide-x sm:divide-steel/20 sm:p-8">
+                        <div className="sm:pr-6">
+                          <QueHacemosColumn titulo="Por rubro" items={porRubro} />
+                        </div>
+                        <div className="sm:px-6">
+                          <QueHacemosColumn
+                            titulo="Por servicio"
+                            items={porServicio}
+                          />
+                        </div>
+                        <div className="sm:pl-6">
+                          <QueHacemosColumn
+                            titulo="Por producto"
+                            items={porProducto}
+                          />
                         </div>
                       </div>
                     </motion.div>
@@ -200,12 +200,12 @@ export default function Header() {
                 onClick={closeMenu}
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
-                className="mt-6 rounded-lg bg-brand-red px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white hover:text-brand-red"
+                className="mt-2 w-fit rounded-lg bg-brand-red px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white hover:text-brand-red"
               >
                 Solicitar asesoramiento
               </MotionLink>
-            </nav>
-          </motion.div>
+            </motion.nav>
+          </div>
         )}
       </AnimatePresence>
     </>

@@ -56,7 +56,7 @@ export default function GoogleReviewsBadge() {
       initial={{ scale: 0, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
       transition={{ type: "spring", stiffness: 260, damping: 20, delay: 0.6 }}
-      className={`fixed bottom-5 left-4 z-40 flex items-center overflow-hidden rounded-full bg-white shadow-[0_4px_20px_rgba(0,0,0,0.18)] ring-1 ring-black/5 transition-[width] duration-500 sm:bottom-6 sm:left-6 ${
+      className={`fixed bottom-5 left-4 z-[65] flex items-center overflow-hidden rounded-full bg-white shadow-[0_4px_20px_rgba(0,0,0,0.18)] ring-1 ring-black/5 transition-[width] duration-500 sm:bottom-6 sm:left-6 ${
         collapsed ? "w-[116px]" : "w-[220px]"
       }`}
     >

@@ -11,24 +11,26 @@ export type QueHacemosLink = {
 // pueda indexar por metadatos aunque el menú visible esté resumido.
 
 export const porRubro: QueHacemosLink[] = [
-  { label: "Hotelería, Balnearios & Gastronomía", href: "/servicios" },
-  { label: "Clubes, Natatorios & SPA / Wellness", href: "/servicios" },
+  { label: "Hotelería, Balnearios & Campamentos", href: "/servicios" },
+  { label: "Clubes, Natatorios & SPA", href: "/servicios" },
   { label: "Real Estate & Consorcios", href: "/servicios" },
-  { label: "Industrias, Hospitales & Camping", href: "/servicios" },
+  { label: "Industrias y Hospitales", href: "/servicios" },
 ];
 
+// Por servicio: separado tal cual las 4 cards de "Qué hacemos" en el
+// Home (Agua caliente / Climatización de piscina / Calefacción / Vapor)
+// — a pedido del cliente, no van agrupados.
 export const porServicio: QueHacemosLink[] = [
-  { label: "Agua Caliente Sanitaria & Calefacción", href: "/servicios" },
+  { label: "Agua Caliente Sanitaria", href: "/servicios" },
+  { label: "Calefacción", href: "/servicios" },
   { label: "Climatización de Piscinas", href: "/servicios" },
-  { label: "Procesos Industriales con Vapor", href: "/servicios" },
-  { label: "Servicio Técnico & Instalación Llave en Mano", href: "/servicios" },
-  { label: "Solar", href: "/servicios" },
+  { label: "Vapor", href: "/servicios" },
 ];
 
 export const porProducto: QueHacemosLink[] = [
   { label: "Calderas (Agua y Vapor)", href: "/sistema-santero" },
-  { label: "Generadores & Termotanques", href: "/sistema-santero" },
+  { label: "Generadores de Agua Caliente", href: "/sistema-santero" },
   { label: "Climatizadores de Piscina", href: "/sistema-santero" },
   { label: "Intercambiadores & Tanques de Acumulación", href: "/sistema-santero" },
-  { label: "Complemento Solar", href: "/sistema-santero" },
+  { label: "Sistemas Eléctricos", href: "/sistema-santero" },
 ];
