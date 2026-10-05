@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import BackButton from "@/components/BackButton";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { navLinks, type NavLink } from "@/lib/nav";
@@ -40,6 +41,8 @@ export default function Header() {
     null,
   );
   const pathname = usePathname();
+  // "Volver" solo en las páginas de "Qué hacemos" (rubros y servicios).
+  const showBack = /^\/(rubros|soluciones)\//.test(pathname);
   const [previousPathname, setPreviousPathname] = useState(pathname);
 
   useEffect(() => {
@@ -92,32 +95,37 @@ export default function Header() {
           a la derecha — mismo layout en mobile y desktop. */}
       <header className="fixed inset-x-0 top-0 z-[70] border-b border-steel/20 bg-ink/90 backdrop-blur-xl">
         <div className="mx-auto grid h-16 max-w-6xl grid-cols-[1fr_auto_1fr] items-center gap-2 px-6">
-          <button
-            type="button"
-            aria-expanded={menuOpen}
-            aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
-            onClick={() => (menuOpen ? closeMenu() : setMenuOpen(true))}
-            className="flex items-center justify-self-start gap-2 rounded border border-steel/40 px-2.5 py-2 text-xs font-light text-white transition-colors hover:border-white sm:px-3"
-          >
-            {menuOpen ? "Cerrar" : "Menu"}
-            <span aria-hidden className="flex flex-col gap-[3px]">
-              <span
-                className={`h-[1.5px] w-4 bg-white transition-transform ${
-                  menuOpen ? "translate-y-[4.5px] rotate-45" : ""
-                }`}
-              />
-              <span
-                className={`h-[1.5px] w-4 bg-white transition-opacity ${
-                  menuOpen ? "opacity-0" : ""
-                }`}
-              />
-              <span
-                className={`h-[1.5px] w-4 bg-white transition-transform ${
-                  menuOpen ? "-translate-y-[4.5px] -rotate-45" : ""
-                }`}
-              />
-            </span>
-          </button>
+          <div className="flex items-center gap-2 justify-self-start">
+            <button
+              type="button"
+              aria-expanded={menuOpen}
+              aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
+              onClick={() => (menuOpen ? closeMenu() : setMenuOpen(true))}
+              className="flex items-center gap-2 rounded border border-steel/40 px-2.5 py-2 text-xs font-light text-white transition-colors hover:border-white sm:px-3"
+            >
+              <span className={showBack ? "hidden sm:inline" : undefined}>
+                {menuOpen ? "Cerrar" : "Menu"}
+              </span>
+              <span aria-hidden className="flex flex-col gap-[3px]">
+                <span
+                  className={`h-[1.5px] w-4 bg-white transition-transform ${
+                    menuOpen ? "translate-y-[4.5px] rotate-45" : ""
+                  }`}
+                />
+                <span
+                  className={`h-[1.5px] w-4 bg-white transition-opacity ${
+                    menuOpen ? "opacity-0" : ""
+                  }`}
+                />
+                <span
+                  className={`h-[1.5px] w-4 bg-white transition-transform ${
+                    menuOpen ? "-translate-y-[4.5px] -rotate-45" : ""
+                  }`}
+                />
+              </span>
+            </button>
+            {showBack && <BackButton onNavigate={closeMenu} />}
+          </div>
 
           <Link href="/" onClick={closeMenu} className="justify-self-center">
             <Image
