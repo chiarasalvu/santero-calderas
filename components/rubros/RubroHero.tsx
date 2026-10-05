@@ -50,7 +50,7 @@ export default function RubroHero({
 
   return (
     <section className="relative mt-[65px] min-h-[calc(100dvh-65px)] bg-ink px-6 pt-16 pb-20">
-      <Reveal className="relative mx-auto grid w-full max-w-7xl gap-x-14 gap-y-8 lg:grid-cols-2 lg:grid-rows-[auto_1fr]">
+      <Reveal className="relative mx-auto grid w-full max-w-6xl gap-x-14 gap-y-8 lg:grid-cols-2 lg:grid-rows-[auto_1fr]">
         <div className="lg:col-start-1 lg:row-start-1">
           <p className="font-mono text-xs font-light text-brand-red-light">
             Por rubro

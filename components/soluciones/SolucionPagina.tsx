@@ -25,7 +25,7 @@ export default function SolucionPagina({ servicio }: { servicio: ServicioPagina 
           aria-hidden
         />
 
-        <Reveal className="relative mx-auto w-full max-w-7xl">
+        <Reveal className="relative mx-auto w-full max-w-6xl">
           <p className="font-mono text-xs font-light text-brand-red-light">
             Por servicio
           </p>
@@ -41,7 +41,7 @@ export default function SolucionPagina({ servicio }: { servicio: ServicioPagina 
       </section>
 
       <section className="bg-ink px-6 pt-4 pb-16">
-        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[3fr_2fr] lg:gap-14">
+        <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[3fr_2fr] lg:gap-14">
           <Reveal>
             <div className="flex flex-col gap-5">
               {servicio.parrafos.map((parrafo) => (
@@ -88,7 +88,7 @@ export default function SolucionPagina({ servicio }: { servicio: ServicioPagina 
       </section>
 
       <section className="bg-ink px-6 pb-24">
-        <div className="mx-auto max-w-7xl">
+        <div className="mx-auto max-w-6xl">
           <Reveal>
             <h2 className="font-heading text-2xl font-semibold text-white sm:text-3xl">
               Productos

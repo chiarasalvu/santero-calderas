@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import Reveal from "@/components/motion/Reveal";
 import AnimatedCounter from "@/components/motion/AnimatedCounter";
 import { lineasProducto } from "@/data/productos";
@@ -83,12 +82,6 @@ export default function ProductosDetalle() {
                 </div>
               )}
 
-              <Link
-                href="/contacto"
-                className="mt-8 inline-block rounded-lg bg-brand-red px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white hover:text-brand-red"
-              >
-                Consultar por esta línea
-              </Link>
             </Reveal>
           </article>
         ))}

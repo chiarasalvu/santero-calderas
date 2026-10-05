@@ -82,16 +82,7 @@ export default function CasosReales() {
   return (
     <section className="bg-ink px-6 pb-24">
       <div className="mx-auto max-w-6xl">
-        <Reveal>
-          <p className="font-mono text-xs font-light text-brand-red-light">
-            Consorcios
-          </p>
-          <h2 className="mt-3 font-heading text-3xl font-semibold text-white sm:text-4xl">
-            Edificios que modernizaron su sistema
-          </h2>
-        </Reveal>
-
-        <div className="mt-10 flex flex-col gap-8">
+        <div className="flex flex-col gap-8">
           {casos.map((caso) => (
             <Reveal
               key={caso.id}
