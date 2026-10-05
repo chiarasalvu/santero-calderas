@@ -57,7 +57,7 @@ export default function AboutHero() {
         style={{ y: backgroundY }}
       >
         <Image
-          src="/img/generales/equipo-1.png"
+          src="/img/generales/equipo-2.jpg"
           alt=""
           fill
           priority
@@ -80,8 +80,6 @@ export default function AboutHero() {
 
         <p className="mt-6 max-w-xl text-white/70">
           Cuatro generaciones de excelencia en ingeniería térmica.
-          Transformamos el acero en potencia industrial, combinando
-          precisión técnica con robustez legendaria.
         </p>
 
         <button

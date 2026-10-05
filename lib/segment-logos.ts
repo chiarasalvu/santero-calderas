@@ -5,7 +5,8 @@ import { segmentos, type Segmento, type SegmentoLogo } from "@/lib/segments";
 const extensionesValidas = new Set([".png", ".jpg", ".jpeg", ".webp", ".svg"]);
 
 function leerLogosDeCarpeta(carpeta: string): SegmentoLogo[] {
-  const dir = path.join(process.cwd(), "public", "img", carpeta);
+  // Logos ya normalizados (mismo lienzo, mismo aire) — ver scripts/normalizar-logos.py
+  const dir = path.join(process.cwd(), "public", "img", "logos", carpeta);
 
   let archivos: string[];
   try {
@@ -19,7 +20,7 @@ function leerLogosDeCarpeta(carpeta: string): SegmentoLogo[] {
     .sort((a, b) => a.localeCompare(b, "es"))
     .map((archivo) => ({
       nombre: path.parse(archivo).name,
-      src: `/img/${encodeURIComponent(carpeta)}/${encodeURIComponent(archivo)}`,
+      src: `/img/logos/${encodeURIComponent(carpeta)}/${encodeURIComponent(archivo)}`,
     }));
 }
 

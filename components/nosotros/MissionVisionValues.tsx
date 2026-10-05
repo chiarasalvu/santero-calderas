@@ -1,12 +1,10 @@
 import Reveal from "@/components/motion/Reveal";
 
 const valores = [
-  "Acompañamiento",
-  "Compromiso",
-  "Innovación",
-  "Calidad",
-  "Cercanía",
-  "Soluciones a medida",
+  "Honestidad y transparencia",
+  "Calidad y excelencia",
+  "Pasión y responsabilidad",
+  "Desarrollo y colaboración",
 ];
 
 export default function MissionVisionValues() {
@@ -16,21 +14,21 @@ export default function MissionVisionValues() {
         <Reveal className="rounded-2xl bg-cream p-8">
           <h3 className="font-heading text-xl font-semibold text-navy">Misión</h3>
           <p className="mt-4 text-sm leading-relaxed text-zinc-600">
-            Diseñar, fabricar e implementar soluciones térmicas eficientes que
-            garanticen agua caliente sanitaria de manera confiable y
-            sostenible, acompañando a cada cliente con asesoramiento técnico,
-            ingeniería especializada y soporte en todas las etapas del
-            proyecto.
+            Diseñar, fabricar e implementar soluciones térmicas eficientes de agua
+            caliente, climatización y vapor, acompañando a nuestros clientes
+            con ingeniería especializada, asesoramiento técnico y soporte
+            continuo en cada etapa del proyecto para asegurar máxima
+            confiabilidad y sostenibilidad.
           </p>
         </Reveal>
 
         <Reveal delay={0.1} className="rounded-2xl bg-cream p-8">
           <h3 className="font-heading text-xl font-semibold text-navy">Visión</h3>
           <p className="mt-4 text-sm leading-relaxed text-zinc-600">
-            Ser la empresa referente en soluciones de agua caliente sanitaria
-            para grandes demandas, reconocida por la innovación de su Sistema
-            Santero, la calidad de sus equipos y el compromiso técnico con
-            cada proyecto en Argentina y la región.
+            Liderar el futuro de la climatización para grandes demandas en
+            Argentina y la región a través del Sistema Santero, elevando la
+            vara del mercado e impulsando la transición hacia infraestructuras
+            más eficientes, innovadoras y sustentables.
           </p>
         </Reveal>
 
