@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import BackButton from "@/components/BackButton";
 import Reveal from "@/components/motion/Reveal";
 import type { ServicioPagina } from "@/data/que-hacemos";
 import { fotoPorEquipo, lineaPorEquipo, productoHref } from "@/data/productos";
@@ -25,11 +24,6 @@ export default function SolucionPagina({ servicio }: { servicio: ServicioPagina 
           className="absolute inset-0 bg-gradient-to-t from-ink via-ink/50 to-ink/20"
           aria-hidden
         />
-        <div className="absolute inset-x-0 top-6 z-10 px-6">
-          <div className="mx-auto max-w-7xl">
-            <BackButton />
-          </div>
-        </div>
 
         <Reveal className="relative mx-auto w-full max-w-7xl">
           <p className="font-mono text-xs font-light text-brand-red-light">
