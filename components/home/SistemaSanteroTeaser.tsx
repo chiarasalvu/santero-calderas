@@ -42,27 +42,29 @@ export default function SistemaSanteroTeaser() {
           <p className="font-heading text-sm font-semibold text-brand-red-light">
             Ingeniería propia. Tecnología avanzada.
           </p>
-          <h2 className="mt-4 max-w-2xl font-heading text-3xl font-semibold text-white sm:text-4xl">
-            Sistema Santero
-          </h2>
+          <div className="mt-4 flex flex-wrap items-end justify-between gap-4">
+            <h2 className="max-w-2xl font-heading text-3xl font-semibold text-white sm:text-4xl">
+              Sistema Santero
+            </h2>
+            <Link
+              href="/sistema-santero"
+              className="group/link flex items-center gap-1 font-mono text-xs font-light text-brand-red-light transition-colors hover:text-white"
+            >
+              Conocer el sistema
+              <span
+                className="transition-transform duration-200 group-hover/link:translate-x-1"
+                aria-hidden
+              >
+                →
+              </span>
+            </Link>
+          </div>
           <p className="mt-4 max-w-2xl text-white/80">
             Un sistema de calentamiento indirecto que genera agua caliente de
             forma instantánea, sin acumulación y con mínima formación de
             sarro, prolongando la vida útil de las instalaciones y reduciendo
             el consumo energético.
           </p>
-          <Link
-            href="/sistema-santero"
-            className="group mt-8 inline-flex items-center gap-2 rounded-lg bg-brand-red px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white hover:text-brand-red"
-          >
-            Conocer el Sistema Santero
-            <span
-              aria-hidden
-              className="transition-transform duration-300 group-hover:translate-x-1"
-            >
-              →
-            </span>
-          </Link>
         </Reveal>
 
         <ol className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
