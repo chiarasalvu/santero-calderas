@@ -19,7 +19,6 @@ export type LineaProducto = {
   badgeClassName?: string;
   subtitulo?: string;
   items: LineaItem[];
-  rendimiento?: number;
 };
 
 // Fotos de /img/equipos: las del Drive del cliente ("Equipos"), una por
@@ -58,7 +57,6 @@ export const lineasProducto: LineaProducto[] = [
           "Capacidad única para alimentar múltiples prestaciones independientes en simultáneo (agua caliente sanitaria, climatización de piscinas y calefacción).",
       },
     ],
-    rendimiento: 98,
   },
   {
     id: "adn",
@@ -89,7 +87,6 @@ export const lineasProducto: LineaProducto[] = [
           "La alternativa elegida por constructoras, hoteles, clubes y consorcios para cambiar verdaderamente de sistema y no solo de marca, que llevan al mismo resultado.",
       },
     ],
-    rendimiento: 92,
   },
   {
     id: "ats",

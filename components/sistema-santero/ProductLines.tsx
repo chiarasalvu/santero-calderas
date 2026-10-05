@@ -134,13 +134,6 @@ export default function ProductLines() {
                     <AnimatedCounter value={linea.rendimiento} />%
                   </span>
                 </div>
-
-                <button
-                  type="button"
-                  className="mt-6 flex w-full items-center justify-center gap-2 rounded-lg border border-white/20 px-4 py-3 text-sm font-semibold text-white/80 transition-colors hover:border-brand-red-light hover:text-brand-red-light"
-                >
-                  Descargar ficha técnica
-                </button>
               </div>
             </Reveal>
           ))}
