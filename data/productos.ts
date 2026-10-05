@@ -149,7 +149,10 @@ export const lineasProducto: LineaProducto[] = [
     label: "Intercambiadores y Tanques de Acumulación",
     nombre: "Intercambiadores y tanques de acumulación",
     imagenes: [
-      { src: "/img/equipos/intercambiador.jpg", alt: "Tanque de acumulación" },
+      {
+        src: "/img/equipos/intercambiador.jpg",
+        alt: "Intercambiador de calor IC-SANT",
+      },
     ],
     items: [
       {
@@ -212,13 +215,15 @@ export const lineaPorEquipo: Record<string, string> = {
   TSE: "electro",
 };
 
-/** Foto de cada equipo (carpeta "Equipos" del cliente). */
-export const fotoPorEquipo: Record<string, string> = {
+/**
+ * Foto de cada equipo (carpeta "Equipos" del cliente). TS no tiene foto
+ * todavía: la de "IC SANT" es el intercambiador de calor, no el tanque TS.
+ */
+export const fotoPorEquipo: Partial<Record<string, string>> = {
   ATSOL: "/img/equipos/atsol.jpg",
   ETERCAL: "/img/equipos/etercal.jpg",
   ADN: "/img/equipos/adn.jpg",
   ATS: "/img/equipos/ats.jpg",
   VTS: "/img/equipos/vts.jpg",
-  TS: "/img/equipos/intercambiador.jpg",
   TSE: "/img/equipos/electro.jpg",
 };
