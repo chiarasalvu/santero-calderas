@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Reveal from "@/components/motion/Reveal";
-import AnimatedCounter from "@/components/motion/AnimatedCounter";
 import { lineasProducto } from "@/data/productos";
 
 // Una fila por línea de producto: foto de los equipos a un lado y el
@@ -70,18 +69,6 @@ export default function ProductosDetalle() {
                   </li>
                 ))}
               </ul>
-
-              {linea.rendimiento !== undefined && (
-                <div className="mt-8 flex items-center justify-between border-t border-white/10 pt-4">
-                  <span className="font-mono text-xs font-light text-white/50">
-                    Rendimiento
-                  </span>
-                  <span className="flex items-baseline font-heading text-2xl font-semibold text-brand-red-light">
-                    <AnimatedCounter value={linea.rendimiento} />%
-                  </span>
-                </div>
-              )}
-
             </Reveal>
           </article>
         ))}
