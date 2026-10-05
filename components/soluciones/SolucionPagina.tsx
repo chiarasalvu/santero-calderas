@@ -6,20 +6,21 @@ import type { ServicioPagina } from "@/data/que-hacemos";
 import { fotoPorEquipo, lineaPorEquipo, productoHref } from "@/data/productos";
 
 // Página de un servicio (Agua caliente, Calefacción, Climatización de
-// piscinas, Vapor), en tres bloques: título + foto, el texto junto a las
-// aplicaciones, y los equipos que lo resuelven (con foto, linkeando a
-// /productos).
+// piscinas, Vapor), en dos bloques como las de rubro: a la izquierda el
+// título, la frase destacada y el texto (justificado); a la derecha la
+// foto y las aplicaciones, que quedan fijas mientras se lee. Debajo, los
+// equipos que lo resuelven (con foto, linkeando a /productos).
 export default function SolucionPagina({ servicio }: { servicio: ServicioPagina }) {
   return (
     <>
       <section className="relative mt-[65px] bg-ink px-6 pt-24 pb-16">
         <div className="absolute inset-x-0 top-6 z-10 px-6">
-          <div className="mx-auto max-w-6xl">
+          <div className="mx-auto max-w-7xl">
             <BackButton />
           </div>
         </div>
 
-        <Reveal className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-2 lg:gap-14">
+        <Reveal className="mx-auto grid max-w-7xl gap-x-14 gap-y-10 lg:grid-cols-2">
           <div>
             <p className="font-mono text-xs font-light text-brand-red-light">
               Por servicio
@@ -32,60 +33,59 @@ export default function SolucionPagina({ servicio }: { servicio: ServicioPagina 
                 {servicio.subtitulo}
               </p>
             )}
+
+            <div className="mt-8 flex max-w-xl flex-col gap-5">
+              {servicio.parrafos.map((parrafo) => (
+                <p
+                  key={parrafo}
+                  className="hyphens-auto text-justify text-white/70"
+                >
+                  {parrafo}
+                </p>
+              ))}
+            </div>
+
             <Link
               href="/contacto"
-              className="mt-8 inline-block rounded-lg bg-brand-red px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white hover:text-brand-red"
+              className="mt-10 inline-block rounded-lg bg-brand-red px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white hover:text-brand-red"
             >
               Solicitar asesoramiento
             </Link>
           </div>
 
-          <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-steel/20">
-            <Image
-              src={servicio.imagen}
-              alt=""
-              fill
-              priority
-              sizes="(min-width: 1024px) 50vw, 100vw"
-              className="object-cover"
-            />
+          <div className="flex flex-col gap-6 self-start lg:sticky lg:top-28">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-steel/20">
+              <Image
+                src={servicio.imagen}
+                alt=""
+                fill
+                priority
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                className="object-cover"
+              />
+            </div>
+
+            <div className="rounded-2xl border border-steel/20 bg-ink-light p-6">
+              <p className="font-mono text-xs font-light text-brand-red-light">
+                Aplicaciones
+              </p>
+              <ul className="mt-4 grid gap-x-6 gap-y-3 sm:grid-cols-2">
+                {servicio.aplicaciones.map((aplicacion) => (
+                  <li
+                    key={aplicacion}
+                    className="flex items-start gap-3 text-sm text-white/80"
+                  >
+                    <span
+                      className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-red-light"
+                      aria-hidden
+                    />
+                    {aplicacion}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </Reveal>
-      </section>
-
-      <section className="bg-ink px-6 pb-16">
-        <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[3fr_2fr] lg:gap-14">
-          <Reveal className="flex flex-col gap-5">
-            {servicio.parrafos.map((parrafo) => (
-              <p key={parrafo} className="text-white/70">
-                {parrafo}
-              </p>
-            ))}
-          </Reveal>
-
-          <Reveal
-            delay={0.1}
-            className="self-start rounded-2xl border border-steel/20 bg-ink-light p-6"
-          >
-            <p className="font-mono text-xs font-light text-brand-red-light">
-              Aplicaciones
-            </p>
-            <ul className="mt-4 flex flex-col gap-3">
-              {servicio.aplicaciones.map((aplicacion) => (
-                <li
-                  key={aplicacion}
-                  className="flex items-start gap-3 text-sm text-white/80"
-                >
-                  <span
-                    className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-red-light"
-                    aria-hidden
-                  />
-                  {aplicacion}
-                </li>
-              ))}
-            </ul>
-          </Reveal>
-        </div>
       </section>
 
       <section className="bg-ink px-6 pb-24">
