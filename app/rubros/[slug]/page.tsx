@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import RubroDescripcion from "@/components/rubros/RubroDescripcion";
 import RubroHero from "@/components/rubros/RubroHero";
 import { rubrosPaginas } from "@/data/que-hacemos";
 
@@ -28,13 +27,11 @@ export default async function RubroPage({ params }: PageProps<"/rubros/[slug]">)
   if (!rubro) notFound();
 
   return (
-    <>
-      <RubroHero
-        titulo={rubro.titulo}
-        subtitulo={rubro.subtitulo}
-        video={rubro.video}
-      />
-      <RubroDescripcion contenido={rubro.contenido} />
-    </>
+    <RubroHero
+      titulo={rubro.titulo}
+      subtitulo={rubro.subtitulo}
+      contenido={rubro.contenido}
+      video={rubro.video}
+    />
   );
 }

@@ -2,22 +2,30 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import BackButton from "@/components/BackButton";
 import Reveal from "@/components/motion/Reveal";
-import type { RubroPagina } from "@/data/que-hacemos";
+import type { BloqueTexto, RubroPagina } from "@/data/que-hacemos";
 
 type RubroHeroProps = {
   titulo: string;
   subtitulo: string;
+  contenido: BloqueTexto[];
   video: RubroPagina["video"];
 };
 
-// Página de un rubro: título a la izquierda y, a la derecha, la portada
-// del video (cuadro grande con ▶ que abre el video en un modal, como el
-// de Nosotros). Sin botón aparte. Sin video, queda solo el título.
-// Arriba a la izquierda va el botón "Volver".
-export default function RubroHero({ titulo, subtitulo, video }: RubroHeroProps) {
+// Página de un rubro, en dos bloques: a la izquierda el título, la frase
+// destacada y la descripción; a la derecha la portada del video (cuadro
+// con ▶ que abre el video en un modal, como el de Nosotros), que queda
+// fija mientras se lee el texto. En mobile el video va entre el título y
+// la descripción. Arriba a la izquierda va el botón "Volver".
+export default function RubroHero({
+  titulo,
+  subtitulo,
+  contenido,
+  video,
+}: RubroHeroProps) {
   const [videoOpen, setVideoOpen] = useState(false);
   const triggerRef = useRef<HTMLButtonElement>(null);
 
@@ -42,22 +50,22 @@ export default function RubroHero({ titulo, subtitulo, video }: RubroHeroProps) 
   }, [videoOpen]);
 
   return (
-    <section className="relative mt-[65px] flex min-h-[calc(100dvh-65px)] items-center overflow-hidden bg-ink px-6 py-24 sm:py-32">
+    <section className="relative mt-[65px] min-h-[calc(100dvh-65px)] bg-ink px-6 pt-24 pb-20">
       <div className="absolute inset-x-0 top-6 z-10 px-6">
         <div className="mx-auto max-w-7xl">
           <BackButton />
         </div>
       </div>
 
-      <Reveal className="relative mx-auto grid w-full max-w-7xl items-center gap-12 lg:grid-cols-[2fr_3fr]">
-        <div>
+      <Reveal className="relative mx-auto grid w-full max-w-7xl gap-x-14 gap-y-8 lg:grid-cols-2 lg:grid-rows-[auto_1fr]">
+        <div className="lg:col-start-1 lg:row-start-1">
           <p className="font-mono text-xs font-light text-brand-red-light">
             Por rubro
           </p>
           <h1 className="mt-4 max-w-3xl font-heading text-3xl font-semibold text-white sm:text-4xl">
             {titulo}
           </h1>
-          <p className="mt-4 max-w-md text-lg text-white/70">{subtitulo}</p>
+          <p className="mt-4 max-w-xl text-lg text-white/80">{subtitulo}</p>
         </div>
 
         {video && (
@@ -66,14 +74,14 @@ export default function RubroHero({ titulo, subtitulo, video }: RubroHeroProps) 
             type="button"
             onClick={() => setVideoOpen(true)}
             aria-label={`Ver video: ${titulo}`}
-            className="group relative block aspect-video w-full overflow-hidden rounded-2xl border border-steel/20 bg-ink-light"
+            className="group relative block aspect-video w-full self-start overflow-hidden rounded-2xl border border-steel/20 bg-ink-light lg:sticky lg:top-28 lg:col-start-2 lg:row-span-2 lg:row-start-1"
           >
             <Image
               src={video.poster}
               alt=""
               fill
               priority
-              sizes="(min-width: 1024px) 60vw, 100vw"
+              sizes="(min-width: 1024px) 50vw, 100vw"
               className="object-cover transition-transform duration-500 group-hover:scale-105"
             />
             <span
@@ -86,6 +94,40 @@ export default function RubroHero({ titulo, subtitulo, video }: RubroHeroProps) 
             </span>
           </button>
         )}
+
+        <div className="max-w-xl lg:col-start-1 lg:row-start-2">
+          <div className="flex flex-col gap-5">
+            {contenido.map((bloque, index) =>
+              Array.isArray(bloque) ? (
+                <ul key={index} className="flex flex-col gap-2">
+                  {bloque.map((item) => (
+                    <li
+                      key={item}
+                      className="flex items-start gap-3 text-white/80"
+                    >
+                      <span
+                        className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-red-light"
+                        aria-hidden
+                      />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p key={index} className="text-white/70">
+                  {bloque}
+                </p>
+              ),
+            )}
+          </div>
+
+          <Link
+            href="/contacto"
+            className="mt-10 inline-block rounded-lg bg-brand-red px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white hover:text-brand-red"
+          >
+            Solicitar asesoramiento
+          </Link>
+        </div>
       </Reveal>
 
       <AnimatePresence>
