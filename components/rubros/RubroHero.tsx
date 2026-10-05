@@ -3,18 +3,21 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
+import BackButton from "@/components/BackButton";
 import Reveal from "@/components/motion/Reveal";
 import type { RubroPagina } from "@/data/que-hacemos";
 
 type RubroHeroProps = {
   titulo: string;
+  subtitulo: string;
   video: RubroPagina["video"];
 };
 
 // Página de un rubro: título a la izquierda y, a la derecha, la portada
 // del video (cuadro grande con ▶ que abre el video en un modal, como el
 // de Nosotros). Sin botón aparte. Sin video, queda solo el título.
-export default function RubroHero({ titulo, video }: RubroHeroProps) {
+// Arriba a la izquierda va el botón "Volver".
+export default function RubroHero({ titulo, subtitulo, video }: RubroHeroProps) {
   const [videoOpen, setVideoOpen] = useState(false);
   const triggerRef = useRef<HTMLButtonElement>(null);
 
@@ -40,6 +43,12 @@ export default function RubroHero({ titulo, video }: RubroHeroProps) {
 
   return (
     <section className="relative mt-[65px] flex min-h-[calc(100dvh-65px)] items-center overflow-hidden bg-ink px-6 py-24 sm:py-32">
+      <div className="absolute inset-x-0 top-6 z-10 px-6">
+        <div className="mx-auto max-w-7xl">
+          <BackButton />
+        </div>
+      </div>
+
       <Reveal className="relative mx-auto grid w-full max-w-7xl items-center gap-12 lg:grid-cols-[2fr_3fr]">
         <div>
           <p className="font-mono text-xs font-light text-brand-red-light">
@@ -48,6 +57,7 @@ export default function RubroHero({ titulo, video }: RubroHeroProps) {
           <h1 className="mt-4 max-w-3xl font-heading text-3xl font-semibold text-white sm:text-4xl">
             {titulo}
           </h1>
+          <p className="mt-4 max-w-md text-lg text-white/70">{subtitulo}</p>
         </div>
 
         {video && (

@@ -49,9 +49,9 @@ export default function FeaturedProduct() {
         </Reveal>
 
         <Reveal delay={0.15} className="relative">
-          <div className="relative aspect-square overflow-hidden rounded-2xl border border-steel/20 bg-ink-light">
+          <div className="relative aspect-square overflow-hidden rounded-2xl border border-steel/20 bg-white">
             <Image
-              src="/img/generales/caldera-9.png"
+              src="/img/equipos/atsol.jpg"
               alt="Línea ATSOL — caldera de acero inoxidable"
               fill
               sizes="(min-width: 1024px) 50vw, 100vw"

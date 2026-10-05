@@ -27,25 +27,32 @@ const historia: HitoHistoria[] = [
       "Con mucha dedicación y pasión al trabajo, Nicolás O. Santero y Héctor F. Santero continuaron el desarrollo de la empresa iniciada por su padre.",
   },
   {
-    id: "anios-70",
-    anio: "Años 70",
+    id: "1970",
+    anio: "1970",
     titulo: "Una nueva etapa",
     descripcion:
       "En manos de Juan Carlos Santero incorpora sistemas de provisión de agua caliente y calefacción central, ampliando la oferta de la compañía.",
   },
   {
-    id: "anios-90",
-    anio: "Años 90",
+    id: "1995",
+    anio: "1995",
     titulo: "Sistema Santero",
     descripcion:
-      "Se diseña y patenta un sistema innovador de alta eficiencia energética y generación instantánea de agua caliente. Una revolución que rompió con los paradigmas de los sistemas tradicionales y colocó a la empresa en la elite de los productos nacionales y del Mercosur.",
+      "Se diseña y patentan los primeros bocetos de un sistema innovador de alta eficiencia energética y generación instantánea.",
   },
   {
-    id: "hoy",
-    anio: "Hoy",
+    id: "2003",
+    anio: "2003",
+    titulo: "Consolidación",
+    descripcion:
+      "Nos afianzamos como la verdadera alternativa del mercado de la climatización. Una revolución que rompió con los paradigmas de los sistemas tradicionales y colocó a la empresa en la elite de los productos nacionales y del Mercosur.",
+  },
+  {
+    id: "2013",
+    anio: "2013",
     titulo: "Cuarta generación",
     descripcion:
-      "Carlos Larralde y Matías Simó continúan el legado incorporando nuevas tecnologías y manteniendo el compromiso con la mejora continua.",
+      "Carlos y Matías continúan el legado con orgullo y compromiso. Incorporando nuevas tecnologías, procesos y mejora continua.",
   },
 ];
 
@@ -71,14 +78,29 @@ export default function HistoryTimeline({ tone = "light" }: HistoryTimelineProps
           <h2
             className={`font-heading text-3xl font-semibold sm:text-4xl ${dark ? "text-white" : "text-navy"}`}
           >
-            Somos más que una compañía.
-            <br />
-            Somos{" "}
-            <span className={dark ? "text-brand-red-light" : "text-brand-red"}>
-              trayectoria, tecnología, compromiso y mejora constante
-            </span>
-            .
+            Somos más que una empresa.
           </h2>
+          <div
+            className={`mt-6 flex max-w-3xl flex-col gap-2 text-lg sm:text-xl ${dark ? "text-white/70" : "text-zinc-600"}`}
+          >
+            <p>
+              Somos huéspedes y usuarios de los espacios que transformamos.
+            </p>
+            <p>
+              Somos aliados que entienden y responden a las exigencias de cada
+              sector.
+            </p>
+            <p>
+              Somos{" "}
+              <span
+                className={dark ? "text-brand-red-light" : "text-brand-red"}
+              >
+                la combinación de trayectoria, tecnología, compromiso y mejora
+                continua
+              </span>
+              .
+            </p>
+          </div>
         </Reveal>
 
         <ol ref={listRef} className="relative mt-16 flex flex-col gap-10 sm:gap-16">

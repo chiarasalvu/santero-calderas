@@ -27,9 +27,9 @@
 // los valores de respaldo en vez de romper el sitio.
 
 export const FALLBACK_RATING = 4.8;
-// Actualizado a mano (31/09) hasta que se cargue la API key de Google
+// Actualizado a mano (05/10) hasta que se cargue la API key de Google
 // y esto empiece a traerse solo — ver instrucciones más abajo.
-export const FALLBACK_REVIEW_COUNT = 72;
+export const FALLBACK_REVIEW_COUNT = 73;
 
 export type GoogleRating = {
   rating: number;

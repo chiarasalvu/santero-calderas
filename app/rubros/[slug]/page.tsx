@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import RubroDescripcion from "@/components/rubros/RubroDescripcion";
 import RubroHero from "@/components/rubros/RubroHero";
 import { rubrosPaginas } from "@/data/que-hacemos";
 
@@ -26,5 +27,14 @@ export default async function RubroPage({ params }: PageProps<"/rubros/[slug]">)
   const rubro = rubrosPaginas.find((r) => r.slug === slug);
   if (!rubro) notFound();
 
-  return <RubroHero titulo={rubro.titulo} video={rubro.video} />;
+  return (
+    <>
+      <RubroHero
+        titulo={rubro.titulo}
+        subtitulo={rubro.subtitulo}
+        video={rubro.video}
+      />
+      <RubroDescripcion contenido={rubro.contenido} />
+    </>
+  );
 }

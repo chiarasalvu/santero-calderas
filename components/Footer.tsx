@@ -29,11 +29,12 @@ export default function Footer() {
         <div className="mx-auto grid max-w-6xl gap-10 px-6 py-14 sm:grid-cols-3">
           <div>
             <p className="font-heading text-lg font-semibold text-white">
-              Calderas Santero
+              Santero Calderas
             </p>
             <p className="mt-3 max-w-xs text-sm text-white/60">
-              Líderes en ingeniería térmica desde 1935. Tecnología argentina
-              para la industria global.
+              Evolución térmica desde 1935.
+              <br />
+              Diseño argentino que transforma la industria global.
             </p>
           </div>
 

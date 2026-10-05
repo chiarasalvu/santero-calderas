@@ -50,14 +50,14 @@ function LogoRow({
         {[...logos, ...logos].map((logo, index) => (
           <div
             key={`${logo.src}-${index}`}
-            className="relative flex h-20 w-40 shrink-0 items-center justify-center rounded-xl bg-white p-4 shadow-sm transition-transform duration-300 hover:scale-110"
+            className="relative flex h-24 w-60 shrink-0 overflow-hidden rounded-xl bg-white shadow-sm transition-transform duration-300 hover:scale-110"
           >
             <Image
               src={logo.src}
               alt={logo.nombre}
               fill
-              sizes="160px"
-              className="object-contain p-4"
+              sizes="240px"
+              className="object-contain"
             />
           </div>
         ))}
