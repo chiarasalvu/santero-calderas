@@ -69,12 +69,14 @@ export default function Hero() {
             style={{ y: imageY }}
             className="mx-auto aspect-square max-w-md rounded-2xl bg-white p-3 shadow-lg"
           >
-            <div className="relative h-full w-full overflow-hidden rounded-xl bg-zinc-100">
+            <div className="relative h-full w-full overflow-hidden rounded-xl bg-white">
               <Image
-                src="/img/generales/caldera-4.png"
-                alt="Sistema Santero instalado"
+                src="/img/equipos/atsol-2.jpg"
+                alt="Sistema Santero: equipos ATSOL instalados"
                 fill
-                className="object-contain p-6"
+                priority
+                sizes="(min-width: 768px) 448px, 90vw"
+                className="object-contain p-3"
               />
             </div>
           </motion.div>
