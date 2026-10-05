@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Hero from "@/components/casos-de-exito/Hero";
-import FeaturedCase from "@/components/casos-de-exito/FeaturedCase";
+import CasosReales from "@/components/casos-de-exito/CasosReales";
 import BeforeAfter from "@/components/casos-de-exito/BeforeAfter";
 
 export const metadata: Metadata = {
@@ -13,7 +13,7 @@ export default function CasosDeExito() {
   return (
     <>
       <Hero />
-      <FeaturedCase />
+      <CasosReales />
       <BeforeAfter />
       {/* CTA final oculto a pedido del cliente (27/08) — ver CtaBanner.tsx */}
     </>

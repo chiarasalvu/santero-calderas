@@ -4,8 +4,9 @@
 // menú del header, las cards del Home y las rutas (/rubros/[slug],
 // /soluciones/[slug]) salen de acá.
 //
-// "Por producto" todavía no tiene páginas: se muestra en el menú como
-// texto plano, sin link.
+// "Por producto" sale de data/productos.ts y linkea a /productos.
+
+import { lineasProducto, productoHref } from "@/data/productos";
 
 export type QueHacemosLink = {
   label: string;
@@ -36,7 +37,7 @@ export type ServicioPagina = {
   /** Frase destacada bajo el título (el servicio de Vapor no tiene). */
   subtitulo?: string;
   parrafos: string[];
-  aplicaciones: string;
+  aplicaciones: string[];
   productos: string[];
   /** Imagen de portada — la misma de la card del Home. */
   imagen: string;
@@ -144,8 +145,15 @@ export const serviciosPaginas: ServicioPagina[] = [
       "Se trata de un sistema que reduce la formación de sarro y no requiere el cambio de ánodos ni repintados internos. De este modo, logra una gran producción de agua caliente ininterrumpida con el menor consumo del mercado y una durabilidad superior. No es fácil romper paradigmas y lo sabemos, pero estamos seguros de que es una opción que merece estar en todas las mesas de análisis antes de tomar una decisión sobre qué sistema instalar.",
       "Santero es sinónimo de mayor eficiencia, menor espacio ocupado, menores costos operativos y máxima durabilidad.",
     ],
-    aplicaciones:
-      "edificios y consorcios, hoteles, clubes, natatorios, hospitales, sanatorios, industrias e instituciones.",
+    aplicaciones: [
+      "Edificios y consorcios",
+      "Hoteles",
+      "Clubes",
+      "Natatorios",
+      "Hospitales",
+      "Sanatorios",
+      "Industrias e instituciones",
+    ],
     productos: ["ATSOL", "ADN", "ETERCAL", "TS", "TSE"],
     imagen: "/img/rubros-home/agua-caliente.jpg",
   },
@@ -160,8 +168,16 @@ export const serviciosPaginas: ServicioPagina[] = [
       "Mediante calderas de agua caliente o vapor, buscamos optimizar el aprovechamiento de la energía, lograr una respuesta térmica adecuada y simplificar el mantenimiento de la instalación.",
       "Confort, eficiencia y confiabilidad.",
     ],
-    aplicaciones:
-      "edificios residenciales, hoteles, hospitales, colegios, universidades, oficinas, edificios públicos e industrias.",
+    aplicaciones: [
+      "Edificios residenciales",
+      "Hoteles",
+      "Hospitales",
+      "Colegios",
+      "Universidades",
+      "Oficinas",
+      "Edificios públicos",
+      "Industrias",
+    ],
     productos: ["ATS", "VTS", "ATSOL", "ETERCAL"],
     imagen: "/img/rubros-home/calefaccion.jpg",
   },
@@ -175,8 +191,14 @@ export const serviciosPaginas: ServicioPagina[] = [
       "Su diseño permite integrar la climatización de piscinas con otros servicios térmicos, como el agua caliente para vestuarios y la calefacción: una solución beneficiosa por donde se mire en términos de inversión, espacio, consumo y confiabilidad.",
       "Una propuesta pensada para clubes, natatorios, hoteles, gimnasios y complejos deportivos que buscan optimizar el consumo energético y reducir las necesidades de mantenimiento.",
     ],
-    aplicaciones:
-      "piscinas cubiertas y descubiertas, clubes deportivos, natatorios, hoteles, gimnasios, spas y balnearios.",
+    aplicaciones: [
+      "Piscinas cubiertas y descubiertas",
+      "Clubes deportivos",
+      "Natatorios",
+      "Hoteles",
+      "Gimnasios",
+      "Spas y balnearios",
+    ],
     productos: ["ATSOL", "ADN", "ETERCAL"],
     imagen: "/img/rubros-home/climatizacion-v4.jpg",
   },
@@ -189,8 +211,17 @@ export const serviciosPaginas: ServicioPagina[] = [
       "Nuestras calderas de vapor se aplican en procesos productivos que requieren un suministro térmico acorde con las condiciones de presión, capacidad y operación de cada instalación.",
       "Santero diseñó el sistema acuotubular vertical en pequeña escala, ubicándose en las antípodas de los sistemas tradicionales horizontales humotubulares. Una decisión difícil desde lo comercial, pero completamente acertada desde lo técnico. Entendemos y estamos comprometidos con la reducción de la huella de carbono, la optimización del consumo, el bajo mantenimiento y la máxima seguridad. Desde la industria alimenticia y textil hasta aplicaciones químicas, hospitalarias y de esterilización, cada proyecto requiere una solución diseñada según sus exigencias específicas. Santero es la confiabilidad térmica responsable para acompañar la continuidad de sus procesos.",
     ],
-    aplicaciones:
-      "industrias alimenticias, textiles, químicas, laboratorios, cosméticas, hospitales, sanatorios, lavanderías industriales y procesos de esterilización.",
+    aplicaciones: [
+      "Industrias alimenticias",
+      "Industrias textiles",
+      "Industrias químicas",
+      "Laboratorios",
+      "Industrias cosméticas",
+      "Hospitales",
+      "Sanatorios",
+      "Lavanderías industriales",
+      "Procesos de esterilización",
+    ],
     productos: ["VTS"],
     imagen: "/img/rubros-home/vapor-cliente.jpg",
   },
@@ -209,10 +240,7 @@ export const porServicio: QueHacemosLink[] = serviciosPaginas.map((s) => ({
   href: servicioHref(s.slug),
 }));
 
-export const porProducto: QueHacemosLink[] = [
-  { label: "Calderas (Agua y Vapor)" },
-  { label: "Generadores de Agua Caliente" },
-  { label: "Climatizadores de Piscina" },
-  { label: "Intercambiadores & Tanques de Acumulación" },
-  { label: "Sistemas Eléctricos" },
-];
+export const porProducto: QueHacemosLink[] = lineasProducto.map((l) => ({
+  label: l.label,
+  href: productoHref(l.id),
+}));

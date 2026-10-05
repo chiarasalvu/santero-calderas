@@ -16,7 +16,7 @@ export default function BeforeAfter() {
         <Reveal delay={0.1} className="mt-10">
           <video
             src="/video/antes-y-despues.mp4"
-            poster="/video/antes-y-despues-poster.jpg"
+            poster="/img/rubros/portada-logo.jpg"
             controls
             playsInline
             preload="none"
