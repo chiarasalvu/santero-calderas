@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Reveal from "@/components/motion/Reveal";
 
 type Paso = {
@@ -50,6 +51,18 @@ export default function SistemaSanteroTeaser() {
             sarro, prolongando la vida útil de las instalaciones y reduciendo
             el consumo energético.
           </p>
+          <Link
+            href="/sistema-santero"
+            className="group mt-8 inline-flex items-center gap-2 rounded-lg bg-brand-red px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white hover:text-brand-red"
+          >
+            Conocer el Sistema Santero
+            <span
+              aria-hidden
+              className="transition-transform duration-300 group-hover:translate-x-1"
+            >
+              →
+            </span>
+          </Link>
         </Reveal>
 
         <ol className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
