@@ -15,7 +15,7 @@ type LineaProducto = {
   badgeClassName: string;
   subtitulo: string;
   items: LineaItem[];
-  rendimiento: number;
+  rendimiento?: number;
 };
 
 const lineas: LineaProducto[] = [
@@ -34,17 +34,35 @@ const lineas: LineaProducto[] = [
       },
       {
         titulo: "Generación instantánea",
-        descripcion:
-          "Generación instantánea mediante calentamiento indirecto.",
+        descripcion: "Generación instantánea mediante calentamiento indirecto.",
       },
     ],
     rendimiento: 98,
   },
   {
+    id: "etercal",
+    nombre: "Línea ETERCAL",
+    imagen: "/img/equipos/etercal.jpg",
+    badge: "Línea premium",
+    badgeClassName: "bg-brand-red text-white",
+    subtitulo: "La solución para grandes demandas de agua caliente sanitaria.",
+    items: [
+      {
+        titulo: "Alta exigencia",
+        descripcion:
+          "Capacidades para proyectos de alta exigencia, ideal para hoteles, clubes, edificios e industrias.",
+      },
+      {
+        titulo: "Generación instantánea",
+        descripcion: "Generación instantánea mediante calentamiento indirecto.",
+      },
+    ],
+  },
+  {
     id: "adn",
     nombre: "Línea ADN",
     imagen: "/img/equipos/adn.jpg",
-    badge: "Relación precio-calidad",
+    badge: "Línea estándar",
     badgeClassName: "bg-navy text-white",
     subtitulo: "La eficiencia del Sistema Santero en formato compacto.",
     items: [
@@ -75,7 +93,7 @@ export default function ProductLines() {
           </p>
         </Reveal>
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-2">
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {lineas.map((linea, index) => (
             <Reveal
               key={linea.id}
@@ -87,7 +105,7 @@ export default function ProductLines() {
                   src={linea.imagen}
                   alt={linea.nombre}
                   fill
-                  sizes="(min-width: 640px) 50vw, 100vw"
+                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                   className="object-contain p-3 transition-transform duration-500 group-hover:scale-105"
                 />
                 <span
@@ -126,14 +144,16 @@ export default function ProductLines() {
                   ))}
                 </ul>
 
-                <div className="mt-6 flex items-center justify-between border-t border-white/10 pt-4">
-                  <span className="font-mono text-xs font-light text-white/50">
-                    Rendimiento
-                  </span>
-                  <span className="flex items-baseline font-heading text-2xl font-semibold text-brand-red-light">
-                    <AnimatedCounter value={linea.rendimiento} />%
-                  </span>
-                </div>
+                {linea.rendimiento !== undefined && (
+                  <div className="mt-6 flex items-center justify-between border-t border-white/10 pt-4">
+                    <span className="font-mono text-xs font-light text-white/50">
+                      Rendimiento
+                    </span>
+                    <span className="flex items-baseline font-heading text-2xl font-semibold text-brand-red-light">
+                      <AnimatedCounter value={linea.rendimiento} />%
+                    </span>
+                  </div>
+                )}
               </div>
             </Reveal>
           ))}

@@ -41,6 +41,8 @@ export type ServicioPagina = {
   productos: string[];
   /** Imagen de portada — la misma de la card del Home. */
   imagen: string;
+  /** object-position de la foto (para encuadrar lo importante). */
+  imagenPosicion?: string;
 };
 
 // Portada común a los rubros: solo el logo de Santero.
@@ -155,7 +157,9 @@ export const serviciosPaginas: ServicioPagina[] = [
       "Industrias e instituciones",
     ],
     productos: ["ATSOL", "ADN", "ETERCAL", "TS", "TSE"],
-    imagen: "/img/rubros-home/agua-caliente.jpg",
+    // Foto de banco (Unsplash): ducha con agua caliente y vapor.
+    imagen: "/img/rubros-home/agua-caliente-ducha.jpg",
+    imagenPosicion: "center 8%",
   },
   {
     slug: "calefaccion",
@@ -224,6 +228,8 @@ export const serviciosPaginas: ServicioPagina[] = [
     ],
     productos: ["VTS"],
     imagen: "/img/rubros-home/vapor-cliente.jpg",
+    // Sube el encuadre para que se vea la válvula por donde sale el vapor.
+    imagenPosicion: "center 88%",
   },
 ];
 

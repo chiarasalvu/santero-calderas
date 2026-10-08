@@ -14,11 +14,10 @@ type RubroHeroProps = {
   video: RubroPagina["video"];
 };
 
-// Página de un rubro, en dos bloques: a la izquierda el título, la frase
-// destacada y la descripción; a la derecha la portada del video (cuadro
-// con ▶ que abre el video en un modal, como el de Nosotros), que queda
-// fija mientras se lee el texto. En mobile el video va entre el título y
-// la descripción. El botón "Volver" está en el header.
+// Página de un rubro: título y frase a la izquierda, la portada del video
+// (cuadro con ▶ que abre el video en un modal, como el de Nosotros) a la
+// derecha, y el texto "bordeando" al video: sigue a su costado y continúa
+// debajo a todo el ancho. El botón "Volver" está en el header.
 export default function RubroHero({
   titulo,
   subtitulo,
@@ -50,31 +49,24 @@ export default function RubroHero({
 
   return (
     <section className="relative mt-[65px] min-h-[calc(100dvh-65px)] bg-ink px-6 pt-16 pb-20">
-      <Reveal className="relative mx-auto grid w-full max-w-6xl gap-x-14 gap-y-8 lg:grid-cols-2 lg:grid-rows-[auto_1fr]">
-        <div className="lg:col-start-1 lg:row-start-1">
-          <p className="font-mono text-xs font-light text-brand-red-light">
-            Por rubro
-          </p>
-          <h1 className="mt-4 max-w-3xl font-heading text-3xl font-semibold text-white sm:text-4xl">
-            {titulo}
-          </h1>
-          <p className="mt-4 max-w-xl text-lg text-white/80">{subtitulo}</p>
-        </div>
-
+      <Reveal className="relative mx-auto flex w-full max-w-6xl flex-col gap-8 lg:block">
+        {/* El video va flotado a la derecha y el texto lo "bordea": sigue a
+            su costado y continúa debajo, a todo el ancho, así se ve todo
+            sin bajar. En mobile, el orden es título → video → texto. */}
         {video && (
           <button
             ref={triggerRef}
             type="button"
             onClick={() => setVideoOpen(true)}
             aria-label={`Ver video: ${titulo}`}
-            className="group relative block aspect-video w-full self-start overflow-hidden rounded-2xl border border-steel/20 bg-ink-light lg:sticky lg:top-28 lg:col-start-2 lg:row-span-2 lg:row-start-1"
+            className="group relative order-2 block aspect-video w-full overflow-hidden rounded-2xl border border-steel/20 bg-ink-light lg:float-right lg:mb-6 lg:ml-12 lg:w-[48%]"
           >
             <Image
               src={video.poster}
               alt=""
               fill
               priority
-              sizes="(min-width: 1024px) 50vw, 100vw"
+              sizes="(min-width: 1024px) 48vw, 100vw"
               className="object-cover transition-transform duration-500 group-hover:scale-105"
             />
             <span
@@ -88,18 +80,25 @@ export default function RubroHero({
           </button>
         )}
 
-        <div className="max-w-xl lg:col-start-1 lg:row-start-2">
-          <div className="flex flex-col gap-5">
+        <div className="order-1">
+          <p className="font-mono text-xs font-light text-brand-red-light">
+            Por rubro
+          </p>
+          <h1 className="mt-4 max-w-3xl font-heading text-3xl font-semibold text-white sm:text-4xl">
+            {titulo}
+          </h1>
+          <p className="mt-4 max-w-xl text-lg text-white/80">{subtitulo}</p>
+        </div>
+
+        <div className="order-3 lg:mt-8">
+          <div className="space-y-5">
             {contenido.map((bloque, index) =>
               Array.isArray(bloque) ? (
-                <ul key={index} className="flex flex-col gap-2">
+                <ul key={index} className="space-y-2">
                   {bloque.map((item) => (
-                    <li
-                      key={item}
-                      className="flex items-start gap-3 text-white/80"
-                    >
+                    <li key={item} className="relative pl-5 text-white/80">
                       <span
-                        className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-red-light"
+                        className="absolute top-2.5 left-0 h-1.5 w-1.5 rounded-full bg-brand-red-light"
                         aria-hidden
                       />
                       {item}

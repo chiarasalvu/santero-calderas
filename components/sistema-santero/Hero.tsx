@@ -38,10 +38,10 @@ export default function Hero() {
             Sistema Santero
           </h1>
 
-          <p className="mt-6 max-w-md text-white/80">
-            Calentamiento indirecto de alta eficiencia. Diseñado para
-            evitar la acumulación de sarro y maximizar el rendimiento
-            térmico en aplicaciones industriales exigentes.
+          <p className="mt-6 max-w-lg text-white/80">
+            Calentamiento indirecto de alta eficiencia. Diseñado para evitar la
+            acumulación de sarro y maximizar el rendimiento térmico en
+            aplicaciones industriales exigentes.
           </p>
 
           <div className="mt-6 flex flex-wrap items-center gap-6">
@@ -59,7 +59,7 @@ export default function Hero() {
             href="/contacto?motivo=visita-tecnica"
             className="mt-8 inline-flex items-center gap-2 rounded-lg bg-brand-red px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white hover:text-brand-red"
           >
-            Consultar con un ingeniero
+            Consultanos
             <span aria-hidden>→</span>
           </a>
         </Reveal>
@@ -67,16 +67,16 @@ export default function Hero() {
         <Reveal delay={0.15} className="relative">
           <motion.div
             style={{ y: imageY }}
-            className="mx-auto aspect-square max-w-md rounded-2xl bg-white p-3 shadow-lg"
+            className="aspect-[8/7] w-full rounded-2xl bg-white p-2 shadow-lg"
           >
             <div className="relative h-full w-full overflow-hidden rounded-xl bg-white">
               <Image
-                src="/img/equipos/atsol-2.jpg"
+                src="/img/equipos/atsol-2-recorte.jpg"
                 alt="Sistema Santero: equipos ATSOL instalados"
                 fill
                 priority
-                sizes="(min-width: 768px) 448px, 90vw"
-                className="object-contain p-3"
+                sizes="(min-width: 1024px) 55vw, 90vw"
+                className="object-contain"
               />
             </div>
           </motion.div>

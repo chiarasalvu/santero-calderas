@@ -8,13 +8,16 @@ type Servicio = {
   label: string;
   image: string;
   href: string;
+  /** object-position de la foto. */
+  position?: string;
 };
 
 const servicios: Servicio[] = [
   {
     id: "agua-caliente",
     label: "Agua caliente",
-    image: "/img/rubros-home/agua-caliente.jpg",
+    image: "/img/rubros-home/agua-caliente-ducha.jpg",
+    position: "center 8%",
     href: servicioHref("agua-caliente-sanitaria"),
   },
   {
@@ -33,6 +36,8 @@ const servicios: Servicio[] = [
     id: "vapor",
     label: "Vapor",
     image: "/img/rubros-home/vapor-cliente.jpg",
+    // Sube el encuadre para que se vea la válvula por donde sale el vapor.
+    position: "center 88%",
     href: servicioHref("vapor"),
   },
 ];
@@ -60,6 +65,7 @@ export default function ServiciosPrincipales() {
                   fill
                   sizes="(min-width: 1024px) 25vw, 50vw"
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  style={{ objectPosition: servicio.position ?? "center" }}
                 />
                 <div
                   className="absolute inset-0 bg-gradient-to-t from-ink via-ink/10 to-transparent"
