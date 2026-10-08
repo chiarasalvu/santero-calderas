@@ -1,7 +1,13 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import {
+  motion,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+} from "framer-motion";
+import Image from "next/image";
 import Reveal from "@/components/motion/Reveal";
 
 type HitoHistoria = {
@@ -9,6 +15,8 @@ type HitoHistoria = {
   anio: string;
   titulo: string;
   descripcion: string;
+  /** Fotos de archivo que aparecen junto al año al recorrer la línea. */
+  fotos?: { src: string; alt: string; width: number; height: number }[];
 };
 
 const historia: HitoHistoria[] = [
@@ -18,6 +26,20 @@ const historia: HitoHistoria[] = [
     titulo: "Fundación de Calderas Santero",
     descripcion:
       "Empresa familiar fundada por Don Francisco Santero, dedicada exclusivamente a la fabricación de calderas de vapor y reparación de equipamiento textil.",
+    fotos: [
+      {
+        src: "/img/historia/1935-a.jpg",
+        width: 395,
+        height: 626,
+        alt: "Foto de archivo de Calderas Santero, 1935",
+      },
+      {
+        src: "/img/historia/1935-b.jpg",
+        width: 249,
+        height: 275,
+        alt: "Foto de archivo de Calderas Santero, 1935",
+      },
+    ],
   },
   {
     id: "1955",
@@ -25,6 +47,14 @@ const historia: HitoHistoria[] = [
     titulo: "Sucesores",
     descripcion:
       "Con mucha dedicación y pasión al trabajo, Nicolás O. Santero y Héctor F. Santero continuaron el desarrollo de la empresa iniciada por su padre.",
+    fotos: [
+      {
+        src: "/img/historia/1955-a.jpg",
+        width: 185,
+        height: 278,
+        alt: "Foto de archivo de Calderas Santero, 1955",
+      },
+    ],
   },
   {
     id: "1970",
@@ -32,6 +62,20 @@ const historia: HitoHistoria[] = [
     titulo: "Una nueva etapa",
     descripcion:
       "En manos de Juan Carlos Santero incorpora sistemas de provisión de agua caliente y calefacción central, ampliando la oferta de la compañía.",
+    fotos: [
+      {
+        src: "/img/historia/1970-a.jpg",
+        width: 229,
+        height: 170,
+        alt: "Foto de archivo de Calderas Santero, 1970",
+      },
+      {
+        src: "/img/historia/1970-b.jpg",
+        width: 221,
+        height: 193,
+        alt: "Foto de archivo de Calderas Santero, 1970",
+      },
+    ],
   },
   {
     id: "1995",
@@ -39,6 +83,14 @@ const historia: HitoHistoria[] = [
     titulo: "Sistema Santero",
     descripcion:
       "Se diseña y patentan los primeros bocetos de un sistema innovador de alta eficiencia energética y generación instantánea.",
+    fotos: [
+      {
+        src: "/img/historia/1995-a.jpg",
+        width: 151,
+        height: 268,
+        alt: "Foto de archivo de Calderas Santero, 1995",
+      },
+    ],
   },
   {
     id: "2003",
@@ -46,6 +98,20 @@ const historia: HitoHistoria[] = [
     titulo: "Consolidación",
     descripcion:
       "Nos afianzamos como la verdadera alternativa del mercado de la climatización. Una revolución que rompió con los paradigmas de los sistemas tradicionales y colocó a la empresa en la elite de los productos nacionales y del Mercosur.",
+    fotos: [
+      {
+        src: "/img/historia/2003-a.jpg",
+        width: 296,
+        height: 222,
+        alt: "Foto de archivo de Calderas Santero, 2003",
+      },
+      {
+        src: "/img/historia/2003-b.jpg",
+        width: 345,
+        height: 259,
+        alt: "Foto de archivo de Calderas Santero, 2003",
+      },
+    ],
   },
   {
     id: "2013",
@@ -53,6 +119,29 @@ const historia: HitoHistoria[] = [
     titulo: "Cuarta generación",
     descripcion:
       "Carlos y Matías continúan el legado con orgullo y compromiso. Incorporando nuevas tecnologías, procesos y mejora continua.",
+    fotos: [
+      {
+        src: "/img/historia/2013-a.jpg",
+        width: 430,
+        height: 322,
+        alt: "Foto de archivo de Calderas Santero, 2013",
+      },
+    ],
+  },
+  {
+    id: "actualidad",
+    anio: "Actualidad",
+    titulo: "Nueva planta productiva",
+    descripcion:
+      "Nueva planta productiva en Pompeya, CABA. Creación de “SILA Termomecánica”. Ampliación de personal capacitado. Incorporación de vehículos y maquinaria moderna.",
+    fotos: [
+      {
+        src: "/img/historia/actualidad-a.jpg",
+        width: 388,
+        height: 518,
+        alt: "Foto de archivo de Calderas Santero, actualidad",
+      },
+    ],
   },
 ];
 
@@ -60,7 +149,9 @@ type HistoryTimelineProps = {
   tone?: "light" | "dark";
 };
 
-export default function HistoryTimeline({ tone = "light" }: HistoryTimelineProps) {
+export default function HistoryTimeline({
+  tone = "light",
+}: HistoryTimelineProps) {
   const dark = tone === "dark";
   const listRef = useRef<HTMLOListElement>(null);
 
@@ -72,7 +163,9 @@ export default function HistoryTimeline({ tone = "light" }: HistoryTimelineProps
   const lineScale = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   return (
-    <section className={`px-6 pt-16 pb-20 sm:pt-20 sm:pb-24 ${dark ? "bg-ink" : ""}`}>
+    <section
+      className={`px-6 pt-16 pb-20 sm:pt-20 sm:pb-24 ${dark ? "bg-ink" : ""}`}
+    >
       <div className="mx-auto max-w-6xl">
         <Reveal>
           <h2
@@ -81,11 +174,9 @@ export default function HistoryTimeline({ tone = "light" }: HistoryTimelineProps
             Somos más que una empresa.
           </h2>
           <div
-            className={`mt-6 flex max-w-3xl flex-col gap-2 text-lg sm:text-xl ${dark ? "text-white/70" : "text-zinc-600"}`}
+            className={`mt-6 flex max-w-5xl flex-col gap-2 text-lg sm:text-xl ${dark ? "text-white/70" : "text-zinc-600"}`}
           >
-            <p>
-              Somos huéspedes y usuarios de los espacios que transformamos.
-            </p>
+            <p>Somos huéspedes y usuarios de los espacios que transformamos.</p>
             <p>
               Somos aliados que entienden y responden a las exigencias de cada
               sector.
@@ -103,7 +194,10 @@ export default function HistoryTimeline({ tone = "light" }: HistoryTimelineProps
           </div>
         </Reveal>
 
-        <ol ref={listRef} className="relative mt-16 flex flex-col gap-10 sm:gap-16">
+        <ol
+          ref={listRef}
+          className="relative mt-16 flex flex-col gap-10 sm:gap-16"
+        >
           {/* La línea no está fija de entrada: se dibuja de arriba hacia
               abajo a medida que se scrollea la lista, en sincro con las
               cards que van apareciendo (Reveal). */}
@@ -125,19 +219,37 @@ export default function HistoryTimeline({ tone = "light" }: HistoryTimelineProps
                 key={hito.id}
                 className="relative flex flex-col items-center gap-2 sm:flex-row sm:gap-12"
               >
-                <span
-                  className={`font-heading text-lg font-light sm:flex-1 sm:text-5xl lg:text-6xl ${
-                    dark
-                      ? "text-brand-red-light sm:text-brand-red-light"
-                      : "text-brand-red sm:text-brand-red/50"
-                  } ${
+                <div
+                  className={`flex flex-col gap-4 sm:flex-1 ${
                     cardOnRight
-                      ? "sm:order-1 sm:text-right"
-                      : "sm:order-3 sm:text-left"
+                      ? "items-center sm:order-1 sm:items-end"
+                      : "items-center sm:order-3 sm:items-start"
                   }`}
                 >
-                  {hito.anio}
-                </span>
+                  <span
+                    className={`font-heading text-lg font-light sm:text-5xl lg:text-6xl ${
+                      dark
+                        ? "text-brand-red-light"
+                        : "text-brand-red sm:text-brand-red/50"
+                    }`}
+                  >
+                    {hito.anio}
+                  </span>
+                  {hito.fotos && (
+                    <Reveal delay={0.15} className="flex gap-3">
+                      {hito.fotos.map((foto) => (
+                        <Image
+                          key={foto.src}
+                          src={foto.src}
+                          alt={foto.alt}
+                          width={foto.width}
+                          height={foto.height}
+                          className="h-36 w-auto max-w-[45vw] rounded-xl object-cover sm:h-44 lg:h-48"
+                        />
+                      ))}
+                    </Reveal>
+                  )}
+                </div>
 
                 <span className="relative z-10 hidden h-3.5 w-3.5 shrink-0 rounded-full bg-brand-red sm:order-2 sm:block" />
 

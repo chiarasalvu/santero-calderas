@@ -5,7 +5,6 @@ type FilaComparacion = {
   caracteristica: string;
   tradicional: string;
   santero: string;
-  destacado?: boolean;
 };
 
 const filas: FilaComparacion[] = [
@@ -26,7 +25,6 @@ const filas: FilaComparacion[] = [
     caracteristica: "Generación de agua caliente",
     tradicional: "Acumulación en tanques",
     santero: "Generación instantánea",
-    destacado: true,
   },
   {
     id: "mantenimiento",
@@ -42,6 +40,9 @@ const filas: FilaComparacion[] = [
   },
 ];
 
+// Comparativa en dos columnas enfrentadas: lo que pasa con un sistema
+// tradicional (apagado) contra lo que resuelve el Sistema Santero
+// (destacado, con check). Más rápida de leer que una tabla.
 export default function ComparisonTable() {
   return (
     <section className="bg-ink px-6 pb-20 sm:pb-24">
@@ -55,53 +56,88 @@ export default function ComparisonTable() {
           </h2>
         </Reveal>
 
-        <Reveal
-          delay={0.1}
-          className="mt-12 overflow-hidden rounded-2xl border border-steel/20"
-        >
-          <div className="overflow-x-auto">
-            <table className="w-full min-w-[560px] border-collapse text-left">
-              <thead>
-                <tr className="bg-ink-light">
-                  <th className="px-4 py-4 font-mono text-xs font-light text-white/50 sm:px-6">
-                    Característica
-                  </th>
-                  <th className="px-4 py-4 font-mono text-xs font-light text-white/50 sm:px-6">
-                    Sistema tradicional
-                  </th>
-                  <th className="px-4 py-4 font-mono text-xs font-light text-brand-red-light sm:px-6">
-                    Sistema Santero
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {filas.map((fila) => (
-                  <tr
-                    key={fila.id}
-                    className="border-t border-steel/20 bg-ink"
+        <div className="mt-12 grid gap-6 lg:grid-cols-2">
+          <Reveal className="rounded-2xl border border-steel/20 bg-ink-light p-6 sm:p-8">
+            <p className="font-mono text-xs font-light text-white/50">
+              Sistema tradicional
+            </p>
+            <ul className="mt-6 flex flex-col gap-5">
+              {filas.map((fila) => (
+                <li key={fila.id} className="flex items-start gap-3">
+                  <span
+                    className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-white/10 text-white/50"
+                    aria-hidden
                   >
-                    <td className="px-4 py-5 text-sm font-semibold text-white sm:px-6">
+                    <CruzIcon />
+                  </span>
+                  <div>
+                    <p className="font-mono text-[11px] font-light text-white/40">
                       {fila.caracteristica}
-                    </td>
-                    <td className="px-4 py-5 text-sm text-white/40 sm:px-6">
-                      {fila.tradicional}
-                    </td>
-                    <td
-                      className={`px-4 py-5 text-sm sm:px-6 ${
-                        fila.destacado
-                          ? "font-light text-brand-red-light"
-                          : "text-white/80"
-                      }`}
-                    >
+                    </p>
+                    <p className="mt-1 text-white/50">{fila.tradicional}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </Reveal>
+
+          <Reveal
+            delay={0.1}
+            className="rounded-2xl border border-brand-red-light/30 bg-ink-light p-6 sm:p-8"
+          >
+            <p className="font-mono text-xs font-light text-brand-red-light">
+              Sistema Santero
+            </p>
+            <ul className="mt-6 flex flex-col gap-5">
+              {filas.map((fila) => (
+                <li key={fila.id} className="flex items-start gap-3">
+                  <span
+                    className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-red/20 text-brand-red-light"
+                    aria-hidden
+                  >
+                    <CheckIcon />
+                  </span>
+                  <div>
+                    <p className="font-mono text-[11px] font-light text-white/50">
+                      {fila.caracteristica}
+                    </p>
+                    <p className="mt-1 font-semibold text-white">
                       {fila.santero}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </Reveal>
+                    </p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </Reveal>
+        </div>
       </div>
     </section>
+  );
+}
+
+function CheckIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className="h-3.5 w-3.5" aria-hidden>
+      <path
+        d="M5 13l3.5 3.5L19 6"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function CruzIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className="h-3.5 w-3.5" aria-hidden>
+      <path
+        d="M6 6l12 12M18 6L6 18"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+      />
+    </svg>
   );
 }

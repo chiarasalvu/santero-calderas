@@ -5,7 +5,8 @@ import type { ServicioPagina } from "@/data/que-hacemos";
 import { fotoPorEquipo, lineaPorEquipo, productoHref } from "@/data/productos";
 
 // Página de un servicio (Agua caliente, Calefacción, Climatización de
-// piscinas, Vapor): la foto del servicio de portada con el título encima;
+// piscinas, Vapor): la foto del servicio de portada, enmarcada en el
+// ancho del sitio, con el título encima;
 // debajo el texto (justificado) junto a las aplicaciones, y después los
 // equipos que lo resuelven (con foto, linkeando a /productos).
 export default function SolucionPagina({
@@ -15,36 +16,39 @@ export default function SolucionPagina({
 }) {
   return (
     <>
-      <section className="relative mt-[65px] flex min-h-[calc(70dvh-65px)] items-end overflow-hidden bg-ink px-6 pt-24 pb-14 sm:pb-16">
-        <Image
-          src={servicio.imagen}
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
-        />
-        <div
-          className="absolute inset-0 bg-gradient-to-t from-ink via-ink/50 to-ink/20"
-          aria-hidden
-        />
+      <section className="mt-[65px] bg-ink px-6 pt-10 pb-8">
+        <div className="relative mx-auto flex min-h-[320px] max-w-6xl items-end overflow-hidden rounded-2xl border border-steel/20 bg-ink-light sm:aspect-[21/9] sm:min-h-0">
+          <Image
+            src={servicio.imagen}
+            alt=""
+            fill
+            priority
+            sizes="(min-width: 1152px) 1152px, 100vw"
+            className="object-cover"
+            style={{ objectPosition: servicio.imagenPosicion ?? "center" }}
+          />
+          <div
+            className="absolute inset-0 bg-gradient-to-t from-ink via-ink/40 to-transparent"
+            aria-hidden
+          />
 
-        <Reveal className="relative mx-auto w-full max-w-6xl">
-          <p className="font-mono text-xs font-light text-brand-red-light">
-            Por servicio
-          </p>
-          <h1 className="mt-4 max-w-3xl font-heading text-3xl font-semibold text-white sm:text-4xl">
-            {servicio.titulo}
-          </h1>
-          {servicio.subtitulo && (
-            <p className="mt-4 max-w-2xl text-lg text-white/85">
-              {servicio.subtitulo}
+          <Reveal className="relative w-full p-6 sm:p-10">
+            <p className="font-mono text-xs font-light text-brand-red-light">
+              Por servicio
             </p>
-          )}
-        </Reveal>
+            <h1 className="mt-3 max-w-3xl font-heading text-3xl font-semibold text-white sm:text-4xl">
+              {servicio.titulo}
+            </h1>
+            {servicio.subtitulo && (
+              <p className="mt-3 max-w-2xl text-lg text-white/85">
+                {servicio.subtitulo}
+              </p>
+            )}
+          </Reveal>
+        </div>
       </section>
 
-      <section className="bg-ink px-6 pt-4 pb-16">
+      <section className="bg-ink px-6 pt-8 pb-16">
         <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[3fr_2fr] lg:gap-14">
           <Reveal>
             <div className="flex flex-col gap-5">

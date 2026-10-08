@@ -6,6 +6,8 @@ type Barra = {
   /** Texto debajo de la etiqueta (período). */
   detalle?: string;
   valor: number;
+  /** "antes" del equipo Santero (gris) o "ahora" con el Sistema Santero (rojo). */
+  momento: "antes" | "ahora";
 };
 
 type Caso = {
@@ -15,12 +17,14 @@ type Caso = {
   dato: string;
   antes: string;
   despues: string;
+  /** Cuándo se instaló (se muestra bajo "Con el Sistema Santero"). */
+  instalacion?: string;
   equipoFoto: string;
   equipoAlt: string;
   graficoTitulo: string;
   barras: Barra[];
-  /** Si es true, la última barra se resalta (es la más reciente). */
-  resaltarUltima: boolean;
+  /** Comparación destacada entre dos barras (por etiqueta). */
+  comparacion?: { desde: string; hasta: string };
   fuente: string;
 };
 
@@ -33,20 +37,21 @@ const casos: Caso[] = [
     ubicacion: "CABA",
     dato: "120 unidades funcionales",
     antes: "Calderas con tanques acumuladores",
-    despues: "2 equipos ATSOL-250",
-    equipoFoto: "/img/equipos/atsol.jpg",
-    equipoAlt: "Equipo ATSOL",
+    despues: "2 equipos Sistema Santero, modelo ATSOL-250",
+    instalacion: "Instalados en 04/26",
+    equipoFoto: "/img/equipos/atsol-2-recorte.jpg",
+    equipoAlt: "Dos equipos ATSOL",
     graficoTitulo: "Consumo de gas facturado por período (m³)",
     barras: [
-      { etiqueta: "05/25", valor: 19017 },
-      { etiqueta: "06/25", valor: 17859 },
-      { etiqueta: "01/26", valor: 16446 },
-      { etiqueta: "02/26", valor: 13494 },
-      { etiqueta: "03/26", valor: 15040 },
-      { etiqueta: "04/26", valor: 9986 },
-      { etiqueta: "05/26", valor: 10486 },
+      { etiqueta: "05/25", valor: 19017, momento: "antes" },
+      { etiqueta: "06/25", valor: 17859, momento: "antes" },
+      { etiqueta: "01/26", valor: 16446, momento: "antes" },
+      { etiqueta: "02/26", valor: 13494, momento: "antes" },
+      { etiqueta: "03/26", valor: 15040, momento: "antes" },
+      { etiqueta: "04/26", valor: 9986, momento: "ahora" },
+      { etiqueta: "05/26", valor: 10486, momento: "ahora" },
     ],
-    resaltarUltima: true,
+    comparacion: { desde: "05/25", hasta: "05/26" },
     fuente: "Facturas de gas del consorcio.",
   },
   {
@@ -64,14 +69,15 @@ const casos: Caso[] = [
         etiqueta: "Antes",
         detalle: "Oct – Dic 2023",
         valor: 6209,
+        momento: "antes",
       },
       {
         etiqueta: "Después",
         detalle: "Dic 2024 – Feb 2025",
         valor: 2606,
+        momento: "ahora",
       },
     ],
-    resaltarUltima: true,
     fuente: "Facturas de gas del consorcio.",
   },
 ];
@@ -108,15 +114,20 @@ export default function CasosReales() {
                       Con el Sistema Santero
                     </dt>
                     <dd className="mt-1 text-white">{caso.despues}</dd>
+                    {caso.instalacion && (
+                      <dd className="mt-1 text-sm text-white/60">
+                        {caso.instalacion}
+                      </dd>
+                    )}
                   </div>
                 </dl>
 
-                <div className="relative mt-8 aspect-[4/3] w-40 overflow-hidden rounded-xl bg-white">
+                <div className="relative mt-8 aspect-[4/3] w-56 overflow-hidden rounded-xl bg-white">
                   <Image
                     src={caso.equipoFoto}
                     alt={caso.equipoAlt}
                     fill
-                    sizes="160px"
+                    sizes="224px"
                     className="object-contain p-2"
                   />
                 </div>
@@ -126,10 +137,11 @@ export default function CasosReales() {
                 <figcaption className="font-mono text-xs font-light text-white/60">
                   {caso.graficoTitulo}
                 </figcaption>
-                <Grafico
-                  barras={caso.barras}
-                  resaltarUltima={caso.resaltarUltima}
-                />
+                <Grafico barras={caso.barras} />
+                <Leyenda />
+                {caso.comparacion && (
+                  <Comparacion barras={caso.barras} {...caso.comparacion} />
+                )}
                 <p className="mt-4 text-xs text-white/40">
                   Fuente: {caso.fuente}
                 </p>
@@ -142,42 +154,85 @@ export default function CasosReales() {
   );
 }
 
-function Grafico({
-  barras,
-  resaltarUltima,
-}: {
-  barras: Barra[];
-  resaltarUltima: boolean;
-}) {
+function Grafico({ barras }: { barras: Barra[] }) {
   const maximo = Math.max(...barras.map((b) => b.valor));
 
   return (
     <div className="mt-6 flex h-72 items-end gap-3 sm:gap-4">
-      {barras.map((barra, index) => {
-        const destacada = resaltarUltima && index === barras.length - 1;
-        return (
+      {barras.map((barra) => (
+        <div
+          key={barra.etiqueta}
+          className="flex h-full min-w-0 flex-1 flex-col justify-end"
+        >
+          <span className="mb-2 text-center text-xs font-semibold text-white sm:text-sm">
+            {formatear(barra.valor)}
+          </span>
           <div
-            key={barra.etiqueta}
-            className="flex h-full min-w-0 flex-1 flex-col justify-end"
-          >
-            <span className="mb-2 text-center text-xs font-semibold text-white sm:text-sm">
-              {formatear(barra.valor)}
-            </span>
-            <div
-              className={`w-full rounded-t-md ${
-                destacada ? "bg-brand-red" : "bg-white/20"
-              }`}
-              style={{ height: `${(barra.valor / maximo) * 78}%` }}
-            />
-            <span className="mt-2 text-center text-xs text-white/70">
-              {barra.etiqueta}
-            </span>
-            <span className="min-h-8 text-center text-[11px] text-white/40">
-              {barra.detalle}
-            </span>
-          </div>
-        );
-      })}
+            className={`w-full rounded-t-md ${
+              barra.momento === "ahora" ? "bg-brand-red" : "bg-white/20"
+            }`}
+            style={{ height: `${(barra.valor / maximo) * 78}%` }}
+          />
+          <span className="mt-2 text-center text-xs text-white/70">
+            {barra.etiqueta}
+          </span>
+          <span className="min-h-8 text-center text-[11px] text-white/40">
+            {barra.detalle}
+          </span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+// Aclara qué significa cada color: gris = antes, rojo = con el Sistema Santero.
+function Leyenda() {
+  return (
+    <div className="mt-2 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-white/70">
+      <span className="flex items-center gap-2">
+        <span className="h-3 w-3 rounded-sm bg-white/20" aria-hidden />
+        Antes
+      </span>
+      <span className="flex items-center gap-2">
+        <span className="h-3 w-3 rounded-sm bg-brand-red" aria-hidden />
+        Ahora, con el Sistema Santero
+      </span>
+    </div>
+  );
+}
+
+// Compara el mismo mes de dos años y calcula la reducción con los datos de
+// las propias barras.
+function Comparacion({
+  barras,
+  desde,
+  hasta,
+}: {
+  barras: Barra[];
+  desde: string;
+  hasta: string;
+}) {
+  const antes = barras.find((b) => b.etiqueta === desde);
+  const ahora = barras.find((b) => b.etiqueta === hasta);
+  if (!antes || !ahora) return null;
+
+  const ahorro = ((antes.valor - ahora.valor) / antes.valor) * 100;
+
+  return (
+    <div className="mt-6 flex flex-wrap items-center justify-between gap-4 rounded-xl border border-brand-red-light/30 bg-ink px-5 py-4">
+      <p className="text-sm text-white/80">
+        <span className="font-semibold text-white">{desde}</span> ={" "}
+        {formatear(antes.valor)} m³ ·{" "}
+        <span className="font-semibold text-white">{hasta}</span> ={" "}
+        {formatear(ahora.valor)} m³
+      </p>
+      <p className="font-heading text-2xl font-semibold text-brand-red-light">
+        {ahorro.toLocaleString("es-AR", {
+          minimumFractionDigits: 1,
+          maximumFractionDigits: 1,
+        })}
+        % menos
+      </p>
     </div>
   );
 }

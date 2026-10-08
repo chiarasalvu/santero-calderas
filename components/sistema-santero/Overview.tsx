@@ -39,10 +39,10 @@ export default function Overview() {
           <h2 className="mt-4 font-heading text-3xl font-semibold text-white sm:text-4xl">
             Beneficios del Sistema
           </h2>
-          <p className="mt-6 max-w-3xl text-lg leading-relaxed text-white/70">
-            El Sistema Santero utiliza un sistema de calentamiento indirecto
-            que genera agua caliente de forma instantánea, sin acumulación y
-            con mínima formación de sarro, prolongando la vida útil de las
+          <p className="mt-6 max-w-5xl text-lg leading-relaxed text-white/70">
+            El Sistema Santero utiliza un sistema de calentamiento indirecto que
+            genera agua caliente de forma instantánea, sin acumulación y con
+            mínima formación de sarro, prolongando la vida útil de las
             instalaciones y reduciendo el consumo energético.
           </p>
         </Reveal>
@@ -50,14 +50,14 @@ export default function Overview() {
         <div className="mt-14 grid gap-12 lg:grid-cols-2">
           <Reveal
             delay={0.1}
-            className="mx-auto aspect-square w-full max-w-sm rounded-2xl border border-steel/20 bg-ink-light p-3"
+            className="aspect-square w-full self-start rounded-2xl bg-white p-2"
           >
-            <div className="relative h-full w-full overflow-hidden rounded-xl bg-ink">
+            <div className="relative h-full w-full overflow-hidden rounded-xl bg-white">
               <Image
                 src="/img/generales/caldera-8.png"
                 alt="Detalle del equipo del Sistema Santero"
                 fill
-                className="object-contain p-6"
+                className="object-contain p-2"
               />
             </div>
           </Reveal>

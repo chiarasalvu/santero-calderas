@@ -9,11 +9,14 @@ export type ServicioPilar = {
   titulo: string;
   bajada: string;
   items: ServicioItem[];
+  /** Foto de la card de "El diferencial Santero" (Home). */
+  foto: { src: string; posicion: string };
 };
 
 export const serviciosPilares: ServicioPilar[] = [
   {
     id: "ingenieria-proyectos",
+    foto: { src: "/img/diferencial/ingenieria.jpg", posicion: "center top" },
     numero: "01",
     titulo: "Ingeniería & proyectos",
     bajada:
@@ -48,6 +51,7 @@ export const serviciosPilares: ServicioPilar[] = [
   },
   {
     id: "instalacion-puesta-en-marcha",
+    foto: { src: "/img/diferencial/instalacion.jpg", posicion: "center 35%" },
     numero: "02",
     titulo: "Instalación & puesta en marcha",
     bajada:
@@ -62,6 +66,7 @@ export const serviciosPilares: ServicioPilar[] = [
   },
   {
     id: "soporte-postventa",
+    foto: { src: "/img/diferencial/soporte.jpg", posicion: "center 60%" },
     numero: "03",
     titulo: "Soporte & postventa",
     bajada:
