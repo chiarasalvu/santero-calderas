@@ -66,7 +66,7 @@ export const serviciosPilares: ServicioPilar[] = [
   },
   {
     id: "soporte-postventa",
-    foto: { src: "/img/diferencial/soporte-v2.jpg", posicion: "center 55%" },
+    foto: { src: "/img/diferencial/soporte-v2.jpg", posicion: "center" },
     numero: "03",
     titulo: "Soporte & postventa",
     bajada:

@@ -33,15 +33,15 @@ export default function Diferencial() {
             <Reveal
               key={pilar.id}
               delay={Math.min(index * 0.1, 0.3)}
-              className="group overflow-hidden rounded-2xl border border-steel/20 bg-ink-light transition-all duration-300 hover:-translate-y-1 hover:border-brand-red-light/40"
+              className="overflow-hidden rounded-2xl border border-steel/20 bg-ink-light transition-all duration-300 hover:-translate-y-1 hover:border-brand-red-light/40"
             >
-              <div className="relative aspect-[4/3] overflow-hidden">
+              <div className="relative aspect-[3/2] overflow-hidden">
                 <Image
                   src={pilar.foto.src}
                   alt={pilar.titulo}
                   fill
                   sizes="(min-width: 640px) 33vw, 100vw"
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="object-cover"
                   style={{ objectPosition: pilar.foto.posicion }}
                 />
               </div>
