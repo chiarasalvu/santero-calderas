@@ -39,7 +39,7 @@ export default function Overview() {
           <h2 className="mt-4 font-heading text-3xl font-semibold text-white sm:text-4xl">
             Beneficios del Sistema
           </h2>
-          <p className="mt-6 max-w-5xl text-lg leading-relaxed text-white/70">
+          <p className="mt-6 max-w-5xl hyphens-auto text-justify text-lg leading-relaxed text-white/70">
             El Sistema Santero utiliza un sistema de calentamiento indirecto que
             genera agua caliente de forma instantánea, sin acumulación y con
             mínima formación de sarro, prolongando la vida útil de las
@@ -50,9 +50,9 @@ export default function Overview() {
         <div className="mt-14 grid gap-12 lg:grid-cols-2">
           <Reveal
             delay={0.1}
-            className="aspect-square w-full self-start rounded-2xl bg-white p-2"
+            className="flex min-h-[360px] w-full rounded-2xl bg-white p-2"
           >
-            <div className="relative h-full w-full overflow-hidden rounded-xl bg-white">
+            <div className="relative flex-1 overflow-hidden rounded-xl bg-white">
               <Image
                 src="/img/generales/caldera-8.png"
                 alt="Detalle del equipo del Sistema Santero"
@@ -62,7 +62,7 @@ export default function Overview() {
             </div>
           </Reveal>
 
-          <div className="flex flex-col gap-8">
+          <div className="flex flex-col justify-between gap-8">
             {caracteristicas.map((item, index) => (
               <Reveal
                 key={item.id}
@@ -79,7 +79,7 @@ export default function Overview() {
                   <h3 className="font-heading text-lg font-semibold text-white">
                     {item.titulo}
                   </h3>
-                  <p className="mt-1 text-sm text-white/60">
+                  <p className="mt-1 hyphens-auto text-justify text-sm text-white/60">
                     {item.descripcion}
                   </p>
                 </div>
