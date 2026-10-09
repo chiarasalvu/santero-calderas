@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Reveal from "@/components/motion/Reveal";
 import { serviciosPilares } from "@/data/servicios-pilares";
+import SilaVideoButton from "@/components/servicios/SilaVideoButton";
 
 const contactoPorPilar: Record<string, { label: string; motivo: string }> = {
   "ingenieria-proyectos": {
@@ -60,7 +61,8 @@ export default function ServicePillars() {
               </ul>
 
               {contacto && (
-                <div className="mt-auto pt-8">
+                <div className="mt-auto flex flex-col gap-3 pt-8">
+                  {pilar.id === "soporte-postventa" && <SilaVideoButton />}
                   <Link
                     href={`/contacto?motivo=${contacto.motivo}`}
                     className="flex items-center justify-center gap-2 rounded-lg bg-brand-red px-4 py-3 text-xs font-semibold text-white transition-all duration-200 hover:scale-[1.02] hover:bg-white hover:text-brand-red active:scale-[0.98]"
