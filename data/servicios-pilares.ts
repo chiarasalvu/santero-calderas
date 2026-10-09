@@ -16,7 +16,7 @@ export type ServicioPilar = {
 export const serviciosPilares: ServicioPilar[] = [
   {
     id: "ingenieria-proyectos",
-    foto: { src: "/img/diferencial/ingenieria.jpg", posicion: "center top" },
+    foto: { src: "/img/diferencial/ingenieria-v2.jpg", posicion: "center" },
     numero: "01",
     titulo: "Ingeniería & proyectos",
     bajada:
@@ -51,7 +51,7 @@ export const serviciosPilares: ServicioPilar[] = [
   },
   {
     id: "instalacion-puesta-en-marcha",
-    foto: { src: "/img/diferencial/instalacion.jpg", posicion: "center 35%" },
+    foto: { src: "/img/diferencial/instalacion-v2.jpg", posicion: "center 52%" },
     numero: "02",
     titulo: "Instalación & puesta en marcha",
     bajada:
@@ -66,7 +66,7 @@ export const serviciosPilares: ServicioPilar[] = [
   },
   {
     id: "soporte-postventa",
-    foto: { src: "/img/diferencial/soporte.jpg", posicion: "center 60%" },
+    foto: { src: "/img/diferencial/soporte-v2.jpg", posicion: "center 55%" },
     numero: "03",
     titulo: "Soporte & postventa",
     bajada:
