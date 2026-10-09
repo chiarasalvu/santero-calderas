@@ -1,12 +1,23 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "framer-motion";
 
-// Botón que abre el video de SILA Termomecánica en un modal (mismo patrón
-// que el video institucional de Nosotros: Escape, scroll bloqueado, foco).
+// Botón que abre el video de SILA Termomecánica a pantalla grande (mismo
+// patrón que el video institucional de Nosotros: Escape, scroll bloqueado,
+// foco). El modal se monta en document.body con un portal: el botón vive
+// dentro de una card con transform (hover/animación), y un `position: fixed`
+// adentro de un ancestro transformado queda encerrado en la card (se veía
+// chico, duplicado y trabado).
 export default function SilaVideoButton() {
   const [abierto, setAbierto] = useState(false);
+  // true solo en el cliente (en el servidor no existe document.body).
+  const montado = useSyncExternalStore(
+    () => () => {},
+    () => true,
+    () => false,
+  );
   const triggerRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
@@ -46,39 +57,43 @@ export default function SilaVideoButton() {
         Ver video de SILA Termomecánica
       </button>
 
-      <AnimatePresence>
-        {abierto && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-[80] flex items-center justify-center bg-black/90 px-6"
-            onClick={() => setAbierto(false)}
-            role="dialog"
-            aria-modal="true"
-            aria-label="Video de SILA Termomecánica"
-          >
-            <button
-              type="button"
-              aria-label="Cerrar video"
-              onClick={() => setAbierto(false)}
-              className="absolute top-6 right-6 flex h-10 w-10 items-center justify-center rounded-full border border-white/30 text-white transition-colors hover:border-white"
-            >
-              ✕
-            </button>
-            <video
-              src="/video/sila.mp4"
-              poster="/video/sila-poster.jpg"
-              controls
-              autoPlay
-              playsInline
-              className="max-h-[80vh] w-full max-w-4xl rounded-lg"
-              onClick={(event) => event.stopPropagation()}
-            />
-          </motion.div>
+      {montado &&
+        createPortal(
+          <AnimatePresence>
+            {abierto && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2 }}
+                className="fixed inset-0 z-[80] flex items-center justify-center bg-black/95 p-4 sm:p-8"
+                onClick={() => setAbierto(false)}
+                role="dialog"
+                aria-modal="true"
+                aria-label="Video de SILA Termomecánica"
+              >
+                <button
+                  type="button"
+                  aria-label="Cerrar video"
+                  onClick={() => setAbierto(false)}
+                  className="absolute top-4 right-4 z-10 flex h-10 w-10 items-center justify-center rounded-full border border-white/30 bg-black/60 text-white transition-colors hover:border-white sm:top-6 sm:right-6"
+                >
+                  ✕
+                </button>
+                <video
+                  src="/video/sila.mp4"
+                  poster="/video/sila-poster.jpg"
+                  controls
+                  autoPlay
+                  playsInline
+                  className="max-h-full w-full max-w-[1500px] rounded-lg bg-black object-contain"
+                  onClick={(event) => event.stopPropagation()}
+                />
+              </motion.div>
+            )}
+          </AnimatePresence>,
+          document.body,
         )}
-      </AnimatePresence>
     </>
   );
 }
