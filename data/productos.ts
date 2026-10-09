@@ -211,19 +211,17 @@ export const lineaPorEquipo: Record<string, string> = {
   ADN: "adn",
   ATS: "ats",
   VTS: "vts",
-  TS: "intercambiadores-tanques",
+  "IC-SANT": "intercambiadores-tanques",
   TSE: "electro",
 };
 
-/**
- * Foto de cada equipo (carpeta "Equipos" del cliente). TS no tiene foto
- * todavía: la de "IC SANT" es el intercambiador de calor, no el tanque TS.
- */
-export const fotoPorEquipo: Partial<Record<string, string>> = {
+/** Foto de cada equipo (carpeta "Equipos" del cliente). */
+export const fotoPorEquipo: Record<string, string> = {
   ATSOL: "/img/equipos/atsol.jpg",
   ETERCAL: "/img/equipos/etercal.jpg",
   ADN: "/img/equipos/adn.jpg",
   ATS: "/img/equipos/ats.jpg",
   VTS: "/img/equipos/vts.jpg",
+  "IC-SANT": "/img/equipos/intercambiador.jpg",
   TSE: "/img/equipos/electro.jpg",
 };

@@ -111,25 +111,17 @@ export default function SolucionPagina({
                   className="group block overflow-hidden rounded-2xl border border-white/10 bg-ink-light transition-all duration-300 hover:-translate-y-1 hover:border-brand-red-light/40"
                 >
                   <div className="relative aspect-[4/5] bg-white">
-                    {fotoPorEquipo[producto] ? (
-                      <Image
-                        src={fotoPorEquipo[producto]}
-                        alt={`Equipo ${producto}`}
-                        fill
-                        sizes="(min-width: 1024px) 18vw, 45vw"
-                        className="object-contain p-3 transition-transform duration-500 group-hover:scale-105"
-                      />
-                    ) : (
-                      <span className="absolute inset-0 flex items-center justify-center bg-ink-light font-heading text-4xl font-semibold text-white/40">
-                        {producto}
-                      </span>
-                    )}
+                    <Image
+                      src={fotoPorEquipo[producto]}
+                      alt={`Equipo ${producto}`}
+                      fill
+                      sizes="(min-width: 1024px) 18vw, 45vw"
+                      className="object-contain p-3 transition-transform duration-500 group-hover:scale-105"
+                    />
                   </div>
-                  {fotoPorEquipo[producto] && (
-                    <p className="px-4 py-3 font-heading text-base font-semibold text-white">
-                      {producto}
-                    </p>
-                  )}
+                  <p className="px-4 py-3 font-heading text-base font-semibold text-white">
+                    {producto}
+                  </p>
                 </Link>
               </Reveal>
             ))}

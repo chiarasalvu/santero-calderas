@@ -156,7 +156,7 @@ export const serviciosPaginas: ServicioPagina[] = [
       "Sanatorios",
       "Industrias e instituciones",
     ],
-    productos: ["ATSOL", "ADN", "ETERCAL", "TS", "TSE"],
+    productos: ["ATSOL", "ADN", "ETERCAL", "IC-SANT", "TSE"],
     // Foto de banco (Unsplash): ducha con agua caliente y vapor.
     imagen: "/img/rubros-home/agua-caliente-ducha.jpg",
     imagenPosicion: "center 8%",
