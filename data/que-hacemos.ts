@@ -183,7 +183,9 @@ export const serviciosPaginas: ServicioPagina[] = [
       "Industrias",
     ],
     productos: ["ATS", "VTS", "ATSOL", "ETERCAL"],
-    imagen: "/img/rubros-home/calefaccion.jpg",
+    // Foto de banco (Unsplash): radiador en un ambiente, con ventana.
+    imagen: "/img/rubros-home/calefaccion-detalle.jpg",
+    imagenPosicion: "center 50%",
   },
   {
     slug: "climatizacion-de-piscinas",
