@@ -322,7 +322,7 @@ function TimelineCard({
 }) {
   return (
     <div
-      className={`w-full max-w-md rounded-2xl border border-transparent p-6 ${pegadaALaDerecha ? "sm:ml-auto" : ""} transition-all duration-300 hover:-translate-y-1 ${dark ? "bg-ink-light hover:border-brand-red-light/40" : "bg-cream-card hover:border-brand-red/30"}`}
+      className={`w-full max-w-md rounded-2xl border border-transparent p-6 ${pegadaALaDerecha ? "sm:ml-auto" : ""} transition-all duration-300 hover:-translate-y-1 ${dark ? "bg-ink-elevated hover:border-brand-red-light/40" : "bg-cream-card hover:border-brand-red/30"}`}
     >
       <h3
         className={`font-heading text-lg font-semibold ${dark ? "text-white" : "text-navy"}`}
