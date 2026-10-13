@@ -32,6 +32,39 @@ const categorias = [
   { id: "producto", titulo: "Por producto", items: porProducto },
 ] as const;
 
+
+// Al entrar a una página desde el menú "Qué hacemos" se guarda de dónde
+// venía; si después vuelve con "Volver" (o con el "atrás" del navegador),
+// el menú reabre con "Qué hacemos" desplegado en vez de quedar cerrado.
+const MENU_RETURN_KEY = "santero:menu-return";
+
+type MenuReturn = {
+  from: string;
+  categoria: string;
+  armed: boolean;
+};
+
+function readMenuReturn(): MenuReturn | null {
+  try {
+    const raw = window.sessionStorage.getItem(MENU_RETURN_KEY);
+    return raw ? (JSON.parse(raw) as MenuReturn) : null;
+  } catch {
+    return null;
+  }
+}
+
+function writeMenuReturn(value: MenuReturn | null) {
+  try {
+    if (value) {
+      window.sessionStorage.setItem(MENU_RETURN_KEY, JSON.stringify(value));
+    } else {
+      window.sessionStorage.removeItem(MENU_RETURN_KEY);
+    }
+  } catch {
+    // sin sessionStorage (modo privado, etc.): el menú simplemente queda cerrado
+  }
+}
+
 type CategoriaId = (typeof categorias)[number]["id"];
 
 export default function Header() {
@@ -63,12 +96,49 @@ export default function Header() {
   if (pathname !== previousPathname) {
     setPreviousPathname(pathname);
     closeMenu();
+
+    // ¿Es una vuelta a la página desde la que se abrió una de "Qué hacemos"?
+    const back = typeof window !== "undefined" ? readMenuReturn() : null;
+    if (back && back.armed) {
+      writeMenuReturn(null);
+      if (back.from === pathname) {
+        setMenuOpen(true);
+        setQueHacemosOpen(true);
+        setCategoriaAbierta(
+          categorias.find((c) => c.id === back.categoria)?.id ?? null,
+        );
+      }
+    }
   }
+
+  // El "atrás" del navegador también cuenta como volver.
+  useEffect(() => {
+    function handlePopState() {
+      const back = readMenuReturn();
+      if (back) writeMenuReturn({ ...back, armed: true });
+    }
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
+  }, []);
 
   function closeMenu() {
     setMenuOpen(false);
     setQueHacemosOpen(false);
     setCategoriaAbierta(null);
+  }
+
+  // Se eligió una página desde "Qué hacemos": se recuerda dónde estaba el
+  // usuario para reabrir el menú si vuelve.
+  function navigateFromQueHacemos(categoriaId: CategoriaId) {
+    writeMenuReturn({ from: pathname, categoria: categoriaId, armed: false });
+    closeMenu();
+  }
+
+  // "Volver": deja armada la reapertura del menú en la página anterior.
+  function handleBack() {
+    const back = readMenuReturn();
+    if (back) writeMenuReturn({ ...back, armed: true });
+    closeMenu();
   }
 
   const renderPanelLink = (link: NavLink) => {
@@ -124,7 +194,7 @@ export default function Header() {
                 />
               </span>
             </button>
-            {showBack && <BackButton onNavigate={closeMenu} />}
+            {showBack && <BackButton onNavigate={handleBack} />}
           </div>
 
           <Link href="/" onClick={closeMenu} className="justify-self-center">
@@ -255,7 +325,11 @@ export default function Header() {
                                       <li key={item.label}>
                                         <QueHacemosItem
                                           item={item}
-                                          onNavigate={closeMenu}
+                                          onNavigate={() =>
+                                            navigateFromQueHacemos(
+                                              categoria.id,
+                                            )
+                                          }
                                         />
                                       </li>
                                     ))}
@@ -322,7 +396,9 @@ export default function Header() {
                         <QueHacemosColumn
                           titulo={categoria.titulo}
                           items={categoria.items}
-                          onNavigate={closeMenu}
+                          onNavigate={() =>
+                            navigateFromQueHacemos(categoria.id)
+                          }
                         />
                       </div>
                     ))}
