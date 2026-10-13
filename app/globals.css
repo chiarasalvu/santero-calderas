@@ -25,6 +25,8 @@
   --color-ink-elevated: #2a2a2a;
   --color-brand-red-light: #ffb4aa;
   --color-steel: #71717a;
+  --color-brand-blue: #2a5db0;
+  --color-brand-blue-light: #8dbdff;
 
   --animate-marquee-left: marquee-left 60s linear infinite;
   --animate-marquee-right: marquee-right 60s linear infinite;

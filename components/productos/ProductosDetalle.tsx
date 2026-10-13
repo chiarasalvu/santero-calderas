@@ -40,7 +40,7 @@ export default function ProductosDetalle() {
             </Reveal>
 
             <Reveal delay={0.1}>
-              <h2 className="font-heading text-2xl font-semibold text-white sm:text-3xl">
+              <h2 className="whitespace-pre-line font-heading text-2xl font-semibold text-white sm:text-3xl">
                 {linea.nombre}
               </h2>
               {linea.subtitulo && (

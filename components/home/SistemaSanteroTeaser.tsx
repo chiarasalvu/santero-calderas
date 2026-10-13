@@ -1,6 +1,11 @@
 import Link from "next/link";
 import Reveal from "@/components/motion/Reveal";
-import { columnasComparativa, filasComparativa } from "@/data/comparativa";
+import Nivel from "@/components/comparativa/Nivel";
+import {
+  columnasComparativa,
+  filasComparativa,
+  type CeldaComparativa,
+} from "@/data/comparativa";
 
 export default function SistemaSanteroTeaser() {
   return (
@@ -38,14 +43,14 @@ export default function SistemaSanteroTeaser() {
         {/* Cuadro comparativo resumido (el completo está en /sistema-santero). */}
         <Reveal
           delay={0.1}
-          className="mt-12 overflow-x-auto rounded-2xl border border-steel/20 bg-ink-light"
+          className="mt-12 overflow-x-auto rounded-2xl border border-white/15 bg-ink-elevated"
         >
           <table className="w-full min-w-[640px] border-collapse text-left">
             <thead>
-              <tr className="border-b border-steel/20">
+              <tr className="border-b border-white/15">
                 <th
                   scope="col"
-                  className="p-4 font-mono text-xs font-light text-white/50 sm:p-5"
+                  className="p-4 text-sm font-bold text-white sm:p-5"
                 >
                   Variable de análisis
                 </th>
@@ -63,7 +68,7 @@ export default function SistemaSanteroTeaser() {
                 </th>
                 <th
                   scope="col"
-                  className="bg-brand-red/10 p-4 text-center font-heading text-sm font-semibold text-brand-red-light sm:p-5"
+                  className="bg-brand-blue/30 p-4 text-center font-heading text-sm font-semibold text-brand-blue-light sm:p-5"
                 >
                   {columnasComparativa.santero}
                 </th>
@@ -73,21 +78,21 @@ export default function SistemaSanteroTeaser() {
               {filasComparativa.map((fila) => (
                 <tr
                   key={fila.id}
-                  className="border-b border-steel/10 last:border-b-0"
+                  className="border-b border-white/10 last:border-b-0"
                 >
                   <th
                     scope="row"
-                    className="p-4 text-sm font-semibold text-white sm:p-5"
+                    className="p-4 text-sm font-bold text-white sm:p-5"
                   >
                     {fila.variable}
                   </th>
-                  <td className="p-4 text-center text-sm text-white/70 sm:p-5">
+                  <td className="p-4 text-center text-sm sm:p-5">
                     <Resumen celda={fila.termotanque} />
                   </td>
-                  <td className="p-4 text-center text-sm text-white/70 sm:p-5">
+                  <td className="p-4 text-center text-sm sm:p-5">
                     <Resumen celda={fila.caldera} />
                   </td>
-                  <td className="bg-brand-red/10 p-4 text-center text-sm font-semibold text-white sm:p-5">
+                  <td className="bg-brand-blue/30 p-4 text-center text-sm sm:p-5">
                     <Resumen celda={fila.santero} />
                   </td>
                 </tr>
@@ -100,19 +105,6 @@ export default function SistemaSanteroTeaser() {
   );
 }
 
-function Resumen({
-  celda,
-}: {
-  celda: { nivel: string; valor?: string };
-}) {
-  return (
-    <>
-      {celda.nivel}
-      {celda.valor && (
-        <span className="block text-xs font-normal text-white/50">
-          {celda.valor}
-        </span>
-      )}
-    </>
-  );
+function Resumen({ celda }: { celda: CeldaComparativa }) {
+  return <Nivel celda={celda} />;
 }
