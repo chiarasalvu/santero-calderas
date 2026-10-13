@@ -220,7 +220,7 @@ export default function HistoryTimeline({
                 className="relative flex flex-col items-center gap-2 sm:flex-row sm:items-center sm:gap-12"
               >
                 <div
-                  className={`flex flex-col gap-4 sm:flex-1 ${
+                  className={`flex flex-col gap-4 sm:min-w-0 sm:flex-1 ${
                     cardOnRight
                       ? "items-center sm:order-1 sm:items-end"
                       : "items-center sm:order-3 sm:items-start"
@@ -247,9 +247,7 @@ export default function HistoryTimeline({
                     las fotos (no de "año + fotos"): arriba va un espacio
                     invisible con el alto del año. */}
                 <div
-                  className={`hidden shrink-0 sm:order-2 sm:flex sm:flex-col sm:gap-4 ${
-                    hito.fotos ? "sm:self-stretch" : ""
-                  }`}
+                  className="pointer-events-none hidden sm:absolute sm:inset-y-0 sm:left-1/2 sm:z-10 sm:flex sm:w-3.5 sm:-translate-x-1/2 sm:flex-col sm:gap-4"
                 >
                   {hito.fotos && <Anio anio={hito.anio} dark={dark} oculto />}
                   <div className="flex flex-1 items-center">
@@ -258,7 +256,7 @@ export default function HistoryTimeline({
                 </div>
 
                 <div
-                  className={`flex w-full flex-col sm:flex-1 sm:gap-4 ${
+                  className={`flex w-full flex-col sm:min-w-0 sm:flex-1 sm:gap-4 ${
                     cardOnRight ? "sm:order-3" : "sm:order-1"
                   } ${hito.fotos ? "sm:self-stretch" : ""}`}
                 >
