@@ -17,22 +17,46 @@ export default function SolucionPagina({
   return (
     <>
       <section className="mt-[65px] bg-ink px-6 pt-10 pb-8">
-        <div
-          className={`relative mx-auto flex max-w-6xl items-end overflow-hidden rounded-2xl border border-steel/20 bg-ink-light sm:min-h-0 ${
-            servicio.portadaAlta
-              ? "min-h-[420px] sm:aspect-[16/10]"
-              : "min-h-[320px] sm:aspect-[21/9]"
-          }`}
-        >
-          <Image
-            src={servicio.imagen}
-            alt=""
-            fill
-            priority
-            sizes="(min-width: 1152px) 1152px, 100vw"
-            className="object-cover"
-            style={{ objectPosition: servicio.imagenPosicion ?? "center" }}
-          />
+        <div className="relative mx-auto flex min-h-[320px] max-w-6xl items-end overflow-hidden rounded-2xl border border-steel/20 bg-ink-light sm:aspect-[21/9] sm:min-h-0">
+          {servicio.fotoVertical ? (
+            <>
+              {/* Foto vertical: el portal mantiene el formato ancho de
+                  siempre; la foto va un poco más chica, centrada, y los
+                  costados se completan con la misma foto desenfocada. */}
+              <Image
+                src={servicio.imagen}
+                alt=""
+                fill
+                aria-hidden
+                sizes="(min-width: 1152px) 1152px, 100vw"
+                className="scale-110 object-cover opacity-70 blur-2xl"
+                style={{ objectPosition: servicio.imagenPosicion ?? "center" }}
+              />
+              <div className="absolute inset-y-0 left-1/2 w-full -translate-x-1/2 sm:w-[58%] sm:[mask-image:linear-gradient(to_right,transparent,black_14%,black_86%,transparent)]">
+                <Image
+                  src={servicio.imagen}
+                  alt=""
+                  fill
+                  priority
+                  sizes="(min-width: 1152px) 670px, 100vw"
+                  className="object-cover"
+                  style={{
+                    objectPosition: servicio.imagenPosicion ?? "center",
+                  }}
+                />
+              </div>
+            </>
+          ) : (
+            <Image
+              src={servicio.imagen}
+              alt=""
+              fill
+              priority
+              sizes="(min-width: 1152px) 1152px, 100vw"
+              className="object-cover"
+              style={{ objectPosition: servicio.imagenPosicion ?? "center" }}
+            />
+          )}
           <div
             className="absolute inset-0 bg-gradient-to-t from-ink via-ink/40 to-transparent"
             aria-hidden
