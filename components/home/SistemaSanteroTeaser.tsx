@@ -95,19 +95,6 @@ export default function SistemaSanteroTeaser() {
             </tbody>
           </table>
         </Reveal>
-
-        <Link
-          href="/sistema-santero#comparativa"
-          className="group/link mt-6 inline-flex items-center gap-1 font-mono text-xs font-light text-brand-red-light transition-colors hover:text-white"
-        >
-          Ver la comparativa completa
-          <span
-            className="transition-transform duration-200 group-hover/link:translate-x-1"
-            aria-hidden
-          >
-            →
-          </span>
-        </Link>
       </div>
     </section>
   );
