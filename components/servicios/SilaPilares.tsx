@@ -9,7 +9,7 @@ export default function SilaPilares() {
   const pilares = serviciosPilares.filter((p) => IDS.includes(p.id));
 
   return (
-    <section className="bg-sila-light px-6 py-20 sm:py-24">
+    <section className="bg-sila px-6 pb-20 sm:pb-24">
       <div className="mx-auto max-w-6xl">
         <Reveal>
           <p className="font-mono text-xs font-light text-brand-blue-light">
@@ -25,7 +25,7 @@ export default function SilaPilares() {
             <Reveal
               key={pilar.id}
               delay={index * 0.1}
-              className="rounded-2xl border border-sila-accent/40 bg-sila p-8"
+              className="rounded-2xl border border-sila-accent/40 bg-sila-light p-8"
             >
               <h3 className="font-heading text-2xl font-semibold text-white">
                 {pilar.titulo}
