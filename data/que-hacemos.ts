@@ -43,9 +43,9 @@ export type ServicioPagina = {
   imagen: string;
   /** object-position de la foto (para encuadrar lo importante). */
   imagenPosicion?: string;
-  /** Portada más alta (para fotos verticales, que en el formato ancho no se
-   *  llegan a lucir). */
-  portadaAlta?: boolean;
+  /** Foto vertical: en la portada ancha se muestra más chica y centrada,
+   *  con los costados completados con la misma foto desenfocada. */
+  fotoVertical?: boolean;
 };
 
 // Portada común a los rubros: solo el logo de Santero.
@@ -234,10 +234,9 @@ export const serviciosPaginas: ServicioPagina[] = [
     productos: ["VTS"],
     imagen: "/img/rubros-home/vapor-cliente.jpg",
     // Sube el encuadre para que se vea la válvula por donde sale el vapor.
-    imagenPosicion: "center 82%",
-    // La foto del cliente es vertical: en la portada ancha solo se veía la
-    // válvula; más alta se luce el vapor.
-    portadaAlta: true,
+    imagenPosicion: "center 90%",
+    // La foto del cliente es vertical: achicada y centrada se luce el vapor.
+    fotoVertical: true,
   },
 ];
 
