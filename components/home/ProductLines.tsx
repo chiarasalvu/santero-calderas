@@ -21,7 +21,7 @@ const lineas: LineaProducto[] = [
     productoId: "atsol-etercal",
     nombre: "ATSOL",
     imagen: "/img/equipos/atsol.jpg",
-    badge: "Premium",
+    badge: "Línea premium",
     subtitulo: "Alta eficiencia con quemadores de modulación",
   },
   {
@@ -29,7 +29,7 @@ const lineas: LineaProducto[] = [
     productoId: "adn",
     nombre: "ADN",
     imagen: "/img/equipos/adn.jpg",
-    badge: "Relación precio-calidad",
+    badge: "Línea estándar",
     subtitulo: "Ideal para reemplazar termotanques industriales",
   },
 ];

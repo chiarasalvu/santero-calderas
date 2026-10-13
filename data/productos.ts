@@ -66,7 +66,7 @@ export const lineasProducto: LineaProducto[] = [
     label: "ADN",
     nombre: "Línea ADN",
     imagenes: [{ src: "/img/equipos/adn.jpg", alt: "Equipo ADN" }],
-    badge: "Relación precio-calidad",
+    badge: "Línea estándar",
     badgeClassName: "bg-navy text-white",
     items: [
       {
