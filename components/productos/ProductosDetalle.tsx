@@ -40,12 +40,9 @@ export default function ProductosDetalle() {
             </Reveal>
 
             <Reveal delay={0.1}>
-              <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-4">
-                <h2 className="font-heading text-2xl font-semibold text-white sm:text-3xl">
-                  {linea.nombre}
-                </h2>
-                <FichaTecnica href={linea.fichaTecnica} nombre={linea.nombre} />
-              </div>
+              <h2 className="font-heading text-2xl font-semibold text-white sm:text-3xl">
+                {linea.nombre}
+              </h2>
               {linea.subtitulo && (
                 <p className="mt-3 font-light text-white/90">
                   {linea.subtitulo}
@@ -72,6 +69,10 @@ export default function ProductosDetalle() {
                   </li>
                 ))}
               </ul>
+
+              <div className="mt-8">
+                <FichaTecnica href={linea.fichaTecnica} nombre={linea.nombre} />
+              </div>
             </Reveal>
           </article>
         ))}
