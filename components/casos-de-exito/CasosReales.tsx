@@ -226,34 +226,35 @@ function Comparacion({
 }
 
 // Obra de Devoto: el resultado se mide desde los planos (espacio en sala).
-// El plano ocupa todo el ancho del bloque y el texto va debajo.
+// Texto a la izquierda y el plano chico a la derecha (así lo prefiere la
+// clienta; ver 13/10 y 14/10).
 function CasoPlanos() {
   return (
-    <Reveal className="mt-8 overflow-hidden rounded-2xl border border-steel/20 bg-ink-light transition-colors duration-300 hover:border-brand-red-light/40">
-      <div className="bg-white">
-        <Image
-          src="/img/casos/devoto-plano.jpg"
-          alt="Plano de detalle de la instalación de climatización de la obra de Devoto"
-          width={1299}
-          height={519}
-          sizes="(min-width: 1152px) 1152px, 100vw"
-          className="h-auto w-full"
-        />
-      </div>
-
-      <div className="p-6 sm:p-8">
+    <Reveal className="mt-8 grid items-center gap-6 rounded-2xl border border-steel/20 bg-ink-light p-6 transition-colors duration-300 hover:border-brand-red-light/40 sm:p-8 lg:grid-cols-[1fr_380px] lg:gap-10">
+      <div>
         <p className="font-mono text-xs font-light text-white/50">
           CABA · Obra de Devoto
         </p>
         <h3 className="mt-3 font-heading text-2xl font-semibold text-white">
           Una decisión inteligente se mide desde los planos
         </h3>
-        <p className="mt-4 max-w-4xl text-white/80">
+        <p className="mt-4 text-white/80">
           El Sistema Santero en esta obra de Devoto resolvió una ganancia del
           60% del espacio en sala y un enorme ahorro en equipamiento e
           instalación. Colaboró indirectamente con la resolución del tema
           crítico de la ubicación del generador.
         </p>
+      </div>
+
+      <div className="overflow-hidden rounded-xl bg-white">
+        <Image
+          src="/img/casos/devoto-plano.jpg"
+          alt="Plano de detalle de la instalación de climatización de la obra de Devoto"
+          width={1299}
+          height={519}
+          sizes="380px"
+          className="h-auto w-full"
+        />
       </div>
     </Reveal>
   );
