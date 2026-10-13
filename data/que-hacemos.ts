@@ -234,7 +234,7 @@ export const serviciosPaginas: ServicioPagina[] = [
     productos: ["VTS"],
     imagen: "/img/rubros-home/vapor-cliente.jpg",
     // Sube el encuadre para que se vea la válvula por donde sale el vapor.
-    imagenPosicion: "center 90%",
+    imagenPosicion: "center 76%",
     // La foto del cliente es vertical: achicada y centrada se luce el vapor.
     fotoVertical: true,
   },
