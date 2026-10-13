@@ -49,13 +49,11 @@
   }
 }
 
-/* Todos los párrafos van justificados (con guionado automático, el sitio
-   está en lang="es"). Va en @layer base para que las utilidades de Tailwind
-   (text-center, text-left, etc.) puedan seguir pisándolo donde haga falta. */
+/* Todos los párrafos van justificados, sin cortar palabras al final del
+   renglón (pedido del cliente, 13/10: nada de guiones de corte). Va en
+   @layer base para que las utilidades de Tailwind (text-center, text-left,
+   etc.) puedan seguir pisándolo donde haga falta. */
 @layer base {
-  p {
-    hyphens: auto;
-  }
   /* Menos los que están dentro de un bloque centrado (text-center). */
   p:not(.text-center, .text-center *) {
     text-align: justify;

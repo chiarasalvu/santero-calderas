@@ -17,7 +17,13 @@ export default function SolucionPagina({
   return (
     <>
       <section className="mt-[65px] bg-ink px-6 pt-10 pb-8">
-        <div className="relative mx-auto flex min-h-[320px] max-w-6xl items-end overflow-hidden rounded-2xl border border-steel/20 bg-ink-light sm:aspect-[21/9] sm:min-h-0">
+        <div
+          className={`relative mx-auto flex max-w-6xl items-end overflow-hidden rounded-2xl border border-steel/20 bg-ink-light sm:min-h-0 ${
+            servicio.portadaAlta
+              ? "min-h-[420px] sm:aspect-[16/10]"
+              : "min-h-[320px] sm:aspect-[21/9]"
+          }`}
+        >
           <Image
             src={servicio.imagen}
             alt=""
@@ -55,7 +61,7 @@ export default function SolucionPagina({
               {servicio.parrafos.map((parrafo) => (
                 <p
                   key={parrafo}
-                  className="hyphens-auto text-justify text-white/70"
+                  className="text-justify text-white/70"
                 >
                   {parrafo}
                 </p>

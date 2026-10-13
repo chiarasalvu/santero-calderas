@@ -217,24 +217,16 @@ export default function HistoryTimeline({
             return (
               <li
                 key={hito.id}
-                className="relative flex flex-col items-center gap-2 sm:flex-row sm:gap-12"
+                className="relative flex flex-col items-center gap-2 sm:flex-row sm:items-center sm:gap-12"
               >
                 <div
                   className={`flex flex-col gap-4 sm:flex-1 ${
                     cardOnRight
                       ? "items-center sm:order-1 sm:items-end"
                       : "items-center sm:order-3 sm:items-start"
-                  }`}
+                  } ${hito.fotos ? "sm:self-stretch" : ""}`}
                 >
-                  <span
-                    className={`font-heading text-lg font-light sm:text-5xl lg:text-6xl ${
-                      dark
-                        ? "text-brand-red-light"
-                        : "text-brand-red sm:text-brand-red/50"
-                    }`}
-                  >
-                    {hito.anio}
-                  </span>
+                  <Anio anio={hito.anio} dark={dark} />
                   {hito.fotos && (
                     <Reveal delay={0.15} className="flex gap-3">
                       {hito.fotos.map((foto) => (
@@ -251,21 +243,42 @@ export default function HistoryTimeline({
                   )}
                 </div>
 
-                <span className="relative z-10 hidden h-3.5 w-3.5 shrink-0 rounded-full bg-brand-red sm:order-2 sm:block" />
-
+                {/* Con fotos, el punto y la card se centran a la altura de
+                    las fotos (no de "año + fotos"): arriba va un espacio
+                    invisible con el alto del año. */}
                 <div
-                  className={`w-full sm:flex sm:flex-1 sm:items-center ${
-                    cardOnRight
-                      ? "sm:order-3 sm:justify-start"
-                      : "sm:order-1 sm:justify-end"
+                  className={`hidden shrink-0 sm:order-2 sm:flex sm:flex-col sm:gap-4 ${
+                    hito.fotos ? "sm:self-stretch" : ""
                   }`}
                 >
-                  <Reveal
-                    delay={Math.min(index * 0.08, 0.4)}
-                    className="w-full"
+                  {hito.fotos && <Anio anio={hito.anio} dark={dark} oculto />}
+                  <div className="flex flex-1 items-center">
+                    <span className="relative z-10 h-3.5 w-3.5 rounded-full bg-brand-red" />
+                  </div>
+                </div>
+
+                <div
+                  className={`flex w-full flex-col sm:flex-1 sm:gap-4 ${
+                    cardOnRight ? "sm:order-3" : "sm:order-1"
+                  } ${hito.fotos ? "sm:self-stretch" : ""}`}
+                >
+                  {hito.fotos && (
+                    <div className="hidden sm:block" aria-hidden>
+                      <Anio anio={hito.anio} dark={dark} oculto />
+                    </div>
+                  )}
+                  <div
+                    className={`flex flex-1 items-center ${
+                      cardOnRight ? "sm:justify-start" : "sm:justify-end"
+                    }`}
                   >
-                    <TimelineCard hito={hito} dark={dark} />
-                  </Reveal>
+                    <Reveal
+                      delay={Math.min(index * 0.08, 0.4)}
+                      className="w-full"
+                    >
+                      <TimelineCard hito={hito} dark={dark} />
+                    </Reveal>
+                  </div>
                 </div>
               </li>
             );
@@ -273,6 +286,29 @@ export default function HistoryTimeline({
         </ol>
       </div>
     </section>
+  );
+}
+
+function Anio({
+  anio,
+  dark,
+  oculto,
+}: {
+  anio: string;
+  dark: boolean;
+  oculto?: boolean;
+}) {
+  return (
+    <span
+      aria-hidden={oculto || undefined}
+      className={`font-heading text-lg font-light sm:text-5xl lg:text-6xl ${
+        oculto ? "invisible" : ""
+      } ${
+        dark ? "text-brand-red-light" : "text-brand-red sm:text-brand-red/50"
+      }`}
+    >
+      {anio}
+    </span>
   );
 }
 

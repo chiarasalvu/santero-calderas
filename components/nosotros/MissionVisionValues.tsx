@@ -14,10 +14,10 @@ export default function MissionVisionValues() {
         <Reveal className="rounded-2xl bg-cream p-8">
           <h3 className="font-heading text-xl font-semibold text-navy">Misión</h3>
           <p className="mt-4 text-sm leading-relaxed text-zinc-600">
-            Diseñar, fabricar e implementar soluciones térmicas eficientes de agua
-            caliente, climatización y vapor, acompañando a nuestros clientes
-            con ingeniería especializada, asesoramiento técnico y soporte
-            continuo en cada etapa del proyecto para asegurar máxima
+            Soluciones térmicas eficientes y personalizadas en agua caliente,
+            climatización y vapor. Acompañando al sector comercial e
+            industrial con ingeniería especializada, asesoramiento técnico y
+            soporte continuo en cada etapa del proyecto para asegurar máxima
             confiabilidad y sostenibilidad.
           </p>
         </Reveal>
@@ -25,10 +25,10 @@ export default function MissionVisionValues() {
         <Reveal delay={0.1} className="rounded-2xl bg-cream p-8">
           <h3 className="font-heading text-xl font-semibold text-navy">Visión</h3>
           <p className="mt-4 text-sm leading-relaxed text-zinc-600">
-            Liderar el futuro de la climatización para grandes demandas en
-            Argentina y la región a través del Sistema Santero, elevando la
-            vara del mercado e impulsando la transición hacia infraestructuras
-            más eficientes, innovadoras y sustentables.
+            Convertirnos en la empresa líder de la climatización para grandes
+            demandas en Argentina y la región. Consolidar el Sistema Santero
+            como referencia del mercado e impulsar la transición hacia
+            infraestructuras más eficientes, innovadoras y sustentables.
           </p>
         </Reveal>
 

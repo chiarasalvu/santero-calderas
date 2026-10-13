@@ -40,9 +40,12 @@ export default function ProductosDetalle() {
             </Reveal>
 
             <Reveal delay={0.1}>
-              <h2 className="font-heading text-2xl font-semibold text-white sm:text-3xl">
-                {linea.nombre}
-              </h2>
+              <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-4">
+                <h2 className="font-heading text-2xl font-semibold text-white sm:text-3xl">
+                  {linea.nombre}
+                </h2>
+                <FichaTecnica href={linea.fichaTecnica} nombre={linea.nombre} />
+              </div>
               {linea.subtitulo && (
                 <p className="mt-3 font-light text-white/90">
                   {linea.subtitulo}
@@ -74,6 +77,39 @@ export default function ProductosDetalle() {
         ))}
       </div>
     </section>
+  );
+}
+
+// Botón "Descargar ficha técnica". Mientras no esté cargado el PDF de la
+// línea (data/productos.ts → fichaTecnica) se ve igual pero no descarga.
+function FichaTecnica({ href, nombre }: { href?: string; nombre: string }) {
+  const className =
+    "inline-flex items-center gap-2 rounded-lg bg-brand-red px-4 py-2.5 text-xs font-semibold text-white transition-colors";
+
+  if (!href) {
+    return (
+      <button
+        type="button"
+        disabled
+        title="Ficha técnica próximamente"
+        className={`${className} cursor-not-allowed opacity-90`}
+      >
+        Descargar ficha técnica
+        <span aria-hidden>→</span>
+      </button>
+    );
+  }
+
+  return (
+    <a
+      href={href}
+      download
+      aria-label={`Descargar ficha técnica de ${nombre}`}
+      className={`${className} hover:bg-white hover:text-brand-red`}
+    >
+      Descargar ficha técnica
+      <span aria-hidden>→</span>
+    </a>
   );
 }
 

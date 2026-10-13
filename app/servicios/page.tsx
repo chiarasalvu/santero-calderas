@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Hero from "@/components/servicios/Hero";
 import ServicePillars from "@/components/servicios/ServicePillars";
+import SilaSeccion from "@/components/servicios/SilaSeccion";
 import Compromiso from "@/components/servicios/Compromiso";
 
 export const metadata: Metadata = {
@@ -14,6 +15,7 @@ export default function Servicios() {
     <>
       <Hero />
       <ServicePillars />
+      <SilaSeccion />
       <Compromiso />
     </>
   );

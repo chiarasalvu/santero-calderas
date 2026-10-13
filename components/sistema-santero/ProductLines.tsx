@@ -1,82 +1,51 @@
 import Image from "next/image";
+import Link from "next/link";
 import Reveal from "@/components/motion/Reveal";
-import AnimatedCounter from "@/components/motion/AnimatedCounter";
-
-type LineaItem = {
-  titulo: string;
-  descripcion: string;
-};
+import { productoHref } from "@/data/productos";
 
 type LineaProducto = {
   id: string;
+  /** Línea correspondiente en /productos. */
+  productoId: string;
   nombre: string;
   imagen: string;
   badge: string;
   badgeClassName: string;
   subtitulo: string;
-  items: LineaItem[];
-  rendimiento?: number;
 };
 
+// Solo los títulos de cada línea (sin descripción ni rendimientos), según el
+// documento del cliente "Últimos detalles WEB" (13/10).
 const lineas: LineaProducto[] = [
   {
     id: "atsol",
+    productoId: "atsol-etercal",
     nombre: "Línea ATSOL",
     imagen: "/img/equipos/atsol.jpg",
     badge: "Línea premium",
     badgeClassName: "bg-brand-red text-white",
-    subtitulo: "La solución para grandes demandas de agua caliente sanitaria.",
-    items: [
-      {
-        titulo: "Alta exigencia",
-        descripcion:
-          "Capacidades para proyectos de alta exigencia, ideal para hoteles, clubes, edificios e industrias.",
-      },
-      {
-        titulo: "Generación instantánea",
-        descripcion: "Generación instantánea mediante calentamiento indirecto.",
-      },
-    ],
-    rendimiento: 98,
-  },
-  {
-    id: "etercal",
-    nombre: "Línea ETERCAL",
-    imagen: "/img/equipos/etercal.jpg",
-    badge: "Línea premium",
-    badgeClassName: "bg-brand-red text-white",
-    subtitulo: "La solución para grandes demandas de agua caliente sanitaria.",
-    items: [
-      {
-        titulo: "Alta exigencia",
-        descripcion:
-          "Capacidades para proyectos de alta exigencia, ideal para hoteles, clubes, edificios e industrias.",
-      },
-      {
-        titulo: "Generación instantánea",
-        descripcion: "Generación instantánea mediante calentamiento indirecto.",
-      },
-    ],
+    subtitulo:
+      "La solución más eficiente para grandes demandas y múltiples servicios.",
   },
   {
     id: "adn",
+    productoId: "adn",
     nombre: "Línea ADN",
     imagen: "/img/equipos/adn.jpg",
     badge: "Línea estándar",
     badgeClassName: "bg-navy text-white",
-    subtitulo: "La eficiencia del Sistema Santero en formato compacto.",
-    items: [
-      {
-        titulo: "Diseño compacto",
-        descripcion:
-          "Diseñada para demandas medianas y espacios reducidos, ideal para consorcios, gimnasios y climatización de piscinas.",
-      },
-      {
-        titulo: "Bajo mantenimiento",
-        descripcion: "Generación instantánea y bajo mantenimiento.",
-      },
-    ],
-    rendimiento: 92,
+    subtitulo:
+      "La evolución del sistema adaptada al segmento que busca precio/calidad.",
+  },
+  {
+    id: "vts",
+    productoId: "vts",
+    nombre: "Línea VTS",
+    imagen: "/img/equipos/vts.jpg",
+    badge: "Línea vapor",
+    badgeClassName: "bg-sky text-white",
+    subtitulo:
+      "La importancia del vapor como motor de la industria desde los inicios.",
   },
 ];
 
@@ -89,90 +58,45 @@ export default function ProductLines() {
             Líneas de producto
           </h2>
           <p className="mt-2 text-white/70">
-            Soluciones adaptadas a cada escala industrial y de servicios.
+            Soluciones térmicas adaptadas para cada escala.
           </p>
         </Reveal>
 
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {lineas.map((linea, index) => (
-            <Reveal
-              key={linea.id}
-              delay={index * 0.1}
-              className="group overflow-hidden rounded-2xl border border-white/10 bg-ink-light transition-all duration-300 hover:-translate-y-1 hover:border-brand-red-light/40"
-            >
-              <div className="relative aspect-video overflow-hidden bg-white">
-                <Image
-                  src={linea.imagen}
-                  alt={linea.nombre}
-                  fill
-                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                  className="object-contain p-3 transition-transform duration-500 group-hover:scale-105"
-                />
-                <span
-                  className={`absolute top-4 right-4 rounded-full px-3 py-1 text-xs font-semibold ${linea.badgeClassName}`}
-                >
-                  {linea.badge}
-                </span>
-              </div>
+            <Reveal key={linea.id} delay={index * 0.1} className="h-full">
+              <Link
+                href={productoHref(linea.productoId)}
+                className="group block h-full overflow-hidden rounded-2xl border border-white/10 bg-ink-light transition-all duration-300 hover:-translate-y-1 hover:border-brand-red-light/40"
+              >
+                <div className="relative aspect-video overflow-hidden bg-white">
+                  <Image
+                    src={linea.imagen}
+                    alt={linea.nombre}
+                    fill
+                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                    className="object-contain p-3"
+                  />
+                  <span
+                    className={`absolute top-4 right-4 rounded-full px-3 py-1 text-xs font-semibold ${linea.badgeClassName}`}
+                  >
+                    {linea.badge}
+                  </span>
+                </div>
 
-              <div className="p-5">
-                <h3 className="font-heading text-xl font-semibold text-white">
-                  {linea.nombre}
-                </h3>
-                <p className="mt-2 text-sm font-light text-white/90">
-                  {linea.subtitulo}
-                </p>
-
-                <ul className="mt-6 flex flex-col gap-4">
-                  {linea.items.map((item) => (
-                    <li key={item.titulo} className="flex items-start gap-3">
-                      <span
-                        className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-red/20 text-brand-red-light transition-transform duration-300 group-hover:scale-110"
-                        aria-hidden
-                      >
-                        <CheckIcon />
-                      </span>
-                      <div>
-                        <p className="font-mono text-[11px] font-light text-white">
-                          {item.titulo}
-                        </p>
-                        <p className="mt-1 text-sm text-white/60">
-                          {item.descripcion}
-                        </p>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-
-                {linea.rendimiento !== undefined && (
-                  <div className="mt-6 flex items-center justify-between border-t border-white/10 pt-4">
-                    <span className="font-mono text-xs font-light text-white/50">
-                      Rendimiento
-                    </span>
-                    <span className="flex items-baseline font-heading text-2xl font-semibold text-brand-red-light">
-                      <AnimatedCounter value={linea.rendimiento} />%
-                    </span>
-                  </div>
-                )}
-              </div>
+                <div className="p-5">
+                  <h3 className="font-heading text-xl font-semibold text-white">
+                    {linea.nombre}
+                  </h3>
+                  <p className="mt-2 text-sm font-light text-white/90">
+                    {linea.subtitulo}
+                  </p>
+                </div>
+              </Link>
             </Reveal>
           ))}
         </div>
       </div>
     </section>
-  );
-}
-
-function CheckIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" className="h-3.5 w-3.5" aria-hidden>
-      <path
-        d="M5 13l3.5 3.5L19 6"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
   );
 }

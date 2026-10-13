@@ -1,38 +1,6 @@
 import Link from "next/link";
 import Reveal from "@/components/motion/Reveal";
-
-type Paso = {
-  numero: string;
-  titulo: string;
-  descripcion: string;
-};
-
-const pasos: Paso[] = [
-  {
-    numero: "01",
-    titulo: "Diagnóstico",
-    descripcion:
-      "Relevamos la instalación existente y las necesidades reales de agua caliente, climatización o vapor del proyecto.",
-  },
-  {
-    numero: "02",
-    titulo: "Propuesta",
-    descripcion:
-      "Dimensionamos el sistema de calentamiento indirecto más eficiente para cada escala de negocio.",
-  },
-  {
-    numero: "03",
-    titulo: "Instalación",
-    descripcion:
-      "Supervisamos y ejecutamos el montaje para garantizar un funcionamiento seguro desde el primer día.",
-  },
-  {
-    numero: "04",
-    titulo: "Mantenimiento",
-    descripcion:
-      "Guardia técnica y mantenimiento preventivo para prolongar la vida útil de la instalación.",
-  },
-];
+import { columnasComparativa, filasComparativa } from "@/data/comparativa";
 
 export default function SistemaSanteroTeaser() {
   return (
@@ -67,25 +35,97 @@ export default function SistemaSanteroTeaser() {
           </p>
         </Reveal>
 
-        <ol className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {pasos.map((paso, index) => (
-            <li key={paso.numero}>
-              <Reveal
-                delay={Math.min(index * 0.08, 0.4)}
-                className="h-full rounded-2xl border border-transparent bg-ink-light p-6 transition-all duration-300 hover:-translate-y-1 hover:border-brand-red-light/40"
-              >
-                <span className="font-heading text-3xl font-semibold text-brand-red-light">
-                  {paso.numero}
-                </span>
-                <h3 className="mt-3 font-heading text-lg font-semibold text-white">
-                  {paso.titulo}
-                </h3>
-                <p className="mt-2 text-sm text-white/70">{paso.descripcion}</p>
-              </Reveal>
-            </li>
-          ))}
-        </ol>
+        {/* Cuadro comparativo resumido (el completo está en /sistema-santero). */}
+        <Reveal
+          delay={0.1}
+          className="mt-12 overflow-x-auto rounded-2xl border border-steel/20 bg-ink-light"
+        >
+          <table className="w-full min-w-[640px] border-collapse text-left">
+            <thead>
+              <tr className="border-b border-steel/20">
+                <th
+                  scope="col"
+                  className="p-4 font-mono text-xs font-light text-white/50 sm:p-5"
+                >
+                  Variable de análisis
+                </th>
+                <th
+                  scope="col"
+                  className="p-4 font-heading text-sm font-semibold text-white/80 sm:p-5"
+                >
+                  {columnasComparativa.termotanque}
+                </th>
+                <th
+                  scope="col"
+                  className="p-4 font-heading text-sm font-semibold text-white/80 sm:p-5"
+                >
+                  {columnasComparativa.caldera}
+                </th>
+                <th
+                  scope="col"
+                  className="bg-brand-red/10 p-4 font-heading text-sm font-semibold text-brand-red-light sm:p-5"
+                >
+                  {columnasComparativa.santero}
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {filasComparativa.map((fila) => (
+                <tr
+                  key={fila.id}
+                  className="border-b border-steel/10 last:border-b-0"
+                >
+                  <th
+                    scope="row"
+                    className="p-4 text-sm font-semibold text-white sm:p-5"
+                  >
+                    {fila.variable}
+                  </th>
+                  <td className="p-4 text-sm text-white/70 sm:p-5">
+                    <Resumen celda={fila.termotanque} />
+                  </td>
+                  <td className="p-4 text-sm text-white/70 sm:p-5">
+                    <Resumen celda={fila.caldera} />
+                  </td>
+                  <td className="bg-brand-red/10 p-4 text-sm font-semibold text-white sm:p-5">
+                    <Resumen celda={fila.santero} />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </Reveal>
+
+        <Link
+          href="/sistema-santero#comparativa"
+          className="group/link mt-6 inline-flex items-center gap-1 font-mono text-xs font-light text-brand-red-light transition-colors hover:text-white"
+        >
+          Ver la comparativa completa
+          <span
+            className="transition-transform duration-200 group-hover/link:translate-x-1"
+            aria-hidden
+          >
+            →
+          </span>
+        </Link>
       </div>
     </section>
+  );
+}
+
+function Resumen({
+  celda,
+}: {
+  celda: { nivel: string; valor?: string };
+}) {
+  return (
+    <>
+      {celda.nivel}
+      {celda.valor && (
+        <span className="block text-xs font-normal text-white/50">
+          {celda.valor}
+        </span>
+      )}
+    </>
   );
 }

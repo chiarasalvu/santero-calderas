@@ -3,28 +3,28 @@ import Reveal from "@/components/motion/Reveal";
 
 const caracteristicas = [
   {
-    id: "sarro",
-    titulo: "Menor formación de sarro",
-    descripcion:
-      "Al trabajar mediante calentamiento indirecto y sin acumulación permanente de agua caliente, se reducen significativamente las incrustaciones calcáreas que afectan el rendimiento de los equipos convencionales.",
-  },
-  {
     id: "eficiencia",
     titulo: "Alta eficiencia energética",
     descripcion:
-      "La transferencia térmica optimizada permite generar agua caliente sanitaria con un menor consumo de energía, reduciendo costos operativos y mejorando el rendimiento general de la instalación.",
+      "La transferencia térmica interna de uno o más circuitos de agua optimiza al máximo la energía consumida. Evita el exceso de equipamiento, bombas y acumuladores, reduciendo los costos de inversión y operativos, y mejorando el rendimiento general de la instalación.",
   },
   {
     id: "instantanea",
     titulo: "Agua caliente instantánea",
     descripcion:
-      "El sistema genera agua caliente en el momento de la demanda, evitando grandes acumulaciones y garantizando disponibilidad constante para instalaciones de alto consumo.",
+      "El sistema genera agua caliente en el momento exacto de la demanda, evitando grandes acumulaciones, costos de mantenimiento y consumo innecesario. De esta manera, garantiza una disponibilidad constante e ininterrumpida para instalaciones de alta exigencia.",
   },
   {
     id: "mantenimiento",
-    titulo: "Menor necesidad de mantenimiento",
+    titulo: "Menor sarro y mantenimiento",
     descripcion:
-      "La reducción de sarro y el diseño del sistema contribuyen a disminuir intervenciones correctivas y tareas de mantenimiento a lo largo del tiempo.",
+      "La reducción de sarro es reflejo directo de su sistema de calentamiento indirecto y su baja temperatura de operación. El diseño del equipo contribuye a disminuir las intervenciones correctivas y las tareas de mantenimiento, como el cambio de ánodos, repintados y purgas continuas.",
+  },
+  {
+    id: "espacio",
+    titulo: "Optimización de espacio en sala",
+    descripcion:
+      "Basado en una ingeniería AIO (All In One), el sistema ofrece la mayor prestación térmica en la menor huella de espacio posible. Esta es una ventaja competitiva clave respecto a los sistemas tradicionales de acumulación. El abastecimiento multicircuito desde un mismo núcleo representa verdadera innovación y eficiencia operacional.",
   },
 ];
 
@@ -39,7 +39,7 @@ export default function Overview() {
           <h2 className="mt-4 font-heading text-3xl font-semibold text-white sm:text-4xl">
             Beneficios del Sistema
           </h2>
-          <p className="mt-6 max-w-5xl hyphens-auto text-justify text-lg leading-relaxed text-white/70">
+          <p className="mt-6 max-w-5xl text-justify text-lg leading-relaxed text-white/70">
             El Sistema Santero utiliza un sistema de calentamiento indirecto que
             genera agua caliente de forma instantánea, sin acumulación y con
             mínima formación de sarro, prolongando la vida útil de las
@@ -54,10 +54,11 @@ export default function Overview() {
           >
             <div className="relative flex-1 overflow-hidden rounded-xl bg-white">
               <Image
-                src="/img/generales/caldera-8.png"
-                alt="Detalle del equipo del Sistema Santero"
+                src="/img/generales/atsol-500-river.jpg"
+                alt="Sala de máquinas con tres equipos ATSOL 500 (proyecto River)"
                 fill
-                className="object-contain p-2"
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                className="object-cover"
               />
             </div>
           </Reveal>
@@ -79,7 +80,7 @@ export default function Overview() {
                   <h3 className="font-heading text-lg font-semibold text-white">
                     {item.titulo}
                   </h3>
-                  <p className="mt-1 hyphens-auto text-justify text-sm text-white/60">
+                  <p className="mt-1 text-justify text-sm text-white/60">
                     {item.descripcion}
                   </p>
                 </div>

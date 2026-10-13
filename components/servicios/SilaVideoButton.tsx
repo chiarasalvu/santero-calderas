@@ -10,7 +10,12 @@ import { AnimatePresence, motion } from "framer-motion";
 // dentro de una card con transform (hover/animación), y un `position: fixed`
 // adentro de un ancestro transformado queda encerrado en la card (se veía
 // chico, duplicado y trabado).
-export default function SilaVideoButton() {
+export default function SilaVideoButton({
+  variant = "boton",
+}: {
+  /** "boton": botón chico; "poster": portada del video con ▶ (16:9). */
+  variant?: "boton" | "poster";
+}) {
   const [abierto, setAbierto] = useState(false);
   // true solo en el cliente (en el servidor no existe document.body).
   const montado = useSyncExternalStore(
@@ -42,20 +47,45 @@ export default function SilaVideoButton() {
 
   return (
     <>
-      <button
-        ref={triggerRef}
-        type="button"
-        onClick={() => setAbierto(true)}
-        className="flex w-full items-center justify-center gap-3 rounded-lg border border-steel/40 px-4 py-3 text-xs font-semibold text-white transition-colors hover:border-brand-red-light hover:text-brand-red-light"
-      >
-        <span
-          className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-red text-[10px] text-white"
-          aria-hidden
+      {variant === "poster" ? (
+        <button
+          ref={triggerRef}
+          type="button"
+          onClick={() => setAbierto(true)}
+          aria-label="Ver video de SILA Termomecánica"
+          className="group relative block aspect-video w-full overflow-hidden rounded-2xl border border-white/10 bg-black"
         >
-          ▶
-        </span>
-        Ver video de SILA Termomecánica
-      </button>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/video/sila-poster.jpg"
+            alt=""
+            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+          <span
+            className="absolute inset-0 flex items-center justify-center bg-black/20 transition-colors group-hover:bg-black/0"
+            aria-hidden
+          >
+            <span className="flex h-16 w-16 items-center justify-center rounded-full bg-brand-red text-xl text-white shadow-lg transition-transform group-hover:scale-110">
+              ▶
+            </span>
+          </span>
+        </button>
+      ) : (
+        <button
+          ref={triggerRef}
+          type="button"
+          onClick={() => setAbierto(true)}
+          className="flex w-full items-center justify-center gap-3 rounded-lg border border-steel/40 px-4 py-3 text-xs font-semibold text-white transition-colors hover:border-brand-red-light hover:text-brand-red-light"
+        >
+          <span
+            className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-red text-[10px] text-white"
+            aria-hidden
+          >
+            ▶
+          </span>
+          Ver video de SILA Termomecánica
+        </button>
+      )}
 
       {montado &&
         createPortal(

@@ -1,7 +1,12 @@
 import Link from "next/link";
 import Reveal from "@/components/motion/Reveal";
 import { serviciosPilares } from "@/data/servicios-pilares";
-import SilaVideoButton from "@/components/servicios/SilaVideoButton";
+import Image from "next/image";
+import { silaWhatsAppHref } from "@/data/sila";
+
+// La primera columna es un servicio de Santero; las otras dos los brinda
+// SILA Termomecánica (fondo azul, logo y WhatsApp propios).
+const brindaSila = new Set(["instalacion-puesta-en-marcha", "soporte-postventa"]);
 
 const contactoPorPilar: Record<string, { label: string; motivo: string }> = {
   "ingenieria-proyectos": {
@@ -24,16 +29,36 @@ export default function ServicePillars() {
       <div className="mx-auto grid max-w-6xl gap-8 md:grid-cols-3">
         {serviciosPilares.map((pilar, index) => {
           const contacto = contactoPorPilar[pilar.id];
+          const esSila = brindaSila.has(pilar.id);
 
           return (
             <Reveal
               key={pilar.id}
               delay={Math.min(index * 0.1, 0.3)}
-              className="group flex flex-col rounded-2xl border border-steel/20 bg-ink-light p-8 transition-all duration-300 hover:-translate-y-1 hover:border-brand-red-light/40"
+              className={`group flex flex-col rounded-2xl border p-8 transition-all duration-300 hover:-translate-y-1 hover:border-brand-red-light/40 ${
+                esSila
+                  ? "border-[#3b5bb5]/40 bg-[#0b1530]"
+                  : "border-steel/20 bg-ink-light"
+              }`}
             >
-              <span className="inline-flex w-fit transition-transform duration-300 group-hover:scale-110">
-                <PilarIcon id={pilar.id} />
-              </span>
+              <div className="flex items-center justify-between gap-4">
+                <span className="inline-flex w-fit transition-transform duration-300 group-hover:scale-110">
+                  <PilarIcon id={pilar.id} />
+                </span>
+                {esSila ? (
+                  <Image
+                    src="/img/sila/logo-sila.png"
+                    alt="SILA Termomecánica"
+                    width={422}
+                    height={483}
+                    className="h-10 w-auto"
+                  />
+                ) : (
+                  <span className="rounded-full border border-steel/30 px-3 py-1 font-mono text-[10px] font-light text-white/60">
+                    Servicio Santero
+                  </span>
+                )}
+              </div>
               <h2 className="mt-4 font-heading text-xl font-semibold text-white">
                 {pilar.titulo}
               </h2>
@@ -62,14 +87,25 @@ export default function ServicePillars() {
 
               {contacto && (
                 <div className="mt-auto flex flex-col gap-3 pt-8">
-                  {pilar.id === "soporte-postventa" && <SilaVideoButton />}
-                  <Link
-                    href={`/contacto?motivo=${contacto.motivo}`}
-                    className="flex items-center justify-center gap-2 rounded-lg bg-brand-red px-4 py-3 text-xs font-semibold text-white transition-all duration-200 hover:scale-[1.02] hover:bg-white hover:text-brand-red active:scale-[0.98]"
-                  >
-                    {contacto.label}
-                    <span aria-hidden>→</span>
-                  </Link>
+                  {esSila ? (
+                    <a
+                      href={silaWhatsAppHref}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center gap-2 rounded-lg bg-brand-red px-4 py-3 text-xs font-semibold text-white transition-all duration-200 hover:scale-[1.02] hover:bg-white hover:text-brand-red active:scale-[0.98]"
+                    >
+                      {contacto.label}
+                      <span aria-hidden>→</span>
+                    </a>
+                  ) : (
+                    <Link
+                      href={`/contacto?motivo=${contacto.motivo}`}
+                      className="flex items-center justify-center gap-2 rounded-lg bg-brand-red px-4 py-3 text-xs font-semibold text-white transition-all duration-200 hover:scale-[1.02] hover:bg-white hover:text-brand-red active:scale-[0.98]"
+                    >
+                      {contacto.label}
+                      <span aria-hidden>→</span>
+                    </Link>
+                  )}
                 </div>
               )}
             </Reveal>
