@@ -35,25 +35,25 @@ export default function ComparisonTable() {
               <tr className="border-b border-steel/20">
                 <th
                   scope="col"
-                  className="w-[18%] p-5 font-mono text-xs font-light text-white/50"
+                  className="w-[18%] p-4 font-mono text-xs font-light text-white/50"
                 >
                   Variable de análisis
                 </th>
                 <th
                   scope="col"
-                  className="p-5 font-heading text-base font-semibold text-white/80"
+                  className="p-4 text-center font-heading text-sm font-semibold text-white/80"
                 >
                   {columnasComparativa.termotanque}
                 </th>
                 <th
                   scope="col"
-                  className="p-5 font-heading text-base font-semibold text-white/80"
+                  className="p-4 text-center font-heading text-sm font-semibold text-white/80"
                 >
                   {columnasComparativa.caldera}
                 </th>
                 <th
                   scope="col"
-                  className="bg-brand-red/10 p-5 font-heading text-base font-semibold text-brand-red-light"
+                  className="bg-brand-red/10 p-4 text-center font-heading text-sm font-semibold text-brand-red-light"
                 >
                   {columnasComparativa.santero}
                 </th>
@@ -65,7 +65,7 @@ export default function ComparisonTable() {
                   key={fila.id}
                   className="border-b border-steel/10 align-top last:border-b-0"
                 >
-                  <th scope="row" className="p-5 text-sm font-semibold text-white">
+                  <th scope="row" className="p-4 text-[13px] font-semibold text-white">
                     {fila.variable}
                     {fila.nota && (
                       <span className="mt-1 block font-mono text-[11px] font-light text-white/50">
@@ -73,13 +73,13 @@ export default function ComparisonTable() {
                       </span>
                     )}
                   </th>
-                  <td className="p-5">
+                  <td className="p-4">
                     <Celda celda={fila.termotanque} />
                   </td>
-                  <td className="p-5">
+                  <td className="p-4">
                     <Celda celda={fila.caldera} />
                   </td>
-                  <td className="bg-brand-red/10 p-5">
+                  <td className="bg-brand-red/10 p-4">
                     <Celda celda={fila.santero} destacada />
                   </td>
                 </tr>
@@ -146,10 +146,10 @@ function Celda({
   destacada?: boolean;
 }) {
   return (
-    <div>
-      <p className="flex flex-wrap items-baseline gap-x-2">
+    <div className="text-center">
+      <p className="flex flex-wrap items-baseline justify-center gap-x-2">
         <span
-          className={`font-heading text-lg font-semibold ${
+          className={`font-heading text-base font-semibold ${
             destacada ? "text-white" : "text-white/80"
           }`}
         >
@@ -157,7 +157,7 @@ function Celda({
         </span>
         {celda.valor && (
           <span
-            className={`font-heading text-sm font-semibold ${
+            className={`font-heading text-xs font-semibold ${
               destacada ? "text-brand-red-light" : "text-white/50"
             }`}
           >
@@ -166,7 +166,7 @@ function Celda({
         )}
       </p>
       <p
-        className={`mt-2 text-left text-sm ${destacada ? "text-white/80" : "text-white/60"}`}
+        className={`mt-1.5 text-center text-[13px] leading-snug ${destacada ? "text-white/80" : "text-white/60"}`}
       >
         {celda.detalle}
       </p>
