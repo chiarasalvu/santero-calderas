@@ -51,19 +51,19 @@ export default function SistemaSanteroTeaser() {
                 </th>
                 <th
                   scope="col"
-                  className="p-4 font-heading text-sm font-semibold text-white/80 sm:p-5"
+                  className="p-4 text-center font-heading text-sm font-semibold text-white/80 sm:p-5"
                 >
                   {columnasComparativa.termotanque}
                 </th>
                 <th
                   scope="col"
-                  className="p-4 font-heading text-sm font-semibold text-white/80 sm:p-5"
+                  className="p-4 text-center font-heading text-sm font-semibold text-white/80 sm:p-5"
                 >
                   {columnasComparativa.caldera}
                 </th>
                 <th
                   scope="col"
-                  className="bg-brand-red/10 p-4 font-heading text-sm font-semibold text-brand-red-light sm:p-5"
+                  className="bg-brand-red/10 p-4 text-center font-heading text-sm font-semibold text-brand-red-light sm:p-5"
                 >
                   {columnasComparativa.santero}
                 </th>
@@ -81,13 +81,13 @@ export default function SistemaSanteroTeaser() {
                   >
                     {fila.variable}
                   </th>
-                  <td className="p-4 text-sm text-white/70 sm:p-5">
+                  <td className="p-4 text-center text-sm text-white/70 sm:p-5">
                     <Resumen celda={fila.termotanque} />
                   </td>
-                  <td className="p-4 text-sm text-white/70 sm:p-5">
+                  <td className="p-4 text-center text-sm text-white/70 sm:p-5">
                     <Resumen celda={fila.caldera} />
                   </td>
-                  <td className="bg-brand-red/10 p-4 text-sm font-semibold text-white sm:p-5">
+                  <td className="bg-brand-red/10 p-4 text-center text-sm font-semibold text-white sm:p-5">
                     <Resumen celda={fila.santero} />
                   </td>
                 </tr>
