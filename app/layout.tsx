@@ -28,7 +28,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const { rating, reviewCount } = await getGoogleRating();
+  const { rating } = await getGoogleRating();
 
   return (
     <html
@@ -41,7 +41,7 @@ export default async function RootLayout({
           <main className="flex-1">{children}</main>
           <Footer />
           <WhatsAppButton />
-          <GoogleReviewsBadge rating={rating} reviewCount={reviewCount} />
+          <GoogleReviewsBadge rating={rating} />
         </MotionConfig>
       </body>
     </html>

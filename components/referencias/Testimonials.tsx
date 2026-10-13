@@ -9,10 +9,9 @@ const GOOGLE_REVIEWS_URL =
 
 type TestimonialsProps = {
   rating: number;
-  reviewCount: number;
 };
 
-export default function Testimonials({ rating, reviewCount }: TestimonialsProps) {
+export default function Testimonials({ rating }: TestimonialsProps) {
   const trackRef = useRef<HTMLDivElement>(null);
 
   function scroll(direction: 1 | -1) {
@@ -46,7 +45,7 @@ export default function Testimonials({ rating, reviewCount }: TestimonialsProps)
             <GoogleLogo className="h-5 w-5 shrink-0" />
             <span className="text-sm text-white/80">
               <span className="font-semibold text-white">{rating}</span> ·{" "}
-              {reviewCount} reseñas en Google
+              Reseñas en Google
             </span>
           </a>
         </Reveal>
