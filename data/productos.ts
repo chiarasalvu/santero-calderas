@@ -29,8 +29,8 @@ export type LineaProducto = {
 export const lineasProducto: LineaProducto[] = [
   {
     id: "atsol-etercal",
-    label: "ATSOL / ETERCAL",
-    nombre: "Línea ATSOL / ETERCAL",
+    label: "ATSOL",
+    nombre: "Línea ATSOL",
     imagenes: [
       { src: "/img/equipos/atsol.jpg", alt: "Equipo ATSOL" },
       { src: "/img/equipos/etercal.jpg", alt: "Equipo ETERCAL" },
@@ -149,8 +149,9 @@ export const lineasProducto: LineaProducto[] = [
   },
   {
     id: "intercambiadores-tanques",
-    label: "Intercambiadores y Tanques de Acumulación",
-    nombre: "Intercambiadores y tanques de acumulación",
+    // Dos renglones (\n): "Intercambiador de calor" y "Tanques de acumulación".
+    label: "Intercambiador de calor\nTanques de acumulación",
+    nombre: "Intercambiador de calor\nTanques de acumulación",
     imagenes: [
       {
         src: "/img/equipos/intercambiador.jpg",
@@ -177,8 +178,8 @@ export const lineasProducto: LineaProducto[] = [
   },
   {
     id: "electro",
-    label: "Electro",
-    nombre: "Línea Electro",
+    label: "ELECTRO",
+    nombre: "Línea ELECTRO",
     imagenes: [{ src: "/img/equipos/electro.jpg", alt: "Equipo Electro" }],
     items: [
       {

@@ -221,8 +221,8 @@ export default function Header() {
                               }
                               className={`flex items-center gap-2 py-1.5 text-sm transition-colors ${
                                 categoriaAbierta === categoria.id
-                                  ? "text-white"
-                                  : "text-white/50 hover:text-white"
+                                  ? "font-bold text-white"
+                                  : "font-bold text-white hover:text-white/80"
                               }`}
                             >
                               {categoria.titulo}
@@ -348,7 +348,7 @@ function QueHacemosColumn({
 }) {
   return (
     <div>
-      <p className="text-[length:clamp(10px,1.5vh,13px)] font-light text-white/40">
+      <p className="text-[length:clamp(11px,1.7vh,15px)] font-bold text-white">
         {titulo}
       </p>
       <ul className="mt-[clamp(4px,1.2vh,16px)] flex flex-col gap-[clamp(1px,0.6vh,8px)]">
@@ -372,13 +372,15 @@ function QueHacemosItem({
   onNavigate: () => void;
 }) {
   if (!item.href) {
-    return <span className="text-sm text-white/70">{item.label}</span>;
+    return <span className="whitespace-pre-line text-sm text-white/70">
+        {item.label}
+      </span>;
   }
   return (
     <Link
       href={item.href}
       onClick={onNavigate}
-      className="text-sm text-white/70 transition-colors hover:text-brand-red-light"
+      className="whitespace-pre-line text-sm text-white/70 transition-colors hover:text-brand-red-light"
     >
       {item.label}
     </Link>

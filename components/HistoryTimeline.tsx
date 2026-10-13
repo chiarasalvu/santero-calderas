@@ -136,9 +136,9 @@ const historia: HitoHistoria[] = [
       "Nueva planta productiva en Pompeya, CABA. Creación de “SILA Termomecánica”. Ampliación de personal capacitado. Incorporación de vehículos y maquinaria moderna.",
     fotos: [
       {
-        src: "/img/historia/actualidad-a.jpg",
-        width: 388,
-        height: 518,
+        src: "/img/historia/actualidad-horizontal.jpg",
+        width: 540,
+        height: 386,
         alt: "Foto de archivo de Calderas Santero, actualidad",
       },
     ],

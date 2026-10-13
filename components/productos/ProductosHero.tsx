@@ -22,7 +22,7 @@ export default function ProductosHero() {
                 href={productoHref(linea.id)}
                 className="rounded-full border border-steel/40 px-4 py-1.5 text-sm font-semibold text-white/80 transition-colors hover:border-brand-red-light hover:text-brand-red-light"
               >
-                {linea.label}
+                {linea.label.replace("\n", " · ")}
               </a>
             ))}
           </nav>

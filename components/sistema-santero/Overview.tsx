@@ -47,49 +47,64 @@ export default function Overview() {
           </p>
         </Reveal>
 
-        <div className="mt-14 grid gap-12 lg:grid-cols-2">
+        {/* La foto va apaisada (se ven las 3 calderas completas) y los
+            textos la envuelven: los tres primeros beneficios a su lado y
+            el último debajo de la imagen, a todo el ancho. */}
+        <div className="mt-14 grid gap-x-12 gap-y-10 lg:grid-cols-[1.15fr_1fr]">
           <Reveal
             delay={0.1}
-            className="flex min-h-[360px] w-full rounded-2xl bg-white p-2"
+            className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-white"
           >
-            <div className="relative flex-1 overflow-hidden rounded-xl bg-white">
-              <Image
-                src="/img/generales/atsol-500-river.jpg"
-                alt="Sala de máquinas con tres equipos ATSOL 500 (proyecto River)"
-                fill
-                sizes="(min-width: 1024px) 50vw, 100vw"
-                className="object-cover"
-              />
-            </div>
+            <Image
+              src="/img/generales/atsol-500-river.jpg"
+              alt="Sala de máquinas con tres equipos ATSOL 500 (proyecto River)"
+              fill
+              sizes="(min-width: 1024px) 55vw, 100vw"
+              className="object-cover"
+            />
           </Reveal>
 
           <div className="flex flex-col justify-between gap-8">
-            {caracteristicas.map((item, index) => (
-              <Reveal
-                key={item.id}
-                delay={Math.min(index * 0.08, 0.3)}
-                className="flex gap-4"
-              >
-                <span
-                  className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-red/20 text-brand-red-light"
-                  aria-hidden
-                >
-                  <CheckIcon />
-                </span>
-                <div>
-                  <h3 className="font-heading text-lg font-semibold text-white">
-                    {item.titulo}
-                  </h3>
-                  <p className="mt-1 text-justify text-sm text-white/60">
-                    {item.descripcion}
-                  </p>
-                </div>
-              </Reveal>
+            {caracteristicas.slice(0, 3).map((item, index) => (
+              <Beneficio key={item.id} item={item} index={index} />
+            ))}
+          </div>
+
+          <div className="lg:col-span-2">
+            {caracteristicas.slice(3).map((item) => (
+              <Beneficio key={item.id} item={item} index={3} />
             ))}
           </div>
         </div>
       </div>
     </section>
+  );
+}
+
+function Beneficio({
+  item,
+  index,
+}: {
+  item: (typeof caracteristicas)[number];
+  index: number;
+}) {
+  return (
+    <Reveal delay={Math.min(index * 0.08, 0.3)} className="flex gap-4">
+      <span
+        className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-red/20 text-brand-red-light"
+        aria-hidden
+      >
+        <CheckIcon />
+      </span>
+      <div>
+        <h3 className="font-heading text-lg font-semibold text-white">
+          {item.titulo}
+        </h3>
+        <p className="mt-1 text-justify text-sm text-white/60">
+          {item.descripcion}
+        </p>
+      </div>
+    </Reveal>
   );
 }
 
