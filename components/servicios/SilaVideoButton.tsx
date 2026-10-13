@@ -57,7 +57,7 @@ export default function SilaVideoButton({
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/video/sila-poster.jpg"
+            src="/video/sila-video-portada.jpg"
             alt=""
             className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
