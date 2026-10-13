@@ -1,23 +1,26 @@
 import type { Metadata } from "next";
-import Hero from "@/components/servicios/Hero";
-import ServicePillars from "@/components/servicios/ServicePillars";
-import SilaSeccion from "@/components/servicios/SilaSeccion";
+import SilaHero from "@/components/servicios/SilaHero";
+import SilaServicios from "@/components/servicios/SilaServicios";
+import SilaPilares from "@/components/servicios/SilaPilares";
+import SilaContacto from "@/components/servicios/SilaContacto";
 
 export const metadata: Metadata = {
   title: "Servicios | Calderas Santero",
   description:
-    "Ingeniería & Proyectos, Instalación & Puesta en Marcha, y Soporte & Postventa: los 3 pilares de servicio de Calderas Santero.",
+    "SILA Termomecánica: servicio técnico, instalaciones, desguaces, obras llave en mano, logística y repuestos para los equipos Santero.",
 };
 
+// Página de Servicios = landing de SILA Termomecánica (pedido del cliente,
+// 14/10): fondo azul propio, video de fondo, logo y contacto por WhatsApp
+// de SILA. "Ingeniería & proyectos" ya no figura acá y el bloque
+// "Compromiso Santero" (components/servicios/Compromiso.tsx) sigue oculto.
 export default function Servicios() {
   return (
     <>
-      <Hero />
-      <ServicePillars />
-      <SilaSeccion />
-      {/* "Compromiso Santero" (visita técnica) oculto a pedido del cliente
-          (13/10) — ver components/servicios/Compromiso.tsx para volver a
-          mostrarlo. */}
+      <SilaHero />
+      <SilaServicios />
+      <SilaPilares />
+      <SilaContacto />
     </>
   );
 }
