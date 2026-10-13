@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Hero from "@/components/servicios/Hero";
 import ServicePillars from "@/components/servicios/ServicePillars";
 import SilaSeccion from "@/components/servicios/SilaSeccion";
-import Compromiso from "@/components/servicios/Compromiso";
 
 export const metadata: Metadata = {
   title: "Servicios | Calderas Santero",
@@ -16,7 +15,9 @@ export default function Servicios() {
       <Hero />
       <ServicePillars />
       <SilaSeccion />
-      <Compromiso />
+      {/* "Compromiso Santero" (visita técnica) oculto a pedido del cliente
+          (13/10) — ver components/servicios/Compromiso.tsx para volver a
+          mostrarlo. */}
     </>
   );
 }
