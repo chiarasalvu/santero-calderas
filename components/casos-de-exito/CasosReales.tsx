@@ -236,7 +236,7 @@ function CasoPlanos() {
       <h3 className="mt-3 font-heading text-2xl font-semibold text-white">
         Una decisión inteligente se mide desde los planos
       </h3>
-      <p className="mt-4 max-w-4xl text-white/80">
+      <p className="mt-4 text-white/80">
         El Sistema Santero en esta obra de Devoto resolvió una ganancia del 60%
         del espacio en sala y un enorme ahorro en equipamiento e instalación.
         Colaboró indirectamente con la resolución del tema crítico de la
