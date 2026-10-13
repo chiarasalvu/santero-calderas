@@ -8,7 +8,6 @@ const GOOGLE_REVIEWS_URL = "https://www.google.com/maps?cid=2012556644267159200"
 
 type GoogleReviewsBadgeProps = {
   rating: number;
-  reviewCount: number;
 };
 
 /**
@@ -18,14 +17,12 @@ type GoogleReviewsBadgeProps = {
  * dorianargentina.com. En mobile arranca directamente en mini para no
  * ocupar espacio. El hover (desktop) la vuelve a expandir.
  *
- * `rating`/`reviewCount` vienen del layout raíz (server component), que
- * los trae en vivo de Google si está configurado (ver lib/google-rating.ts)
- * o usa los valores de respaldo si no.
+ * `rating` viene del layout raíz (server component), que lo trae en vivo
+ * de Google si está configurado (ver lib/google-rating.ts) o usa el valor
+ * de respaldo si no. No se muestra la cantidad de reseñas (pedido del
+ * cliente, 13/10): solo "Reseñas en Google".
  */
-export default function GoogleReviewsBadge({
-  rating,
-  reviewCount,
-}: GoogleReviewsBadgeProps) {
+export default function GoogleReviewsBadge({ rating }: GoogleReviewsBadgeProps) {
   const [collapsed, setCollapsed] = useState(false);
   const collapseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -60,7 +57,7 @@ export default function GoogleReviewsBadge({
       href={GOOGLE_REVIEWS_URL}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label={`Ver reseñas de Calderas Santero en Google — ${rating} de 5 estrellas, ${reviewCount} reseñas`}
+      aria-label={`Ver reseñas de Calderas Santero en Google — ${rating} de 5 estrellas`}
       onMouseEnter={expand}
       onMouseLeave={scheduleCollapse}
       initial={{ scale: 0, opacity: 0 }}
@@ -98,8 +95,7 @@ export default function GoogleReviewsBadge({
           <span className="text-xs tracking-[1px] text-[#fbbc04]">★★★★★</span>
         </span>
         <span className="text-[10px] text-[#888]">
-          <AnimatedCounter value={reviewCount} /> reseñas en{" "}
-          <strong className="text-[#4285F4]">Google</strong>
+          Reseñas en <strong className="text-[#4285F4]">Google</strong>
         </span>
       </span>
     </motion.a>

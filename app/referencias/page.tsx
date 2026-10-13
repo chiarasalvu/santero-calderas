@@ -14,13 +14,13 @@ export const metadata: Metadata = {
 
 export default async function Referencias() {
   const logosPorSegmento = getLogosPorSegmento();
-  const { rating, reviewCount } = await getGoogleRating();
+  const { rating } = await getGoogleRating();
 
   return (
     <>
       <Hero />
       <LogosGrid logosPorSegmento={logosPorSegmento} />
-      <Testimonials rating={rating} reviewCount={reviewCount} />
+      <Testimonials rating={rating} />
       <Cobertura />
     </>
   );
