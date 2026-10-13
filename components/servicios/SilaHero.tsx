@@ -4,19 +4,30 @@ import SilaVideoButton from "@/components/servicios/SilaVideoButton";
 import { silaServicios } from "@/data/sila";
 
 // Portada de la página de Servicios, que ahora es la presentación de SILA
-// Termomecánica: una foto de taller de fondo (soldadores con máscara, sin
-// caras), logo, frase, servicios y el botón del video.
+// Termomecánica: video de fondo (momentos del video corporativo, sin sonido
+// y en bucle), logo, frase y los dos botones.
 export default function SilaHero() {
   return (
     <section className="relative flex min-h-[100svh] items-center overflow-hidden bg-sila px-6 pt-28 pb-12 sm:pt-28">
+      <video
+        className="absolute inset-0 h-full w-full object-cover motion-reduce:hidden"
+        src="/video/sila-hero.mp4"
+        poster="/video/sila-hero-poster.jpg"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        aria-hidden
+      />
+      {/* Fondo estático para quien prefiere menos movimiento. */}
       <Image
-        src="/img/generales/trabajo-2.png"
+        src="/video/sila-hero-poster.jpg"
         alt=""
         fill
         priority
         sizes="100vw"
-        className="object-cover"
-        style={{ objectPosition: "center 60%" }}
+        className="hidden object-cover motion-reduce:block"
       />
       {/* Velo azul: más cerrado del lado del texto, abierto a la derecha,
           y se funde con el fondo de la sección de abajo. */}
