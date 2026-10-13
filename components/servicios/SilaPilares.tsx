@@ -1,8 +1,9 @@
 import Reveal from "@/components/motion/Reveal";
 import { serviciosPilares } from "@/data/servicios-pilares";
 
-// "Ingeniería & proyectos" es un servicio de Santero y ya no va en esta
-// página: acá solo los dos que brinda SILA.
+// "Ingeniería & proyectos" es un servicio de Santero y no va en esta
+// página: acá solo los dos que brinda SILA, dentro de un único panel con
+// los dos lado a lado (un solo bloque de texto, no dos secciones sueltas).
 const IDS = ["instalacion-puesta-en-marcha", "soporte-postventa"];
 
 export default function SilaPilares() {
@@ -10,23 +11,19 @@ export default function SilaPilares() {
 
   return (
     <section className="bg-sila px-6 pb-20 sm:pb-24">
-      <div className="mx-auto max-w-6xl">
-        <Reveal>
+      <Reveal className="mx-auto max-w-6xl overflow-hidden rounded-3xl border border-sila-accent/40 bg-sila-light">
+        <div className="border-b border-sila-accent/30 px-8 py-8 sm:px-12">
           <p className="font-mono text-xs font-light text-brand-blue-light">
             Respaldo técnico
           </p>
           <h2 className="mt-3 font-heading text-3xl font-semibold text-white sm:text-4xl">
             Instalación y soporte
           </h2>
-        </Reveal>
+        </div>
 
-        <div className="mt-12 grid gap-6 md:grid-cols-2">
-          {pilares.map((pilar, index) => (
-            <Reveal
-              key={pilar.id}
-              delay={index * 0.1}
-              className="rounded-2xl border border-sila-accent/40 bg-sila-light p-8"
-            >
+        <div className="grid divide-y divide-sila-accent/30 md:grid-cols-2 md:divide-x md:divide-y-0">
+          {pilares.map((pilar) => (
+            <div key={pilar.id} className="p-8 sm:p-12">
               <h3 className="font-heading text-2xl font-semibold text-white">
                 {pilar.titulo}
               </h3>
@@ -36,7 +33,7 @@ export default function SilaPilares() {
                 {pilar.items.map((item) => (
                   <li key={item.titulo} className="flex items-start gap-3">
                     <span
-                      className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-red/20 text-brand-red-light"
+                      className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-red/25 text-brand-red-light"
                       aria-hidden
                     >
                       <svg viewBox="0 0 24 24" fill="none" className="h-3.5 w-3.5">
@@ -60,10 +57,10 @@ export default function SilaPilares() {
                   </li>
                 ))}
               </ul>
-            </Reveal>
+            </div>
           ))}
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }

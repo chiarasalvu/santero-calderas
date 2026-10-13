@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import SilaHero from "@/components/servicios/SilaHero";
-import SilaServicios from "@/components/servicios/SilaServicios";
 import SilaPilares from "@/components/servicios/SilaPilares";
 import SilaContacto from "@/components/servicios/SilaContacto";
 
@@ -18,7 +17,6 @@ export default function Servicios() {
   return (
     <>
       <SilaHero />
-      <SilaServicios />
       <SilaPilares />
       <SilaContacto />
     </>
