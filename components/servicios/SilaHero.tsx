@@ -1,14 +1,14 @@
 import Image from "next/image";
 import Reveal from "@/components/motion/Reveal";
 import SilaVideoButton from "@/components/servicios/SilaVideoButton";
-import { silaServicios, silaWhatsAppHref } from "@/data/sila";
+import { silaServicios } from "@/data/sila";
 
 // Portada de la página de Servicios, que ahora es la presentación de SILA
 // Termomecánica: video de fondo (momentos del video corporativo, sin sonido
 // y en bucle), logo, frase y los dos botones.
 export default function SilaHero() {
   return (
-    <section className="relative flex min-h-[88vh] items-center overflow-hidden bg-sila px-6 pt-32 pb-24 sm:pt-40">
+    <section className="relative flex min-h-[100svh] items-center overflow-hidden bg-sila px-6 pt-28 pb-12 sm:pt-28">
       <video
         className="absolute inset-0 h-full w-full object-cover motion-reduce:hidden"
         src="/video/sila-hero.mp4"
@@ -47,56 +47,33 @@ export default function SilaHero() {
           width={422}
           height={483}
           priority
-          className="h-32 w-auto sm:h-40"
+          className="h-24 w-auto sm:h-28"
         />
-        <h1 className="mt-8 max-w-3xl font-heading text-3xl font-semibold text-white sm:text-5xl">
+        <h1 className="mt-6 max-w-3xl font-heading text-3xl font-semibold text-white sm:text-5xl">
           Soluciones técnicas integrales para su proyecto
         </h1>
-        <p className="mt-5 max-w-2xl text-lg text-white [text-shadow:0_1px_12px_rgba(11,21,48,0.9)]">
+        <p className="mt-4 max-w-2xl text-base text-white sm:text-lg [text-shadow:0_1px_12px_rgba(16,38,92,0.9)]">
           Desde que entra el primer caño hasta que se termina el trabajo, está
           presente SILA Termomecánica.
         </p>
 
-        {/* Los servicios van en el mismo bloque que la frase: un solo
-            texto, con el video de fondo. */}
-        <ul className="mt-8 flex flex-col gap-3">
-          {silaServicios.map((servicio) => (
-            <li
-              key={servicio}
-              className="flex items-center gap-3 text-base font-semibold text-white [text-shadow:0_1px_12px_rgba(16,38,92,0.9)] sm:text-lg"
-            >
-              <span
-                className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-red/30 text-brand-red-light"
-                aria-hidden
-              >
-                <svg viewBox="0 0 24 24" fill="none" className="h-3.5 w-3.5">
-                  <path
-                    d="M5 13l3.5 3.5L19 6"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </span>
+        {/* Los servicios, en una o dos líneas separados por "|" (van en el
+            mismo bloque de texto que la frase). */}
+        <ul className="mt-5 flex max-w-3xl flex-wrap items-center gap-x-3 gap-y-1 text-sm font-semibold text-white sm:text-base [text-shadow:0_1px_12px_rgba(16,38,92,0.9)]">
+          {silaServicios.map((servicio, index) => (
+            <li key={servicio} className="flex items-center gap-3">
               {servicio}
+              {index < silaServicios.length - 1 && (
+                <span className="font-light text-white/50" aria-hidden>
+                  |
+                </span>
+              )}
             </li>
           ))}
         </ul>
 
-        <div className="mt-10 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
-          <a
-            href={silaWhatsAppHref}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 rounded-lg bg-brand-red px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-white hover:text-brand-red"
-          >
-            Contactar por WhatsApp
-            <span aria-hidden>→</span>
-          </a>
-          <div className="sm:w-72">
-            <SilaVideoButton />
-          </div>
+        <div className="mt-8 sm:w-72">
+          <SilaVideoButton />
         </div>
       </Reveal>
     </section>
