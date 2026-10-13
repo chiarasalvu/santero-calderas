@@ -69,12 +69,6 @@ const historia: HitoHistoria[] = [
         height: 170,
         alt: "Foto de archivo de Calderas Santero, 1970",
       },
-      {
-        src: "/img/historia/1970-b.jpg",
-        width: 221,
-        height: 193,
-        alt: "Foto de archivo de Calderas Santero, 1970",
-      },
     ],
   },
   {
@@ -85,9 +79,9 @@ const historia: HitoHistoria[] = [
       "Se diseña y patentan los primeros bocetos de un sistema innovador de alta eficiencia energética y generación instantánea.",
     fotos: [
       {
-        src: "/img/historia/1995-a.jpg",
-        width: 151,
-        height: 268,
+        src: "/img/historia/1995-pareja.jpg",
+        width: 720,
+        height: 628,
         alt: "Foto de archivo de Calderas Santero, 1995",
       },
     ],
@@ -99,12 +93,6 @@ const historia: HitoHistoria[] = [
     descripcion:
       "Nos afianzamos como la verdadera alternativa del mercado de la climatización. Una revolución que rompió con los paradigmas de los sistemas tradicionales y colocó a la empresa en la elite de los productos nacionales y del Mercosur.",
     fotos: [
-      {
-        src: "/img/historia/2003-a.jpg",
-        width: 296,
-        height: 222,
-        alt: "Foto de archivo de Calderas Santero, 2003",
-      },
       {
         src: "/img/historia/2003-b.jpg",
         width: 345,
