@@ -39,9 +39,10 @@ export default function Hero() {
           </h1>
 
           <p className="mt-6 max-w-lg text-white/80">
-            Calentamiento indirecto de alta eficiencia. Diseñado para evitar la
-            acumulación de sarro y maximizar el rendimiento térmico en
-            aplicaciones industriales exigentes.
+            Calentamiento indirecto de alta eficiencia. Intercambio interno
+            customizado para resolver las exigencias de cada sector que
+            requiera alto rendimiento térmico con bajo consumo y
+            mantenimiento.
           </p>
 
           <div className="mt-6 flex flex-wrap items-center gap-6">
@@ -83,10 +84,10 @@ export default function Hero() {
 
           <div className="absolute -bottom-4 -left-4 rounded-xl bg-cream px-6 py-4 shadow-lg sm:-bottom-6 sm:-left-6">
             <p className="flex items-baseline font-heading text-3xl font-semibold text-brand-red">
-              <AnimatedCounter value={98} />%
+              <AnimatedCounter value={93} />%
             </p>
             <p className="text-xs font-light text-zinc-500">
-              Eficiencia estacionaria
+              Eficiencia superior
             </p>
           </div>
         </Reveal>

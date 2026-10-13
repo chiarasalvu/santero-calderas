@@ -18,6 +18,9 @@ export type LineaProducto = {
   badge?: string;
   badgeClassName?: string;
   subtitulo?: string;
+  /** Ficha técnica en PDF (ruta bajo /public). Hasta que el cliente las
+   *  mande, el botón se muestra pero sin archivo. */
+  fichaTecnica?: string;
   items: LineaItem[];
 };
 

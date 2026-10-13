@@ -108,7 +108,7 @@ export default function RubroHero({
               ) : (
                 <p
                   key={index}
-                  className="hyphens-auto text-justify text-white/70"
+                  className="text-justify text-white/70"
                 >
                   {bloque}
                 </p>

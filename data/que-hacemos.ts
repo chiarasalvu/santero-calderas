@@ -43,6 +43,9 @@ export type ServicioPagina = {
   imagen: string;
   /** object-position de la foto (para encuadrar lo importante). */
   imagenPosicion?: string;
+  /** Portada más alta (para fotos verticales, que en el formato ancho no se
+   *  llegan a lucir). */
+  portadaAlta?: boolean;
 };
 
 // Portada común a los rubros: solo el logo de Santero.
@@ -184,8 +187,8 @@ export const serviciosPaginas: ServicioPagina[] = [
     ],
     productos: ["ATS", "VTS", "ATSOL", "ETERCAL"],
     // Foto de banco (Unsplash): radiador en un ambiente, con ventana.
-    imagen: "/img/rubros-home/calefaccion-detalle.jpg",
-    imagenPosicion: "center 50%",
+    imagen: "/img/rubros-home/calefaccion-fundicion.jpg",
+    imagenPosicion: "center 55%",
   },
   {
     slug: "climatizacion-de-piscinas",
@@ -231,7 +234,10 @@ export const serviciosPaginas: ServicioPagina[] = [
     productos: ["VTS"],
     imagen: "/img/rubros-home/vapor-cliente.jpg",
     // Sube el encuadre para que se vea la válvula por donde sale el vapor.
-    imagenPosicion: "center 88%",
+    imagenPosicion: "center 82%",
+    // La foto del cliente es vertical: en la portada ancha solo se veía la
+    // válvula; más alta se luce el vapor.
+    portadaAlta: true,
   },
 ];
 

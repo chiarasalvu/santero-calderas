@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import Reveal from "@/components/motion/Reveal";
 import { productoHref } from "@/data/productos";
@@ -7,44 +8,29 @@ type LineaProducto = {
   /** Línea correspondiente en /productos. */
   productoId: string;
   nombre: string;
+  imagen: string;
   badge: string;
   subtitulo: string;
-  descripcion: string;
-  bullets: string[];
 };
 
+// Dos líneas, con imagen y título (sin listas de características): el
+// detalle completo está en /productos.
 const lineas: LineaProducto[] = [
   {
     id: "atsol",
     productoId: "atsol-etercal",
     nombre: "ATSOL",
+    imagen: "/img/equipos/atsol.jpg",
     badge: "Premium",
     subtitulo: "Alta eficiencia con quemadores de modulación",
-    descripcion:
-      "Circuito cerrado primario con tecnología acuotubular. Serpentinas de acero inoxidable intercambiables para múltiples servicios simultáneos. Ideal para proyectos de gran escala.",
-    bullets: [
-      "Sin acumulación — sin termotanques ni tanques intermediarios",
-      "Mantenimiento casi nulo — sin ánodos, sin purgas, sin repintados",
-      "Abastece distintas presiones y circuitos independientes",
-      "Reduce el consumo de gas hasta un 30%",
-      "Múltiples servicios desde un solo equipo",
-    ],
   },
   {
     id: "adn",
     productoId: "adn",
     nombre: "ADN",
+    imagen: "/img/equipos/adn.jpg",
     badge: "Relación precio-calidad",
     subtitulo: "Ideal para reemplazar termotanques industriales",
-    descripcion:
-      "Nace de la excelencia técnica del ATSOL, adaptada para proyectos que buscan equilibrio entre precio y calidad. Reemplaza termotanques de 300 a 1.000 litros o climatizadores de piscina convencionales.",
-    bullets: [
-      'Protección "baño maría" — igual que la línea premium',
-      "Sin piloto permanente — encendido electrónico por demanda",
-      "Sistema compacto — adapta a normativas vigentes de salas de máquinas",
-      "Elimina gastos fijos de mantenimiento tradicional",
-      "Control digital integrado",
-    ],
   },
 ];
 
@@ -67,66 +53,44 @@ export default function ProductLines() {
             <Reveal key={linea.id} delay={index * 0.1} className="h-full">
               <Link
                 href={productoHref(linea.productoId)}
-                className="group block h-full rounded-2xl border border-steel/20 bg-ink-light p-8 transition-all duration-300 hover:-translate-y-1 hover:border-brand-red-light/40"
+                className="group block h-full overflow-hidden rounded-2xl border border-steel/20 bg-ink-light transition-all duration-300 hover:-translate-y-1 hover:border-brand-red-light/40"
               >
-                <span className="inline-block rounded-full bg-brand-red/20 px-3 py-1 font-mono text-[10px] font-light text-brand-red-light">
-                  {linea.badge}
-                </span>
-                <h3 className="mt-4 font-heading text-xl font-semibold text-white">
-                  {linea.nombre}
-                </h3>
-                <p className="mt-1 text-sm font-light text-white/80">
-                  {linea.subtitulo}
-                </p>
-                <p className="mt-4 text-sm leading-relaxed text-white/60">
-                  {linea.descripcion}
-                </p>
+                <div className="relative aspect-[16/10] overflow-hidden bg-white">
+                  <Image
+                    src={linea.imagen}
+                    alt={`Línea ${linea.nombre}`}
+                    fill
+                    sizes="(min-width: 640px) 45vw, 100vw"
+                    className="object-contain p-4"
+                  />
+                </div>
 
-                <ul className="mt-6 flex flex-col gap-3">
-                  {linea.bullets.map((bullet) => (
-                    <li
-                      key={bullet}
-                      className="flex items-start gap-3 text-sm text-white/70"
-                    >
-                      <span
-                        className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-red/20 text-brand-red-light transition-transform duration-300 group-hover:scale-110"
-                        aria-hidden
-                      >
-                        <CheckIcon />
-                      </span>
-                      {bullet}
-                    </li>
-                  ))}
-                </ul>
-
-                <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-white/80 transition-colors group-hover:text-brand-red-light">
-                  Ver detalle del producto
-                  <span
-                    aria-hidden
-                    className="transition-transform duration-300 group-hover:translate-x-1"
-                  >
-                    →
+                <div className="p-6 sm:p-8">
+                  <span className="inline-block rounded-full bg-brand-red/20 px-3 py-1 font-mono text-[10px] font-light text-brand-red-light">
+                    {linea.badge}
                   </span>
-                </span>
+                  <h3 className="mt-4 font-heading text-xl font-semibold text-white">
+                    {linea.nombre}
+                  </h3>
+                  <p className="mt-1 text-sm font-light text-white/80">
+                    {linea.subtitulo}
+                  </p>
+
+                  <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-white/80 transition-colors group-hover:text-brand-red-light">
+                    Ver detalle del producto
+                    <span
+                      aria-hidden
+                      className="transition-transform duration-300 group-hover:translate-x-1"
+                    >
+                      →
+                    </span>
+                  </span>
+                </div>
               </Link>
             </Reveal>
           ))}
         </div>
       </div>
     </section>
-  );
-}
-
-function CheckIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" className="h-3.5 w-3.5" aria-hidden>
-      <path
-        d="M5 13l3.5 3.5L19 6"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
   );
 }

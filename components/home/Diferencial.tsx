@@ -12,13 +12,13 @@ export default function Diferencial() {
       <div className="mx-auto max-w-6xl">
         <Reveal className="flex flex-wrap items-end justify-between gap-4">
           <h2 className="font-heading text-3xl font-semibold text-white sm:text-4xl">
-            El diferencial Santero
+            El Respaldo Integral Santero
           </h2>
           <Link
             href="/servicios"
             className="group/link flex items-center gap-1 font-mono text-xs font-light text-brand-red-light transition-colors hover:text-white"
           >
-            Ver metodología
+            Ver servicios
             <span
               className="transition-transform duration-200 group-hover/link:translate-x-1"
               aria-hidden

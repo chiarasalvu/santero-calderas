@@ -33,7 +33,7 @@ type Caso = {
 const casos: Caso[] = [
   {
     id: "mitre-259",
-    nombre: "Consorcio Mitre 259",
+    nombre: "Consorcio Mitre al 200",
     ubicacion: "CABA",
     dato: "120 unidades funcionales",
     antes: "Calderas con tanques acumuladores",
@@ -56,7 +56,7 @@ const casos: Caso[] = [
   },
   {
     id: "santa-fe-3942",
-    nombre: "Consorcio Av. Santa Fe 3942",
+    nombre: "Consorcio Santa Fe al 3900",
     ubicacion: "CABA",
     dato: "54 departamentos",
     antes: "Termotanque de acumulación de 3.000 litros",
@@ -148,9 +148,41 @@ export default function CasosReales() {
               </figure>
             </Reveal>
           ))}
+
+          <CasoPlanos />
         </div>
       </div>
     </section>
+  );
+}
+
+// Obra de Devoto: el resultado se mide desde los planos (espacio en sala).
+function CasoPlanos() {
+  return (
+    <Reveal className="rounded-2xl border border-steel/20 bg-ink-light p-6 transition-colors duration-300 hover:border-brand-red-light/40 sm:p-8">
+      <p className="font-mono text-xs font-light text-white/50">
+        CABA · Obra de Devoto
+      </p>
+      <h3 className="mt-3 font-heading text-2xl font-semibold text-white">
+        Una decisión inteligente se mide desde los planos
+      </h3>
+      <p className="mt-4 max-w-4xl text-white/80">
+        El Sistema Santero en esta obra de Devoto resolvió una ganancia del 60%
+        del espacio en sala y un enorme ahorro en equipamiento e instalación.
+        Colaboró indirectamente con la resolución del tema crítico de la
+        ubicación del generador.
+      </p>
+      <div className="mt-8 overflow-hidden rounded-xl bg-white">
+        <Image
+          src="/img/casos/devoto-plano.jpg"
+          alt="Plano de detalle de la instalación de climatización de la obra de Devoto"
+          width={1299}
+          height={519}
+          sizes="(min-width: 1152px) 1100px, 100vw"
+          className="h-auto w-full"
+        />
+      </div>
+    </Reveal>
   );
 }
 

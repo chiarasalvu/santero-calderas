@@ -57,6 +57,11 @@ function LogoRow({
               alt={logo.nombre}
               fill
               sizes="240px"
+              // Los logos ya vienen livianos; se cargan al entrar a la
+              // página (sin lazy ni optimizador) para que no queden tarjetas
+              // en blanco mientras la cinta se desplaza.
+              loading="eager"
+              unoptimized
               className="object-contain"
             />
           </div>
