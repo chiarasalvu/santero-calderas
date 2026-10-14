@@ -3,7 +3,8 @@ import Reveal from "@/components/motion/Reveal";
 import { silaWhatsAppHref } from "@/data/sila";
 
 // Cierre de la página de Servicios: la misma foto de taller (chispas) que
-// tenía el bloque final anterior, con velo azul de SILA.
+// tenía el bloque final anterior, con un velo oscuro neutro (sin tinte
+// azul) para que se lea el texto.
 export default function SilaContacto() {
   return (
     <section className="relative overflow-hidden bg-sila px-6 py-20 sm:py-28">
@@ -15,7 +16,7 @@ export default function SilaContacto() {
         className="object-cover"
       />
       <div
-        className="absolute inset-0 bg-gradient-to-t from-sila via-sila/90 to-sila/75"
+        className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/60 to-black/50"
         aria-hidden
       />
 
