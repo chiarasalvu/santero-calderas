@@ -21,10 +21,7 @@ export default function SilaContacto() {
       />
 
       <Reveal className="relative mx-auto max-w-3xl text-center">
-        <p className="font-mono text-xs font-light text-brand-blue-light">
-          Contacto
-        </p>
-        <h2 className="mt-4 font-heading text-3xl font-semibold text-white sm:text-4xl">
+        <h2 className="font-heading text-3xl font-semibold text-white sm:text-4xl">
           Hablemos de su proyecto
         </h2>
         <p className="mt-4 text-white/80">
