@@ -1,9 +1,9 @@
 import Image from "next/image";
 
 // Portada de la página de Servicios (SILA Termomecánica): solo el video, sin
-// texto. Arranca con el logo armándose y sigue con tomas de obra, y vuelve
-// a empezar (mismo planteo que el hero del Home). Para quien prefiere
-// menos movimiento queda el logo ya armado, fijo.
+// texto. Es únicamente el logo armándose (~4,5 s); al terminar queda quieto
+// en el logo completo, sin repetirse. Para quien prefiere menos movimiento
+// (o si el video no arranca) queda el logo ya armado, fijo.
 export default function SilaHero() {
   return (
     <section
@@ -16,7 +16,6 @@ export default function SilaHero() {
         poster="/video/sila-hero-poster.jpg"
         autoPlay
         muted
-        loop
         playsInline
         preload="auto"
         aria-hidden
