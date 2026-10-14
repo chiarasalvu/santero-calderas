@@ -74,12 +74,17 @@ export default function Hero() {
   return (
     <section
       ref={sectionRef}
-      className="relative mt-[65px] flex min-h-[calc(100dvh-65px)] items-center overflow-hidden bg-ink px-6 py-24 sm:py-32"
+      className="relative mt-[65px] flex min-h-[calc(100dvh-65px)] items-center overflow-hidden bg-black px-6 py-24 sm:py-32"
     >
       <motion.div
         className="absolute inset-x-0 -top-[4%] h-[108%]"
         style={{ y: backgroundY }}
       >
+        {/* En mobile (pantalla vertical) el logo va "contain": con "cover"
+            el video apaisado se cortaba por los costados y no se leía
+            "SANTERO CALDERAS"; con "contain" entra entero y se agranda
+            (scale) para que el logo tenga tamaño. Desde md vuelve a cubrir
+            toda la pantalla. */}
         {/* Entrada del logo: recorte propio, sin loop. object-cover a
             pantalla completa (igual que el metraje, sin franjas negras)
             pero con object-position centrado real — no comparte el
@@ -90,7 +95,7 @@ export default function Hero() {
           muted
           playsInline
           preload="auto"
-          className={`absolute inset-0 h-full w-full object-cover object-center transition-opacity motion-reduce:hidden ${
+          className={`absolute inset-0 h-full w-full object-contain object-center transition-opacity motion-reduce:hidden scale-[2.3] md:scale-100 md:object-cover ${
             showFootage ? "opacity-0" : "opacity-100"
           }`}
           style={{ transitionDuration: `${CROSSFADE_MS}ms` }}
