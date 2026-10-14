@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   motion,
   useReducedMotion,
@@ -17,12 +17,16 @@ type HitoHistoria = {
   descripcion: string;
   /** Fotos de archivo que aparecen junto al año al recorrer la línea. */
   fotos?: { src: string; alt: string; width: number; height: number }[];
+  /** En mobile la card da vuelta y muestra UNA foto: índice de la elegida
+   *  dentro de `fotos` (por defecto la primera). */
+  fotoPrincipal?: number;
 };
 
 const historia: HitoHistoria[] = [
   {
     id: "1935",
     anio: "1935",
+    fotoPrincipal: 1,
     titulo: "Fundación de Calderas Santero",
     descripcion:
       "Empresa familiar fundada por Don Francisco Santero, dedicada exclusivamente a la fabricación de calderas de vapor y reparación de equipamiento textil.",
@@ -203,12 +207,17 @@ export default function HistoryTimeline({
             const cardOnRight = index % 2 === 0;
 
             return (
-              <li
-                key={hito.id}
-                className="relative grid grid-cols-[auto_1fr] items-center gap-x-4 gap-y-3 sm:flex sm:flex-row sm:items-center sm:gap-12"
-              >
+              <li key={hito.id} className="relative">
+                {/* Mobile: año centrado y la card que da vuelta y muestra
+                    una foto cuando uno se frena en ella. */}
+                <div className="flex flex-col items-center gap-3 sm:hidden">
+                  <Anio anio={hito.anio} dark={dark} />
+                  <TarjetaGiratoria hito={hito} dark={dark} />
+                </div>
+
+                <div className="hidden sm:flex sm:flex-row sm:items-center sm:gap-12">
                 <div
-                  className={`flex flex-col gap-4 max-sm:contents sm:min-w-0 sm:flex-1 ${
+                  className={`flex flex-col gap-4 sm:min-w-0 sm:flex-1 ${
                     cardOnRight
                       ? "items-center sm:order-1 sm:items-end"
                       : "items-center sm:order-3 sm:items-start"
@@ -216,7 +225,7 @@ export default function HistoryTimeline({
                 >
                   <Anio anio={hito.anio} dark={dark} />
                   {hito.fotos && (
-                    <Reveal delay={0.15} className="flex flex-col gap-2 sm:flex-row sm:gap-3">
+                    <Reveal delay={0.15} className="flex gap-3">
                       {hito.fotos.map((foto) => (
                         <Image
                           key={foto.src}
@@ -224,7 +233,7 @@ export default function HistoryTimeline({
                           alt={foto.alt}
                           width={foto.width}
                           height={foto.height}
-                          className="h-auto w-[92px] rounded-xl object-cover sm:h-44 sm:w-auto lg:h-48"
+                          className="h-44 w-auto rounded-xl object-cover lg:h-48"
                         />
                       ))}
                     </Reveal>
@@ -246,7 +255,7 @@ export default function HistoryTimeline({
                 <div
                   className={`flex w-full flex-col sm:min-w-0 sm:flex-1 sm:gap-4 ${
                     cardOnRight ? "sm:order-3" : "sm:order-1"
-                  } ${hito.fotos ? "sm:self-stretch" : "col-span-2 sm:col-span-1"}`}
+                  } ${hito.fotos ? "sm:self-stretch" : ""}`}
                 >
                   {hito.fotos && (
                     <div className="hidden sm:block" aria-hidden>
@@ -265,6 +274,7 @@ export default function HistoryTimeline({
                       <TimelineCard hito={hito} dark={dark} pegadaALaDerecha={!cardOnRight} />
                     </Reveal>
                   </div>
+                </div>
                 </div>
               </li>
             );
@@ -287,7 +297,7 @@ function Anio({
   return (
     <span
       aria-hidden={oculto || undefined}
-      className={`col-span-2 justify-self-center font-heading text-lg font-light sm:col-span-1 sm:justify-self-auto sm:text-5xl lg:text-6xl ${
+      className={`font-heading text-lg font-light sm:text-5xl lg:text-6xl ${
         oculto ? "invisible" : ""
       } ${
         dark ? "text-brand-red-light" : "text-brand-red sm:text-brand-red/50"
@@ -320,6 +330,91 @@ function TimelineCard({
       <p className={`mt-2 text-sm ${dark ? "text-white/70" : "text-zinc-600"}`}>
         {hito.descripcion}
       </p>
+    </div>
+  );
+}
+
+// Mobile: la card de texto y, al dorso, UNA foto del año. Cuando la card
+// queda en el centro de la pantalla (uno se frena en ella) da vuelta sola y
+// muestra la foto; al irse vuelve al texto. También se puede tocar para
+// girarla a mano. Con "reducir movimiento" no se anima el giro.
+function TarjetaGiratoria({
+  hito,
+  dark,
+}: {
+  hito: HitoHistoria;
+  dark: boolean;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [vuelta, setVuelta] = useState(false);
+  const shouldReduceMotion = useReducedMotion();
+  const foto = hito.fotos?.[hito.fotoPrincipal ?? 0];
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || !foto || shouldReduceMotion) return;
+
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (timer) clearTimeout(timer);
+        if (entry.isIntersecting) {
+          // Un instante para llegar a leer el título antes de girar.
+          timer = setTimeout(() => setVuelta(true), 900);
+        } else {
+          setVuelta(false);
+        }
+      },
+      { rootMargin: "-35% 0px -35% 0px" },
+    );
+    observer.observe(el);
+
+    return () => {
+      observer.disconnect();
+      if (timer) clearTimeout(timer);
+    };
+  }, [foto, shouldReduceMotion]);
+
+  if (!foto) {
+    return <TimelineCard hito={hito} dark={dark} />;
+  }
+
+  return (
+    <div
+      ref={ref}
+      onClick={() => setVuelta((v) => !v)}
+      className="w-full max-w-sm cursor-pointer [perspective:1200px]"
+    >
+      <div
+        className={`relative min-h-[300px] transition-transform duration-700 [transform-style:preserve-3d] motion-reduce:transition-none ${
+          vuelta ? "[transform:rotateY(180deg)]" : ""
+        }`}
+      >
+        {/* Frente: el texto (centrado en la altura de la tarjeta). */}
+        <div
+          className="flex min-h-[300px] items-center [-webkit-backface-visibility:hidden] [backface-visibility:hidden]"
+          aria-hidden={vuelta}
+        >
+          <TimelineCard hito={hito} dark={dark} />
+        </div>
+
+        {/* Dorso: la foto principal. */}
+        <div
+          className="absolute inset-0 overflow-hidden rounded-2xl [-webkit-backface-visibility:hidden] [backface-visibility:hidden] [transform:rotateY(180deg)]"
+          aria-hidden={!vuelta}
+        >
+          <Image
+            src={foto.src}
+            alt={foto.alt}
+            fill
+            sizes="(max-width: 640px) 90vw, 400px"
+            // El dorso está girado: con carga diferida el navegador cree que
+            // no se ve y la foto no cargaba.
+            loading="eager"
+            className="object-cover object-[center_25%]"
+          />
+        </div>
+      </div>
     </div>
   );
 }
