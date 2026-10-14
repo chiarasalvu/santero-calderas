@@ -55,24 +55,19 @@ export default function SilaVideoButton({
           aria-label="Ver video de SILA Termomecánica"
           className="group relative block aspect-video w-full overflow-hidden rounded-2xl border border-white/10 bg-black"
         >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/video/sila-video-portada.jpg"
-            alt=""
-            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-          />
-          {/* Logo de SILA en la franja oscura de arriba de la portada. */}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/img/sila/logo-sila.png"
-            alt=""
-            className="absolute top-[1.5%] left-5 h-[19%] w-auto"
-          />
-          <span
-            className="absolute inset-0 flex items-center justify-center bg-black/20 transition-colors group-hover:bg-black/0"
-            aria-hidden
-          >
-            <span className="flex h-16 w-16 items-center justify-center rounded-full bg-brand-red text-xl text-white shadow-lg transition-transform group-hover:scale-110">
+          {/* Portada: el logo de SILA sobre negro (como arranca el video)
+              y el ▶ debajo. */}
+          <span className="flex h-full w-full flex-col items-center justify-center gap-3 bg-black">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/img/sila/logo-sila.png"
+              alt=""
+              className="h-[52%] w-auto transition-transform duration-500 group-hover:scale-105"
+            />
+            <span
+              className="flex h-14 w-14 items-center justify-center rounded-full bg-brand-red text-lg text-white shadow-lg transition-transform group-hover:scale-110"
+              aria-hidden
+            >
               ▶
             </span>
           </span>
