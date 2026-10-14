@@ -61,6 +61,13 @@ export default function SilaVideoButton({
             alt=""
             className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
+          {/* Logo de SILA en la franja oscura de arriba de la portada. */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/img/sila/logo-sila.png"
+            alt=""
+            className="absolute top-[1.5%] left-5 h-[19%] w-auto"
+          />
           <span
             className="absolute inset-0 flex items-center justify-center bg-black/20 transition-colors group-hover:bg-black/0"
             aria-hidden
