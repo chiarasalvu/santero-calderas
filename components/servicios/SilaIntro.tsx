@@ -11,7 +11,8 @@ export default function SilaIntro() {
       <div className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
         <Reveal>
           <h1 className="font-heading text-3xl font-semibold text-white sm:text-4xl">
-            Soluciones técnicas integrales para su proyecto
+            <span className="block">Soluciones técnicas</span>
+            <span className="block">integrales para su proyecto</span>
           </h1>
           <p className="mt-4 max-w-2xl text-lg text-white/85">
             Desde que entra el primer caño hasta que se termina el trabajo, está
