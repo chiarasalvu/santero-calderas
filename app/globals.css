@@ -65,6 +65,14 @@
   }
 }
 
+/* En pantallas angostas (celular) el justificado deja "ríos" y huecos muy
+   grandes entre palabras: ahí los párrafos van alineados a la izquierda. */
+@media (max-width: 639px) {
+  p:not(.text-center, .text-center *) {
+    text-align: left !important;
+  }
+}
+
 body {
   background: var(--background);
   color: var(--foreground);

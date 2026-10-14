@@ -8,7 +8,7 @@ export default function SilaHero() {
   return (
     <section
       aria-label="SILA Termomecánica"
-      className="relative mt-[65px] min-h-[calc(100dvh-65px)] overflow-hidden bg-black"
+      className="relative mt-[65px] aspect-video w-full overflow-hidden bg-black md:aspect-auto md:min-h-[calc(100dvh-65px)]"
     >
       <video
         className="absolute inset-0 h-full w-full object-cover object-center motion-reduce:hidden"
