@@ -12,7 +12,7 @@ export default function AboutTeaser() {
   return (
     <section className="bg-ink px-6 pb-20 sm:pb-24">
       <div className="mx-auto max-w-6xl">
-        <Reveal className="flex flex-wrap items-end justify-between gap-4">
+        <Reveal className="flex flex-col items-start gap-3 lg:flex-row lg:items-end lg:justify-between lg:gap-4">
           <div>
             <p className="font-mono text-xs font-light text-brand-red-light">
               Desde 1935

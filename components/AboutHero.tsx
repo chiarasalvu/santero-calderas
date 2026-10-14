@@ -10,6 +10,7 @@ import {
   useTransform,
 } from "framer-motion";
 import Reveal from "@/components/motion/Reveal";
+import PlayIcon from "@/components/PlayIcon";
 
 export default function AboutHero() {
   const [videoOpen, setVideoOpen] = useState(false);
@@ -92,7 +93,7 @@ export default function AboutHero() {
             className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand-red text-white"
             aria-hidden
           >
-            ▶
+            <PlayIcon className="ml-0.5 h-4 w-4" />
           </span>
           Ver video institucional
         </button>
