@@ -1,11 +1,10 @@
 import Image from "next/image";
 
 // Portada de la página de Servicios (SILA Termomecánica): solo el video, sin
-// texto. Arranca con el logo armándose y sigue con tomas de obra (corte,
-// chispas, grúa, amoladora; sin caras) y vuelve a empezar. Las tomas son
-// verticales: van centradas, rellenando los costados con la misma toma
-// desenfocada. Para quien prefiere menos movimiento (o si el video no
-// arranca) queda el logo ya armado, fijo.
+// texto. Arranca con el logo armándose y sigue con tres tomas de obra
+// verticales lado a lado (corte, grúa, amoladora; sin caras) que llenan todo
+// el ancho, y vuelve a empezar. Para quien prefiere menos movimiento (o si
+// el video no arranca) queda el logo ya armado, fijo.
 export default function SilaHero() {
   return (
     <section
