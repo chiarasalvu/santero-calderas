@@ -277,7 +277,7 @@ export default function Header() {
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.2, ease: "easeInOut" }}
-                      className="w-full overflow-hidden md:hidden"
+                      className="w-full shrink-0 overflow-hidden md:hidden"
                     >
                       <div className="flex flex-col gap-1 pt-1">
                         {categorias.map((categoria) => (
