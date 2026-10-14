@@ -18,7 +18,7 @@ export default function CasesPreview({ logosPorSegmento }: CasesPreviewProps) {
   return (
     <section className="bg-ink px-6 pb-20 sm:pb-24">
       <div className="mx-auto max-w-6xl">
-        <Reveal className="flex flex-wrap items-end justify-between gap-4">
+        <Reveal className="flex flex-col items-start gap-3 lg:flex-row lg:items-end lg:justify-between lg:gap-4">
           <h2 className="font-heading text-3xl font-semibold text-white sm:text-4xl">
             Casos de éxito
           </h2>

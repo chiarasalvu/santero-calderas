@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "framer-motion";
+import PlayIcon from "@/components/PlayIcon";
 
 // Botón que abre el video de SILA Termomecánica a pantalla grande (mismo
 // patrón que el video institucional de Nosotros: Escape, scroll bloqueado,
@@ -65,10 +66,10 @@ export default function SilaVideoButton({
               className="h-[52%] w-auto transition-transform duration-500 group-hover:scale-105"
             />
             <span
-              className="flex h-14 w-14 items-center justify-center rounded-full bg-brand-red text-lg text-white shadow-lg transition-transform group-hover:scale-110"
+              className="flex h-14 w-14 items-center justify-center rounded-full bg-brand-red text-white shadow-lg transition-transform group-hover:scale-110"
               aria-hidden
             >
-              ▶
+              <PlayIcon className="ml-1 h-6 w-6" />
             </span>
           </span>
         </button>
@@ -80,10 +81,10 @@ export default function SilaVideoButton({
           className="flex w-full items-center justify-center gap-3 rounded-lg border border-steel/40 px-4 py-3 text-xs font-semibold text-white transition-colors hover:border-brand-red-light hover:text-brand-red-light"
         >
           <span
-            className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-red text-[10px] text-white"
+            className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-red text-white"
             aria-hidden
           >
-            ▶
+            <PlayIcon className="ml-px h-3 w-3" />
           </span>
           Ver video de SILA Termomecánica
         </button>

@@ -15,7 +15,7 @@ export default function SistemaSanteroTeaser() {
           <p className="font-heading text-sm font-semibold text-brand-red-light">
             Ingeniería propia. Tecnología avanzada.
           </p>
-          <div className="mt-4 flex flex-wrap items-end justify-between gap-4">
+          <div className="mt-4 flex flex-col items-start gap-3 lg:flex-row lg:items-end lg:justify-between lg:gap-4">
             <h2 className="max-w-2xl font-heading text-3xl font-semibold text-white sm:text-4xl">
               Sistema Santero
             </h2>

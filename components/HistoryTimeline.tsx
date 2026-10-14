@@ -205,10 +205,10 @@ export default function HistoryTimeline({
             return (
               <li
                 key={hito.id}
-                className="relative flex flex-col items-center gap-2 sm:flex-row sm:items-center sm:gap-12"
+                className="relative grid grid-cols-[auto_1fr] items-start gap-x-4 gap-y-3 sm:flex sm:flex-row sm:items-center sm:gap-12"
               >
                 <div
-                  className={`flex flex-col gap-4 sm:min-w-0 sm:flex-1 ${
+                  className={`flex flex-col gap-4 max-sm:contents sm:min-w-0 sm:flex-1 ${
                     cardOnRight
                       ? "items-center sm:order-1 sm:items-end"
                       : "items-center sm:order-3 sm:items-start"
@@ -216,7 +216,7 @@ export default function HistoryTimeline({
                 >
                   <Anio anio={hito.anio} dark={dark} />
                   {hito.fotos && (
-                    <Reveal delay={0.15} className="flex gap-3">
+                    <Reveal delay={0.15} className="flex flex-col gap-2 sm:flex-row sm:gap-3">
                       {hito.fotos.map((foto) => (
                         <Image
                           key={foto.src}
@@ -224,7 +224,7 @@ export default function HistoryTimeline({
                           alt={foto.alt}
                           width={foto.width}
                           height={foto.height}
-                          className="h-36 w-auto max-w-[45vw] rounded-xl object-cover sm:h-44 lg:h-48"
+                          className="h-auto w-[92px] rounded-xl object-cover sm:h-44 sm:w-auto lg:h-48"
                         />
                       ))}
                     </Reveal>
@@ -246,7 +246,7 @@ export default function HistoryTimeline({
                 <div
                   className={`flex w-full flex-col sm:min-w-0 sm:flex-1 sm:gap-4 ${
                     cardOnRight ? "sm:order-3" : "sm:order-1"
-                  } ${hito.fotos ? "sm:self-stretch" : ""}`}
+                  } ${hito.fotos ? "sm:self-stretch" : "col-span-2 sm:col-span-1"}`}
                 >
                   {hito.fotos && (
                     <div className="hidden sm:block" aria-hidden>
@@ -287,7 +287,7 @@ function Anio({
   return (
     <span
       aria-hidden={oculto || undefined}
-      className={`font-heading text-lg font-light sm:text-5xl lg:text-6xl ${
+      className={`col-span-2 justify-self-center font-heading text-lg font-light sm:col-span-1 sm:justify-self-auto sm:text-5xl lg:text-6xl ${
         oculto ? "invisible" : ""
       } ${
         dark ? "text-brand-red-light" : "text-brand-red sm:text-brand-red/50"
@@ -310,7 +310,7 @@ function TimelineCard({
 }) {
   return (
     <div
-      className={`w-full max-w-md rounded-2xl border border-transparent p-6 ${pegadaALaDerecha ? "sm:ml-auto" : ""} transition-all duration-300 hover:-translate-y-1 ${dark ? "bg-ink-elevated hover:border-brand-red-light/40" : "bg-cream-card hover:border-brand-red/30"}`}
+      className={`w-full max-w-md rounded-2xl border border-transparent p-4 sm:p-6 ${pegadaALaDerecha ? "sm:ml-auto" : ""} transition-all duration-300 hover:-translate-y-1 ${dark ? "bg-ink-elevated hover:border-brand-red-light/40" : "bg-cream-card hover:border-brand-red/30"}`}
     >
       <h3
         className={`font-heading text-lg font-semibold ${dark ? "text-white" : "text-navy"}`}

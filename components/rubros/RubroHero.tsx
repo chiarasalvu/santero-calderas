@@ -6,6 +6,7 @@ import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import Reveal from "@/components/motion/Reveal";
 import type { BloqueTexto, RubroPagina } from "@/data/que-hacemos";
+import PlayIcon from "@/components/PlayIcon";
 
 type RubroHeroProps = {
   titulo: string;
@@ -73,8 +74,8 @@ export default function RubroHero({
               className="absolute inset-0 flex items-center justify-center bg-ink/30 transition-colors group-hover:bg-ink/10"
               aria-hidden
             >
-              <span className="flex h-16 w-16 items-center justify-center rounded-full bg-brand-red text-xl text-white shadow-lg transition-transform group-hover:scale-110">
-                ▶
+              <span className="flex h-16 w-16 items-center justify-center rounded-full bg-brand-red text-white shadow-lg transition-transform group-hover:scale-110">
+                <PlayIcon className="ml-1 h-7 w-7" />
               </span>
             </span>
           </button>
