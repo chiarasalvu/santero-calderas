@@ -205,7 +205,7 @@ export default function HistoryTimeline({
             return (
               <li
                 key={hito.id}
-                className="relative grid grid-cols-[auto_1fr] items-start gap-x-4 gap-y-3 sm:flex sm:flex-row sm:items-center sm:gap-12"
+                className="relative grid grid-cols-[auto_1fr] items-center gap-x-4 gap-y-3 sm:flex sm:flex-row sm:items-center sm:gap-12"
               >
                 <div
                   className={`flex flex-col gap-4 max-sm:contents sm:min-w-0 sm:flex-1 ${
