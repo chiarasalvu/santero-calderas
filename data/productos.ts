@@ -158,6 +158,10 @@ export const lineasProducto: LineaProducto[] = [
         src: "/img/equipos/intercambiador.jpg",
         alt: "Intercambiador de calor IC-SANT",
       },
+      {
+        src: "/img/equipos/tac.jpg",
+        alt: "Tanque de acumulación TAC",
+      },
     ],
     items: [
       {
