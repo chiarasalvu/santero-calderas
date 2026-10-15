@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "zip:cpanel": "node scripts/cpanel.mjs",
+    "zip:cpanel:prueba": "node scripts/cpanel.mjs --prueba"
   },
   "dependencies": {
     "framer-motion": "^13.1.1",
