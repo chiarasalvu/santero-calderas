@@ -71,7 +71,7 @@ export const filasComparativa: FilaComparativa[] = [
       nivel: "Bajo",
       tono: "bueno",
       detalle:
-        "Tomamos éste como base para poder comparar. Inversión media, bajo consumo y mantenimiento casi nulo.",
+        "Inversión media, bajo consumo y mantenimiento casi nulo.",
     },
   },
   {
