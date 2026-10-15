@@ -149,8 +149,9 @@ export const lineasProducto: LineaProducto[] = [
   },
   {
     id: "intercambiadores-tanques",
-    // Dos renglones (\n): "Intercambiador de calor" y "Tanques de acumulación".
-    label: "Intercambiador de calor\nTanques de acumulación",
+    // En el menú y en los chips van solo las siglas (pedido del cliente,
+    // 15/10): Intercambiador de calor - Tanques de acumulación.
+    label: "ICS - TAC",
     nombre: "Intercambiador de calor\nTanques de acumulación",
     imagenes: [
       {

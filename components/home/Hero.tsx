@@ -10,6 +10,15 @@ import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion
 const HOLD_AFTER_LOGO_MS = 500;
 // Duración del cross-fade (opacity) entre los dos <video>.
 const CROSSFADE_MS = 900;
+// El metraje de planta está armado con paneles lado a lado. En el celular
+// (pantalla vertical) se ve solo una ventana angosta del centro y, en la toma
+// de la roladora, se colaba un borde del panel de la izquierda. Durante esa
+// toma la ventana se corre a la derecha (pedido del cliente, 15/10).
+const ROLADORA_DESDE_S = 16.3;
+const ROLADORA_HASTA_S = 19.4;
+const ENCUADRE_NORMAL_X = 50;
+const ENCUADRE_ROLADORA_X = 58;
+const ENCUADRE_Y = 70;
 
 export default function Hero() {
   const logoRef = useRef<HTMLVideoElement>(null);
@@ -60,13 +69,27 @@ export default function Hero() {
       playLogo();
     }
 
+    function ajustarEncuadre() {
+      if (!footage) return;
+      const t = footage.currentTime;
+      const x =
+        t >= ROLADORA_DESDE_S && t < ROLADORA_HASTA_S
+          ? ENCUADRE_ROLADORA_X
+          : ENCUADRE_NORMAL_X;
+      footage.style.objectPosition = `${x}% ${ENCUADRE_Y}%`;
+    }
+
     logo.addEventListener("ended", onLogoEnded);
     footage.addEventListener("ended", onFootageEnded);
+    footage.addEventListener("timeupdate", ajustarEncuadre);
+    footage.addEventListener("seeked", ajustarEncuadre);
     playLogo();
 
     return () => {
       logo.removeEventListener("ended", onLogoEnded);
       footage.removeEventListener("ended", onFootageEnded);
+      footage.removeEventListener("timeupdate", ajustarEncuadre);
+      footage.removeEventListener("seeked", ajustarEncuadre);
       if (holdTimer) clearTimeout(holdTimer);
     };
   }, [shouldReduceMotion]);

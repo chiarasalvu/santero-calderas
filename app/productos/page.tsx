@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import ProductosHero from "@/components/productos/ProductosHero";
 import ProductosDetalle from "@/components/productos/ProductosDetalle";
+import ScrollToHash from "@/components/productos/ScrollToHash";
 
 export const metadata: Metadata = {
   title: "Productos | Calderas Santero",
@@ -13,6 +14,7 @@ export default function ProductosPage() {
     <>
       <ProductosHero />
       <ProductosDetalle />
+      <ScrollToHash />
     </>
   );
 }
