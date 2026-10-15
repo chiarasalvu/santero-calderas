@@ -62,29 +62,28 @@ const casos: Caso[] = [
     despues: "1 equipo ATSOL-175",
     equipoFoto: "/img/equipos/atsol.jpg",
     equipoAlt: "Equipo ATSOL",
-    graficoTitulo: "Consumo de gas facturado por bimestre (m³)",
+    graficoTitulo: "Consumo de gas facturado por período (m³)",
+    // Valores del cliente (15/10), de las facturas de gas del consorcio:
+    // período 06/2023 (liquidación 2 de 2 del bimestre) y el mismo período
+    // un año después. Consumo a 9300 kcal/m³.
     barras: [
-      {
-        etiqueta: "Antes",
-        periodo: "Oct – Dic 2023",
-        valor: 6209,
-        momento: "antes",
-      },
-      {
-        etiqueta: "Ahora",
-        periodo: "Dic 2024 – Feb 2025",
-        valor: 2606,
-        momento: "ahora",
-      },
+      { etiqueta: "Antes", periodo: "06/23", valor: 6371.06, momento: "antes" },
+      { etiqueta: "Ahora", periodo: "06/24", valor: 3506.2, momento: "ahora" },
     ],
-    // Pendiente: el "antes" es oct–dic y el "ahora" dic–feb (otra época del
-    // año). Hasta tener la factura del mismo bimestre no se muestra el %.
-    periodosComparables: false,
+    // Mismo mes, años distintos: se muestra el % de ahorro (igual que Mitre).
+    periodosComparables: true,
     fuente: "Facturas de gas del consorcio.",
   },
 ];
 
-const formatear = (n: number) => n.toLocaleString("es-AR");
+// Enteros tal cual (19.017); con decimales siempre dos (6.371,06).
+const formatear = (n: number) =>
+  Number.isInteger(n)
+    ? n.toLocaleString("es-AR")
+    : n.toLocaleString("es-AR", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+      });
 
 export default function CasosReales() {
   return (
