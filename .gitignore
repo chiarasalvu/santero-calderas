@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# zips para cPanel (npm run zip:cpanel)
+/santero-cpanel*.zip
