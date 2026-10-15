@@ -202,6 +202,12 @@ function Comparacion({
 }) {
   const [antes, ahora] = barras;
   const ahorro = ((antes.valor - ahora.valor) / antes.valor) * 100;
+  // Dos decimales, truncados (no redondeados hacia arriba): no se infla el
+  // ahorro y coincide con lo que calcula el cliente (44,96 %).
+  const ahorroTexto = (Math.floor(ahorro * 100) / 100).toLocaleString("es-AR", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
 
   return (
     <div className="mt-4 flex min-h-[4.5rem] flex-wrap items-center justify-between gap-x-4 gap-y-2 rounded-xl border border-brand-red-light/30 bg-ink px-5 py-3">
@@ -213,11 +219,7 @@ function Comparacion({
       </p>
       {comparables && (
         <p className="font-heading text-2xl font-semibold text-brand-red-light">
-          {ahorro.toLocaleString("es-AR", {
-            minimumFractionDigits: 1,
-            maximumFractionDigits: 1,
-          })}
-          % menos
+          {ahorroTexto}% menos
         </p>
       )}
     </div>
