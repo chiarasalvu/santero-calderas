@@ -71,7 +71,7 @@ export const filasComparativa: FilaComparativa[] = [
       nivel: "Bajo",
       tono: "bueno",
       detalle:
-        "Inversión media, bajo consumo y mantenimiento casi nulo.",
+        "Inversión media, bajo consumo y mantenimiento casi nulo. El TCO calculado representa un 44% de ahorro sobre Termotanque y un 57% de ahorro sobre la caldera con intermediario.",
     },
   },
   {

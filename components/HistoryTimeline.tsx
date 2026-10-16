@@ -58,6 +58,12 @@ const historia: HitoHistoria[] = [
         height: 278,
         alt: "Foto de archivo de Calderas Santero, 1955",
       },
+      {
+        src: "/img/historia/1955-b.jpg",
+        width: 252,
+        height: 448,
+        alt: "Caldera vertical antigua de Calderas Santero",
+      },
     ],
   },
   {
