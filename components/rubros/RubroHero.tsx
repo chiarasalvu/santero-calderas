@@ -147,11 +147,20 @@ export default function RubroHero({
               ✕
             </button>
             <video
-              src={video.src}
+              // #t=: arranca en el segundo indicado (salta la intro de solo
+              // logo y música). El onLoadedMetadata lo refuerza donde el
+              // navegador ignora el fragmento.
+              src={video.inicio ? `${video.src}#t=${video.inicio}` : video.src}
               poster={video.poster}
               controls
               autoPlay
               playsInline
+              onLoadedMetadata={(event) => {
+                const el = event.currentTarget;
+                if (video.inicio && el.currentTime < video.inicio) {
+                  el.currentTime = video.inicio;
+                }
+              }}
               className="max-h-[80vh] w-full max-w-4xl rounded-lg"
               onClick={(event) => event.stopPropagation()}
             />
