@@ -1,10 +1,12 @@
 import Image from "next/image";
 
 // Portada de la página de Servicios (SILA Termomecánica): solo el video, sin
-// texto. Arranca con el logo armándose y sigue con tres tomas de obra
-// verticales lado a lado (corte, grúa, amoladora; sin caras) que llenan todo
-// el ancho, y vuelve a empezar. Para quien prefiere menos movimiento (o si
-// el video no arranca) queda el logo ya armado, fijo.
+// texto. Arranca con el logo armándose y sigue con tomas de obra verticales,
+// de a tres lado a lado, que llenan todo el ancho; después vuelve a empezar. Para quien prefiere menos movimiento (o si
+// el video no arranca) queda el logo ya armado, fijo. El <video> no lleva
+// póster a propósito: con el logo ya armado de póster aparecía un segundo y
+// desaparecía justo antes de que arrancara la animación (pedido del cliente,
+// 16/10); ahora entra directo el logo armándose desde el negro.
 export default function SilaHero() {
   return (
     <section
@@ -14,7 +16,6 @@ export default function SilaHero() {
       <video
         className="absolute inset-0 h-full w-full object-cover object-center motion-reduce:hidden"
         src="/video/sila-hero.mp4"
-        poster="/video/sila-hero-poster.jpg"
         autoPlay
         muted
         loop

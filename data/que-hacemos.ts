@@ -26,8 +26,10 @@ export type RubroPagina = {
   subtitulo: string;
   /** Descripción del rubro, debajo del video. */
   contenido: BloqueTexto[];
-  /** Video del rubro y su portada (la misma para todos: solo el logo). */
-  video: { src: string; poster: string } | null;
+  /** Video del rubro y su portada (el cuadro con el título del tema).
+   *  `inicio`: segundo desde el que arranca el video; los primeros ~10 s son
+   *  solo el logo con música, así que se saltan (pedido del cliente, 16/10). */
+  video: { src: string; poster: string; inicio?: number } | null;
 };
 
 export type ServicioPagina = {
@@ -49,7 +51,6 @@ export type ServicioPagina = {
 };
 
 // Portada común a los rubros: solo el logo de Santero.
-const PORTADA_LOGO = "/img/rubros/portada-logo.jpg";
 
 const CIERRE_PROYECTO =
   "Acompañamos cada proyecto desde el diseño y la ingeniería, hasta su implementación, puesta en marcha y post venta.";
@@ -69,7 +70,8 @@ export const rubrosPaginas: RubroPagina[] = [
     ],
     video: {
       src: "/video/rubros/hoteleria-balnearios-campamentos.mp4",
-      poster: PORTADA_LOGO,
+      poster: "/img/rubros/portada-hoteleria.jpg",
+      inicio: 9.5,
     },
   },
   {
@@ -85,7 +87,8 @@ export const rubrosPaginas: RubroPagina[] = [
     ],
     video: {
       src: "/video/rubros/clubes-natatorios-spa.mp4",
-      poster: PORTADA_LOGO,
+      poster: "/img/rubros/portada-clubes-natatorios.jpg",
+      inicio: 10,
     },
   },
   {
@@ -101,7 +104,8 @@ export const rubrosPaginas: RubroPagina[] = [
     // Mismo video que Consorcios por ahora; se edita aparte más adelante.
     video: {
       src: "/video/rubros/real-estate-consorcios.mp4",
-      poster: PORTADA_LOGO,
+      poster: "/img/rubros/portada-obras-consorcios.jpg",
+      inicio: 9,
     },
   },
   {
@@ -118,7 +122,8 @@ export const rubrosPaginas: RubroPagina[] = [
     ],
     video: {
       src: "/video/rubros/real-estate-consorcios.mp4",
-      poster: PORTADA_LOGO,
+      poster: "/img/rubros/portada-obras-consorcios.jpg",
+      inicio: 9,
     },
   },
   {
@@ -134,7 +139,8 @@ export const rubrosPaginas: RubroPagina[] = [
     ],
     video: {
       src: "/video/rubros/industrias-hospitales.mp4",
-      poster: PORTADA_LOGO,
+      poster: "/img/rubros/portada-industrias.jpg",
+      inicio: 10,
     },
   },
 ];
